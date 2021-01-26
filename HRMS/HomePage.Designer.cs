@@ -47,6 +47,7 @@ namespace HRMS
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.btnPublishInfo = new System.Windows.Forms.Button();
+            this.btnLog = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -59,6 +60,7 @@ namespace HRMS
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -219,6 +221,7 @@ namespace HRMS
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnLog);
             this.tabPage1.Location = new System.Drawing.Point(154, 4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -256,6 +259,15 @@ namespace HRMS
             this.btnPublishInfo.Text = "發佈公告";
             this.btnPublishInfo.UseVisualStyleBackColor = true;
             // 
+            // btnLog
+            // 
+            this.btnLog.Location = new System.Drawing.Point(421, 210);
+            this.btnLog.Name = "btnLog";
+            this.btnLog.Size = new System.Drawing.Size(344, 50);
+            this.btnLog.TabIndex = 0;
+            this.btnLog.Text = "打卡";
+            this.btnLog.UseVisualStyleBackColor = true;
+            // 
             // HomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -278,6 +290,7 @@ namespace HRMS
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -302,5 +315,6 @@ namespace HRMS
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label lblSubtitle;
         private System.Windows.Forms.Button btnPublishInfo;
+        private System.Windows.Forms.Button btnLog;
     }
 }
