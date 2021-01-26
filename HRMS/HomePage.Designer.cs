@@ -34,7 +34,6 @@ namespace HRMS
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.lblSubtitle = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblEmpID = new System.Windows.Forms.Label();
@@ -85,7 +84,6 @@ namespace HRMS
             // 
             this.splitContainer1.Panel1.Controls.Add(this.pictureBox3);
             this.splitContainer1.Panel1.Controls.Add(this.lblSubtitle);
-            this.splitContainer1.Panel1.Controls.Add(this.label2);
             this.splitContainer1.Panel1.Controls.Add(this.pictureBox2);
             this.splitContainer1.Panel1.Controls.Add(this.pictureBox1);
             this.splitContainer1.Panel1.Controls.Add(this.lblEmpID);
@@ -118,15 +116,6 @@ namespace HRMS
             this.lblSubtitle.Size = new System.Drawing.Size(619, 64);
             this.lblSubtitle.TabIndex = 7;
             this.lblSubtitle.Text = "客戶：加個小功能而已，應該很簡單吧！明天可以好嗎？\r\nPM  ：當然沒問題！！";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(0, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(33, 12);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "label2";
             // 
             // pictureBox2
             // 
@@ -312,7 +301,6 @@ namespace HRMS
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label lblSubtitle;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnPublishInfo;
     }
 }
