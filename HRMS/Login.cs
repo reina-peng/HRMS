@@ -23,7 +23,7 @@ namespace HRMS
             if (txtPassword.Text == "1111")
             {
                 HomePage hp = new HomePage();
-                hp.lblAccount.Text = "員工：" + this.txtAccount.Text;
+                hp.lblAccount.Text = this.txtAccount.Text;
                 hp.lblEmpID.Text = "3345678";
                 this.Visible = false;
                 hp.ShowDialog();

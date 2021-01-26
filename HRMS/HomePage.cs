@@ -27,7 +27,17 @@ namespace HRMS
             this.tabControl1.DrawItem += this.tabControl1_DrawItem;
             //tabControl改側邊 > Alignment:Left > SizeMode:Fixed > 修改 ItemSize
             this.tabControl1.DrawMode = TabDrawMode.OwnerDrawFixed;
-            //LoadWeather(jsondata);
+            //LoadWeather(jsondata);    
+            this.Load += HomePage_Load;
+        }
+
+        private void HomePage_Load(object sender, EventArgs e)
+        {
+            if (this.lblEmpID.Text == "3345678")
+            {
+                MessageBox.Show("你好，" + lblAccount.Text);
+                tabControl1.TabPages.Remove(tabPage1);
+            }
         }
 
         string[] time = new string[3]; //時間區段
