@@ -1,0 +1,14 @@
+C:\Users\rovin\source\repos\HRMS\HRMS\bin\Debug\HRMS.exe.config
+C:\Users\rovin\source\repos\HRMS\HRMS\bin\Debug\HRMS.exe
+C:\Users\rovin\source\repos\HRMS\HRMS\bin\Debug\HRMS.pdb
+C:\Users\rovin\source\repos\HRMS\HRMS\obj\Debug\HRMS.csprojAssemblyReference.cache
+C:\Users\rovin\source\repos\HRMS\HRMS\obj\Debug\HRMS.Login.resources
+C:\Users\rovin\source\repos\HRMS\HRMS\obj\Debug\HRMS.Properties.Resources.resources
+C:\Users\rovin\source\repos\HRMS\HRMS\obj\Debug\HRMS.csproj.GenerateResource.cache
+C:\Users\rovin\source\repos\HRMS\HRMS\obj\Debug\HRMS.csproj.CoreCompileInputs.cache
+C:\Users\rovin\source\repos\HRMS\HRMS\obj\Debug\HRMS.exe
+C:\Users\rovin\source\repos\HRMS\HRMS\obj\Debug\HRMS.pdb
+C:\Users\rovin\source\repos\HRMS\HRMS\obj\Debug\HRMS.HomePage.resources
+C:\Users\rovin\source\repos\HRMS\HRMS\bin\Debug\Newtonsoft.Json.dll
+C:\Users\rovin\source\repos\HRMS\HRMS\bin\Debug\Newtonsoft.Json.xml
+C:\Users\rovin\source\repos\HRMS\HRMS\obj\Debug\HRMS.csproj.CopyComplete
