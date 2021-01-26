@@ -19,6 +19,7 @@ namespace HRMS
         const string cwbAPI = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-063?Authorization=CWB-B0D98AF2-68FB-4F37-B601-17A669CED731&locationName=大安區&elementName=MinT,MaxT,PoP12h,Wx";
         //const string cwbAPI = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?&Authorization=CWB-B0D98AF2-68FB-4F37-B601-17A669CED731";
         JArray jsondata = getJson(cwbAPI);
+        MyHREntities hREntities = new MyHREntities();
 
         public HomePage()
         {
@@ -118,6 +119,36 @@ namespace HRMS
             lg.ShowDialog();
             this.Dispose();
             this.Close();
+        }
+
+        private void btnPublishInfo_Click(object sender, EventArgs e)
+        {
+            Bulletin bulletin = new Bulletin
+            {
+                Number = 2,
+                Title = "title1",
+                Department = 1,
+                ContentofBulletin = "farfff",
+            };
+            this.hREntities.Bulletin.Add(bulletin);
+            this.hREntities.SaveChanges();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int a = int.TryParse(textBox3.Text, out int num1) ? num1 : 0;
+            int b = int.TryParse(textBox4.Text, out int num2) ? num2 : 0;
+            int c = int.TryParse(textBox5.Text, out int num3) ? num3 : 0;
+
+            MessageBox.Show((a + b + c).ToString());
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string x = dateTimePicker1.Value.ToString("yyyy/MM/dd");
+            var q = (from o in hREntities.LeaveApplication.AsEnumerable()
+                     where o.EmployeeID == int.Parse(this.textBox2.Text) && o.LeaveEndTime == DateTime.Parse(x)
+                     select o).ToList();
         }
     }
 }
