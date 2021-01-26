@@ -47,6 +47,7 @@ namespace HRMS
                     //pop[i] = (string)data["weatherElement"][1]["time"][i]["parameter"]["parameterName"];
                     //mintemperature[i] = (string)data["weatherElement"][2]["time"][i]["parameter"]["parameterName"];
                     //maxtemperature[i] = (string)data["weatherElement"][4]["time"][i]["parameter"]["parameterName"];
+                    //
                 }                
             }
             for (int i = 0; i < 3; i++) //顯示 3 個時段天氣資料
