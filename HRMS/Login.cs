@@ -23,7 +23,8 @@ namespace HRMS
             if (txtPassword.Text == "1111")
             {
                 HomePage hp = new HomePage();
-                hp.lblAccount.Text = this.txtAccount.Text;
+                hp.lblAccount.Text = "員工：" + this.txtAccount.Text;
+                hp.lblEmpID.Text = "3345678";
                 this.Visible = false;
                 hp.ShowDialog();
                 this.Dispose();
@@ -33,13 +34,18 @@ namespace HRMS
             {
                 MessageBox.Show("Password is incorrect ", "Prompt message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Dispose();
             this.Close();
+        }
+
+        private void btnOnboard_Click(object sender, EventArgs e)
+        {
+            //TODO
+            //HR 提供帳號及預設密碼，彈出新人報到表單視窗，填完表單並修改密碼完成報到作業，帳號才會正式 Enable。
         }
     }
 }
