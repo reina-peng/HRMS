@@ -17,7 +17,7 @@ namespace HRMS
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Travel_Expense_Application()
         {
-            this.ApplyDetail = new HashSet<ApplyDetail>();
+            this.ApplyDetails = new HashSet<ApplyDetail>();
         }
     
         public int ApplyNumber { get; set; }
@@ -31,8 +31,8 @@ namespace HRMS
         public int CheckStatus { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ApplyDetail> ApplyDetail { get; set; }
-        public virtual CheckStatus CheckStatus1 { get; set; }
+        public virtual ICollection<ApplyDetail> ApplyDetails { get; set; }
+        public virtual CheckStatu CheckStatu { get; set; }
         public virtual Cost Cost { get; set; }
         public virtual User User { get; set; }
     }

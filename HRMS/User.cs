@@ -17,8 +17,8 @@ namespace HRMS
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
-            this.Absence = new HashSet<Absence>();
-            this.LeaveApplication = new HashSet<LeaveApplication>();
+            this.Absences = new HashSet<Absence>();
+            this.LeaveApplications = new HashSet<LeaveApplication>();
             this.Travel_Expense_Application = new HashSet<Travel_Expense_Application>();
             this.User1 = new HashSet<User>();
         }
@@ -44,12 +44,12 @@ namespace HRMS
         public byte AccountEnable { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Absence> Absence { get; set; }
+        public virtual ICollection<Absence> Absences { get; set; }
         public virtual Department Department1 { get; set; }
         public virtual JobTitle JobTitle1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LeaveApplication> LeaveApplication { get; set; }
-        public virtual OnBoardStatus OnBoardStatus { get; set; }
+        public virtual ICollection<LeaveApplication> LeaveApplications { get; set; }
+        public virtual OnBoardStatu OnBoardStatu { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Travel_Expense_Application> Travel_Expense_Application { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

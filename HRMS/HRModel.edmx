@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MyHRModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MyHRModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Absence">
           <Key>
             <PropertyRef Name="ApplyNumber" />
@@ -359,11 +359,77 @@
             <End Role="User1" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MyHRModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MyHREntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Absences" EntityType="MyHRModel.Absence" />
+          <EntitySet Name="ApplyDetails" EntityType="MyHRModel.ApplyDetail" />
+          <EntitySet Name="Bulletins" EntityType="MyHRModel.Bulletin" />
+          <EntitySet Name="CheckStatus" EntityType="MyHRModel.CheckStatu" />
+          <EntitySet Name="Costs" EntityType="MyHRModel.Cost" />
+          <EntitySet Name="Departments" EntityType="MyHRModel.Department" />
+          <EntitySet Name="JobTitles" EntityType="MyHRModel.JobTitle" />
+          <EntitySet Name="Leaves" EntityType="MyHRModel.Leave" />
+          <EntitySet Name="LeaveApplications" EntityType="MyHRModel.LeaveApplication" />
+          <EntitySet Name="OnBoardStatus" EntityType="MyHRModel.OnBoardStatu" />
+          <EntitySet Name="sysdiagrams" EntityType="MyHRModel.sysdiagram" />
+          <EntitySet Name="Travel_Expense_Application" EntityType="MyHRModel.Travel_Expense_Application" />
+          <EntitySet Name="Users" EntityType="MyHRModel.User" />
+          <AssociationSet Name="FK_Absence_User" Association="MyHRModel.FK_Absence_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Absence" EntitySet="Absences" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApplyDetail_Travel_Expense_Application" Association="MyHRModel.FK_ApplyDetail_Travel_Expense_Application">
+            <End Role="Travel_Expense_Application" EntitySet="Travel_Expense_Application" />
+            <End Role="ApplyDetail" EntitySet="ApplyDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bulletin_Department" Association="MyHRModel.FK_Bulletin_Department">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="Bulletin" EntitySet="Bulletins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LeaveApplication_CheckStatus" Association="MyHRModel.FK_LeaveApplication_CheckStatus">
+            <End Role="CheckStatu" EntitySet="CheckStatus" />
+            <End Role="LeaveApplication" EntitySet="LeaveApplications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Travel_Expense_Application_CheckStatus" Association="MyHRModel.FK_Travel_Expense_Application_CheckStatus">
+            <End Role="CheckStatu" EntitySet="CheckStatus" />
+            <End Role="Travel_Expense_Application" EntitySet="Travel_Expense_Application" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Travel_Expense_Application_Cost" Association="MyHRModel.FK_Travel_Expense_Application_Cost">
+            <End Role="Cost" EntitySet="Costs" />
+            <End Role="Travel_Expense_Application" EntitySet="Travel_Expense_Application" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Department" Association="MyHRModel.FK_User_Department">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_JobTitle" Association="MyHRModel.FK_User_JobTitle">
+            <End Role="JobTitle" EntitySet="JobTitles" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LeaveApplication_Leave" Association="MyHRModel.FK_LeaveApplication_Leave">
+            <End Role="Leave" EntitySet="Leaves" />
+            <End Role="LeaveApplication" EntitySet="LeaveApplications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LeaveApplication_User" Association="MyHRModel.FK_LeaveApplication_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="LeaveApplication" EntitySet="LeaveApplications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_OnBoardStatus" Association="MyHRModel.FK_User_OnBoardStatus">
+            <End Role="OnBoardStatu" EntitySet="OnBoardStatus" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Travel_Expense_Application_User" Association="MyHRModel.FK_Travel_Expense_Application_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Travel_Expense_Application" EntitySet="Travel_Expense_Application" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_User" Association="MyHRModel.FK_User_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="User1" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Absence">
           <Key>
             <PropertyRef Name="ApplyNumber" />
@@ -371,7 +437,7 @@
           <Property Name="ApplyNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="EmployeeID" Type="Int32" Nullable="false" />
           <Property Name="Clock_on" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Absence_User" FromRole="Absence" ToRole="User" />
+          <NavigationProperty Name="User" Relationship="MyHRModel.FK_Absence_User" FromRole="Absence" ToRole="User" />
         </EntityType>
         <EntityType Name="ApplyDetail">
           <Key>
@@ -381,28 +447,28 @@
           <Property Name="ApplyNumber" Type="Int32" Nullable="false" />
           <Property Name="CostCategory" Type="Int32" />
           <Property Name="Amont" Type="Decimal" Precision="19" Scale="4" />
-          <NavigationProperty Name="Travel_Expense_Application" Relationship="Self.FK_ApplyDetail_Travel_Expense_Application" FromRole="ApplyDetail" ToRole="Travel_Expense_Application" />
+          <NavigationProperty Name="Travel_Expense_Application" Relationship="MyHRModel.FK_ApplyDetail_Travel_Expense_Application" FromRole="ApplyDetail" ToRole="Travel_Expense_Application" />
         </EntityType>
         <EntityType Name="Bulletin">
           <Key>
             <PropertyRef Name="Number" />
           </Key>
           <Property Name="Number" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="Department" Type="Int32" Nullable="false" />
-          <Property Name="ContentofBulletin" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ContentofBulletin" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="Starttime" Type="DateTime" Precision="3" />
           <Property Name="Endtime" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Department1" Relationship="Self.FK_Bulletin_Department" FromRole="Bulletin" ToRole="Department" />
+          <NavigationProperty Name="Department1" Relationship="MyHRModel.FK_Bulletin_Department" FromRole="Bulletin" ToRole="Department" />
         </EntityType>
-        <EntityType Name="CheckStatus">
+        <EntityType Name="CheckStatu">
           <Key>
             <PropertyRef Name="CheckStatusID" />
           </Key>
           <Property Name="CheckStatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CheckStatus1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="LeaveApplication" Relationship="Self.FK_LeaveApplication_CheckStatus" FromRole="CheckStatus" ToRole="LeaveApplication" />
-          <NavigationProperty Name="Travel_Expense_Application" Relationship="Self.FK_Travel_Expense_Application_CheckStatus" FromRole="CheckStatus" ToRole="Travel_Expense_Application" />
+          <Property Name="CheckStatus" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="LeaveApplications" Relationship="MyHRModel.FK_LeaveApplication_CheckStatus" FromRole="CheckStatu" ToRole="LeaveApplication" />
+          <NavigationProperty Name="Travel_Expense_Application" Relationship="MyHRModel.FK_Travel_Expense_Application_CheckStatus" FromRole="CheckStatu" ToRole="Travel_Expense_Application" />
         </EntityType>
         <EntityType Name="Cost">
           <Key>
@@ -410,7 +476,7 @@
           </Key>
           <Property Name="CostID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CostCategory" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="Travel_Expense_Application" Relationship="Self.FK_Travel_Expense_Application_Cost" FromRole="Cost" ToRole="Travel_Expense_Application" />
+          <NavigationProperty Name="Travel_Expense_Application" Relationship="MyHRModel.FK_Travel_Expense_Application_Cost" FromRole="Cost" ToRole="Travel_Expense_Application" />
         </EntityType>
         <EntityType Name="Department">
           <Key>
@@ -418,8 +484,8 @@
           </Key>
           <Property Name="DepartmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DepartmentName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="Bulletin" Relationship="Self.FK_Bulletin_Department" FromRole="Department" ToRole="Bulletin" />
-          <NavigationProperty Name="User" Relationship="Self.FK_User_Department" FromRole="Department" ToRole="User" />
+          <NavigationProperty Name="Bulletins" Relationship="MyHRModel.FK_Bulletin_Department" FromRole="Department" ToRole="Bulletin" />
+          <NavigationProperty Name="Users" Relationship="MyHRModel.FK_User_Department" FromRole="Department" ToRole="User" />
         </EntityType>
         <EntityType Name="JobTitle">
           <Key>
@@ -427,7 +493,7 @@
           </Key>
           <Property Name="JobTitleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="JobTitle1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="User" Relationship="Self.FK_User_JobTitle" FromRole="JobTitle" ToRole="User" />
+          <NavigationProperty Name="Users" Relationship="MyHRModel.FK_User_JobTitle" FromRole="JobTitle" ToRole="User" />
         </EntityType>
         <EntityType Name="Leave">
           <Key>
@@ -435,7 +501,7 @@
           </Key>
           <Property Name="LeaveID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="LeaveCategory" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="LeaveApplication" Relationship="Self.FK_LeaveApplication_Leave" FromRole="Leave" ToRole="LeaveApplication" />
+          <NavigationProperty Name="LeaveApplications" Relationship="MyHRModel.FK_LeaveApplication_Leave" FromRole="Leave" ToRole="LeaveApplication" />
         </EntityType>
         <EntityType Name="LeaveApplication">
           <Key>
@@ -449,23 +515,23 @@
           <Property Name="LeaveEndTime" Type="DateTime" Precision="0" />
           <Property Name="Reason" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CheckStatus" Type="Int32" />
-          <NavigationProperty Name="CheckStatus1" Relationship="Self.FK_LeaveApplication_CheckStatus" FromRole="LeaveApplication" ToRole="CheckStatus" />
-          <NavigationProperty Name="Leave" Relationship="Self.FK_LeaveApplication_Leave" FromRole="LeaveApplication" ToRole="Leave" />
-          <NavigationProperty Name="User" Relationship="Self.FK_LeaveApplication_User" FromRole="LeaveApplication" ToRole="User" />
+          <NavigationProperty Name="CheckStatu" Relationship="MyHRModel.FK_LeaveApplication_CheckStatus" FromRole="LeaveApplication" ToRole="CheckStatu" />
+          <NavigationProperty Name="Leave" Relationship="MyHRModel.FK_LeaveApplication_Leave" FromRole="LeaveApplication" ToRole="Leave" />
+          <NavigationProperty Name="User" Relationship="MyHRModel.FK_LeaveApplication_User" FromRole="LeaveApplication" ToRole="User" />
         </EntityType>
-        <EntityType Name="OnBoardStatus">
+        <EntityType Name="OnBoardStatu">
           <Key>
             <PropertyRef Name="OnBoardStatusID" />
           </Key>
           <Property Name="OnBoardStatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OnBoardStatus1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="User" Relationship="Self.FK_User_OnBoardStatus" FromRole="OnBoardStatus" ToRole="User" />
+          <Property Name="OnBoardStatus" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="MyHRModel.FK_User_OnBoardStatus" FromRole="OnBoardStatu" ToRole="User" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
+        <EntityType Name="sysdiagram">
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="principal_id" Type="Int32" Nullable="false" />
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
@@ -477,24 +543,24 @@
           </Key>
           <Property Name="ApplyNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="EmployeeID" Type="Int32" Nullable="false" />
-          <Property Name="Reason" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Reason" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="ApplyDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="TravelStartTime" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="TravelEndTime" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="CostCategory" Type="Int32" Nullable="false" />
-          <Property Name="Amont" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Amont" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="CheckStatus" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="ApplyDetail" Relationship="Self.FK_ApplyDetail_Travel_Expense_Application" FromRole="Travel_Expense_Application" ToRole="ApplyDetail" />
-          <NavigationProperty Name="CheckStatus1" Relationship="Self.FK_Travel_Expense_Application_CheckStatus" FromRole="Travel_Expense_Application" ToRole="CheckStatus" />
-          <NavigationProperty Name="Cost" Relationship="Self.FK_Travel_Expense_Application_Cost" FromRole="Travel_Expense_Application" ToRole="Cost" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Travel_Expense_Application_User" FromRole="Travel_Expense_Application" ToRole="User" />
+          <NavigationProperty Name="ApplyDetails" Relationship="MyHRModel.FK_ApplyDetail_Travel_Expense_Application" FromRole="Travel_Expense_Application" ToRole="ApplyDetail" />
+          <NavigationProperty Name="CheckStatu" Relationship="MyHRModel.FK_Travel_Expense_Application_CheckStatus" FromRole="Travel_Expense_Application" ToRole="CheckStatu" />
+          <NavigationProperty Name="Cost" Relationship="MyHRModel.FK_Travel_Expense_Application_Cost" FromRole="Travel_Expense_Application" ToRole="Cost" />
+          <NavigationProperty Name="User" Relationship="MyHRModel.FK_Travel_Expense_Application_User" FromRole="Travel_Expense_Application" ToRole="User" />
         </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="EmployeeID" />
           </Key>
           <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="EmployeeName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmployeeName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="EmployeeEnglishName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="PassWord" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="OnBoardDay" Type="DateTime" Precision="0" />
@@ -512,18 +578,18 @@
           <Property Name="EmergencyContact" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="OnBoardState" Type="Int32" Nullable="false" />
           <Property Name="AccountEnable" Type="Byte" Nullable="false" />
-          <NavigationProperty Name="Absence" Relationship="Self.FK_Absence_User" FromRole="User" ToRole="Absence" />
-          <NavigationProperty Name="Department1" Relationship="Self.FK_User_Department" FromRole="User" ToRole="Department" />
-          <NavigationProperty Name="JobTitle1" Relationship="Self.FK_User_JobTitle" FromRole="User" ToRole="JobTitle" />
-          <NavigationProperty Name="LeaveApplication" Relationship="Self.FK_LeaveApplication_User" FromRole="User" ToRole="LeaveApplication" />
-          <NavigationProperty Name="OnBoardStatus" Relationship="Self.FK_User_OnBoardStatus" FromRole="User" ToRole="OnBoardStatus" />
-          <NavigationProperty Name="Travel_Expense_Application" Relationship="Self.FK_Travel_Expense_Application_User" FromRole="User" ToRole="Travel_Expense_Application" />
-          <NavigationProperty Name="User1" Relationship="Self.FK_User_User" FromRole="User" ToRole="User1" />
-          <NavigationProperty Name="User2" Relationship="Self.FK_User_User" FromRole="User1" ToRole="User" />
+          <NavigationProperty Name="Absences" Relationship="MyHRModel.FK_Absence_User" FromRole="User" ToRole="Absence" />
+          <NavigationProperty Name="Department1" Relationship="MyHRModel.FK_User_Department" FromRole="User" ToRole="Department" />
+          <NavigationProperty Name="JobTitle1" Relationship="MyHRModel.FK_User_JobTitle" FromRole="User" ToRole="JobTitle" />
+          <NavigationProperty Name="LeaveApplications" Relationship="MyHRModel.FK_LeaveApplication_User" FromRole="User" ToRole="LeaveApplication" />
+          <NavigationProperty Name="OnBoardStatu" Relationship="MyHRModel.FK_User_OnBoardStatus" FromRole="User" ToRole="OnBoardStatu" />
+          <NavigationProperty Name="Travel_Expense_Application" Relationship="MyHRModel.FK_Travel_Expense_Application_User" FromRole="User" ToRole="Travel_Expense_Application" />
+          <NavigationProperty Name="User1" Relationship="MyHRModel.FK_User_User" FromRole="User" ToRole="User1" />
+          <NavigationProperty Name="User2" Relationship="MyHRModel.FK_User_User" FromRole="User1" ToRole="User" />
         </EntityType>
         <Association Name="FK_Absence_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Absence" Type="Self.Absence" Multiplicity="*" />
+          <End Type="MyHRModel.User" Role="User" Multiplicity="1" />
+          <End Type="MyHRModel.Absence" Role="Absence" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="EmployeeID" />
@@ -534,8 +600,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ApplyDetail_Travel_Expense_Application">
-          <End Role="Travel_Expense_Application" Type="Self.Travel_Expense_Application" Multiplicity="1" />
-          <End Role="ApplyDetail" Type="Self.ApplyDetail" Multiplicity="*" />
+          <End Type="MyHRModel.Travel_Expense_Application" Role="Travel_Expense_Application" Multiplicity="1" />
+          <End Type="MyHRModel.ApplyDetail" Role="ApplyDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Travel_Expense_Application">
               <PropertyRef Name="ApplyNumber" />
@@ -546,8 +612,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Bulletin_Department">
-          <End Role="Department" Type="Self.Department" Multiplicity="1" />
-          <End Role="Bulletin" Type="Self.Bulletin" Multiplicity="*" />
+          <End Type="MyHRModel.Department" Role="Department" Multiplicity="1" />
+          <End Type="MyHRModel.Bulletin" Role="Bulletin" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Department">
               <PropertyRef Name="DepartmentID" />
@@ -558,10 +624,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_LeaveApplication_CheckStatus">
-          <End Role="CheckStatus" Type="Self.CheckStatus" Multiplicity="0..1" />
-          <End Role="LeaveApplication" Type="Self.LeaveApplication" Multiplicity="*" />
+          <End Type="MyHRModel.CheckStatu" Role="CheckStatu" Multiplicity="0..1" />
+          <End Type="MyHRModel.LeaveApplication" Role="LeaveApplication" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CheckStatus">
+            <Principal Role="CheckStatu">
               <PropertyRef Name="CheckStatusID" />
             </Principal>
             <Dependent Role="LeaveApplication">
@@ -570,10 +636,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Travel_Expense_Application_CheckStatus">
-          <End Role="CheckStatus" Type="Self.CheckStatus" Multiplicity="1" />
-          <End Role="Travel_Expense_Application" Type="Self.Travel_Expense_Application" Multiplicity="*" />
+          <End Type="MyHRModel.CheckStatu" Role="CheckStatu" Multiplicity="1" />
+          <End Type="MyHRModel.Travel_Expense_Application" Role="Travel_Expense_Application" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CheckStatus">
+            <Principal Role="CheckStatu">
               <PropertyRef Name="CheckStatusID" />
             </Principal>
             <Dependent Role="Travel_Expense_Application">
@@ -582,8 +648,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Travel_Expense_Application_Cost">
-          <End Role="Cost" Type="Self.Cost" Multiplicity="1" />
-          <End Role="Travel_Expense_Application" Type="Self.Travel_Expense_Application" Multiplicity="*" />
+          <End Type="MyHRModel.Cost" Role="Cost" Multiplicity="1" />
+          <End Type="MyHRModel.Travel_Expense_Application" Role="Travel_Expense_Application" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cost">
               <PropertyRef Name="CostID" />
@@ -594,8 +660,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_User_Department">
-          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
-          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <End Type="MyHRModel.Department" Role="Department" Multiplicity="0..1" />
+          <End Type="MyHRModel.User" Role="User" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Department">
               <PropertyRef Name="DepartmentID" />
@@ -606,8 +672,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_User_JobTitle">
-          <End Role="JobTitle" Type="Self.JobTitle" Multiplicity="0..1" />
-          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <End Type="MyHRModel.JobTitle" Role="JobTitle" Multiplicity="0..1" />
+          <End Type="MyHRModel.User" Role="User" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="JobTitle">
               <PropertyRef Name="JobTitleID" />
@@ -618,8 +684,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_LeaveApplication_Leave">
-          <End Role="Leave" Type="Self.Leave" Multiplicity="0..1" />
-          <End Role="LeaveApplication" Type="Self.LeaveApplication" Multiplicity="*" />
+          <End Type="MyHRModel.Leave" Role="Leave" Multiplicity="0..1" />
+          <End Type="MyHRModel.LeaveApplication" Role="LeaveApplication" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Leave">
               <PropertyRef Name="LeaveID" />
@@ -630,8 +696,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_LeaveApplication_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="LeaveApplication" Type="Self.LeaveApplication" Multiplicity="*" />
+          <End Type="MyHRModel.User" Role="User" Multiplicity="1" />
+          <End Type="MyHRModel.LeaveApplication" Role="LeaveApplication" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="EmployeeID" />
@@ -642,10 +708,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_User_OnBoardStatus">
-          <End Role="OnBoardStatus" Type="Self.OnBoardStatus" Multiplicity="1" />
-          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <End Type="MyHRModel.OnBoardStatu" Role="OnBoardStatu" Multiplicity="1" />
+          <End Type="MyHRModel.User" Role="User" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="OnBoardStatus">
+            <Principal Role="OnBoardStatu">
               <PropertyRef Name="OnBoardStatusID" />
             </Principal>
             <Dependent Role="User">
@@ -654,8 +720,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Travel_Expense_Application_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Travel_Expense_Application" Type="Self.Travel_Expense_Application" Multiplicity="*" />
+          <End Type="MyHRModel.User" Role="User" Multiplicity="1" />
+          <End Type="MyHRModel.Travel_Expense_Application" Role="Travel_Expense_Application" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="EmployeeID" />
@@ -666,8 +732,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_User_User">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <End Role="User1" Type="Self.User" Multiplicity="*" />
+          <End Type="MyHRModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="MyHRModel.User" Role="User1" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="EmployeeID" />
@@ -677,220 +743,153 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="MyHREntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Absence" EntityType="Self.Absence" />
-          <EntitySet Name="ApplyDetail" EntityType="Self.ApplyDetail" />
-          <EntitySet Name="Bulletin" EntityType="Self.Bulletin" />
-          <EntitySet Name="CheckStatus" EntityType="Self.CheckStatus" />
-          <EntitySet Name="Cost" EntityType="Self.Cost" />
-          <EntitySet Name="Department" EntityType="Self.Department" />
-          <EntitySet Name="JobTitle" EntityType="Self.JobTitle" />
-          <EntitySet Name="Leave" EntityType="Self.Leave" />
-          <EntitySet Name="LeaveApplication" EntityType="Self.LeaveApplication" />
-          <EntitySet Name="OnBoardStatus" EntityType="Self.OnBoardStatus" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <EntitySet Name="Travel_Expense_Application" EntityType="Self.Travel_Expense_Application" />
-          <EntitySet Name="User" EntityType="Self.User" />
-          <AssociationSet Name="FK_Absence_User" Association="Self.FK_Absence_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="Absence" EntitySet="Absence" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ApplyDetail_Travel_Expense_Application" Association="Self.FK_ApplyDetail_Travel_Expense_Application">
-            <End Role="Travel_Expense_Application" EntitySet="Travel_Expense_Application" />
-            <End Role="ApplyDetail" EntitySet="ApplyDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Bulletin_Department" Association="Self.FK_Bulletin_Department">
-            <End Role="Department" EntitySet="Department" />
-            <End Role="Bulletin" EntitySet="Bulletin" />
-          </AssociationSet>
-          <AssociationSet Name="FK_LeaveApplication_CheckStatus" Association="Self.FK_LeaveApplication_CheckStatus">
-            <End Role="CheckStatus" EntitySet="CheckStatus" />
-            <End Role="LeaveApplication" EntitySet="LeaveApplication" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Travel_Expense_Application_CheckStatus" Association="Self.FK_Travel_Expense_Application_CheckStatus">
-            <End Role="CheckStatus" EntitySet="CheckStatus" />
-            <End Role="Travel_Expense_Application" EntitySet="Travel_Expense_Application" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Travel_Expense_Application_Cost" Association="Self.FK_Travel_Expense_Application_Cost">
-            <End Role="Cost" EntitySet="Cost" />
-            <End Role="Travel_Expense_Application" EntitySet="Travel_Expense_Application" />
-          </AssociationSet>
-          <AssociationSet Name="FK_User_Department" Association="Self.FK_User_Department">
-            <End Role="Department" EntitySet="Department" />
-            <End Role="User" EntitySet="User" />
-          </AssociationSet>
-          <AssociationSet Name="FK_User_JobTitle" Association="Self.FK_User_JobTitle">
-            <End Role="JobTitle" EntitySet="JobTitle" />
-            <End Role="User" EntitySet="User" />
-          </AssociationSet>
-          <AssociationSet Name="FK_LeaveApplication_Leave" Association="Self.FK_LeaveApplication_Leave">
-            <End Role="Leave" EntitySet="Leave" />
-            <End Role="LeaveApplication" EntitySet="LeaveApplication" />
-          </AssociationSet>
-          <AssociationSet Name="FK_LeaveApplication_User" Association="Self.FK_LeaveApplication_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="LeaveApplication" EntitySet="LeaveApplication" />
-          </AssociationSet>
-          <AssociationSet Name="FK_User_OnBoardStatus" Association="Self.FK_User_OnBoardStatus">
-            <End Role="OnBoardStatus" EntitySet="OnBoardStatus" />
-            <End Role="User" EntitySet="User" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Travel_Expense_Application_User" Association="Self.FK_Travel_Expense_Application_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="Travel_Expense_Application" EntitySet="Travel_Expense_Application" />
-          </AssociationSet>
-          <AssociationSet Name="FK_User_User" Association="Self.FK_User_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="User1" EntitySet="User" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="MyHRModelStoreContainer" CdmEntityContainer="MyHREntities">
-          <EntitySetMapping Name="Absence">
+          <EntitySetMapping Name="Absences">
             <EntityTypeMapping TypeName="MyHRModel.Absence">
               <MappingFragment StoreEntitySet="Absence">
-                <ScalarProperty Name="ApplyNumber" ColumnName="ApplyNumber" />
-                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
                 <ScalarProperty Name="Clock_on" ColumnName="Clock_on" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="ApplyNumber" ColumnName="ApplyNumber" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ApplyDetail">
+          <EntitySetMapping Name="ApplyDetails">
             <EntityTypeMapping TypeName="MyHRModel.ApplyDetail">
               <MappingFragment StoreEntitySet="ApplyDetail">
-                <ScalarProperty Name="ApplyDetailNumber" ColumnName="ApplyDetailNumber" />
-                <ScalarProperty Name="ApplyNumber" ColumnName="ApplyNumber" />
-                <ScalarProperty Name="CostCategory" ColumnName="CostCategory" />
                 <ScalarProperty Name="Amont" ColumnName="Amont" />
+                <ScalarProperty Name="CostCategory" ColumnName="CostCategory" />
+                <ScalarProperty Name="ApplyNumber" ColumnName="ApplyNumber" />
+                <ScalarProperty Name="ApplyDetailNumber" ColumnName="ApplyDetailNumber" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Bulletin">
+          <EntitySetMapping Name="Bulletins">
             <EntityTypeMapping TypeName="MyHRModel.Bulletin">
               <MappingFragment StoreEntitySet="Bulletin">
-                <ScalarProperty Name="Number" ColumnName="Number" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Department" ColumnName="Department" />
-                <ScalarProperty Name="ContentofBulletin" ColumnName="ContentofBulletin" />
-                <ScalarProperty Name="Starttime" ColumnName="Starttime" />
                 <ScalarProperty Name="Endtime" ColumnName="Endtime" />
+                <ScalarProperty Name="Starttime" ColumnName="Starttime" />
+                <ScalarProperty Name="ContentofBulletin" ColumnName="ContentofBulletin" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CheckStatus">
-            <EntityTypeMapping TypeName="MyHRModel.CheckStatus">
+            <EntityTypeMapping TypeName="MyHRModel.CheckStatu">
               <MappingFragment StoreEntitySet="CheckStatus">
+                <ScalarProperty Name="CheckStatus" ColumnName="CheckStatus" />
                 <ScalarProperty Name="CheckStatusID" ColumnName="CheckStatusID" />
-                <ScalarProperty Name="CheckStatus1" ColumnName="CheckStatus" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Cost">
+          <EntitySetMapping Name="Costs">
             <EntityTypeMapping TypeName="MyHRModel.Cost">
               <MappingFragment StoreEntitySet="Cost">
-                <ScalarProperty Name="CostID" ColumnName="CostID" />
                 <ScalarProperty Name="CostCategory" ColumnName="CostCategory" />
+                <ScalarProperty Name="CostID" ColumnName="CostID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Department">
+          <EntitySetMapping Name="Departments">
             <EntityTypeMapping TypeName="MyHRModel.Department">
               <MappingFragment StoreEntitySet="Department">
-                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
                 <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="JobTitle">
+          <EntitySetMapping Name="JobTitles">
             <EntityTypeMapping TypeName="MyHRModel.JobTitle">
               <MappingFragment StoreEntitySet="JobTitle">
-                <ScalarProperty Name="JobTitleID" ColumnName="JobTitleID" />
                 <ScalarProperty Name="JobTitle1" ColumnName="JobTitle" />
+                <ScalarProperty Name="JobTitleID" ColumnName="JobTitleID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Leave">
+          <EntitySetMapping Name="Leaves">
             <EntityTypeMapping TypeName="MyHRModel.Leave">
               <MappingFragment StoreEntitySet="Leave">
-                <ScalarProperty Name="LeaveID" ColumnName="LeaveID" />
                 <ScalarProperty Name="LeaveCategory" ColumnName="LeaveCategory" />
+                <ScalarProperty Name="LeaveID" ColumnName="LeaveID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="LeaveApplication">
+          <EntitySetMapping Name="LeaveApplications">
             <EntityTypeMapping TypeName="MyHRModel.LeaveApplication">
               <MappingFragment StoreEntitySet="LeaveApplication">
-                <ScalarProperty Name="ApplyNumber" ColumnName="ApplyNumber" />
-                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-                <ScalarProperty Name="ApplyDate" ColumnName="ApplyDate" />
-                <ScalarProperty Name="LeaveCategory" ColumnName="LeaveCategory" />
-                <ScalarProperty Name="LeaveStartTime" ColumnName="LeaveStartTime" />
-                <ScalarProperty Name="LeaveEndTime" ColumnName="LeaveEndTime" />
-                <ScalarProperty Name="Reason" ColumnName="Reason" />
                 <ScalarProperty Name="CheckStatus" ColumnName="CheckStatus" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="LeaveEndTime" ColumnName="LeaveEndTime" />
+                <ScalarProperty Name="LeaveStartTime" ColumnName="LeaveStartTime" />
+                <ScalarProperty Name="LeaveCategory" ColumnName="LeaveCategory" />
+                <ScalarProperty Name="ApplyDate" ColumnName="ApplyDate" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="ApplyNumber" ColumnName="ApplyNumber" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OnBoardStatus">
-            <EntityTypeMapping TypeName="MyHRModel.OnBoardStatus">
+            <EntityTypeMapping TypeName="MyHRModel.OnBoardStatu">
               <MappingFragment StoreEntitySet="OnBoardStatus">
+                <ScalarProperty Name="OnBoardStatus" ColumnName="OnBoardStatus" />
                 <ScalarProperty Name="OnBoardStatusID" ColumnName="OnBoardStatusID" />
-                <ScalarProperty Name="OnBoardStatus1" ColumnName="OnBoardStatus" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="MyHRModel.sysdiagrams">
+            <EntityTypeMapping TypeName="MyHRModel.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Travel_Expense_Application">
             <EntityTypeMapping TypeName="MyHRModel.Travel_Expense_Application">
               <MappingFragment StoreEntitySet="Travel_Expense_Application">
-                <ScalarProperty Name="ApplyNumber" ColumnName="ApplyNumber" />
-                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-                <ScalarProperty Name="Reason" ColumnName="Reason" />
-                <ScalarProperty Name="ApplyDate" ColumnName="ApplyDate" />
-                <ScalarProperty Name="TravelStartTime" ColumnName="TravelStartTime" />
-                <ScalarProperty Name="TravelEndTime" ColumnName="TravelEndTime" />
-                <ScalarProperty Name="CostCategory" ColumnName="CostCategory" />
-                <ScalarProperty Name="Amont" ColumnName="Amont" />
                 <ScalarProperty Name="CheckStatus" ColumnName="CheckStatus" />
+                <ScalarProperty Name="Amont" ColumnName="Amont" />
+                <ScalarProperty Name="CostCategory" ColumnName="CostCategory" />
+                <ScalarProperty Name="TravelEndTime" ColumnName="TravelEndTime" />
+                <ScalarProperty Name="TravelStartTime" ColumnName="TravelStartTime" />
+                <ScalarProperty Name="ApplyDate" ColumnName="ApplyDate" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="ApplyNumber" ColumnName="ApplyNumber" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="User">
+          <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="MyHRModel.User">
               <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
-                <ScalarProperty Name="EmployeeEnglishName" ColumnName="EmployeeEnglishName" />
-                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
-                <ScalarProperty Name="OnBoardDay" ColumnName="OnBoardDay" />
-                <ScalarProperty Name="ByeByeDay" ColumnName="ByeByeDay" />
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Department" ColumnName="Department" />
-                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
-                <ScalarProperty Name="Supervisor" ColumnName="Supervisor" />
-                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Photo" ColumnName="Photo" />
-                <ScalarProperty Name="EmergencyPerson" ColumnName="EmergencyPerson" />
-                <ScalarProperty Name="EmergencyContact" ColumnName="EmergencyContact" />
-                <ScalarProperty Name="OnBoardState" ColumnName="OnBoardState" />
                 <ScalarProperty Name="AccountEnable" ColumnName="AccountEnable" />
+                <ScalarProperty Name="OnBoardState" ColumnName="OnBoardState" />
+                <ScalarProperty Name="EmergencyContact" ColumnName="EmergencyContact" />
+                <ScalarProperty Name="EmergencyPerson" ColumnName="EmergencyPerson" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Supervisor" ColumnName="Supervisor" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="ByeByeDay" ColumnName="ByeByeDay" />
+                <ScalarProperty Name="OnBoardDay" ColumnName="OnBoardDay" />
+                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+                <ScalarProperty Name="EmployeeEnglishName" ColumnName="EmployeeEnglishName" />
+                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -908,7 +907,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="無" />

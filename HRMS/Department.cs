@@ -17,16 +17,16 @@ namespace HRMS
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Department()
         {
-            this.Bulletin = new HashSet<Bulletin>();
-            this.User = new HashSet<User>();
+            this.Bulletins = new HashSet<Bulletin>();
+            this.Users = new HashSet<User>();
         }
     
         public int DepartmentID { get; set; }
         public string DepartmentName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Bulletin> Bulletin { get; set; }
+        public virtual ICollection<Bulletin> Bulletins { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> User { get; set; }
+        public virtual ICollection<User> Users { get; set; }
     }
 }

@@ -12,18 +12,21 @@ namespace HRMS
     using System;
     using System.Collections.Generic;
     
-    public partial class OnBoardStatus
+    public partial class CheckStatu
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public OnBoardStatus()
+        public CheckStatu()
         {
-            this.User = new HashSet<User>();
+            this.LeaveApplications = new HashSet<LeaveApplication>();
+            this.Travel_Expense_Application = new HashSet<Travel_Expense_Application>();
         }
     
-        public int OnBoardStatusID { get; set; }
-        public string OnBoardStatus1 { get; set; }
+        public int CheckStatusID { get; set; }
+        public string CheckStatus { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> User { get; set; }
+        public virtual ICollection<LeaveApplication> LeaveApplications { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Travel_Expense_Application> Travel_Expense_Application { get; set; }
     }
 }

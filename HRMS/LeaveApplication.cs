@@ -23,7 +23,7 @@ namespace HRMS
         public string Reason { get; set; }
         public Nullable<int> CheckStatus { get; set; }
     
-        public virtual CheckStatus CheckStatus1 { get; set; }
+        public virtual CheckStatu CheckStatu { get; set; }
         public virtual Leave Leave { get; set; }
         public virtual User User { get; set; }
     }

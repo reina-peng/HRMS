@@ -17,13 +17,13 @@ namespace HRMS
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Leave()
         {
-            this.LeaveApplication = new HashSet<LeaveApplication>();
+            this.LeaveApplications = new HashSet<LeaveApplication>();
         }
     
         public int LeaveID { get; set; }
         public string LeaveCategory { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LeaveApplication> LeaveApplication { get; set; }
+        public virtual ICollection<LeaveApplication> LeaveApplications { get; set; }
     }
 }

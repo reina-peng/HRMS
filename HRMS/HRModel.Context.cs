@@ -25,18 +25,18 @@ namespace HRMS
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Absence> Absence { get; set; }
-        public virtual DbSet<ApplyDetail> ApplyDetail { get; set; }
-        public virtual DbSet<Bulletin> Bulletin { get; set; }
-        public virtual DbSet<CheckStatus> CheckStatus { get; set; }
-        public virtual DbSet<Cost> Cost { get; set; }
-        public virtual DbSet<Department> Department { get; set; }
-        public virtual DbSet<JobTitle> JobTitle { get; set; }
-        public virtual DbSet<Leave> Leave { get; set; }
-        public virtual DbSet<LeaveApplication> LeaveApplication { get; set; }
-        public virtual DbSet<OnBoardStatus> OnBoardStatus { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<Absence> Absences { get; set; }
+        public virtual DbSet<ApplyDetail> ApplyDetails { get; set; }
+        public virtual DbSet<Bulletin> Bulletins { get; set; }
+        public virtual DbSet<CheckStatu> CheckStatus { get; set; }
+        public virtual DbSet<Cost> Costs { get; set; }
+        public virtual DbSet<Department> Departments { get; set; }
+        public virtual DbSet<JobTitle> JobTitles { get; set; }
+        public virtual DbSet<Leave> Leaves { get; set; }
+        public virtual DbSet<LeaveApplication> LeaveApplications { get; set; }
+        public virtual DbSet<OnBoardStatu> OnBoardStatus { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Travel_Expense_Application> Travel_Expense_Application { get; set; }
-        public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }

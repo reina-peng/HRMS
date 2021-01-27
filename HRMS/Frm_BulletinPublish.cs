@@ -12,9 +12,9 @@ namespace HRMS
 {
     public partial class Frm_BulletinPublish : Form
     {
-        private HomePage hp;
-        MyHREntities hREntities = new MyHREntities();
-        public Frm_BulletinPublish(HomePage form)
+        private Frm_HomePage hp;
+        MyHREntities HREntities = new MyHREntities();
+        public Frm_BulletinPublish(Frm_HomePage form)
         {
             InitializeComponent();
             hp = form;
@@ -44,8 +44,8 @@ namespace HRMS
                     Starttime = this.dateTimePicker1.Value,
                     Endtime = this.dateTimePicker2.Value,
                 };
-                this.hREntities.Bulletin.Add(bulletin);
-                this.hREntities.SaveChanges();
+                this.HREntities.Bulletins.Add(bulletin);
+                this.HREntities.SaveChanges();
             }
             hp.LoadBulletin();//主視窗重載佈告欄
         }

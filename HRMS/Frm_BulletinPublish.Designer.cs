@@ -40,12 +40,14 @@
             this.lblEndTime = new System.Windows.Forms.Label();
             this.cbbCategory = new System.Windows.Forms.ComboBox();
             this.lblCategory = new System.Windows.Forms.Label();
+            this.gpbApply = new System.Windows.Forms.GroupBox();
+            this.gpbApply.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblContent
             // 
             this.lblContent.AutoSize = true;
-            this.lblContent.Location = new System.Drawing.Point(233, 132);
+            this.lblContent.Location = new System.Drawing.Point(4, 106);
             this.lblContent.Name = "lblContent";
             this.lblContent.Size = new System.Drawing.Size(29, 12);
             this.lblContent.TabIndex = 15;
@@ -54,7 +56,7 @@
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Location = new System.Drawing.Point(233, 88);
+            this.lblTitle.Location = new System.Drawing.Point(4, 62);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(29, 12);
             this.lblTitle.TabIndex = 14;
@@ -62,21 +64,21 @@
             // 
             // txtContent
             // 
-            this.txtContent.Location = new System.Drawing.Point(272, 129);
+            this.txtContent.Location = new System.Drawing.Point(43, 103);
             this.txtContent.Name = "txtContent";
             this.txtContent.Size = new System.Drawing.Size(119, 22);
             this.txtContent.TabIndex = 13;
             // 
             // txtTitle
             // 
-            this.txtTitle.Location = new System.Drawing.Point(272, 85);
+            this.txtTitle.Location = new System.Drawing.Point(43, 59);
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(119, 22);
             this.txtTitle.TabIndex = 12;
             // 
             // btnApply
             // 
-            this.btnApply.Location = new System.Drawing.Point(304, 317);
+            this.btnApply.Location = new System.Drawing.Point(75, 291);
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(62, 45);
             this.btnApply.TabIndex = 16;
@@ -86,7 +88,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(426, 317);
+            this.btnCancel.Location = new System.Drawing.Point(197, 291);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(62, 45);
             this.btnCancel.TabIndex = 17;
@@ -96,14 +98,14 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(272, 184);
+            this.dateTimePicker1.Location = new System.Drawing.Point(43, 158);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(105, 22);
             this.dateTimePicker1.TabIndex = 18;
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(272, 238);
+            this.dateTimePicker2.Location = new System.Drawing.Point(43, 212);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(105, 22);
             this.dateTimePicker2.TabIndex = 19;
@@ -111,7 +113,7 @@
             // lblStartTime
             // 
             this.lblStartTime.AutoSize = true;
-            this.lblStartTime.Location = new System.Drawing.Point(233, 184);
+            this.lblStartTime.Location = new System.Drawing.Point(4, 158);
             this.lblStartTime.Name = "lblStartTime";
             this.lblStartTime.Size = new System.Drawing.Size(41, 12);
             this.lblStartTime.TabIndex = 20;
@@ -120,7 +122,7 @@
             // lblEndTime
             // 
             this.lblEndTime.AutoSize = true;
-            this.lblEndTime.Location = new System.Drawing.Point(233, 245);
+            this.lblEndTime.Location = new System.Drawing.Point(4, 219);
             this.lblEndTime.Name = "lblEndTime";
             this.lblEndTime.Size = new System.Drawing.Size(41, 12);
             this.lblEndTime.TabIndex = 21;
@@ -129,7 +131,7 @@
             // cbbCategory
             // 
             this.cbbCategory.FormattingEnabled = true;
-            this.cbbCategory.Location = new System.Drawing.Point(272, 47);
+            this.cbbCategory.Location = new System.Drawing.Point(43, 21);
             this.cbbCategory.Name = "cbbCategory";
             this.cbbCategory.Size = new System.Drawing.Size(119, 20);
             this.cbbCategory.TabIndex = 22;
@@ -137,33 +139,44 @@
             // lblCategory
             // 
             this.lblCategory.AutoSize = true;
-            this.lblCategory.Location = new System.Drawing.Point(233, 47);
+            this.lblCategory.Location = new System.Drawing.Point(4, 21);
             this.lblCategory.Name = "lblCategory";
             this.lblCategory.Size = new System.Drawing.Size(29, 12);
             this.lblCategory.TabIndex = 23;
             this.lblCategory.Text = "類別";
+            // 
+            // gpbApply
+            // 
+            this.gpbApply.Controls.Add(this.btnCancel);
+            this.gpbApply.Controls.Add(this.lblCategory);
+            this.gpbApply.Controls.Add(this.txtTitle);
+            this.gpbApply.Controls.Add(this.cbbCategory);
+            this.gpbApply.Controls.Add(this.txtContent);
+            this.gpbApply.Controls.Add(this.lblEndTime);
+            this.gpbApply.Controls.Add(this.lblTitle);
+            this.gpbApply.Controls.Add(this.lblStartTime);
+            this.gpbApply.Controls.Add(this.lblContent);
+            this.gpbApply.Controls.Add(this.dateTimePicker2);
+            this.gpbApply.Controls.Add(this.btnApply);
+            this.gpbApply.Controls.Add(this.dateTimePicker1);
+            this.gpbApply.Location = new System.Drawing.Point(12, 42);
+            this.gpbApply.Name = "gpbApply";
+            this.gpbApply.Size = new System.Drawing.Size(311, 355);
+            this.gpbApply.TabIndex = 24;
+            this.gpbApply.TabStop = false;
+            this.gpbApply.Text = "新增公告";
             // 
             // Frm_BulletinPublish
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.lblCategory);
-            this.Controls.Add(this.cbbCategory);
-            this.Controls.Add(this.lblEndTime);
-            this.Controls.Add(this.lblStartTime);
-            this.Controls.Add(this.dateTimePicker2);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnApply);
-            this.Controls.Add(this.lblContent);
-            this.Controls.Add(this.lblTitle);
-            this.Controls.Add(this.txtContent);
-            this.Controls.Add(this.txtTitle);
+            this.Controls.Add(this.gpbApply);
             this.Name = "Frm_BulletinPublish";
             this.Text = "Frm_BulletinPublish";
+            this.gpbApply.ResumeLayout(false);
+            this.gpbApply.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -181,5 +194,6 @@
         private System.Windows.Forms.Label lblEndTime;
         private System.Windows.Forms.ComboBox cbbCategory;
         private System.Windows.Forms.Label lblCategory;
+        private System.Windows.Forms.GroupBox gpbApply;
     }
 }

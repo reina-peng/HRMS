@@ -1,7 +1,7 @@
 ﻿
 namespace HRMS
 {
-    partial class HomePage
+    partial class Frm_HomePage
     {
         /// <summary>
         /// Required designer variable.
@@ -30,17 +30,25 @@ namespace HRMS
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomePage));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_HomePage));
             this.btnLogout = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.lblJobTitle = new System.Windows.Forms.Label();
+            this.lblUserDept = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.lblSubtitle = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lblEmpID = new System.Windows.Forms.Label();
+            this.lblUserName = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.lblAccount = new System.Windows.Forms.Label();
+            this.lblUserID = new System.Windows.Forms.Label();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lsbBulletin = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnPublishInfo = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -55,8 +63,6 @@ namespace HRMS
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.lsbBulletin = new System.Windows.Forms.ListBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -94,13 +100,19 @@ namespace HRMS
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.lblJobTitle);
+            this.splitContainer1.Panel1.Controls.Add(this.lblUserDept);
+            this.splitContainer1.Panel1.Controls.Add(this.label5);
+            this.splitContainer1.Panel1.Controls.Add(this.label4);
+            this.splitContainer1.Panel1.Controls.Add(this.label3);
+            this.splitContainer1.Panel1.Controls.Add(this.label2);
             this.splitContainer1.Panel1.Controls.Add(this.pictureBox3);
             this.splitContainer1.Panel1.Controls.Add(this.lblSubtitle);
             this.splitContainer1.Panel1.Controls.Add(this.pictureBox2);
             this.splitContainer1.Panel1.Controls.Add(this.pictureBox1);
-            this.splitContainer1.Panel1.Controls.Add(this.lblEmpID);
+            this.splitContainer1.Panel1.Controls.Add(this.lblUserName);
             this.splitContainer1.Panel1.Controls.Add(this.lblTitle);
-            this.splitContainer1.Panel1.Controls.Add(this.lblAccount);
+            this.splitContainer1.Panel1.Controls.Add(this.lblUserID);
             this.splitContainer1.Panel1.Controls.Add(this.btnLogout);
             // 
             // splitContainer1.Panel2
@@ -109,6 +121,60 @@ namespace HRMS
             this.splitContainer1.Size = new System.Drawing.Size(1470, 841);
             this.splitContainer1.SplitterDistance = 167;
             this.splitContainer1.TabIndex = 1;
+            // 
+            // lblJobTitle
+            // 
+            this.lblJobTitle.AutoSize = true;
+            this.lblJobTitle.Location = new System.Drawing.Point(1293, 100);
+            this.lblJobTitle.Name = "lblJobTitle";
+            this.lblJobTitle.Size = new System.Drawing.Size(42, 12);
+            this.lblJobTitle.TabIndex = 14;
+            this.lblJobTitle.Text = "JobTitle";
+            // 
+            // lblUserDept
+            // 
+            this.lblUserDept.AutoSize = true;
+            this.lblUserDept.Location = new System.Drawing.Point(1293, 72);
+            this.lblUserDept.Name = "lblUserDept";
+            this.lblUserDept.Size = new System.Drawing.Size(48, 12);
+            this.lblUserDept.TabIndex = 13;
+            this.lblUserDept.Text = "UserDept";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(1243, 102);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(29, 12);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "職位";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(1243, 72);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(29, 12);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "部門";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(1243, 42);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 12);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "員工姓名";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(1243, 19);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 12);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "員工編號";
             // 
             // pictureBox3
             // 
@@ -148,15 +214,16 @@ namespace HRMS
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // lblEmpID
+            // lblUserName
             // 
-            this.lblEmpID.AutoSize = true;
-            this.lblEmpID.Location = new System.Drawing.Point(1293, 42);
-            this.lblEmpID.Name = "lblEmpID";
-            this.lblEmpID.Size = new System.Drawing.Size(39, 12);
-            this.lblEmpID.TabIndex = 3;
-            this.lblEmpID.Text = "EmpID";
+            this.lblUserName.AutoSize = true;
+            this.lblUserName.Location = new System.Drawing.Point(1293, 42);
+            this.lblUserName.Name = "lblUserName";
+            this.lblUserName.Size = new System.Drawing.Size(53, 12);
+            this.lblUserName.TabIndex = 3;
+            this.lblUserName.Text = "UserName";
             // 
             // lblTitle
             // 
@@ -168,14 +235,14 @@ namespace HRMS
             this.lblTitle.TabIndex = 2;
             this.lblTitle.Text = "Human Resource Management System";
             // 
-            // lblAccount
+            // lblUserID
             // 
-            this.lblAccount.AutoSize = true;
-            this.lblAccount.Location = new System.Drawing.Point(1293, 19);
-            this.lblAccount.Name = "lblAccount";
-            this.lblAccount.Size = new System.Drawing.Size(44, 12);
-            this.lblAccount.TabIndex = 1;
-            this.lblAccount.Text = "Account";
+            this.lblUserID.AutoSize = true;
+            this.lblUserID.Location = new System.Drawing.Point(1293, 19);
+            this.lblUserID.Name = "lblUserID";
+            this.lblUserID.Size = new System.Drawing.Size(38, 12);
+            this.lblUserID.TabIndex = 1;
+            this.lblUserID.Text = "UserID";
             // 
             // splitContainer2
             // 
@@ -197,6 +264,22 @@ namespace HRMS
             this.splitContainer2.Size = new System.Drawing.Size(1466, 666);
             this.splitContainer2.SplitterDistance = 158;
             this.splitContainer2.TabIndex = 2;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(1160, 84);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(109, 22);
+            this.textBox1.TabIndex = 3;
+            // 
+            // lsbBulletin
+            // 
+            this.lsbBulletin.FormattingEnabled = true;
+            this.lsbBulletin.ItemHeight = 12;
+            this.lsbBulletin.Location = new System.Drawing.Point(367, 19);
+            this.lsbBulletin.Name = "lsbBulletin";
+            this.lsbBulletin.Size = new System.Drawing.Size(621, 112);
+            this.lsbBulletin.TabIndex = 2;
             // 
             // label1
             // 
@@ -335,35 +418,19 @@ namespace HRMS
             this.dateTimePicker1.Size = new System.Drawing.Size(132, 22);
             this.dateTimePicker1.TabIndex = 1;
             // 
-            // lsbBulletin
-            // 
-            this.lsbBulletin.FormattingEnabled = true;
-            this.lsbBulletin.ItemHeight = 12;
-            this.lsbBulletin.Location = new System.Drawing.Point(367, 19);
-            this.lsbBulletin.Name = "lsbBulletin";
-            this.lsbBulletin.Size = new System.Drawing.Size(621, 112);
-            this.lsbBulletin.TabIndex = 2;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(1160, 84);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(109, 22);
-            this.textBox1.TabIndex = 3;
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // HomePage
+            // Frm_HomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1470, 841);
             this.Controls.Add(this.splitContainer1);
-            this.Name = "HomePage";
-            this.Text = "HomePage";
+            this.Name = "Frm_HomePage";
+            this.Text = "HRMS";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -392,10 +459,10 @@ namespace HRMS
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        internal System.Windows.Forms.Label lblAccount;
+        internal System.Windows.Forms.Label lblUserID;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.Label lblTitle;
-        internal System.Windows.Forms.Label lblEmpID;
+        internal System.Windows.Forms.Label lblUserName;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label1;
@@ -414,5 +481,11 @@ namespace HRMS
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         internal System.Windows.Forms.ListBox lsbBulletin;
+        internal System.Windows.Forms.Label label2;
+        internal System.Windows.Forms.Label label3;
+        internal System.Windows.Forms.Label lblJobTitle;
+        internal System.Windows.Forms.Label lblUserDept;
+        internal System.Windows.Forms.Label label5;
+        internal System.Windows.Forms.Label label4;
     }
 }

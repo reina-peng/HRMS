@@ -1,9 +1,11 @@
-﻿using Newtonsoft.Json;
+﻿using HRMS.Properties;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -14,48 +16,81 @@ using System.Windows.Forms;
 
 namespace HRMS
 {
-    public partial class HomePage : Form
+    public partial class Frm_HomePage : Form
     {
         private Frm_BulletinPublish bp = null;
         const string cwbAPI = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-063?Authorization=CWB-B0D98AF2-68FB-4F37-B601-17A669CED731&locationName=大安區&elementName=MinT,MaxT,PoP12h,Wx";
         //const string cwbAPI = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?&Authorization=CWB-B0D98AF2-68FB-4F37-B601-17A669CED731";
         JArray jsondata = getJson(cwbAPI);
         MyHREntities hrEntities = new MyHREntities();
-        int a =0;
+        //設下列 4 個值供大家用，注意不要改到。
+        internal int UserID;
+        internal string UserName = string.Empty;
+        internal int UserDept = 0;
+        internal int UserJobTitle = 0;
                 
-        public HomePage()
+        public Frm_HomePage()
         {            
             InitializeComponent();
-            MessageBox.Show(a.ToString());
             this.CenterToScreen();
-            this.tabControl1.DrawItem += this.tabControl1_DrawItem;
+            this.tabControl1.DrawItem += this.tabControl1_DrawItem;// 註冊 tabControl 事件
             //tabControl改側邊 > Alignment:Left > SizeMode:Fixed > 修改 ItemSize > 加下一行指令 
             this.tabControl1.DrawMode = TabDrawMode.OwnerDrawFixed;
-
             //LoadWeather(jsondata);
             this.Load += HomePage_Load;
-            //判斷員工職等設定 button Visible
-            var qJobTitle = (from n in hrEntities.User
-                    where n.EmployeeID == 1
-                    select n.JobTitle).ToList();
-            this.btnPublishInfo.Visible = (qJobTitle[0]<= 1) ? true : false;
-
-            LoadBulletin();//載入佈告欄
+            LoadBulletin();//載入佈告欄            
         }
 
         private void HomePage_Load(object sender, EventArgs e)
         {
-            //if (this.lblEmpID.Text == "3345678")
+            var q = (hrEntities.Users.Where(o => o.EmployeeID == UserID).Select(o => new {o.EmployeeName, o.Department, o.JobTitle})).ToList();//抓員工資料            
+            //賦值給公用變數
+            UserName = q[0].EmployeeName;
+            UserDept = (int)q[0].Department;
+            UserJobTitle = (int)q[0].JobTitle;
+
+            //顯示右上角員工資料
+            this.lblUserID.Text = UserID.ToString();
+            this.lblUserName.Text = q[0].EmployeeName;
+            this.lblUserDept.Text = q[0].Department.ToString();
+            this.lblJobTitle.Text = q[0].JobTitle.ToString();
+            //tabControl1.TabPages.Remove(tabPage1);
+            //判斷員工職等設定佈告欄編輯按鈕  Visible
+            this.btnPublishInfo.Visible = (UserJobTitle <= 1) ? true : false;
+            ShowImage(UserID);//顯示右上角員工圖片
+        }
+        private void ShowImage(int imageID)//載入員工圖片
+        {
+            try
             {
-                //MessageBox.Show("你好，" + lblAccount.Text);
-                //tabControl1.TabPages.Remove(tabPage1);
+                string connstring = Settings.Default.MyHR;
+                using (SqlConnection conn = new SqlConnection())
+                {
+                    conn.ConnectionString = connstring;
+                    conn.Open();
+
+                    SqlCommand command = new SqlCommand("select* from  [User] where EmployeeID=" + imageID, conn);
+                    SqlDataReader dataReader = command.ExecuteReader();
+                    //=====================
+                    dataReader.Read();
+                    byte[] bytes = (byte[])dataReader["Photo"];
+                    System.IO.MemoryStream ms = new System.IO.MemoryStream(bytes);
+                    this.pictureBox1.Image = Image.FromStream(ms);
+                    //=====================
+                }
+            }
+            catch (Exception ex)
+            {
+                this.pictureBox1.Image = this.pictureBox1.ErrorImage;
+                MessageBox.Show(ex.Message);
+
             }
         }
-        internal void LoadBulletin()
+        internal void LoadBulletin()//載入佈告欄
         {
             this.lsbBulletin.Items.Clear();
             DateTime dtnow = DateTime.Now;
-            var qBulletin = (from n in hrEntities.Bulletin
+            var qBulletin = (from n in hrEntities.Bulletins
                              where n.Starttime < dtnow && n.Endtime > dtnow
                              select new
                              {
@@ -72,7 +107,7 @@ namespace HRMS
         string[] mintemperature = new string[3]; //最低溫度
         string[] maxtemperature = new string[3]; //最高溫度
 
-        private void LoadWeather(JArray jsondata)
+        private void LoadWeather(JArray jsondata)//載入天氣
         {
             foreach (JObject data in jsondata)
             {
@@ -107,7 +142,7 @@ namespace HRMS
             JObject jsondata = JsonConvert.DeserializeObject<JObject>(result); //將資料轉為json物件
             return (JArray)jsondata["records"]["location"]; //回傳json陣列
         }
-        private void tabControl1_DrawItem(object sender, DrawItemEventArgs e)
+        private void tabControl1_DrawItem(object sender, DrawItemEventArgs e) // tabControl 設定
         {
             Graphics g = e.Graphics;
             Brush _textBrush;
@@ -137,16 +172,17 @@ namespace HRMS
             g.DrawString(_tabPage.Text, _tabFont, _textBrush, _tabBounds, new StringFormat(_stringFlags));
         }
 
-        private void btnLogout_Click(object sender, EventArgs e)
+        private void btnLogout_Click(object sender, EventArgs e)//登出按鈕
         {
-            Login lg = new Login();
+            Frm_Login lg = new Frm_Login();
             this.Visible = false;
             lg.ShowDialog();
-            this.Dispose();
-            this.Close();
+            System.Windows.Forms.Application.Exit();
+            //this.Dispose();
+            //this.Close();
         }
 
-        private void btnPublishInfo_Click(object sender, EventArgs e)
+        private void btnPublishInfo_Click(object sender, EventArgs e)//編輯公佈欄按鈕
         {
             bp = new Frm_BulletinPublish(this);
             bp.ShowDialog();            
@@ -164,9 +200,17 @@ namespace HRMS
         private void button2_Click(object sender, EventArgs e)
         {
             string x = dateTimePicker1.Value.ToString("yyyy/MM/dd");
-            var q = (from o in hrEntities.LeaveApplication.AsEnumerable()
+            var q = (from o in hrEntities.LeaveApplications.AsEnumerable()
                      where o.EmployeeID == int.Parse(this.textBox2.Text) && o.LeaveEndTime == DateTime.Parse(x)
                      select o).ToList();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)//編輯個人資料
+        {
+            Frm_User f = new Frm_User();
+            f.id = UserID;
+            f.labID.Text = UserID.ToString();
+            f.Show();
         }
     }
 }
