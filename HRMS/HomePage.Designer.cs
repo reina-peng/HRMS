@@ -29,6 +29,7 @@ namespace HRMS
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomePage));
             this.btnLogout = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -41,20 +42,22 @@ namespace HRMS
             this.lblAccount = new System.Windows.Forms.Label();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnPublishInfo = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnLog = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.btnPublishInfo = new System.Windows.Forms.Button();
-            this.btnLog = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.lsbBulletin = new System.Windows.Forms.ListBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -183,8 +186,10 @@ namespace HRMS
             // 
             // splitContainer2.Panel1
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.label1);
             this.splitContainer2.Panel1.Controls.Add(this.textBox1);
+            this.splitContainer2.Panel1.Controls.Add(this.lsbBulletin);
+            this.splitContainer2.Panel1.Controls.Add(this.label1);
+            this.splitContainer2.Panel1.Controls.Add(this.btnPublishInfo);
             // 
             // splitContainer2.Panel2
             // 
@@ -202,13 +207,15 @@ namespace HRMS
             this.label1.TabIndex = 1;
             this.label1.Text = "公告區";
             // 
-            // textBox1
+            // btnPublishInfo
             // 
-            this.textBox1.Location = new System.Drawing.Point(628, 21);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(416, 94);
-            this.textBox1.TabIndex = 0;
+            this.btnPublishInfo.Location = new System.Drawing.Point(1332, 80);
+            this.btnPublishInfo.Name = "btnPublishInfo";
+            this.btnPublishInfo.Size = new System.Drawing.Size(124, 65);
+            this.btnPublishInfo.TabIndex = 0;
+            this.btnPublishInfo.Text = "發佈公告";
+            this.btnPublishInfo.UseVisualStyleBackColor = true;
+            this.btnPublishInfo.Click += new System.EventHandler(this.btnPublishInfo_Click);
             // 
             // tabControl1
             // 
@@ -237,6 +244,15 @@ namespace HRMS
             this.tabPage1.Text = "打卡";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // btnLog
+            // 
+            this.btnLog.Location = new System.Drawing.Point(421, 210);
+            this.btnLog.Name = "btnLog";
+            this.btnLog.Size = new System.Drawing.Size(344, 50);
+            this.btnLog.TabIndex = 0;
+            this.btnLog.Text = "打卡";
+            this.btnLog.UseVisualStyleBackColor = true;
+            // 
             // tabPage2
             // 
             this.tabPage2.Location = new System.Drawing.Point(154, 4);
@@ -256,7 +272,6 @@ namespace HRMS
             this.tabPage3.Controls.Add(this.textBox3);
             this.tabPage3.Controls.Add(this.textBox2);
             this.tabPage3.Controls.Add(this.dateTimePicker1);
-            this.tabPage3.Controls.Add(this.btnPublishInfo);
             this.tabPage3.Location = new System.Drawing.Point(154, 4);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(1308, 496);
@@ -264,60 +279,15 @@ namespace HRMS
             this.tabPage3.Text = "公告發佈";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // btnPublishInfo
+            // button2
             // 
-            this.btnPublishInfo.Location = new System.Drawing.Point(263, 143);
-            this.btnPublishInfo.Name = "btnPublishInfo";
-            this.btnPublishInfo.Size = new System.Drawing.Size(124, 65);
-            this.btnPublishInfo.TabIndex = 0;
-            this.btnPublishInfo.Text = "發佈公告";
-            this.btnPublishInfo.UseVisualStyleBackColor = true;
-            this.btnPublishInfo.Click += new System.EventHandler(this.btnPublishInfo_Click);
-            // 
-            // btnLog
-            // 
-            this.btnLog.Location = new System.Drawing.Point(421, 210);
-            this.btnLog.Name = "btnLog";
-            this.btnLog.Size = new System.Drawing.Size(344, 50);
-            this.btnLog.TabIndex = 0;
-            this.btnLog.Text = "打卡";
-            this.btnLog.UseVisualStyleBackColor = true;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(308, 77);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(132, 22);
-            this.dateTimePicker1.TabIndex = 1;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(337, 27);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(116, 22);
-            this.textBox2.TabIndex = 2;
-            this.textBox2.Text = "2";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(724, 62);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(40, 22);
-            this.textBox3.TabIndex = 3;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(724, 111);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(40, 22);
-            this.textBox4.TabIndex = 4;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(744, 166);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(40, 22);
-            this.textBox5.TabIndex = 5;
+            this.button2.Location = new System.Drawing.Point(588, 125);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(51, 37);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -329,15 +299,62 @@ namespace HRMS
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // textBox5
             // 
-            this.button2.Location = new System.Drawing.Point(188, 72);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(51, 37);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.textBox5.Location = new System.Drawing.Point(927, 175);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(40, 22);
+            this.textBox5.TabIndex = 5;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(907, 120);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(40, 22);
+            this.textBox4.TabIndex = 4;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(907, 71);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(40, 22);
+            this.textBox3.TabIndex = 3;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(588, 17);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(116, 22);
+            this.textBox2.TabIndex = 2;
+            this.textBox2.Text = "2";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(559, 67);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(132, 22);
+            this.dateTimePicker1.TabIndex = 1;
+            // 
+            // lsbBulletin
+            // 
+            this.lsbBulletin.FormattingEnabled = true;
+            this.lsbBulletin.ItemHeight = 12;
+            this.lsbBulletin.Location = new System.Drawing.Point(367, 19);
+            this.lsbBulletin.Name = "lsbBulletin";
+            this.lsbBulletin.Size = new System.Drawing.Size(621, 112);
+            this.lsbBulletin.TabIndex = 2;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(1160, 84);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(109, 22);
+            this.textBox1.TabIndex = 3;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // HomePage
             // 
@@ -378,7 +395,6 @@ namespace HRMS
         internal System.Windows.Forms.Label lblAccount;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.TextBox textBox1;
         internal System.Windows.Forms.Label lblEmpID;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
@@ -395,5 +411,8 @@ namespace HRMS
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        internal System.Windows.Forms.ListBox lsbBulletin;
     }
 }

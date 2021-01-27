@@ -24,7 +24,7 @@ namespace HRMS
             {
                 HomePage hp = new HomePage();
                 hp.lblAccount.Text = this.txtAccount.Text;
-                hp.lblEmpID.Text = "3345678";
+                hp.lblEmpID.Text = "3345678";                
                 this.Visible = false;
                 hp.ShowDialog();
                 this.Dispose();

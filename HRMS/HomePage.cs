@@ -16,29 +16,54 @@ namespace HRMS
 {
     public partial class HomePage : Form
     {
+        private Frm_BulletinPublish bp = null;
         const string cwbAPI = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-063?Authorization=CWB-B0D98AF2-68FB-4F37-B601-17A669CED731&locationName=大安區&elementName=MinT,MaxT,PoP12h,Wx";
         //const string cwbAPI = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?&Authorization=CWB-B0D98AF2-68FB-4F37-B601-17A669CED731";
         JArray jsondata = getJson(cwbAPI);
-        MyHREntities hREntities = new MyHREntities();
-
+        MyHREntities hrEntities = new MyHREntities();
+        int a =0;
+                
         public HomePage()
-        {
+        {            
             InitializeComponent();
+            MessageBox.Show(a.ToString());
             this.CenterToScreen();
             this.tabControl1.DrawItem += this.tabControl1_DrawItem;
-            //tabControl改側邊 > Alignment:Left > SizeMode:Fixed > 修改 ItemSize 
+            //tabControl改側邊 > Alignment:Left > SizeMode:Fixed > 修改 ItemSize > 加下一行指令 
             this.tabControl1.DrawMode = TabDrawMode.OwnerDrawFixed;
+
             //LoadWeather(jsondata);
             this.Load += HomePage_Load;
+            //判斷員工職等設定 button Visible
+            var qJobTitle = (from n in hrEntities.User
+                    where n.EmployeeID == 1
+                    select n.JobTitle).ToList();
+            this.btnPublishInfo.Visible = (qJobTitle[0]<= 1) ? true : false;
+
+            LoadBulletin();//載入佈告欄
         }
 
         private void HomePage_Load(object sender, EventArgs e)
         {
             //if (this.lblEmpID.Text == "3345678")
             {
-                MessageBox.Show("你好，" + lblAccount.Text);
+                //MessageBox.Show("你好，" + lblAccount.Text);
                 //tabControl1.TabPages.Remove(tabPage1);
             }
+        }
+        internal void LoadBulletin()
+        {
+            this.lsbBulletin.Items.Clear();
+            DateTime dtnow = DateTime.Now;
+            var qBulletin = (from n in hrEntities.Bulletin
+                             where n.Starttime < dtnow && n.Endtime > dtnow
+                             select new
+                             {
+                                 主旨 = n.Title,
+                                 內容 = n.ContentofBulletin,
+                             }).ToList();
+            foreach (var x in qBulletin)
+                this.lsbBulletin.Items.Add("主旨：" + x.主旨 + "內容：" + x.內容);
         }
 
         string[] time = new string[3]; //時間區段
@@ -46,6 +71,7 @@ namespace HRMS
         string[] pop = new string[3]; //降雨機率
         string[] mintemperature = new string[3]; //最低溫度
         string[] maxtemperature = new string[3]; //最高溫度
+
         private void LoadWeather(JArray jsondata)
         {
             foreach (JObject data in jsondata)
@@ -57,8 +83,7 @@ namespace HRMS
                     //weathdescrible[i] = (string)data["weatherElement"][0]["time"][i]["parameter"]["parameterName"];
                     //pop[i] = (string)data["weatherElement"][1]["time"][i]["parameter"]["parameterName"];
                     //mintemperature[i] = (string)data["weatherElement"][2]["time"][i]["parameter"]["parameterName"];
-                    //maxtemperature[i] = (string)data["weatherElement"][4]["time"][i]["parameter"]["parameterName"];
-                    //
+                    //maxtemperature[i] = (string)data["weatherElement"][4]["time"][i]["parameter"]["parameterName"];                    
                 }                
             }
             for (int i = 0; i < 3; i++) //顯示 3 個時段天氣資料
@@ -123,15 +148,8 @@ namespace HRMS
 
         private void btnPublishInfo_Click(object sender, EventArgs e)
         {
-            Bulletin bulletin = new Bulletin
-            {
-                Number = 2,
-                Title = "title1",
-                Department = 1,
-                ContentofBulletin = "farfff",
-            };
-            this.hREntities.Bulletin.Add(bulletin);
-            this.hREntities.SaveChanges();
+            bp = new Frm_BulletinPublish(this);
+            bp.ShowDialog();            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -146,7 +164,7 @@ namespace HRMS
         private void button2_Click(object sender, EventArgs e)
         {
             string x = dateTimePicker1.Value.ToString("yyyy/MM/dd");
-            var q = (from o in hREntities.LeaveApplication.AsEnumerable()
+            var q = (from o in hrEntities.LeaveApplication.AsEnumerable()
                      where o.EmployeeID == int.Parse(this.textBox2.Text) && o.LeaveEndTime == DateTime.Parse(x)
                      select o).ToList();
         }
