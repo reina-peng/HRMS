@@ -22,26 +22,10 @@ namespace HRMS
         const string cwbAPI = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-063?Authorization=CWB-B0D98AF2-68FB-4F37-B601-17A669CED731&locationName=大安區&elementName=MinT,MaxT,PoP12h,Wx";
         //const string cwbAPI = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?&Authorization=CWB-B0D98AF2-68FB-4F37-B601-17A669CED731";
         JArray jsondata = getJson(cwbAPI);
-        MyHREntities hrEntities = new MyHREntities();        
-        internal int UserID;//接login傳過來的值        
-        UserInfo userInfo = null;
-        public class UserInfo
-        {
-            public int ID;
-            public string Name;
-            public int Dept;
-            public int JobTitle;
-
-            public UserInfo(int userID)
-            {
-                MyHREntities hrEntities = new MyHREntities();
-                var q = (hrEntities.Users.Where(o => o.EmployeeID == userID).Select(o => new { o.EmployeeName, o.Department, o.JobTitle })).ToList();//抓員工資料         
-                ID = userID;
-                Name = q[0].EmployeeName;
-                Dept = (int)q[0].Department;
-                JobTitle = (int)q[0].JobTitle;
-            }
-        }
+        MyHREntities hrEntities = new MyHREntities();
+        internal int UserID;//接 login 傳過來的值
+        UserInfo userInfo = null;//建立 userInfo 物件
+        
         public Frm_HomePage()
         {            
             InitializeComponent();
@@ -56,16 +40,16 @@ namespace HRMS
 
         private void HomePage_Load(object sender, EventArgs e)
         {          
-            userInfo = new UserInfo(UserID);
+            userInfo = new UserInfo(UserID);// userInfo 賦值
             //顯示右上角員工資料
+            ShowImage(UserID);//顯示右上角員工圖片
             this.lblUserID.Text = userInfo.ID.ToString();
             this.lblUserName.Text = userInfo.Name;
             this.lblUserDept.Text = userInfo.Dept.ToString();
             this.lblJobTitle.Text = userInfo.JobTitle.ToString();
             tabControl1.TabPages.Remove(tabPage1);
             //判斷員工職等設定佈告欄編輯按鈕  Visible
-            this.btnPublishInfo.Visible = (userInfo.JobTitle <= 1) ? true : false;
-            ShowImage(UserID);//顯示右上角員工圖片
+            this.btnPublishInfo.Visible = (userInfo.JobTitle <= 1) ? true : false;            
         }
         
         private void ShowImage(int imageID)//載入員工圖片
@@ -92,7 +76,6 @@ namespace HRMS
             {
                 this.pictureBox1.Image = this.pictureBox1.ErrorImage;
                 MessageBox.Show(ex.Message);
-
             }
         }
         internal void LoadBulletin()//載入佈告欄

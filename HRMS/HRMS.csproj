@@ -70,6 +70,7 @@
     <Compile Include="CheckStatu.cs">
       <DependentUpon>HRModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Class.cs" />
     <Compile Include="CostCategory.cs">
       <DependentUpon>HRModel.tt</DependentUpon>
     </Compile>
