@@ -11,6 +11,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -19,27 +20,29 @@ namespace HRMS
     public partial class Frm_HomePage : Form
     {
         private Frm_BulletinPublish bp = null;
-        const string cwbAPI = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-063?Authorization=CWB-B0D98AF2-68FB-4F37-B601-17A669CED731&locationName=大安區&elementName=MinT,MaxT,PoP12h,Wx";
-        //const string cwbAPI = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?&Authorization=CWB-B0D98AF2-68FB-4F37-B601-17A669CED731";
-        JArray jsondata = getJson(cwbAPI);
+        //const string cwbAPI = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-063?Authorization=CWB-B0D98AF2-68FB-4F37-B601-17A669CED731&locationName=大安區&elementName=MinT,MaxT,PoP12h,Wx";
+        const string cwbAPI = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?&Authorization=CWB-B0D98AF2-68FB-4F37-B601-17A669CED731";
+        JArray jsondata = null;
         MyHREntities hrEntities = new MyHREntities();
         internal int UserID;//接 login 傳過來的值
         UserInfo userInfo = null;//建立 userInfo 物件
         
         public Frm_HomePage()
         {            
+
             InitializeComponent();
             this.CenterToScreen();
             this.tabControl1.DrawItem += this.tabControl1_DrawItem;// 註冊 tabControl 事件
             //tabControl改側邊 > Alignment:Left > SizeMode:Fixed > 修改 ItemSize > 加下一行指令 
-            this.tabControl1.DrawMode = TabDrawMode.OwnerDrawFixed;
-            //LoadWeather(jsondata);
+            this.tabControl1.DrawMode = TabDrawMode.OwnerDrawFixed;            
             this.Load += HomePage_Load;
             LoadBulletin();//載入佈告欄            
         }
-
+        Thread thWeather;//天氣輪播執行緒
         private void HomePage_Load(object sender, EventArgs e)
-        {          
+        {
+            jsondata = getJson(cwbAPI);//取得天氣 Json
+            LoadWeather(jsondata);
             userInfo = new UserInfo(UserID);// userInfo 賦值
             //顯示右上角員工資料
             ShowImage(UserID);//顯示右上角員工圖片
@@ -47,11 +50,28 @@ namespace HRMS
             this.lblUserName.Text = userInfo.Name;
             this.lblUserDept.Text = userInfo.Dept.ToString();
             this.lblJobTitle.Text = userInfo.JobTitle.ToString();
-            tabControl1.TabPages.Remove(tabPage1);
+            //tabControl1.TabPages.Remove(tabPage1);
             //判斷員工職等設定佈告欄編輯按鈕  Visible
-            this.btnPublishInfo.Visible = (userInfo.JobTitle <= 1) ? true : false;            
+            this.btnPublishInfo.Visible = (userInfo.JobTitle <= 1) ? true : false;
+             #region 天氣輪播執行緒
+            //參考 https://www.itread01.com/content/1544577918.html
+            thWeather = new Thread(delegate ()
+            {
+                while (true)
+                {
+                    ChangeImage(Image.FromFile($@"..\..\Photo\Weather\{weatherCode[0].ToString("00")}.png"), time[0], weathdescrible[0] , $"{mintemperature[0]} °c - {maxtemperature[0]} °c" , 3000);
+                    ChangeImage(Image.FromFile($@"..\..\Photo\Weather\{weatherCode[1]:00}.png"), time[1], weathdescrible[1], $"{mintemperature[1]} °c - {maxtemperature[1]} °c", 3000);
+                    ChangeImage(Image.FromFile($@"..\..\Photo\Weather\{weatherCode[2]:00}.png"), time[2], weathdescrible[2], $"{mintemperature[2]} °c - {maxtemperature[2]} °c", 3000);
+                }
+            });
+            thWeather.IsBackground = true;
+            thWeather.Start();
+            #endregion
         }
-        
+        private void Homepage_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            thWeather.Abort(); // 關閉時結束天氣輪播執行緒
+        }
         private void ShowImage(int imageID)//載入員工圖片
         {
             try
@@ -79,7 +99,7 @@ namespace HRMS
             }
         }
         internal void LoadBulletin()//載入佈告欄
-        {
+        {            
             this.lsbBulletin.Items.Clear();
             DateTime dtnow = DateTime.Now;
             var qBulletin = (from n in hrEntities.Bulletins
@@ -92,35 +112,7 @@ namespace HRMS
             foreach (var x in qBulletin)
                 this.lsbBulletin.Items.Add("主旨：" + x.主旨 + "內容：" + x.內容);
         }
-
-        string[] time = new string[3]; //時間區段
-        string[] weathdescrible = new string[3]; //天氣狀況
-        string[] pop = new string[3]; //降雨機率
-        string[] mintemperature = new string[3]; //最低溫度
-        string[] maxtemperature = new string[3]; //最高溫度
-
-        private void LoadWeather(JArray jsondata)//載入天氣
-        {
-            foreach (JObject data in jsondata)
-            {
-                for (int i = 0; i <5 ; i++)
-                {
-                    time[i] = (string)data["weatherElement"][0]["time"][i]["startTime"] + "-" + ((string)data["weatherElement"][0]["time"][i]["endTime"]).Substring(11);
-                    //time[i] = (string)data["weatherElement"][0]["time"][i]["startTime"] + "-" + ((string)data["weatherElement"][0]["time"][i]["endTime"]).Substring(11);
-                    //weathdescrible[i] = (string)data["weatherElement"][0]["time"][i]["parameter"]["parameterName"];
-                    //pop[i] = (string)data["weatherElement"][1]["time"][i]["parameter"]["parameterName"];
-                    //mintemperature[i] = (string)data["weatherElement"][2]["time"][i]["parameter"]["parameterName"];
-                    //maxtemperature[i] = (string)data["weatherElement"][4]["time"][i]["parameter"]["parameterName"];                    
-                }                
-            }
-            for (int i = 0; i < 3; i++) //顯示 3 個時段天氣資料
-            {
-                //this.textBox1.Text += time[i] + " 天氣:" + weathdescrible[i].PadRight(8, '　') + " 溫度:" + mintemperature[i] + "°c-" + maxtemperature[i] + "°c 降雨機率:" + pop[i] + "%" + Environment.NewLine;
-                this.textBox1.Text += time[i] + Environment.NewLine;
-            }
-            this.textBox1.Text += Environment.NewLine;
-        }
-
+        #region 天氣
         static public JArray getJson(string uri) //向中央氣象局取得 36 小時天氣資料
         {
             HttpWebRequest req = (HttpWebRequest)WebRequest.Create(uri); //request請求
@@ -134,6 +126,51 @@ namespace HRMS
             JObject jsondata = JsonConvert.DeserializeObject<JObject>(result); //將資料轉為json物件
             return (JArray)jsondata["records"]["location"]; //回傳json陣列
         }
+
+        string[] time = new string[3]; //時間區段
+        string[] weathdescrible = new string[3]; //天氣狀況
+        string[] pop = new string[3]; //降雨機率
+        string[] mintemperature = new string[3]; //最低溫度
+        string[] maxtemperature = new string[3]; //最高溫度
+        int[] weatherCode = new int[3];
+
+        private void LoadWeather(JArray jsondata)//載入天氣
+        {
+            foreach (JObject data in jsondata)
+            {
+                if ((string)data["locationName"] == "臺北市")                    
+                {
+                    for (int i = 0; i < 3; i++)
+                    {
+                        time[i] = ((string)data["weatherElement"][0]["time"][i]["startTime"]).Substring(5).Remove(11) + "-" + ((string)data["weatherElement"][0]["time"][i]["endTime"]).Substring(11).Remove(5);
+                        weathdescrible[i] = (string)data["weatherElement"][0]["time"][i]["parameter"]["parameterName"];
+                        weatherCode[i] = (int)data["weatherElement"][0]["time"][i]["parameter"]["parameterValue"];
+                        pop[i] = (string)data["weatherElement"][1]["time"][i]["parameter"]["parameterName"];
+                        mintemperature[i] = (string)data["weatherElement"][2]["time"][i]["parameter"]["parameterName"];
+                        maxtemperature[i] =(string)data["weatherElement"][4]["time"][i]["parameter"]["parameterName"];
+                    }
+                }
+            }
+            for (int i = 0; i < 3; i++) //顯示 3 個時段天氣資料
+            {
+                this.textBox1.Text += time[i] + " 天氣:" + weathdescrible[i].PadRight(8, '　') + " 溫度:" + mintemperature[i] + "°c-" + maxtemperature[i] + "°c 降雨機率:" + pop[i] + "%" + Environment.NewLine;
+                this.textBox1.Text += weatherCode[i] + Environment.NewLine;
+            }
+        }
+        #endregion
+        private void ChangeImage(Image img, string time, string describe, string temp, int millisecondTimeOut)
+        {
+            this.Invoke(new Action(() =>
+            {
+                pcbWeather.Image = img;
+                lblTime.Text = time;
+                lblWeather.Text = describe;
+                lblT.Text = temp;
+            })
+                );
+            Thread.Sleep(millisecondTimeOut);
+        }
+
         private void tabControl1_DrawItem(object sender, DrawItemEventArgs e) // tabControl 設定
         {
             Graphics g = e.Graphics;
@@ -202,7 +239,12 @@ namespace HRMS
             Frm_User f = new Frm_User();
             f.id = UserID;
             f.labID.Text = UserID.ToString();
-            f.Show();
+            f.Show();            
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

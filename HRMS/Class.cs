@@ -8,11 +8,11 @@ namespace HRMS
 {
     public class UserInfo
     {
-        public int ID;//員工ID
-        public string Name;//員工姓名
-        public string EnglishName;//員工英文名
-        public int Dept;//員工部門
-        public int JobTitle;//員工職稱
+        public int ID { get; }//員工ID
+        public string Name { get; }//員工姓名
+        public string EnglishName { get; }//員工英文名
+        public int Dept { get; }//員工部門
+        public int JobTitle { get; }//員工職稱
 
         public UserInfo(int userID)
         {

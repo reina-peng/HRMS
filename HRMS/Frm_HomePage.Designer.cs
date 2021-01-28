@@ -47,12 +47,18 @@ namespace HRMS
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblUserID = new System.Windows.Forms.Label();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.gpbWeather = new System.Windows.Forms.GroupBox();
+            this.lblTime = new System.Windows.Forms.Label();
+            this.lblT = new System.Windows.Forms.Label();
+            this.lblWeather = new System.Windows.Forms.Label();
+            this.pcbWeather = new System.Windows.Forms.PictureBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.lsbBulletin = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnPublishInfo = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button3 = new System.Windows.Forms.Button();
             this.btnLog = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
@@ -64,6 +70,7 @@ namespace HRMS
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.lblPop = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -75,6 +82,8 @@ namespace HRMS
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            this.gpbWeather.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbWeather)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -253,6 +262,7 @@ namespace HRMS
             // 
             // splitContainer2.Panel1
             // 
+            this.splitContainer2.Panel1.Controls.Add(this.gpbWeather);
             this.splitContainer2.Panel1.Controls.Add(this.textBox1);
             this.splitContainer2.Panel1.Controls.Add(this.lsbBulletin);
             this.splitContainer2.Panel1.Controls.Add(this.label1);
@@ -262,21 +272,77 @@ namespace HRMS
             // 
             this.splitContainer2.Panel2.Controls.Add(this.tabControl1);
             this.splitContainer2.Size = new System.Drawing.Size(1466, 666);
-            this.splitContainer2.SplitterDistance = 158;
+            this.splitContainer2.SplitterDistance = 187;
             this.splitContainer2.TabIndex = 2;
+            // 
+            // gpbWeather
+            // 
+            this.gpbWeather.BackColor = System.Drawing.Color.White;
+            this.gpbWeather.Controls.Add(this.lblPop);
+            this.gpbWeather.Controls.Add(this.lblTime);
+            this.gpbWeather.Controls.Add(this.lblT);
+            this.gpbWeather.Controls.Add(this.lblWeather);
+            this.gpbWeather.Controls.Add(this.pcbWeather);
+            this.gpbWeather.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.gpbWeather.Location = new System.Drawing.Point(1193, 16);
+            this.gpbWeather.Name = "gpbWeather";
+            this.gpbWeather.Size = new System.Drawing.Size(243, 160);
+            this.gpbWeather.TabIndex = 7;
+            this.gpbWeather.TabStop = false;
+            this.gpbWeather.Text = "台北市未來36小時天氣";
+            // 
+            // lblTime
+            // 
+            this.lblTime.AutoSize = true;
+            this.lblTime.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblTime.Location = new System.Drawing.Point(6, 25);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(34, 17);
+            this.lblTime.TabIndex = 7;
+            this.lblTime.Text = "時段";
+            // 
+            // lblT
+            // 
+            this.lblT.AutoSize = true;
+            this.lblT.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblT.Location = new System.Drawing.Point(6, 59);
+            this.lblT.Name = "lblT";
+            this.lblT.Size = new System.Drawing.Size(34, 17);
+            this.lblT.TabIndex = 6;
+            this.lblT.Text = "溫度";
+            // 
+            // lblWeather
+            // 
+            this.lblWeather.AutoSize = true;
+            this.lblWeather.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblWeather.Location = new System.Drawing.Point(6, 42);
+            this.lblWeather.Name = "lblWeather";
+            this.lblWeather.Size = new System.Drawing.Size(60, 17);
+            this.lblWeather.TabIndex = 5;
+            this.lblWeather.Text = "天氣描述";
+            // 
+            // pcbWeather
+            // 
+            this.pcbWeather.Location = new System.Drawing.Point(102, 25);
+            this.pcbWeather.Name = "pcbWeather";
+            this.pcbWeather.Size = new System.Drawing.Size(131, 117);
+            this.pcbWeather.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pcbWeather.TabIndex = 4;
+            this.pcbWeather.TabStop = false;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(1160, 84);
+            this.textBox1.Location = new System.Drawing.Point(684, 13);
+            this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(109, 22);
+            this.textBox1.Size = new System.Drawing.Size(456, 78);
             this.textBox1.TabIndex = 3;
             // 
             // lsbBulletin
             // 
             this.lsbBulletin.FormattingEnabled = true;
             this.lsbBulletin.ItemHeight = 12;
-            this.lsbBulletin.Location = new System.Drawing.Point(367, 19);
+            this.lsbBulletin.Location = new System.Drawing.Point(57, 13);
             this.lsbBulletin.Name = "lsbBulletin";
             this.lsbBulletin.Size = new System.Drawing.Size(621, 112);
             this.lsbBulletin.TabIndex = 2;
@@ -284,7 +350,7 @@ namespace HRMS
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(132, 39);
+            this.label1.Location = new System.Drawing.Point(10, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 1;
@@ -292,9 +358,9 @@ namespace HRMS
             // 
             // btnPublishInfo
             // 
-            this.btnPublishInfo.Location = new System.Drawing.Point(1332, 80);
+            this.btnPublishInfo.Location = new System.Drawing.Point(1058, 97);
             this.btnPublishInfo.Name = "btnPublishInfo";
-            this.btnPublishInfo.Size = new System.Drawing.Size(124, 65);
+            this.btnPublishInfo.Size = new System.Drawing.Size(82, 49);
             this.btnPublishInfo.TabIndex = 0;
             this.btnPublishInfo.Text = "發佈公告";
             this.btnPublishInfo.UseVisualStyleBackColor = true;
@@ -312,20 +378,31 @@ namespace HRMS
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1466, 504);
+            this.tabControl1.Size = new System.Drawing.Size(1466, 475);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button3);
             this.tabPage1.Controls.Add(this.btnLog);
             this.tabPage1.Location = new System.Drawing.Point(154, 4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1308, 496);
+            this.tabPage1.Size = new System.Drawing.Size(1308, 467);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "打卡";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(313, 32);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(134, 67);
+            this.button3.TabIndex = 1;
+            this.button3.Text = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // btnLog
             // 
@@ -341,7 +418,7 @@ namespace HRMS
             this.tabPage2.Location = new System.Drawing.Point(154, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1308, 496);
+            this.tabPage2.Size = new System.Drawing.Size(1308, 467);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "考勤";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -357,7 +434,7 @@ namespace HRMS
             this.tabPage3.Controls.Add(this.dateTimePicker1);
             this.tabPage3.Location = new System.Drawing.Point(154, 4);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1308, 496);
+            this.tabPage3.Size = new System.Drawing.Size(1308, 467);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "公告發佈";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -423,6 +500,16 @@ namespace HRMS
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
+            // lblPop
+            // 
+            this.lblPop.AutoSize = true;
+            this.lblPop.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblPop.Location = new System.Drawing.Point(6, 76);
+            this.lblPop.Name = "lblPop";
+            this.lblPop.Size = new System.Drawing.Size(60, 17);
+            this.lblPop.TabIndex = 8;
+            this.lblPop.Text = "降雨機率";
+            // 
             // Frm_HomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -444,6 +531,9 @@ namespace HRMS
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            this.gpbWeather.ResumeLayout(false);
+            this.gpbWeather.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbWeather)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
@@ -487,5 +577,12 @@ namespace HRMS
         internal System.Windows.Forms.Label lblUserDept;
         internal System.Windows.Forms.Label label5;
         internal System.Windows.Forms.Label label4;
+        private System.Windows.Forms.PictureBox pcbWeather;
+        private System.Windows.Forms.Label lblWeather;
+        private System.Windows.Forms.GroupBox gpbWeather;
+        private System.Windows.Forms.Label lblT;
+        private System.Windows.Forms.Label lblTime;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label lblPop;
     }
 }

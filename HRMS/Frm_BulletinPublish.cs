@@ -24,8 +24,8 @@ namespace HRMS
         }
 
         private void btnApply_Click(object sender, EventArgs e)
-        {
-            if(this.txtTitle.Text == "" || this.txtContent.Text =="")
+        {            
+            if(this.txtTitle.Text == "" || this.txtContent.Text =="")//判斷有沒有輸入
             {
                 MessageBox.Show("公告主旨或內容不可為空!!", "警告");
                 return;
@@ -47,6 +47,7 @@ namespace HRMS
                 this.HREntities.Bulletins.Add(bulletin);
                 this.HREntities.SaveChanges();
             }
+            MessageBox.Show("公告發佈成功");
             hp.LoadBulletin();//主視窗重載佈告欄
         }
 

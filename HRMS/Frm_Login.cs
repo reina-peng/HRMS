@@ -17,7 +17,9 @@ namespace HRMS
         public Frm_Login()
         {            
             InitializeComponent();
-            this.CenterToScreen();            
+            this.CenterToScreen();
+            UsernameTextBox.Text = "1";
+            PasswordTextBox.Text = "789";
         }
         int count = 1;//計算登入次數
         
