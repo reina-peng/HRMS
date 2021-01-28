@@ -17,6 +17,7 @@ namespace HRMS
         public int Number { get; set; }
         public string Title { get; set; }
         public int Department { get; set; }
+        public string Category { get; set; }
         public string ContentofBulletin { get; set; }
         public Nullable<System.DateTime> Starttime { get; set; }
         public Nullable<System.DateTime> Endtime { get; set; }

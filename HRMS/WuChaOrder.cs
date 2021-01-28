@@ -12,13 +12,17 @@ namespace HRMS
     using System;
     using System.Collections.Generic;
     
-    public partial class ApplyDetail
+    public partial class WuChaOrder
     {
-        public int ApplyNumber { get; set; }
-        public Nullable<int> CostID { get; set; }
-        public Nullable<decimal> Amont { get; set; }
+        public int WuChaOrderNumber { get; set; }
+        public Nullable<int> StoreID { get; set; }
+        public Nullable<int> Item { get; set; }
+        public Nullable<int> EmployeeID { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
+        public Nullable<decimal> TotalPirce { get; set; }
     
-        public virtual CostCategory CostCategory { get; set; }
-        public virtual Travel_Expense_Application Travel_Expense_Application { get; set; }
+        public virtual Item Item1 { get; set; }
+        public virtual Store Store { get; set; }
+        public virtual User User { get; set; }
     }
 }

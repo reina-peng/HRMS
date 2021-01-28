@@ -22,13 +22,26 @@ namespace HRMS
         const string cwbAPI = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-063?Authorization=CWB-B0D98AF2-68FB-4F37-B601-17A669CED731&locationName=大安區&elementName=MinT,MaxT,PoP12h,Wx";
         //const string cwbAPI = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?&Authorization=CWB-B0D98AF2-68FB-4F37-B601-17A669CED731";
         JArray jsondata = getJson(cwbAPI);
-        MyHREntities hrEntities = new MyHREntities();
-        //設下列 4 個值供大家用，注意不要改到。
-        internal int UserID;
-        internal string UserName = string.Empty;
-        internal int UserDept = 0;
-        internal int UserJobTitle = 0;
-                
+        MyHREntities hrEntities = new MyHREntities();        
+        internal int UserID;//接login傳過來的值        
+        UserInfo userInfo = null;
+        public class UserInfo
+        {
+            public int ID;
+            public string Name;
+            public int Dept;
+            public int JobTitle;
+
+            public UserInfo(int userID)
+            {
+                MyHREntities hrEntities = new MyHREntities();
+                var q = (hrEntities.Users.Where(o => o.EmployeeID == ID).Select(o => new { o.EmployeeName, o.Department, o.JobTitle })).ToList();//抓員工資料         
+                ID = userID;
+                Name = q[0].EmployeeName;
+                Dept = (int)q[0].Department;
+                JobTitle = (int)q[0].JobTitle;
+            }
+        }
         public Frm_HomePage()
         {            
             InitializeComponent();
@@ -42,23 +55,19 @@ namespace HRMS
         }
 
         private void HomePage_Load(object sender, EventArgs e)
-        {
-            var q = (hrEntities.Users.Where(o => o.EmployeeID == UserID).Select(o => new {o.EmployeeName, o.Department, o.JobTitle})).ToList();//抓員工資料            
-            //賦值給公用變數
-            UserName = q[0].EmployeeName;
-            UserDept = (int)q[0].Department;
-            UserJobTitle = (int)q[0].JobTitle;
-
+        {          
+            userInfo = new UserInfo(UserID);
             //顯示右上角員工資料
-            this.lblUserID.Text = UserID.ToString();
-            this.lblUserName.Text = q[0].EmployeeName;
-            this.lblUserDept.Text = q[0].Department.ToString();
-            this.lblJobTitle.Text = q[0].JobTitle.ToString();
-            //tabControl1.TabPages.Remove(tabPage1);
+            this.lblUserID.Text = userInfo.ID.ToString();
+            this.lblUserName.Text = userInfo.Name;
+            this.lblUserDept.Text = userInfo.Dept.ToString();
+            this.lblJobTitle.Text = userInfo.JobTitle.ToString();
+            tabControl1.TabPages.Remove(tabPage1);
             //判斷員工職等設定佈告欄編輯按鈕  Visible
-            this.btnPublishInfo.Visible = (UserJobTitle <= 1) ? true : false;
+            this.btnPublishInfo.Visible = (userInfo.JobTitle <= 1) ? true : false;
             ShowImage(UserID);//顯示右上角員工圖片
         }
+        
         private void ShowImage(int imageID)//載入員工圖片
         {
             try

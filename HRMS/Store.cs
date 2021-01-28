@@ -12,18 +12,18 @@ namespace HRMS
     using System;
     using System.Collections.Generic;
     
-    public partial class Cost
+    public partial class Store
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Cost()
+        public Store()
         {
-            this.Travel_Expense_Application = new HashSet<Travel_Expense_Application>();
+            this.WuChaOrders = new HashSet<WuChaOrder>();
         }
     
-        public int CostID { get; set; }
-        public string CostCategory { get; set; }
+        public int StoreID { get; set; }
+        public string StoreName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Travel_Expense_Application> Travel_Expense_Application { get; set; }
+        public virtual ICollection<WuChaOrder> WuChaOrders { get; set; }
     }
 }

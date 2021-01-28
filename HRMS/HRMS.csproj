@@ -70,10 +70,13 @@
     <Compile Include="CheckStatu.cs">
       <DependentUpon>HRModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Cost.cs">
+    <Compile Include="CostCategory.cs">
       <DependentUpon>HRModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Department.cs">
+      <DependentUpon>HRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeOrderDetail.cs">
       <DependentUpon>HRModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Frm_BulletinPublish.cs">
@@ -109,6 +112,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HRModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="InterViewee.cs">
+      <DependentUpon>HRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InterViewStatu.cs">
+      <DependentUpon>HRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Item.cs">
+      <DependentUpon>HRModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="JobTitle.cs">
       <DependentUpon>HRModel.tt</DependentUpon>
     </Compile>
@@ -129,6 +141,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Store.cs">
+      <DependentUpon>HRModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="sysdiagram.cs">
       <DependentUpon>HRModel.tt</DependentUpon>
     </Compile>
@@ -136,6 +151,9 @@
       <DependentUpon>HRModel.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
+      <DependentUpon>HRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WuChaOrder.cs">
       <DependentUpon>HRModel.tt</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Frm_BulletinPublish.resx">

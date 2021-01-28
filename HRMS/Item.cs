@@ -12,24 +12,19 @@ namespace HRMS
     using System;
     using System.Collections.Generic;
     
-    public partial class Department
+    public partial class Item
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Department()
+        public Item()
         {
-            this.Bulletins = new HashSet<Bulletin>();
-            this.InterViewees = new HashSet<InterViewee>();
-            this.Users = new HashSet<User>();
+            this.WuChaOrders = new HashSet<WuChaOrder>();
         }
     
-        public int DepartmentID { get; set; }
-        public string DepartmentName { get; set; }
+        public int ItemID { get; set; }
+        public string ItemName { get; set; }
+        public Nullable<int> StoreID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Bulletin> Bulletins { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<InterViewee> InterViewees { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<WuChaOrder> WuChaOrders { get; set; }
     }
 }

@@ -14,26 +14,17 @@ namespace HRMS
     
     public partial class Travel_Expense_Application
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Travel_Expense_Application()
-        {
-            this.ApplyDetails = new HashSet<ApplyDetail>();
-        }
-    
         public int ApplyNumber { get; set; }
         public int EmployeeID { get; set; }
         public string Reason { get; set; }
         public System.DateTime ApplyDate { get; set; }
         public System.DateTime TravelStartTime { get; set; }
         public System.DateTime TravelEndTime { get; set; }
-        public int CostCategory { get; set; }
         public decimal Amont { get; set; }
         public int CheckStatus { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ApplyDetail> ApplyDetails { get; set; }
         public virtual CheckStatu CheckStatu { get; set; }
-        public virtual Cost Cost { get; set; }
+        public virtual ApplyDetail ApplyDetail { get; set; }
         public virtual User User { get; set; }
     }
 }

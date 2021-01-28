@@ -26,17 +26,23 @@ namespace HRMS
         }
     
         public virtual DbSet<Absence> Absences { get; set; }
-        public virtual DbSet<ApplyDetail> ApplyDetails { get; set; }
         public virtual DbSet<Bulletin> Bulletins { get; set; }
         public virtual DbSet<CheckStatu> CheckStatus { get; set; }
-        public virtual DbSet<Cost> Costs { get; set; }
+        public virtual DbSet<CostCategory> CostCategories { get; set; }
         public virtual DbSet<Department> Departments { get; set; }
+        public virtual DbSet<EmployeeOrderDetail> EmployeeOrderDetails { get; set; }
+        public virtual DbSet<InterViewee> InterViewees { get; set; }
+        public virtual DbSet<InterViewStatu> InterViewStatus { get; set; }
+        public virtual DbSet<Item> Items { get; set; }
         public virtual DbSet<JobTitle> JobTitles { get; set; }
         public virtual DbSet<Leave> Leaves { get; set; }
         public virtual DbSet<LeaveApplication> LeaveApplications { get; set; }
         public virtual DbSet<OnBoardStatu> OnBoardStatus { get; set; }
+        public virtual DbSet<Store> Stores { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Travel_Expense_Application> Travel_Expense_Application { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<WuChaOrder> WuChaOrders { get; set; }
+        public virtual DbSet<ApplyDetail> ApplyDetails { get; set; }
     }
 }

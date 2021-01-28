@@ -13,13 +13,14 @@
           <Property Name="EmployeeID" Type="int" Nullable="false" />
           <Property Name="Clock_on" Type="datetime" />
         </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'MyHR.dbo.ApplyDetail' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
         <EntityType Name="ApplyDetail">
           <Key>
-            <PropertyRef Name="ApplyDetailNumber" />
+            <PropertyRef Name="ApplyNumber" />
           </Key>
-          <Property Name="ApplyDetailNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ApplyNumber" Type="int" Nullable="false" />
-          <Property Name="CostCategory" Type="int" />
+          <Property Name="CostID" Type="int" />
           <Property Name="Amont" Type="money" />
         </EntityType>
         <EntityType Name="Bulletin">
@@ -27,9 +28,10 @@
             <PropertyRef Name="Number" />
           </Key>
           <Property Name="Number" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Title" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Department" Type="int" Nullable="false" />
-          <Property Name="ContentofBulletin" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Category" Type="nvarchar" MaxLength="10" />
+          <Property Name="ContentofBulletin" Type="text" Nullable="false" />
           <Property Name="Starttime" Type="datetime" />
           <Property Name="Endtime" Type="datetime" />
         </EntityType>
@@ -38,35 +40,86 @@
             <PropertyRef Name="CheckStatusID" />
           </Key>
           <Property Name="CheckStatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CheckStatus" Type="nchar" MaxLength="10" />
+          <Property Name="CheckStatus" Type="nvarchar" MaxLength="20" />
         </EntityType>
-        <EntityType Name="Cost">
+        <EntityType Name="CostCategory">
           <Key>
             <PropertyRef Name="CostID" />
           </Key>
           <Property Name="CostID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CostCategory" Type="nchar" MaxLength="10" />
+          <Property Name="CostCategory" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="Department">
           <Key>
             <PropertyRef Name="DepartmentID" />
           </Key>
           <Property Name="DepartmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="DepartmentName" Type="nchar" MaxLength="10" />
+          <Property Name="DepartmentName" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="EmployeeOrderDetail">
+          <Key>
+            <PropertyRef Name="QuantityNumber" />
+          </Key>
+          <Property Name="QuantityNumber" Type="int" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" />
+        </EntityType>
+        <EntityType Name="InterViewee">
+          <Key>
+            <PropertyRef Name="InterVieweeID" />
+          </Key>
+          <Property Name="InterVieweeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InterVieweeGender" Type="nvarchar" MaxLength="10" />
+          <Property Name="InterVieweeName" Type="nvarchar" MaxLength="20" />
+          <Property Name="EmployeeEnglishName" Type="nvarchar" MaxLength="20" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="Email" Type="nvarchar" MaxLength="30" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="Birthday" Type="date" />
+          <Property Name="Age" Type="int" />
+          <Property Name="Photo" Type="varbinary(max)" />
+          <Property Name="Education" Type="nvarchar" MaxLength="50" />
+          <Property Name="Experience" Type="text" />
+          <Property Name="JobTitle" Type="int" />
+          <Property Name="Department" Type="int" />
+          <Property Name="InterViewerEmployeeID" Type="int" />
+          <Property Name="InterViewDate" Type="date" />
+          <Property Name="InterViewStatus" Type="int" />
+          <Property Name="InterViewProcess" Type="text" />
+        </EntityType>
+        <!--產生期間發現錯誤:
+警告 6013: 資料表/檢視 'MyHR.dbo.InterViewProcess' 未定義主索引鍵，也無法推斷有效的主索引鍵。此資料表/檢視已被排除。如果要使用此實體，您必須檢閱您的結構描述，加入正確的索引鍵，並將它取消註解。
+        <EntityType Name="InterViewProcess">
+          <Property Name="InterViewProcessID" Type="int" />
+          <Property Name="InterViewProcess" Type="text" />
+        </EntityType>-->
+        <EntityType Name="InterViewStatus">
+          <Key>
+            <PropertyRef Name="InterViewStatusID" />
+          </Key>
+          <Property Name="InterViewStatusID" Type="int" Nullable="false" />
+          <Property Name="InterViewStatus" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="ItemID" />
+          </Key>
+          <Property Name="ItemID" Type="int" Nullable="false" />
+          <Property Name="ItemName" Type="nvarchar" MaxLength="15" />
+          <Property Name="StoreID" Type="int" />
         </EntityType>
         <EntityType Name="JobTitle">
           <Key>
             <PropertyRef Name="JobTitleID" />
           </Key>
           <Property Name="JobTitleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="JobTitle" Type="nchar" MaxLength="10" />
+          <Property Name="JobTitle" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="Leave">
           <Key>
             <PropertyRef Name="LeaveID" />
           </Key>
           <Property Name="LeaveID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="LeaveCategory" Type="nchar" MaxLength="10" />
+          <Property Name="LeaveCategory" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="LeaveApplication">
           <Key>
@@ -86,7 +139,23 @@
             <PropertyRef Name="OnBoardStatusID" />
           </Key>
           <Property Name="OnBoardStatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="OnBoardStatus" Type="nchar" MaxLength="10" />
+          <Property Name="OnBoardStatus" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <!--產生期間發現錯誤:
+警告 6013: 資料表/檢視 'MyHR.dbo.OrderStoreDetail' 未定義主索引鍵，也無法推斷有效的主索引鍵。此資料表/檢視已被排除。如果要使用此實體，您必須檢閱您的結構描述，加入正確的索引鍵，並將它取消註解。
+        <EntityType Name="OrderStoreDetail">
+          <Property Name="WuChaOrderID" Type="int" />
+          <Property Name="StoreID" Type="int" />
+          <Property Name="ItemID" Type="int" />
+          <Property Name="ItemQuantity" Type="int" />
+          <Property Name="QuantityNumber" Type="int" />
+        </EntityType>-->
+        <EntityType Name="Store">
+          <Key>
+            <PropertyRef Name="StoreID" />
+          </Key>
+          <Property Name="StoreID" Type="int" Nullable="false" />
+          <Property Name="StoreName" Type="nvarchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -104,11 +173,10 @@
           </Key>
           <Property Name="ApplyNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="EmployeeID" Type="int" Nullable="false" />
-          <Property Name="Reason" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="ApplyDate" Type="date" Nullable="false" />
           <Property Name="TravelStartTime" Type="date" Nullable="false" />
           <Property Name="TravelEndTime" Type="date" Nullable="false" />
-          <Property Name="CostCategory" Type="int" Nullable="false" />
           <Property Name="Amont" Type="money" Nullable="false" />
           <Property Name="CheckStatus" Type="int" Nullable="false" />
         </EntityType>
@@ -118,23 +186,34 @@
           </Key>
           <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="EmployeeName" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="EmployeeEnglishName" Type="nchar" MaxLength="10" />
-          <Property Name="PassWord" Type="nchar" MaxLength="10" />
+          <Property Name="EmployeeEnglishName" Type="nvarchar" MaxLength="20" />
+          <Property Name="PassWord" Type="nvarchar" MaxLength="20" />
           <Property Name="OnBoardDay" Type="date" />
           <Property Name="ByeByeDay" Type="date" />
-          <Property Name="Gender" Type="char" MaxLength="10" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="10" />
           <Property Name="Email" Type="nvarchar" MaxLength="30" />
           <Property Name="Address" Type="nvarchar" MaxLength="50" />
           <Property Name="Department" Type="int" />
           <Property Name="JobTitle" Type="int" />
           <Property Name="Supervisor" Type="int" />
           <Property Name="Birthday" Type="date" />
-          <Property Name="Phone" Type="nchar" MaxLength="10" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
           <Property Name="Photo" Type="varbinary(max)" />
           <Property Name="EmergencyPerson" Type="nvarchar" MaxLength="20" />
-          <Property Name="EmergencyContact" Type="nchar" MaxLength="10" />
+          <Property Name="EmergencyContact" Type="nvarchar" MaxLength="20" />
           <Property Name="OnBoardState" Type="int" Nullable="false" />
           <Property Name="AccountEnable" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WuChaOrder">
+          <Key>
+            <PropertyRef Name="WuChaOrderNumber" />
+          </Key>
+          <Property Name="WuChaOrderNumber" Type="int" Nullable="false" />
+          <Property Name="StoreID" Type="int" />
+          <Property Name="Item" Type="int" />
+          <Property Name="EmployeeID" Type="int" />
+          <Property Name="Date" Type="date" />
+          <Property Name="TotalPirce" Type="money" />
         </EntityType>
         <Association Name="FK_Absence_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
@@ -148,9 +227,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ApplyDetail_Travel_Expense_Application">
-          <End Role="Travel_Expense_Application" Type="Self.Travel_Expense_Application" Multiplicity="1" />
+        <Association Name="FK_ApplyDetail_Cost">
+          <End Role="CostCategory" Type="Self.CostCategory" Multiplicity="0..1" />
           <End Role="ApplyDetail" Type="Self.ApplyDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CostCategory">
+              <PropertyRef Name="CostID" />
+            </Principal>
+            <Dependent Role="ApplyDetail">
+              <PropertyRef Name="CostID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ApplyDetail_Travel_Expense_Application1">
+          <End Role="Travel_Expense_Application" Type="Self.Travel_Expense_Application" Multiplicity="1" />
+          <End Role="ApplyDetail" Type="Self.ApplyDetail" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Travel_Expense_Application">
               <PropertyRef Name="ApplyNumber" />
@@ -172,6 +263,69 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_EmployeeOrderDetail_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="EmployeeOrderDetail" Type="Self.EmployeeOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="EmployeeOrderDetail">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InterViewee_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="InterViewee" Type="Self.InterViewee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DepartmentID" />
+            </Principal>
+            <Dependent Role="InterViewee">
+              <PropertyRef Name="Department" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InterViewee_InterViewStatus">
+          <End Role="InterViewStatus" Type="Self.InterViewStatus" Multiplicity="0..1" />
+          <End Role="InterViewee" Type="Self.InterViewee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InterViewStatus">
+              <PropertyRef Name="InterViewStatusID" />
+            </Principal>
+            <Dependent Role="InterViewee">
+              <PropertyRef Name="InterViewStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InterViewee_JobTitle">
+          <End Role="JobTitle" Type="Self.JobTitle" Multiplicity="0..1" />
+          <End Role="InterViewee" Type="Self.InterViewee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobTitle">
+              <PropertyRef Name="JobTitleID" />
+            </Principal>
+            <Dependent Role="InterViewee">
+              <PropertyRef Name="JobTitle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InterViewee_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="InterViewee" Type="Self.InterViewee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="InterViewee">
+              <PropertyRef Name="InterViewerEmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--產生期間發現錯誤:
+錯誤 6004: 資料表 'MyHR.dbo.InterViewProcess' 被某個關聯性參考，但是找不到。
+        <Association Name="FK_InterViewProcess_InterViewee" />-->
         <Association Name="FK_LeaveApplication_CheckStatus">
           <End Role="CheckStatus" Type="Self.CheckStatus" Multiplicity="0..1" />
           <End Role="LeaveApplication" Type="Self.LeaveApplication" Multiplicity="*" />
@@ -208,6 +362,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <!--產生期間發現錯誤:
+錯誤 6004: 資料表 'MyHR.dbo.OrderStoreDetail' 被某個關聯性參考，但是找不到。
+        <Association Name="FK_OrderStoreDetail_EmployeeOrderDetail" />-->
+        <!--產生期間發現錯誤:
+錯誤 6004: 資料表 'MyHR.dbo.OrderStoreDetail' 被某個關聯性參考，但是找不到。
+        <Association Name="FK_OrderStoreDetail_Item" />-->
+        <!--產生期間發現錯誤:
+錯誤 6004: 資料表 'MyHR.dbo.OrderStoreDetail' 被某個關聯性參考，但是找不到。
+        <Association Name="FK_OrderStoreDetail_Store" />-->
+        <!--產生期間發現錯誤:
+錯誤 6004: 資料表 'MyHR.dbo.OrderStoreDetail' 被某個關聯性參考，但是找不到。
+        <Association Name="FK_OrderStoreDetail_WuChaOrder" />-->
         <Association Name="FK_Travel_Expense_Application_CheckStatus">
           <End Role="CheckStatus" Type="Self.CheckStatus" Multiplicity="1" />
           <End Role="Travel_Expense_Application" Type="Self.Travel_Expense_Application" Multiplicity="*" />
@@ -217,18 +383,6 @@
             </Principal>
             <Dependent Role="Travel_Expense_Application">
               <PropertyRef Name="CheckStatus" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Travel_Expense_Application_Cost">
-          <End Role="Cost" Type="Self.Cost" Multiplicity="1" />
-          <End Role="Travel_Expense_Application" Type="Self.Travel_Expense_Application" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Cost">
-              <PropertyRef Name="CostID" />
-            </Principal>
-            <Dependent Role="Travel_Expense_Application">
-              <PropertyRef Name="CostCategory" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -292,31 +446,103 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_WuChaOrder_Item">
+          <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+          <End Role="WuChaOrder" Type="Self.WuChaOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="ItemID" />
+            </Principal>
+            <Dependent Role="WuChaOrder">
+              <PropertyRef Name="Item" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WuChaOrder_Store">
+          <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
+          <End Role="WuChaOrder" Type="Self.WuChaOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="StoreID" />
+            </Principal>
+            <Dependent Role="WuChaOrder">
+              <PropertyRef Name="StoreID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WuChaOrder_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="WuChaOrder" Type="Self.WuChaOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="WuChaOrder">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="MyHRModelStoreContainer">
           <EntitySet Name="Absence" EntityType="Self.Absence" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ApplyDetail" EntityType="Self.ApplyDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Bulletin" EntityType="Self.Bulletin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CheckStatus" EntityType="Self.CheckStatus" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Cost" EntityType="Self.Cost" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CostCategory" EntityType="Self.CostCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeOrderDetail" EntityType="Self.EmployeeOrderDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InterViewee" EntityType="Self.InterViewee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InterViewStatus" EntityType="Self.InterViewStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JobTitle" EntityType="Self.JobTitle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Leave" EntityType="Self.Leave" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LeaveApplication" EntityType="Self.LeaveApplication" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OnBoardStatus" EntityType="Self.OnBoardStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Store" EntityType="Self.Store" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Travel_Expense_Application" EntityType="Self.Travel_Expense_Application" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WuChaOrder" EntityType="Self.WuChaOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplyDetail" EntityType="Self.ApplyDetail" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ApplyDetail].[ApplyNumber] AS [ApplyNumber], 
+    [ApplyDetail].[CostID] AS [CostID], 
+    [ApplyDetail].[Amont] AS [Amont]
+    FROM [dbo].[ApplyDetail] AS [ApplyDetail]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_Absence_User" Association="Self.FK_Absence_User">
             <End Role="User" EntitySet="User" />
             <End Role="Absence" EntitySet="Absence" />
           </AssociationSet>
-          <AssociationSet Name="FK_ApplyDetail_Travel_Expense_Application" Association="Self.FK_ApplyDetail_Travel_Expense_Application">
+          <AssociationSet Name="FK_ApplyDetail_Cost" Association="Self.FK_ApplyDetail_Cost">
+            <End Role="CostCategory" EntitySet="CostCategory" />
+            <End Role="ApplyDetail" EntitySet="ApplyDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApplyDetail_Travel_Expense_Application1" Association="Self.FK_ApplyDetail_Travel_Expense_Application1">
             <End Role="Travel_Expense_Application" EntitySet="Travel_Expense_Application" />
             <End Role="ApplyDetail" EntitySet="ApplyDetail" />
           </AssociationSet>
           <AssociationSet Name="FK_Bulletin_Department" Association="Self.FK_Bulletin_Department">
             <End Role="Department" EntitySet="Department" />
             <End Role="Bulletin" EntitySet="Bulletin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeOrderDetail_User" Association="Self.FK_EmployeeOrderDetail_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="EmployeeOrderDetail" EntitySet="EmployeeOrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InterViewee_Department" Association="Self.FK_InterViewee_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="InterViewee" EntitySet="InterViewee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InterViewee_InterViewStatus" Association="Self.FK_InterViewee_InterViewStatus">
+            <End Role="InterViewStatus" EntitySet="InterViewStatus" />
+            <End Role="InterViewee" EntitySet="InterViewee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InterViewee_JobTitle" Association="Self.FK_InterViewee_JobTitle">
+            <End Role="JobTitle" EntitySet="JobTitle" />
+            <End Role="InterViewee" EntitySet="InterViewee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InterViewee_User" Association="Self.FK_InterViewee_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="InterViewee" EntitySet="InterViewee" />
           </AssociationSet>
           <AssociationSet Name="FK_LeaveApplication_CheckStatus" Association="Self.FK_LeaveApplication_CheckStatus">
             <End Role="CheckStatus" EntitySet="CheckStatus" />
@@ -332,10 +558,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_Travel_Expense_Application_CheckStatus" Association="Self.FK_Travel_Expense_Application_CheckStatus">
             <End Role="CheckStatus" EntitySet="CheckStatus" />
-            <End Role="Travel_Expense_Application" EntitySet="Travel_Expense_Application" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Travel_Expense_Application_Cost" Association="Self.FK_Travel_Expense_Application_Cost">
-            <End Role="Cost" EntitySet="Cost" />
             <End Role="Travel_Expense_Application" EntitySet="Travel_Expense_Application" />
           </AssociationSet>
           <AssociationSet Name="FK_Travel_Expense_Application_User" Association="Self.FK_Travel_Expense_Application_User">
@@ -358,6 +580,18 @@
             <End Role="User" EntitySet="User" />
             <End Role="User1" EntitySet="User" />
           </AssociationSet>
+          <AssociationSet Name="FK_WuChaOrder_Item" Association="Self.FK_WuChaOrder_Item">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="WuChaOrder" EntitySet="WuChaOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WuChaOrder_Store" Association="Self.FK_WuChaOrder_Store">
+            <End Role="Store" EntitySet="Store" />
+            <End Role="WuChaOrder" EntitySet="WuChaOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WuChaOrder_User" Association="Self.FK_WuChaOrder_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="WuChaOrder" EntitySet="WuChaOrder" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -365,25 +599,27 @@
       <Schema Namespace="MyHRModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="MyHREntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Absences" EntityType="MyHRModel.Absence" />
-          <EntitySet Name="ApplyDetails" EntityType="MyHRModel.ApplyDetail" />
           <EntitySet Name="Bulletins" EntityType="MyHRModel.Bulletin" />
           <EntitySet Name="CheckStatus" EntityType="MyHRModel.CheckStatu" />
-          <EntitySet Name="Costs" EntityType="MyHRModel.Cost" />
+          <EntitySet Name="CostCategories" EntityType="MyHRModel.CostCategory" />
           <EntitySet Name="Departments" EntityType="MyHRModel.Department" />
+          <EntitySet Name="EmployeeOrderDetails" EntityType="MyHRModel.EmployeeOrderDetail" />
+          <EntitySet Name="InterViewees" EntityType="MyHRModel.InterViewee" />
+          <EntitySet Name="InterViewStatus" EntityType="MyHRModel.InterViewStatu" />
+          <EntitySet Name="Items" EntityType="MyHRModel.Item" />
           <EntitySet Name="JobTitles" EntityType="MyHRModel.JobTitle" />
           <EntitySet Name="Leaves" EntityType="MyHRModel.Leave" />
           <EntitySet Name="LeaveApplications" EntityType="MyHRModel.LeaveApplication" />
           <EntitySet Name="OnBoardStatus" EntityType="MyHRModel.OnBoardStatu" />
+          <EntitySet Name="Stores" EntityType="MyHRModel.Store" />
           <EntitySet Name="sysdiagrams" EntityType="MyHRModel.sysdiagram" />
           <EntitySet Name="Travel_Expense_Application" EntityType="MyHRModel.Travel_Expense_Application" />
           <EntitySet Name="Users" EntityType="MyHRModel.User" />
+          <EntitySet Name="WuChaOrders" EntityType="MyHRModel.WuChaOrder" />
+          <EntitySet Name="ApplyDetails" EntityType="MyHRModel.ApplyDetail" />
           <AssociationSet Name="FK_Absence_User" Association="MyHRModel.FK_Absence_User">
             <End Role="User" EntitySet="Users" />
             <End Role="Absence" EntitySet="Absences" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ApplyDetail_Travel_Expense_Application" Association="MyHRModel.FK_ApplyDetail_Travel_Expense_Application">
-            <End Role="Travel_Expense_Application" EntitySet="Travel_Expense_Application" />
-            <End Role="ApplyDetail" EntitySet="ApplyDetails" />
           </AssociationSet>
           <AssociationSet Name="FK_Bulletin_Department" Association="MyHRModel.FK_Bulletin_Department">
             <End Role="Department" EntitySet="Departments" />
@@ -397,13 +633,37 @@
             <End Role="CheckStatu" EntitySet="CheckStatus" />
             <End Role="Travel_Expense_Application" EntitySet="Travel_Expense_Application" />
           </AssociationSet>
-          <AssociationSet Name="FK_Travel_Expense_Application_Cost" Association="MyHRModel.FK_Travel_Expense_Application_Cost">
-            <End Role="Cost" EntitySet="Costs" />
-            <End Role="Travel_Expense_Application" EntitySet="Travel_Expense_Application" />
+          <AssociationSet Name="FK_ApplyDetail_Cost" Association="MyHRModel.FK_ApplyDetail_Cost">
+            <End Role="CostCategory" EntitySet="CostCategories" />
+            <End Role="ApplyDetail" EntitySet="ApplyDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InterViewee_Department" Association="MyHRModel.FK_InterViewee_Department">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="InterViewee" EntitySet="InterViewees" />
           </AssociationSet>
           <AssociationSet Name="FK_User_Department" Association="MyHRModel.FK_User_Department">
             <End Role="Department" EntitySet="Departments" />
             <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeOrderDetail_User" Association="MyHRModel.FK_EmployeeOrderDetail_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="EmployeeOrderDetail" EntitySet="EmployeeOrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InterViewee_InterViewStatus" Association="MyHRModel.FK_InterViewee_InterViewStatus">
+            <End Role="InterViewStatu" EntitySet="InterViewStatus" />
+            <End Role="InterViewee" EntitySet="InterViewees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InterViewee_JobTitle" Association="MyHRModel.FK_InterViewee_JobTitle">
+            <End Role="JobTitle" EntitySet="JobTitles" />
+            <End Role="InterViewee" EntitySet="InterViewees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InterViewee_User" Association="MyHRModel.FK_InterViewee_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="InterViewee" EntitySet="InterViewees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WuChaOrder_Item" Association="MyHRModel.FK_WuChaOrder_Item">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="WuChaOrder" EntitySet="WuChaOrders" />
           </AssociationSet>
           <AssociationSet Name="FK_User_JobTitle" Association="MyHRModel.FK_User_JobTitle">
             <End Role="JobTitle" EntitySet="JobTitles" />
@@ -421,6 +681,14 @@
             <End Role="OnBoardStatu" EntitySet="OnBoardStatus" />
             <End Role="User" EntitySet="Users" />
           </AssociationSet>
+          <AssociationSet Name="FK_WuChaOrder_Store" Association="MyHRModel.FK_WuChaOrder_Store">
+            <End Role="Store" EntitySet="Stores" />
+            <End Role="WuChaOrder" EntitySet="WuChaOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApplyDetail_Travel_Expense_Application1" Association="MyHRModel.FK_ApplyDetail_Travel_Expense_Application1">
+            <End Role="Travel_Expense_Application" EntitySet="Travel_Expense_Application" />
+            <End Role="ApplyDetail" EntitySet="ApplyDetails" />
+          </AssociationSet>
           <AssociationSet Name="FK_Travel_Expense_Application_User" Association="MyHRModel.FK_Travel_Expense_Application_User">
             <End Role="User" EntitySet="Users" />
             <End Role="Travel_Expense_Application" EntitySet="Travel_Expense_Application" />
@@ -428,6 +696,10 @@
           <AssociationSet Name="FK_User_User" Association="MyHRModel.FK_User_User">
             <End Role="User" EntitySet="Users" />
             <End Role="User1" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WuChaOrder_User" Association="MyHRModel.FK_WuChaOrder_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="WuChaOrder" EntitySet="WuChaOrders" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Absence">
@@ -439,24 +711,15 @@
           <Property Name="Clock_on" Type="DateTime" Precision="3" />
           <NavigationProperty Name="User" Relationship="MyHRModel.FK_Absence_User" FromRole="Absence" ToRole="User" />
         </EntityType>
-        <EntityType Name="ApplyDetail">
-          <Key>
-            <PropertyRef Name="ApplyDetailNumber" />
-          </Key>
-          <Property Name="ApplyDetailNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ApplyNumber" Type="Int32" Nullable="false" />
-          <Property Name="CostCategory" Type="Int32" />
-          <Property Name="Amont" Type="Decimal" Precision="19" Scale="4" />
-          <NavigationProperty Name="Travel_Expense_Application" Relationship="MyHRModel.FK_ApplyDetail_Travel_Expense_Application" FromRole="ApplyDetail" ToRole="Travel_Expense_Application" />
-        </EntityType>
         <EntityType Name="Bulletin">
           <Key>
             <PropertyRef Name="Number" />
           </Key>
           <Property Name="Number" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Department" Type="Int32" Nullable="false" />
-          <Property Name="ContentofBulletin" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Category" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ContentofBulletin" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Starttime" Type="DateTime" Precision="3" />
           <Property Name="Endtime" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Department1" Relationship="MyHRModel.FK_Bulletin_Department" FromRole="Bulletin" ToRole="Department" />
@@ -466,33 +729,87 @@
             <PropertyRef Name="CheckStatusID" />
           </Key>
           <Property Name="CheckStatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CheckStatus" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="CheckStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="LeaveApplications" Relationship="MyHRModel.FK_LeaveApplication_CheckStatus" FromRole="CheckStatu" ToRole="LeaveApplication" />
           <NavigationProperty Name="Travel_Expense_Application" Relationship="MyHRModel.FK_Travel_Expense_Application_CheckStatus" FromRole="CheckStatu" ToRole="Travel_Expense_Application" />
         </EntityType>
-        <EntityType Name="Cost">
+        <EntityType Name="CostCategory">
           <Key>
             <PropertyRef Name="CostID" />
           </Key>
           <Property Name="CostID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CostCategory" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="Travel_Expense_Application" Relationship="MyHRModel.FK_Travel_Expense_Application_Cost" FromRole="Cost" ToRole="Travel_Expense_Application" />
+          <Property Name="CostCategory1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ApplyDetails" Relationship="MyHRModel.FK_ApplyDetail_Cost" FromRole="CostCategory" ToRole="ApplyDetail" />
         </EntityType>
         <EntityType Name="Department">
           <Key>
             <PropertyRef Name="DepartmentID" />
           </Key>
           <Property Name="DepartmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DepartmentName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="DepartmentName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Bulletins" Relationship="MyHRModel.FK_Bulletin_Department" FromRole="Department" ToRole="Bulletin" />
+          <NavigationProperty Name="InterViewees" Relationship="MyHRModel.FK_InterViewee_Department" FromRole="Department" ToRole="InterViewee" />
           <NavigationProperty Name="Users" Relationship="MyHRModel.FK_User_Department" FromRole="Department" ToRole="User" />
+        </EntityType>
+        <EntityType Name="EmployeeOrderDetail">
+          <Key>
+            <PropertyRef Name="QuantityNumber" />
+          </Key>
+          <Property Name="QuantityNumber" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeID" Type="Int32" />
+          <NavigationProperty Name="User" Relationship="MyHRModel.FK_EmployeeOrderDetail_User" FromRole="EmployeeOrderDetail" ToRole="User" />
+        </EntityType>
+        <EntityType Name="InterViewee">
+          <Key>
+            <PropertyRef Name="InterVieweeID" />
+          </Key>
+          <Property Name="InterVieweeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InterVieweeGender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="InterVieweeName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeEnglishName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Birthday" Type="DateTime" Precision="0" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Education" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Experience" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="JobTitle" Type="Int32" />
+          <Property Name="Department" Type="Int32" />
+          <Property Name="InterViewerEmployeeID" Type="Int32" />
+          <Property Name="InterViewDate" Type="DateTime" Precision="0" />
+          <Property Name="InterViewStatus" Type="Int32" />
+          <Property Name="InterViewProcess" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Department1" Relationship="MyHRModel.FK_InterViewee_Department" FromRole="InterViewee" ToRole="Department" />
+          <NavigationProperty Name="InterViewStatu" Relationship="MyHRModel.FK_InterViewee_InterViewStatus" FromRole="InterViewee" ToRole="InterViewStatu" />
+          <NavigationProperty Name="JobTitle1" Relationship="MyHRModel.FK_InterViewee_JobTitle" FromRole="InterViewee" ToRole="JobTitle" />
+          <NavigationProperty Name="User" Relationship="MyHRModel.FK_InterViewee_User" FromRole="InterViewee" ToRole="User" />
+        </EntityType>
+        <EntityType Name="InterViewStatu">
+          <Key>
+            <PropertyRef Name="InterViewStatusID" />
+          </Key>
+          <Property Name="InterViewStatusID" Type="Int32" Nullable="false" />
+          <Property Name="InterViewStatus" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="InterViewees" Relationship="MyHRModel.FK_InterViewee_InterViewStatus" FromRole="InterViewStatu" ToRole="InterViewee" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="ItemID" />
+          </Key>
+          <Property Name="ItemID" Type="Int32" Nullable="false" />
+          <Property Name="ItemName" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="StoreID" Type="Int32" />
+          <NavigationProperty Name="WuChaOrders" Relationship="MyHRModel.FK_WuChaOrder_Item" FromRole="Item" ToRole="WuChaOrder" />
         </EntityType>
         <EntityType Name="JobTitle">
           <Key>
             <PropertyRef Name="JobTitleID" />
           </Key>
           <Property Name="JobTitleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="JobTitle1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="JobTitle1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="InterViewees" Relationship="MyHRModel.FK_InterViewee_JobTitle" FromRole="JobTitle" ToRole="InterViewee" />
           <NavigationProperty Name="Users" Relationship="MyHRModel.FK_User_JobTitle" FromRole="JobTitle" ToRole="User" />
         </EntityType>
         <EntityType Name="Leave">
@@ -500,7 +817,7 @@
             <PropertyRef Name="LeaveID" />
           </Key>
           <Property Name="LeaveID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="LeaveCategory" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="LeaveCategory" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="LeaveApplications" Relationship="MyHRModel.FK_LeaveApplication_Leave" FromRole="Leave" ToRole="LeaveApplication" />
         </EntityType>
         <EntityType Name="LeaveApplication">
@@ -524,8 +841,16 @@
             <PropertyRef Name="OnBoardStatusID" />
           </Key>
           <Property Name="OnBoardStatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OnBoardStatus" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="OnBoardStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Users" Relationship="MyHRModel.FK_User_OnBoardStatus" FromRole="OnBoardStatu" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Store">
+          <Key>
+            <PropertyRef Name="StoreID" />
+          </Key>
+          <Property Name="StoreID" Type="Int32" Nullable="false" />
+          <Property Name="StoreName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="WuChaOrders" Relationship="MyHRModel.FK_WuChaOrder_Store" FromRole="Store" ToRole="WuChaOrder" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -543,16 +868,14 @@
           </Key>
           <Property Name="ApplyNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="EmployeeID" Type="Int32" Nullable="false" />
-          <Property Name="Reason" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Reason" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="ApplyDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="TravelStartTime" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="TravelEndTime" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="CostCategory" Type="Int32" Nullable="false" />
           <Property Name="Amont" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="CheckStatus" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="ApplyDetails" Relationship="MyHRModel.FK_ApplyDetail_Travel_Expense_Application" FromRole="Travel_Expense_Application" ToRole="ApplyDetail" />
           <NavigationProperty Name="CheckStatu" Relationship="MyHRModel.FK_Travel_Expense_Application_CheckStatus" FromRole="Travel_Expense_Application" ToRole="CheckStatu" />
-          <NavigationProperty Name="Cost" Relationship="MyHRModel.FK_Travel_Expense_Application_Cost" FromRole="Travel_Expense_Application" ToRole="Cost" />
+          <NavigationProperty Name="ApplyDetail" Relationship="MyHRModel.FK_ApplyDetail_Travel_Expense_Application1" FromRole="Travel_Expense_Application" ToRole="ApplyDetail" />
           <NavigationProperty Name="User" Relationship="MyHRModel.FK_Travel_Expense_Application_User" FromRole="Travel_Expense_Application" ToRole="User" />
         </EntityType>
         <EntityType Name="User">
@@ -561,31 +884,58 @@
           </Key>
           <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="EmployeeName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="EmployeeEnglishName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="PassWord" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="EmployeeEnglishName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PassWord" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="OnBoardDay" Type="DateTime" Precision="0" />
           <Property Name="ByeByeDay" Type="DateTime" Precision="0" />
-          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Department" Type="Int32" />
           <Property Name="JobTitle" Type="Int32" />
           <Property Name="Supervisor" Type="Int32" />
           <Property Name="Birthday" Type="DateTime" Precision="0" />
-          <Property Name="Phone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="EmergencyPerson" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="EmergencyContact" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="EmergencyContact" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="OnBoardState" Type="Int32" Nullable="false" />
           <Property Name="AccountEnable" Type="Byte" Nullable="false" />
           <NavigationProperty Name="Absences" Relationship="MyHRModel.FK_Absence_User" FromRole="User" ToRole="Absence" />
           <NavigationProperty Name="Department1" Relationship="MyHRModel.FK_User_Department" FromRole="User" ToRole="Department" />
+          <NavigationProperty Name="EmployeeOrderDetails" Relationship="MyHRModel.FK_EmployeeOrderDetail_User" FromRole="User" ToRole="EmployeeOrderDetail" />
+          <NavigationProperty Name="InterViewees" Relationship="MyHRModel.FK_InterViewee_User" FromRole="User" ToRole="InterViewee" />
           <NavigationProperty Name="JobTitle1" Relationship="MyHRModel.FK_User_JobTitle" FromRole="User" ToRole="JobTitle" />
           <NavigationProperty Name="LeaveApplications" Relationship="MyHRModel.FK_LeaveApplication_User" FromRole="User" ToRole="LeaveApplication" />
           <NavigationProperty Name="OnBoardStatu" Relationship="MyHRModel.FK_User_OnBoardStatus" FromRole="User" ToRole="OnBoardStatu" />
           <NavigationProperty Name="Travel_Expense_Application" Relationship="MyHRModel.FK_Travel_Expense_Application_User" FromRole="User" ToRole="Travel_Expense_Application" />
           <NavigationProperty Name="User1" Relationship="MyHRModel.FK_User_User" FromRole="User" ToRole="User1" />
           <NavigationProperty Name="User2" Relationship="MyHRModel.FK_User_User" FromRole="User1" ToRole="User" />
+          <NavigationProperty Name="WuChaOrders" Relationship="MyHRModel.FK_WuChaOrder_User" FromRole="User" ToRole="WuChaOrder" />
+        </EntityType>
+        <EntityType Name="WuChaOrder">
+          <Key>
+            <PropertyRef Name="WuChaOrderNumber" />
+          </Key>
+          <Property Name="WuChaOrderNumber" Type="Int32" Nullable="false" />
+          <Property Name="StoreID" Type="Int32" />
+          <Property Name="Item" Type="Int32" />
+          <Property Name="EmployeeID" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="TotalPirce" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Item1" Relationship="MyHRModel.FK_WuChaOrder_Item" FromRole="WuChaOrder" ToRole="Item" />
+          <NavigationProperty Name="Store" Relationship="MyHRModel.FK_WuChaOrder_Store" FromRole="WuChaOrder" ToRole="Store" />
+          <NavigationProperty Name="User" Relationship="MyHRModel.FK_WuChaOrder_User" FromRole="WuChaOrder" ToRole="User" />
+        </EntityType>
+        <EntityType Name="ApplyDetail">
+          <Key>
+            <PropertyRef Name="ApplyNumber" />
+          </Key>
+          <Property Name="ApplyNumber" Type="Int32" Nullable="false" />
+          <Property Name="CostID" Type="Int32" />
+          <Property Name="Amont" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="CostCategory" Relationship="MyHRModel.FK_ApplyDetail_Cost" FromRole="ApplyDetail" ToRole="CostCategory" />
+          <NavigationProperty Name="Travel_Expense_Application" Relationship="MyHRModel.FK_ApplyDetail_Travel_Expense_Application1" FromRole="ApplyDetail" ToRole="Travel_Expense_Application" />
         </EntityType>
         <Association Name="FK_Absence_User">
           <End Type="MyHRModel.User" Role="User" Multiplicity="1" />
@@ -596,18 +946,6 @@
             </Principal>
             <Dependent Role="Absence">
               <PropertyRef Name="EmployeeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ApplyDetail_Travel_Expense_Application">
-          <End Type="MyHRModel.Travel_Expense_Application" Role="Travel_Expense_Application" Multiplicity="1" />
-          <End Type="MyHRModel.ApplyDetail" Role="ApplyDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Travel_Expense_Application">
-              <PropertyRef Name="ApplyNumber" />
-            </Principal>
-            <Dependent Role="ApplyDetail">
-              <PropertyRef Name="ApplyNumber" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -647,15 +985,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Travel_Expense_Application_Cost">
-          <End Type="MyHRModel.Cost" Role="Cost" Multiplicity="1" />
-          <End Type="MyHRModel.Travel_Expense_Application" Role="Travel_Expense_Application" Multiplicity="*" />
+        <Association Name="FK_ApplyDetail_Cost">
+          <End Type="MyHRModel.CostCategory" Role="CostCategory" Multiplicity="0..1" />
+          <End Type="MyHRModel.ApplyDetail" Role="ApplyDetail" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Cost">
+            <Principal Role="CostCategory">
               <PropertyRef Name="CostID" />
             </Principal>
-            <Dependent Role="Travel_Expense_Application">
-              <PropertyRef Name="CostCategory" />
+            <Dependent Role="ApplyDetail">
+              <PropertyRef Name="CostID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InterViewee_Department">
+          <End Type="MyHRModel.Department" Role="Department" Multiplicity="0..1" />
+          <End Type="MyHRModel.InterViewee" Role="InterViewee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DepartmentID" />
+            </Principal>
+            <Dependent Role="InterViewee">
+              <PropertyRef Name="Department" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -668,6 +1018,66 @@
             </Principal>
             <Dependent Role="User">
               <PropertyRef Name="Department" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeOrderDetail_User">
+          <End Type="MyHRModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="MyHRModel.EmployeeOrderDetail" Role="EmployeeOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="EmployeeOrderDetail">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InterViewee_InterViewStatus">
+          <End Type="MyHRModel.InterViewStatu" Role="InterViewStatu" Multiplicity="0..1" />
+          <End Type="MyHRModel.InterViewee" Role="InterViewee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InterViewStatu">
+              <PropertyRef Name="InterViewStatusID" />
+            </Principal>
+            <Dependent Role="InterViewee">
+              <PropertyRef Name="InterViewStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InterViewee_JobTitle">
+          <End Type="MyHRModel.JobTitle" Role="JobTitle" Multiplicity="0..1" />
+          <End Type="MyHRModel.InterViewee" Role="InterViewee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobTitle">
+              <PropertyRef Name="JobTitleID" />
+            </Principal>
+            <Dependent Role="InterViewee">
+              <PropertyRef Name="JobTitle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InterViewee_User">
+          <End Type="MyHRModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="MyHRModel.InterViewee" Role="InterViewee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="InterViewee">
+              <PropertyRef Name="InterViewerEmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WuChaOrder_Item">
+          <End Type="MyHRModel.Item" Role="Item" Multiplicity="0..1" />
+          <End Type="MyHRModel.WuChaOrder" Role="WuChaOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="ItemID" />
+            </Principal>
+            <Dependent Role="WuChaOrder">
+              <PropertyRef Name="Item" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -719,6 +1129,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_WuChaOrder_Store">
+          <End Type="MyHRModel.Store" Role="Store" Multiplicity="0..1" />
+          <End Type="MyHRModel.WuChaOrder" Role="WuChaOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="StoreID" />
+            </Principal>
+            <Dependent Role="WuChaOrder">
+              <PropertyRef Name="StoreID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ApplyDetail_Travel_Expense_Application1">
+          <End Type="MyHRModel.Travel_Expense_Application" Role="Travel_Expense_Application" Multiplicity="1" />
+          <End Type="MyHRModel.ApplyDetail" Role="ApplyDetail" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Travel_Expense_Application">
+              <PropertyRef Name="ApplyNumber" />
+            </Principal>
+            <Dependent Role="ApplyDetail">
+              <PropertyRef Name="ApplyNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Travel_Expense_Application_User">
           <End Type="MyHRModel.User" Role="User" Multiplicity="1" />
           <End Type="MyHRModel.Travel_Expense_Application" Role="Travel_Expense_Application" Multiplicity="*" />
@@ -743,6 +1177,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_WuChaOrder_User">
+          <End Type="MyHRModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="MyHRModel.WuChaOrder" Role="WuChaOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="WuChaOrder">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -758,22 +1204,13 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ApplyDetails">
-            <EntityTypeMapping TypeName="MyHRModel.ApplyDetail">
-              <MappingFragment StoreEntitySet="ApplyDetail">
-                <ScalarProperty Name="Amont" ColumnName="Amont" />
-                <ScalarProperty Name="CostCategory" ColumnName="CostCategory" />
-                <ScalarProperty Name="ApplyNumber" ColumnName="ApplyNumber" />
-                <ScalarProperty Name="ApplyDetailNumber" ColumnName="ApplyDetailNumber" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Bulletins">
             <EntityTypeMapping TypeName="MyHRModel.Bulletin">
               <MappingFragment StoreEntitySet="Bulletin">
                 <ScalarProperty Name="Endtime" ColumnName="Endtime" />
                 <ScalarProperty Name="Starttime" ColumnName="Starttime" />
                 <ScalarProperty Name="ContentofBulletin" ColumnName="ContentofBulletin" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
                 <ScalarProperty Name="Department" ColumnName="Department" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Number" ColumnName="Number" />
@@ -788,10 +1225,10 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Costs">
-            <EntityTypeMapping TypeName="MyHRModel.Cost">
-              <MappingFragment StoreEntitySet="Cost">
-                <ScalarProperty Name="CostCategory" ColumnName="CostCategory" />
+          <EntitySetMapping Name="CostCategories">
+            <EntityTypeMapping TypeName="MyHRModel.CostCategory">
+              <MappingFragment StoreEntitySet="CostCategory">
+                <ScalarProperty Name="CostCategory1" ColumnName="CostCategory" />
                 <ScalarProperty Name="CostID" ColumnName="CostID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -801,6 +1238,55 @@
               <MappingFragment StoreEntitySet="Department">
                 <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
                 <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeOrderDetails">
+            <EntityTypeMapping TypeName="MyHRModel.EmployeeOrderDetail">
+              <MappingFragment StoreEntitySet="EmployeeOrderDetail">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="QuantityNumber" ColumnName="QuantityNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InterViewees">
+            <EntityTypeMapping TypeName="MyHRModel.InterViewee">
+              <MappingFragment StoreEntitySet="InterViewee">
+                <ScalarProperty Name="InterViewProcess" ColumnName="InterViewProcess" />
+                <ScalarProperty Name="InterViewStatus" ColumnName="InterViewStatus" />
+                <ScalarProperty Name="InterViewDate" ColumnName="InterViewDate" />
+                <ScalarProperty Name="InterViewerEmployeeID" ColumnName="InterViewerEmployeeID" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="Experience" ColumnName="Experience" />
+                <ScalarProperty Name="Education" ColumnName="Education" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="EmployeeEnglishName" ColumnName="EmployeeEnglishName" />
+                <ScalarProperty Name="InterVieweeName" ColumnName="InterVieweeName" />
+                <ScalarProperty Name="InterVieweeGender" ColumnName="InterVieweeGender" />
+                <ScalarProperty Name="InterVieweeID" ColumnName="InterVieweeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InterViewStatus">
+            <EntityTypeMapping TypeName="MyHRModel.InterViewStatu">
+              <MappingFragment StoreEntitySet="InterViewStatus">
+                <ScalarProperty Name="InterViewStatus" ColumnName="InterViewStatus" />
+                <ScalarProperty Name="InterViewStatusID" ColumnName="InterViewStatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Items">
+            <EntityTypeMapping TypeName="MyHRModel.Item">
+              <MappingFragment StoreEntitySet="Item">
+                <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -842,6 +1328,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Stores">
+            <EntityTypeMapping TypeName="MyHRModel.Store">
+              <MappingFragment StoreEntitySet="Store">
+                <ScalarProperty Name="StoreName" ColumnName="StoreName" />
+                <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="MyHRModel.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
@@ -858,7 +1352,6 @@
               <MappingFragment StoreEntitySet="Travel_Expense_Application">
                 <ScalarProperty Name="CheckStatus" ColumnName="CheckStatus" />
                 <ScalarProperty Name="Amont" ColumnName="Amont" />
-                <ScalarProperty Name="CostCategory" ColumnName="CostCategory" />
                 <ScalarProperty Name="TravelEndTime" ColumnName="TravelEndTime" />
                 <ScalarProperty Name="TravelStartTime" ColumnName="TravelStartTime" />
                 <ScalarProperty Name="ApplyDate" ColumnName="ApplyDate" />
@@ -890,6 +1383,27 @@
                 <ScalarProperty Name="EmployeeEnglishName" ColumnName="EmployeeEnglishName" />
                 <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
                 <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WuChaOrders">
+            <EntityTypeMapping TypeName="MyHRModel.WuChaOrder">
+              <MappingFragment StoreEntitySet="WuChaOrder">
+                <ScalarProperty Name="TotalPirce" ColumnName="TotalPirce" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="Item" ColumnName="Item" />
+                <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+                <ScalarProperty Name="WuChaOrderNumber" ColumnName="WuChaOrderNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplyDetails">
+            <EntityTypeMapping TypeName="MyHRModel.ApplyDetail">
+              <MappingFragment StoreEntitySet="ApplyDetail">
+                <ScalarProperty Name="Amont" ColumnName="Amont" />
+                <ScalarProperty Name="CostID" ColumnName="CostID" />
+                <ScalarProperty Name="ApplyNumber" ColumnName="ApplyNumber" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

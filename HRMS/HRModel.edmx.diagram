@@ -5,32 +5,46 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="0422be15d26643909813160b21299ce3" Name="Diagram1">
-        <EntityTypeShape EntityType="MyHRModel.Absence" Width="1.5" PointX="8.25" PointY="14.875" />
-        <EntityTypeShape EntityType="MyHRModel.ApplyDetail" Width="1.5" PointX="10.5" PointY="10.875" />
-        <EntityTypeShape EntityType="MyHRModel.Bulletin" Width="1.5" PointX="3" PointY="6.625" />
-        <EntityTypeShape EntityType="MyHRModel.CheckStatu" Width="1.5" PointX="9" PointY="1.125" />
-        <EntityTypeShape EntityType="MyHRModel.Cost" Width="1.5" PointX="6" PointY="2" />
-        <EntityTypeShape EntityType="MyHRModel.Department" Width="1.5" PointX="0.75" PointY="7" />
-        <EntityTypeShape EntityType="MyHRModel.JobTitle" Width="1.5" PointX="3.75" PointY="3.875" />
-        <EntityTypeShape EntityType="MyHRModel.Leave" Width="1.5" PointX="9" PointY="3.75" />
-        <EntityTypeShape EntityType="MyHRModel.LeaveApplication" Width="1.5" PointX="11.25" PointY="6.25" />
-        <EntityTypeShape EntityType="MyHRModel.OnBoardStatu" Width="1.5" PointX="3.75" PointY="10.125" />
-        <EntityTypeShape EntityType="MyHRModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="MyHRModel.Travel_Expense_Application" Width="1.5" PointX="8.25" PointY="6.125" />
-        <EntityTypeShape EntityType="MyHRModel.User" Width="1.5" PointX="6" PointY="4.875" />
+        <EntityTypeShape EntityType="MyHRModel.Absence" Width="1.5" PointX="6.25" PointY="21.875" />
+        <EntityTypeShape EntityType="MyHRModel.Bulletin" Width="1.5" PointX="4" PointY="26.25" />
+        <EntityTypeShape EntityType="MyHRModel.CheckStatu" Width="1.5" PointX="7" PointY="2.5" />
+        <EntityTypeShape EntityType="MyHRModel.CostCategory" Width="1.5" PointX="9.25" PointY="6.625" />
+        <EntityTypeShape EntityType="MyHRModel.Department" Width="1.5" PointX="1.75" PointY="13.5" />
+        <EntityTypeShape EntityType="MyHRModel.EmployeeOrderDetail" Width="1.5" PointX="6.25" PointY="18.125" />
+        <EntityTypeShape EntityType="MyHRModel.InterViewee" Width="1.5" PointX="6.25" PointY="11.875" />
+        <EntityTypeShape EntityType="MyHRModel.InterViewStatu" Width="1.5" PointX="4" PointY="8.25" />
+        <EntityTypeShape EntityType="MyHRModel.Item" Width="1.5" PointX="7" PointY="8.375" />
+        <EntityTypeShape EntityType="MyHRModel.JobTitle" Width="1.5" PointX="4" PointY="18.5" />
+        <EntityTypeShape EntityType="MyHRModel.Leave" Width="1.5" PointX="7" PointY="24.625" />
+        <EntityTypeShape EntityType="MyHRModel.LeaveApplication" Width="1.5" PointX="9.25" PointY="16.875" />
+        <EntityTypeShape EntityType="MyHRModel.OnBoardStatu" Width="1.5" PointX="1.75" PointY="10.625" />
+        <EntityTypeShape EntityType="MyHRModel.Store" Width="1.5" PointX="7" PointY="5.875" />
+        <EntityTypeShape EntityType="MyHRModel.sysdiagram" Width="1.5" PointX="1.75" PointY="1.125" />
+        <EntityTypeShape EntityType="MyHRModel.Travel_Expense_Application" Width="1.5" PointX="9.25" PointY="12.875" />
+        <EntityTypeShape EntityType="MyHRModel.User" Width="1.5" PointX="4" PointY="11.125" />
+        <EntityTypeShape EntityType="MyHRModel.WuChaOrder" Width="1.5" PointX="9.25" PointY="9.125" />
+        <EntityTypeShape EntityType="MyHRModel.ApplyDetail" Width="1.5" PointX="11.5" PointY="13.5" />
         <AssociationConnector Association="MyHRModel.FK_Absence_User" />
-        <AssociationConnector Association="MyHRModel.FK_ApplyDetail_Travel_Expense_Application" />
         <AssociationConnector Association="MyHRModel.FK_Bulletin_Department" />
         <AssociationConnector Association="MyHRModel.FK_LeaveApplication_CheckStatus" />
         <AssociationConnector Association="MyHRModel.FK_Travel_Expense_Application_CheckStatus" />
-        <AssociationConnector Association="MyHRModel.FK_Travel_Expense_Application_Cost" />
+        <AssociationConnector Association="MyHRModel.FK_ApplyDetail_Cost" />
+        <AssociationConnector Association="MyHRModel.FK_InterViewee_Department" />
         <AssociationConnector Association="MyHRModel.FK_User_Department" />
+        <AssociationConnector Association="MyHRModel.FK_EmployeeOrderDetail_User" />
+        <AssociationConnector Association="MyHRModel.FK_InterViewee_InterViewStatus" />
+        <AssociationConnector Association="MyHRModel.FK_InterViewee_JobTitle" />
+        <AssociationConnector Association="MyHRModel.FK_InterViewee_User" />
+        <AssociationConnector Association="MyHRModel.FK_WuChaOrder_Item" />
         <AssociationConnector Association="MyHRModel.FK_User_JobTitle" />
         <AssociationConnector Association="MyHRModel.FK_LeaveApplication_Leave" />
         <AssociationConnector Association="MyHRModel.FK_LeaveApplication_User" />
         <AssociationConnector Association="MyHRModel.FK_User_OnBoardStatus" />
+        <AssociationConnector Association="MyHRModel.FK_WuChaOrder_Store" />
+        <AssociationConnector Association="MyHRModel.FK_ApplyDetail_Travel_Expense_Application1" />
         <AssociationConnector Association="MyHRModel.FK_Travel_Expense_Application_User" />
         <AssociationConnector Association="MyHRModel.FK_User_User" />
+        <AssociationConnector Association="MyHRModel.FK_WuChaOrder_User" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
