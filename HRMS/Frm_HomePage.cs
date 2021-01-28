@@ -35,7 +35,7 @@ namespace HRMS
             public UserInfo(int userID)
             {
                 MyHREntities hrEntities = new MyHREntities();
-                var q = (hrEntities.Users.Where(o => o.EmployeeID == ID).Select(o => new { o.EmployeeName, o.Department, o.JobTitle })).ToList();//抓員工資料         
+                var q = (hrEntities.Users.Where(o => o.EmployeeID == userID).Select(o => new { o.EmployeeName, o.Department, o.JobTitle })).ToList();//抓員工資料         
                 ID = userID;
                 Name = q[0].EmployeeName;
                 Dept = (int)q[0].Department;
