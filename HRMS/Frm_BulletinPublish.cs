@@ -12,9 +12,9 @@ namespace HRMS
 {
     public partial class Frm_BulletinPublish : Form
     {
-        private Frm_HomePage hp;
+        private Frm_HomePage hp; //儲存上層傳來的form，以便 call 上層的function
         MyHREntities HREntities = new MyHREntities();
-        public Frm_BulletinPublish(Frm_HomePage form)
+        public Frm_BulletinPublish(Frm_HomePage form)//傳入上層傳來的 this 參數
         {
             InitializeComponent();
             hp = form;
@@ -49,10 +49,12 @@ namespace HRMS
             }
             MessageBox.Show("公告發佈成功");
             hp.LoadBulletin();//主視窗重載佈告欄
+            
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
-        {
+        {            
+            //Frm_HomePage.userInfo.
             this.Dispose();
             this.Close();
         }

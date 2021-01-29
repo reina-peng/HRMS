@@ -25,11 +25,10 @@ namespace HRMS
         JArray jsondata = null;
         MyHREntities hrEntities = new MyHREntities();
         internal int UserID;//接 login 傳過來的值
-        UserInfo userInfo = null;//建立 userInfo 物件
+        internal static UserInfo userInfo = null;//建立 userInfo 物件
         
         public Frm_HomePage()
         {            
-
             InitializeComponent();
             this.CenterToScreen();
             this.tabControl1.DrawItem += this.tabControl1_DrawItem;// 註冊 tabControl 事件
@@ -41,8 +40,12 @@ namespace HRMS
         Thread thWeather;//天氣輪播執行緒
         private void HomePage_Load(object sender, EventArgs e)
         {
+            this.lblWeather.BackColor = Color.Transparent;
+            this.lblWeather.Parent = this.pcbWeather;
+            this.lblWeather.Location = new Point(0, 90);
+
             jsondata = getJson(cwbAPI);//取得天氣 Json
-            LoadWeather(jsondata);
+            LoadWeather(jsondata, "臺北市");
             userInfo = new UserInfo(UserID);// userInfo 賦值
             //顯示右上角員工資料
             ShowImage(UserID);//顯示右上角員工圖片
@@ -59,9 +62,9 @@ namespace HRMS
             {
                 while (true)
                 {
-                    ChangeImage(Image.FromFile($@"..\..\Photo\Weather\{weatherCode[0].ToString("00")}.png"), time[0], weathdescrible[0] , $"{mintemperature[0]} °c - {maxtemperature[0]} °c" , 3000);
-                    ChangeImage(Image.FromFile($@"..\..\Photo\Weather\{weatherCode[1]:00}.png"), time[1], weathdescrible[1], $"{mintemperature[1]} °c - {maxtemperature[1]} °c", 3000);
-                    ChangeImage(Image.FromFile($@"..\..\Photo\Weather\{weatherCode[2]:00}.png"), time[2], weathdescrible[2], $"{mintemperature[2]} °c - {maxtemperature[2]} °c", 3000);
+                    ChangeImage(Image.FromFile($@"..\..\Photo\Weather\{weatherCode[0].ToString("00")}.png"), time[0], weathdescrible[0], $"{mintemperature[0]} °c",$" {maxtemperature[0]} °c", pop[0]);
+                    ChangeImage(Image.FromFile($@"..\..\Photo\Weather\{weatherCode[1]:00}.png"), time[1], weathdescrible[1], $"{mintemperature[1]} °c", $" {maxtemperature[1]} °c", pop[1]);
+                    ChangeImage(Image.FromFile($@"..\..\Photo\Weather\{weatherCode[2]:00}.png"), time[2], weathdescrible[2], $"{mintemperature[2]} °c", $" {maxtemperature[2]} °c", pop[2]);
                 }
             });
             thWeather.IsBackground = true;
@@ -72,6 +75,7 @@ namespace HRMS
         {
             thWeather.Abort(); // 關閉時結束天氣輪播執行緒
         }
+        #region ShowImage(載入員工圖片)
         private void ShowImage(int imageID)//載入員工圖片
         {
             try
@@ -98,6 +102,7 @@ namespace HRMS
                 MessageBox.Show(ex.Message);
             }
         }
+        #endregion
         internal void LoadBulletin()//載入佈告欄
         {            
             this.lsbBulletin.Items.Clear();
@@ -134,11 +139,11 @@ namespace HRMS
         string[] maxtemperature = new string[3]; //最高溫度
         int[] weatherCode = new int[3];
 
-        private void LoadWeather(JArray jsondata)//載入天氣
+        private void LoadWeather(JArray jsondata, string City)//載入天氣
         {
             foreach (JObject data in jsondata)
             {
-                if ((string)data["locationName"] == "臺北市")                    
+                if ((string)data["locationName"] == City)                    
                 {
                     for (int i = 0; i < 3; i++)
                     {
@@ -158,14 +163,16 @@ namespace HRMS
             }
         }
         #endregion
-        private void ChangeImage(Image img, string time, string describe, string temp, int millisecondTimeOut)
+        private void ChangeImage(Image img, string time, string describe, string tempMin, string tempMax, string pop, int millisecondTimeOut = 4000)
         {
             this.Invoke(new Action(() =>
             {
                 pcbWeather.Image = img;
                 lblTime.Text = time;
-                lblWeather.Text = describe;
-                lblT.Text = temp;
+                lblWeather.Text = describe;                
+                lblTmin.Text = tempMin;
+                lblTmax.Text = tempMax;
+                lblPop.Text = pop + "%";
             })
                 );
             Thread.Sleep(millisecondTimeOut);
@@ -213,8 +220,8 @@ namespace HRMS
 
         private void btnPublishInfo_Click(object sender, EventArgs e)//編輯公佈欄按鈕
         {
-            bp = new Frm_BulletinPublish(this);
-            bp.ShowDialog();            
+            bp = new Frm_BulletinPublish(this);//因新視窗有功能需要 call 目前視窗的function，傳入 this
+            bp.ShowDialog();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -234,17 +241,12 @@ namespace HRMS
                      select o).ToList();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)//編輯個人資料
+        private void pictureBox1_Click(object sender, EventArgs e)//按照片跳出編輯個人資料頁
         {
             Frm_User f = new Frm_User();
             f.id = UserID;
             f.labID.Text = UserID.ToString();
             f.Show();            
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            
         }
     }
 }
