@@ -128,8 +128,8 @@ namespace HRMS
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(1470, 841);
-            this.splitContainer1.SplitterDistance = 167;
+            this.splitContainer1.Size = new System.Drawing.Size(1370, 749);
+            this.splitContainer1.SplitterDistance = 148;
             this.splitContainer1.TabIndex = 1;
             // 
             // lblJobTitle
@@ -272,8 +272,8 @@ namespace HRMS
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.tabControl1);
-            this.splitContainer2.Size = new System.Drawing.Size(1466, 666);
-            this.splitContainer2.SplitterDistance = 187;
+            this.splitContainer2.Size = new System.Drawing.Size(1366, 593);
+            this.splitContainer2.SplitterDistance = 166;
             this.splitContainer2.TabIndex = 2;
             // 
             // gpbWeather
@@ -402,7 +402,7 @@ namespace HRMS
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1466, 475);
+            this.tabControl1.Size = new System.Drawing.Size(1366, 423);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 1;
             // 
@@ -413,7 +413,7 @@ namespace HRMS
             this.tabPage1.Location = new System.Drawing.Point(154, 4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1308, 467);
+            this.tabPage1.Size = new System.Drawing.Size(1208, 415);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "打卡";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -457,7 +457,7 @@ namespace HRMS
             this.tabPage3.Controls.Add(this.dateTimePicker1);
             this.tabPage3.Location = new System.Drawing.Point(154, 4);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1308, 467);
+            this.tabPage3.Size = new System.Drawing.Size(1208, 415);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "公告發佈";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -509,7 +509,6 @@ namespace HRMS
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(116, 22);
             this.textBox2.TabIndex = 2;
-            this.textBox2.Text = "2";
             // 
             // dateTimePicker1
             // 
@@ -527,7 +526,7 @@ namespace HRMS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1470, 841);
+            this.ClientSize = new System.Drawing.Size(1370, 749);
             this.Controls.Add(this.splitContainer1);
             this.Name = "Frm_HomePage";
             this.Text = "HRMS";

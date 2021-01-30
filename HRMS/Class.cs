@@ -16,6 +16,16 @@ namespace HRMS
         public string EnglishName { get; }//員工英文名
         public int Dept { get; }//員工部門
         public int JobTitle { get; }//員工職稱
+        public void resetTab(TabPage a)
+        {
+            foreach (Control ctrl in a.Controls)
+            {
+                if (ctrl is TextBox || ctrl is ComboBox || ctrl is PictureBox || ctrl is RadioButton || ctrl is DateTimePicker)
+                {
+                    ctrl.Text = "";
+                }
+            }
+        }
 
         public UserInfo(int userID)
         {

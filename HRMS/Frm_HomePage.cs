@@ -235,12 +235,15 @@ namespace HRMS
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string x = dateTimePicker1.Value.ToString("yyyy/MM/dd");
-            var q = (from o in hrEntities.LeaveApplications.AsEnumerable()
-                     where o.EmployeeID == int.Parse(this.textBox2.Text) && o.LeaveEndTime == DateTime.Parse(x)
-                     select o).ToList();
+            //string x = dateTimePicker1.Value.ToString("yyyy/MM/dd");
+            //var q = (from o in hrEntities.LeaveApplications.AsEnumerable()
+            //         where o.EmployeeID == int.Parse(this.textBox2.Text) && o.LeaveEndTime == DateTime.Parse(x)
+            //         select o).ToList();
+            userInfo.resetTab(this.tabControl1.SelectedTab);
+
         }
 
+        
         private void pictureBox1_Click(object sender, EventArgs e)//按照片跳出編輯個人資料頁
         {
             Frm_User f = new Frm_User();

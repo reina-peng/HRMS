@@ -104,6 +104,7 @@
     <Compile Include="Frm_HomePage.Designer.cs">
       <DependentUpon>Frm_HomePage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Function.cs" />
     <Compile Include="HRModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
