@@ -15,9 +15,9 @@ namespace HRMS
     public partial class OrderStoreDetail
     {
         public int WuChaOrderNumber { get; set; }
-        public Nullable<int> StoreID { get; set; }
-        public Nullable<int> ItemID { get; set; }
-        public Nullable<int> ItemQuantity { get; set; }
+        public int StoreID { get; set; }
+        public int ItemID { get; set; }
+        public int ItemQuantity { get; set; }
     
         public virtual WuChaOrder WuChaOrder { get; set; }
     }

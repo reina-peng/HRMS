@@ -14,15 +14,22 @@ namespace HRMS
     
     public partial class WuChaOrder
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public WuChaOrder()
+        {
+            this.OrderStoreDetails = new HashSet<OrderStoreDetail>();
+        }
+    
         public int WuChaOrderNumber { get; set; }
         public string GroupID { get; set; }
-        public Nullable<int> StoreID { get; set; }
-        public Nullable<int> EmployeeID { get; set; }
-        public Nullable<System.DateTime> Date { get; set; }
-        public Nullable<decimal> TotalPirce { get; set; }
+        public int StoreID { get; set; }
+        public int EmployeeID { get; set; }
+        public System.DateTime Date { get; set; }
+        public int TotalPirce { get; set; }
     
         public virtual Store Store { get; set; }
         public virtual User User { get; set; }
-        public virtual OrderStoreDetail OrderStoreDetail { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OrderStoreDetail> OrderStoreDetails { get; set; }
     }
 }

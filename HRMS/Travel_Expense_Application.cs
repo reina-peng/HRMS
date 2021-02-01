@@ -15,6 +15,7 @@ namespace HRMS
     public partial class Travel_Expense_Application
     {
         public int ApplyNumber { get; set; }
+        public Nullable<int> Department { get; set; }
         public int EmployeeID { get; set; }
         public string Reason { get; set; }
         public System.DateTime ApplyDate { get; set; }

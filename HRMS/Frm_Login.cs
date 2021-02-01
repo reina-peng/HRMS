@@ -31,71 +31,79 @@ namespace HRMS
 
         private void OK_Click(object sender, EventArgs e)
         {
-            int UserID = int.Parse(this.UsernameTextBox.Text);
-            string password = this.PasswordTextBox.Text;
-
-            string connstring = Settings.Default.MyHR;
-            using (SqlConnection conn = new SqlConnection())
+            try
             {
-                conn.ConnectionString = connstring;
+                int UserID = int.Parse(this.UsernameTextBox.Text);
+                string password = this.PasswordTextBox.Text;
 
-                SqlCommand command = new SqlCommand();
-                command.Connection = conn;
-                command.CommandText = $"select AccountEnable,EmployeeName from [User] where EmployeeID=@UserID and PassWord=@Password";
-
-                command.Parameters.Add("@UserID", SqlDbType.NVarChar, 16).Value = UserID;
-                command.Parameters.Add("@Password", SqlDbType.NVarChar, 40).Value = password;
-
-                conn.Open();
-                SqlDataReader dataReader = command.ExecuteReader();
-                int x = 0;
-
-                MyHREntities hr = new MyHREntities();
-
-                dataReader.Read();
-
-                if (dataReader.HasRows)
+                string connstring = Settings.Default.MyHR;
+                using (SqlConnection conn = new SqlConnection())
                 {
-                    x = int.Parse(dataReader[0].ToString());
+                    conn.ConnectionString = connstring;
 
-                    if (x == 1)
+                    SqlCommand command = new SqlCommand();
+                    command.Connection = conn;
+                    command.CommandText = $"select AccountEnable,EmployeeName from [User] where EmployeeID=@UserID and PassWord=@Password";
+
+                    command.Parameters.Add("@UserID", SqlDbType.NVarChar, 16).Value = UserID;
+                    command.Parameters.Add("@Password", SqlDbType.NVarChar, 40).Value = password;
+
+                    conn.Open();
+                    SqlDataReader dataReader = command.ExecuteReader();
+                    int x = 0;
+
+                    MyHREntities hr = new MyHREntities();
+
+                    dataReader.Read();
+
+                    if (dataReader.HasRows)
                     {
-                        MessageBox.Show($"登入成功，歡迎~{dataReader[1]}，祝您有個美好的一天");
-                        
-                        Frm_HomePage hp = new Frm_HomePage();                        
-                        hp.UserID = UserID;//傳 UserID 到 Hompage
-                        this.Visible = false;
-                        hp.ShowDialog();
-                        this.Dispose();
-                        this.Close();
+                        x = int.Parse(dataReader[0].ToString());
+
+                        if (x == 1)
+                        {
+                            MessageBox.Show($"登入成功，歡迎~{dataReader[1]}，祝您有個美好的一天");
+
+                            Frm_HomePage hp = new Frm_HomePage();
+                            hp.UserID = UserID;//傳 UserID 到 Hompage
+                            this.Visible = false;
+                            hp.ShowDialog();
+                            this.Dispose();
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("帳號未啟用[AccountEnable]，請通知管理員");
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("帳號未啟用[AccountEnable]，請通知管理員");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("登入失敗，請確認帳號密碼是否輸入錯誤");
+                        MessageBox.Show("登入失敗，請確認帳號密碼是否輸入錯誤");
 
-                    count++;
+                        count++;
 
-                    if (count > 3)
-                    {
-                        MessageBox.Show("帳號已關閉，請聯絡管理員!");
-
-                        var q = from p in hr.Users
-                                where p.EmployeeID == UserID
-                                select p;
-
-                        foreach (var i in q)
+                        if (count > 3)
                         {
-                            i.AccountEnable = 0;
+                            MessageBox.Show("帳號已關閉，請聯絡管理員!");
+
+                            var q = from p in hr.Users
+                                    where p.EmployeeID == UserID
+                                    select p;
+
+                            foreach (var i in q)
+                            {
+                                i.AccountEnable = 0;
+                            }
+                            hr.SaveChanges();
                         }
-                        hr.SaveChanges();
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
         private void btnExit_Click(object sender, EventArgs e)

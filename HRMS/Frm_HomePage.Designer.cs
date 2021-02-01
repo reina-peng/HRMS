@@ -31,8 +31,14 @@ namespace HRMS
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_HomePage));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnLogout = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.lblJobTitleName = new System.Windows.Forms.Label();
+            this.lblDeptName = new System.Windows.Forms.Label();
             this.lblJobTitle = new System.Windows.Forms.Label();
             this.lblUserDept = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -47,6 +53,7 @@ namespace HRMS
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblUserID = new System.Windows.Forms.Label();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.button4 = new System.Windows.Forms.Button();
             this.gpbWeather = new System.Windows.Forms.GroupBox();
             this.lblTmax = new System.Windows.Forms.Label();
             this.lblPop = new System.Windows.Forms.Label();
@@ -58,24 +65,40 @@ namespace HRMS
             this.lsbBulletin = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnPublishInfo = new System.Windows.Forms.Button();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.btnLog = new System.Windows.Forms.Button();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.button4 = new System.Windows.Forms.Button();
-            this.lblDeptName = new System.Windows.Forms.Label();
-            this.lblJobTitleName = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnLog = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.labRepairPhone = new System.Windows.Forms.Label();
+            this.btnClear_Repair = new System.Windows.Forms.Button();
+            this.btnSave_Repair = new System.Windows.Forms.Button();
+            this.comRepairCategory = new System.Windows.Forms.ComboBox();
+            this.labRepairName = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtRepairLocation = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtRepairContent = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.dgv_Repair = new System.Windows.Forms.DataGridView();
+            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -89,9 +112,16 @@ namespace HRMS
             this.splitContainer2.SuspendLayout();
             this.gpbWeather.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbWeather)).BeginInit();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
+            this.splitContainer3.Panel1.SuspendLayout();
+            this.splitContainer3.Panel2.SuspendLayout();
+            this.splitContainer3.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Repair)).BeginInit();
             this.SuspendLayout();
             // 
             // btnLogout
@@ -137,6 +167,24 @@ namespace HRMS
             this.splitContainer1.Size = new System.Drawing.Size(1370, 749);
             this.splitContainer1.SplitterDistance = 148;
             this.splitContainer1.TabIndex = 1;
+            // 
+            // lblJobTitleName
+            // 
+            this.lblJobTitleName.AutoSize = true;
+            this.lblJobTitleName.Location = new System.Drawing.Point(1293, 121);
+            this.lblJobTitleName.Name = "lblJobTitleName";
+            this.lblJobTitleName.Size = new System.Drawing.Size(69, 12);
+            this.lblJobTitleName.TabIndex = 16;
+            this.lblJobTitleName.Text = "JobTitleName";
+            // 
+            // lblDeptName
+            // 
+            this.lblDeptName.AutoSize = true;
+            this.lblDeptName.Location = new System.Drawing.Point(1293, 88);
+            this.lblDeptName.Name = "lblDeptName";
+            this.lblDeptName.Size = new System.Drawing.Size(54, 12);
+            this.lblDeptName.TabIndex = 15;
+            this.lblDeptName.Text = "DeptName";
             // 
             // lblJobTitle
             // 
@@ -283,6 +331,15 @@ namespace HRMS
             this.splitContainer2.SplitterDistance = 166;
             this.splitContainer2.TabIndex = 2;
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(823, 109);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(82, 49);
+            this.button4.TabIndex = 8;
+            this.button4.Text = "發佈公告";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
             // gpbWeather
             // 
             this.gpbWeather.BackColor = System.Drawing.Color.White;
@@ -397,72 +454,14 @@ namespace HRMS
             this.btnPublishInfo.UseVisualStyleBackColor = true;
             this.btnPublishInfo.Click += new System.EventHandler(this.btnPublishInfo_Click);
             // 
-            // tabControl1
+            // contextMenuStrip1
             // 
-            this.tabControl1.Alignment = System.Windows.Forms.TabAlignment.Left;
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.ItemSize = new System.Drawing.Size(25, 150);
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Multiline = true;
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1366, 423);
-            this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.tabControl1.TabIndex = 1;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.textBox6);
-            this.tabPage1.Controls.Add(this.button3);
-            this.tabPage1.Controls.Add(this.btnLog);
-            this.tabPage1.Location = new System.Drawing.Point(154, 4);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1208, 415);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "打卡";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(598, 78);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(91, 22);
-            this.textBox6.TabIndex = 2;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(313, 32);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(134, 67);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // btnLog
-            // 
-            this.btnLog.Location = new System.Drawing.Point(421, 210);
-            this.btnLog.Name = "btnLog";
-            this.btnLog.Size = new System.Drawing.Size(344, 50);
-            this.btnLog.TabIndex = 0;
-            this.btnLog.Text = "打卡";
-            this.btnLog.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(154, 4);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1208, 415);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "考勤";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.treeView1);
             this.tabPage3.Controls.Add(this.button2);
             this.tabPage3.Controls.Add(this.button1);
             this.tabPage3.Controls.Add(this.textBox5);
@@ -477,15 +476,40 @@ namespace HRMS
             this.tabPage3.Text = "公告發佈";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // dateTimePicker1
             // 
-            this.button2.Location = new System.Drawing.Point(588, 125);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(51, 37);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.dateTimePicker1.Location = new System.Drawing.Point(559, 67);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(132, 22);
+            this.dateTimePicker1.TabIndex = 1;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(588, 17);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(116, 22);
+            this.textBox2.TabIndex = 2;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(907, 71);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(40, 22);
+            this.textBox3.TabIndex = 3;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(907, 120);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(40, 22);
+            this.textBox4.TabIndex = 4;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(927, 175);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(40, 22);
+            this.textBox5.TabIndex = 5;
             // 
             // button1
             // 
@@ -497,72 +521,353 @@ namespace HRMS
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox5
+            // button2
             // 
-            this.textBox5.Location = new System.Drawing.Point(927, 175);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(40, 22);
-            this.textBox5.TabIndex = 5;
+            this.button2.Location = new System.Drawing.Point(588, 125);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(51, 37);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // textBox4
+            // treeView1
             // 
-            this.textBox4.Location = new System.Drawing.Point(907, 120);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(40, 22);
-            this.textBox4.TabIndex = 4;
+            this.treeView1.Location = new System.Drawing.Point(208, 10);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(284, 199);
+            this.treeView1.TabIndex = 8;
             // 
-            // textBox3
+            // tabPage2
             // 
-            this.textBox3.Location = new System.Drawing.Point(907, 71);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(40, 22);
-            this.textBox3.TabIndex = 3;
+            this.tabPage2.Location = new System.Drawing.Point(154, 4);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1208, 415);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "考勤";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // textBox2
+            // tabPage1
             // 
-            this.textBox2.Location = new System.Drawing.Point(588, 17);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(116, 22);
-            this.textBox2.TabIndex = 2;
+            this.tabPage1.Controls.Add(this.label11);
+            this.tabPage1.Controls.Add(this.textBox6);
+            this.tabPage1.Controls.Add(this.button3);
+            this.tabPage1.Controls.Add(this.btnLog);
+            this.tabPage1.Location = new System.Drawing.Point(154, 4);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1208, 415);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "打卡";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // dateTimePicker1
+            // btnLog
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(559, 67);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(132, 22);
-            this.dateTimePicker1.TabIndex = 1;
+            this.btnLog.Location = new System.Drawing.Point(421, 210);
+            this.btnLog.Name = "btnLog";
+            this.btnLog.Size = new System.Drawing.Size(344, 50);
+            this.btnLog.TabIndex = 0;
+            this.btnLog.Text = "打卡";
+            this.btnLog.UseVisualStyleBackColor = true;
             // 
-            // contextMenuStrip1
+            // button3
             // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.button3.Location = new System.Drawing.Point(313, 32);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(134, 67);
+            this.button3.TabIndex = 1;
+            this.button3.Text = "button3";
+            this.button3.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // textBox6
             // 
-            this.button4.Location = new System.Drawing.Point(823, 109);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(82, 49);
-            this.button4.TabIndex = 8;
-            this.button4.Text = "發佈公告";
-            this.button4.UseVisualStyleBackColor = true;
+            this.textBox6.Location = new System.Drawing.Point(598, 78);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(91, 22);
+            this.textBox6.TabIndex = 2;
             // 
-            // lblDeptName
+            // tabControl1
             // 
-            this.lblDeptName.AutoSize = true;
-            this.lblDeptName.Location = new System.Drawing.Point(1293, 88);
-            this.lblDeptName.Name = "lblDeptName";
-            this.lblDeptName.Size = new System.Drawing.Size(54, 12);
-            this.lblDeptName.TabIndex = 15;
-            this.lblDeptName.Text = "DeptName";
+            this.tabControl1.Alignment = System.Windows.Forms.TabAlignment.Left;
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.ItemSize = new System.Drawing.Size(25, 150);
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Multiline = true;
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1366, 423);
+            this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.tabControl1.TabIndex = 1;
             // 
-            // lblJobTitleName
+            // tabPage4
             // 
-            this.lblJobTitleName.AutoSize = true;
-            this.lblJobTitleName.Location = new System.Drawing.Point(1293, 121);
-            this.lblJobTitleName.Name = "lblJobTitleName";
-            this.lblJobTitleName.Size = new System.Drawing.Size(69, 12);
-            this.lblJobTitleName.TabIndex = 16;
-            this.lblJobTitleName.Text = "JobTitleName";
+            this.tabPage4.Controls.Add(this.splitContainer3);
+            this.tabPage4.Location = new System.Drawing.Point(154, 4);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(1208, 415);
+            this.tabPage4.TabIndex = 4;
+            this.tabPage4.Text = "報修";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // splitContainer3
+            // 
+            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer3.Margin = new System.Windows.Forms.Padding(2);
+            this.splitContainer3.Name = "splitContainer3";
+            this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer3.Panel1
+            // 
+            this.splitContainer3.Panel1.Controls.Add(this.groupBox2);
+            this.splitContainer3.Panel1.Controls.Add(this.groupBox1);
+            // 
+            // splitContainer3.Panel2
+            // 
+            this.splitContainer3.Panel2.Controls.Add(this.dgv_Repair);
+            this.splitContainer3.Size = new System.Drawing.Size(1208, 415);
+            this.splitContainer3.SplitterDistance = 178;
+            this.splitContainer3.SplitterWidth = 3;
+            this.splitContainer3.TabIndex = 1;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.SystemColors.Highlight;
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.groupBox2.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.groupBox2.Location = new System.Drawing.Point(673, 0);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox2.Size = new System.Drawing.Size(535, 178);
+            this.groupBox2.TabIndex = 17;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "申請統計";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.groupBox1.Controls.Add(this.labRepairPhone);
+            this.groupBox1.Controls.Add(this.btnClear_Repair);
+            this.groupBox1.Controls.Add(this.btnSave_Repair);
+            this.groupBox1.Controls.Add(this.comRepairCategory);
+            this.groupBox1.Controls.Add(this.labRepairName);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.txtRepairLocation);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.txtRepairContent);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.groupBox1.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Size = new System.Drawing.Size(975, 178);
+            this.groupBox1.TabIndex = 13;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "申請報修";
+            // 
+            // labRepairPhone
+            // 
+            this.labRepairPhone.AutoSize = true;
+            this.labRepairPhone.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.labRepairPhone.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.labRepairPhone.Location = new System.Drawing.Point(99, 76);
+            this.labRepairPhone.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labRepairPhone.Name = "labRepairPhone";
+            this.labRepairPhone.Size = new System.Drawing.Size(58, 20);
+            this.labRepairPhone.TabIndex = 16;
+            this.labRepairPhone.Text = "Phone";
+            // 
+            // btnClear_Repair
+            // 
+            this.btnClear_Repair.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnClear_Repair.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClear_Repair.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnClear_Repair.Location = new System.Drawing.Point(667, 82);
+            this.btnClear_Repair.Margin = new System.Windows.Forms.Padding(2);
+            this.btnClear_Repair.Name = "btnClear_Repair";
+            this.btnClear_Repair.Size = new System.Drawing.Size(75, 30);
+            this.btnClear_Repair.TabIndex = 15;
+            this.btnClear_Repair.Text = "清空";
+            this.btnClear_Repair.UseVisualStyleBackColor = false;
+            // 
+            // btnSave_Repair
+            // 
+            this.btnSave_Repair.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnSave_Repair.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSave_Repair.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnSave_Repair.Location = new System.Drawing.Point(667, 34);
+            this.btnSave_Repair.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSave_Repair.Name = "btnSave_Repair";
+            this.btnSave_Repair.Size = new System.Drawing.Size(75, 30);
+            this.btnSave_Repair.TabIndex = 14;
+            this.btnSave_Repair.Text = "送出";
+            this.btnSave_Repair.UseVisualStyleBackColor = false;
+            // 
+            // comRepairCategory
+            // 
+            this.comRepairCategory.FormattingEnabled = true;
+            this.comRepairCategory.Items.AddRange(new object[] {
+            "資訊修繕",
+            "總務修繕"});
+            this.comRepairCategory.Location = new System.Drawing.Point(98, 122);
+            this.comRepairCategory.Margin = new System.Windows.Forms.Padding(2);
+            this.comRepairCategory.Name = "comRepairCategory";
+            this.comRepairCategory.Size = new System.Drawing.Size(132, 28);
+            this.comRepairCategory.TabIndex = 13;
+            this.comRepairCategory.Text = "請選擇";
+            // 
+            // labRepairName
+            // 
+            this.labRepairName.AutoSize = true;
+            this.labRepairName.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.labRepairName.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.labRepairName.Location = new System.Drawing.Point(94, 30);
+            this.labRepairName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labRepairName.Name = "labRepairName";
+            this.labRepairName.Size = new System.Drawing.Size(55, 20);
+            this.labRepairName.TabIndex = 12;
+            this.labRepairName.Text = "Name";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.label6.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label6.Location = new System.Drawing.Point(10, 32);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(73, 20);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "申請者：";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.label10.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label10.Location = new System.Drawing.Point(15, 130);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(57, 20);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "類別：";
+            // 
+            // txtRepairLocation
+            // 
+            this.txtRepairLocation.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtRepairLocation.Location = new System.Drawing.Point(98, 175);
+            this.txtRepairLocation.Margin = new System.Windows.Forms.Padding(2);
+            this.txtRepairLocation.Name = "txtRepairLocation";
+            this.txtRepairLocation.Size = new System.Drawing.Size(130, 29);
+            this.txtRepairLocation.TabIndex = 10;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.label9.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label9.Location = new System.Drawing.Point(15, 178);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(57, 20);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "地點：";
+            // 
+            // txtRepairContent
+            // 
+            this.txtRepairContent.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtRepairContent.Location = new System.Drawing.Point(322, 29);
+            this.txtRepairContent.Margin = new System.Windows.Forms.Padding(2);
+            this.txtRepairContent.Multiline = true;
+            this.txtRepairContent.Name = "txtRepairContent";
+            this.txtRepairContent.Size = new System.Drawing.Size(323, 172);
+            this.txtRepairContent.TabIndex = 6;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.label8.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label8.Location = new System.Drawing.Point(235, 32);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(89, 20);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "維修內容：";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.label7.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label7.Location = new System.Drawing.Point(10, 81);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(89, 20);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "聯絡電話：";
+            // 
+            // dgv_Repair
+            // 
+            this.dgv_Repair.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Teal;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.SkyBlue;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_Repair.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgv_Repair.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.SkyBlue;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_Repair.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dgv_Repair.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_Repair.Location = new System.Drawing.Point(0, 0);
+            this.dgv_Repair.Margin = new System.Windows.Forms.Padding(2);
+            this.dgv_Repair.Name = "dgv_Repair";
+            this.dgv_Repair.ReadOnly = true;
+            this.dgv_Repair.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.SkyBlue;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_Repair.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.dgv_Repair.RowHeadersWidth = 51;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            this.dgv_Repair.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            this.dgv_Repair.RowTemplate.Height = 27;
+            this.dgv_Repair.Size = new System.Drawing.Size(1208, 234);
+            this.dgv_Repair.TabIndex = 0;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(182, 144);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(39, 12);
+            this.label11.TabIndex = 3;
+            this.label11.Text = "label11";
             // 
             // Frm_HomePage
             // 
@@ -588,11 +893,19 @@ namespace HRMS
             this.gpbWeather.ResumeLayout(false);
             this.gpbWeather.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbWeather)).EndInit();
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
+            this.splitContainer3.Panel1.ResumeLayout(false);
+            this.splitContainer3.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
+            this.splitContainer3.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Repair)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -601,9 +914,6 @@ namespace HRMS
 
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
         internal System.Windows.Forms.Label lblUserID;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.Label lblTitle;
@@ -611,18 +921,9 @@ namespace HRMS
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label lblSubtitle;
         private System.Windows.Forms.Button btnPublishInfo;
-        private System.Windows.Forms.Button btnLog;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         internal System.Windows.Forms.ListBox lsbBulletin;
@@ -637,12 +938,43 @@ namespace HRMS
         private System.Windows.Forms.GroupBox gpbWeather;
         private System.Windows.Forms.Label lblTmin;
         private System.Windows.Forms.Label lblTime;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label lblPop;
         private System.Windows.Forms.Label lblTmax;
-        private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Button button4;
         internal System.Windows.Forms.Label lblDeptName;
         internal System.Windows.Forms.Label lblJobTitleName;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnLog;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.SplitContainer splitContainer3;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label labRepairPhone;
+        private System.Windows.Forms.Button btnClear_Repair;
+        private System.Windows.Forms.Button btnSave_Repair;
+        private System.Windows.Forms.ComboBox comRepairCategory;
+        private System.Windows.Forms.Label labRepairName;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtRepairLocation;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtRepairContent;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DataGridView dgv_Repair;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label label11;
     }
 }

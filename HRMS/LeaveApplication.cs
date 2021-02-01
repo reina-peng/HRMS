@@ -15,6 +15,7 @@ namespace HRMS
     public partial class LeaveApplication
     {
         public int ApplyNumber { get; set; }
+        public Nullable<int> Department { get; set; }
         public int EmployeeID { get; set; }
         public System.DateTime ApplyDate { get; set; }
         public Nullable<int> LeaveCategory { get; set; }

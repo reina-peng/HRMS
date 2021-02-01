@@ -35,6 +35,7 @@ namespace HRMS
         }
 
 
+        //todo wz 增加部門ID轉換成名字、 職位ID轉換成名字、 主管職位ID轉換成名字、 在職狀態ID轉換成名字
         //從資料庫撈出員工基本資料User到各欄位上面
         #region LoadUser
         private void LoadUser(int ID)
@@ -64,10 +65,9 @@ namespace HRMS
                         this.comSex.Text = (dataReader["Gender"].ToString());
                         this.txtEmail.Text = (dataReader["Email"].ToString());
                         this.txtAdd.Text = (dataReader["Address"].ToString());
-                        this.labDept.Text = (dataReader["Department"].ToString());
-                        this.labJobTitle.Text = (dataReader["JobTitle"].ToString());
-
-                        this.labSup.Text = (dataReader["Supervisor"].ToString());
+                        //this.labDept.Text = (dataReader["Department"].ToString());
+                        //this.labJobTitle.Text = (dataReader["JobTitle"].ToString());
+                        //this.labSup.Text = (dataReader["Supervisor"].ToString());
                         this.DTBir.Text = (dataReader["Birthday"].ToString());
                         this.txtPhone.Text = (dataReader["Phone"].ToString());
                         this.txtEmergencyP.Text = (dataReader["EmergencyPerson"].ToString());
@@ -75,6 +75,46 @@ namespace HRMS
                         this.labOBS.Text = (dataReader["OnBoardState"].ToString());
                         this.labAccS.Text = (dataReader["AccountEnable"].ToString());
                     }
+
+                    //部門ID轉換成名字
+                    dataReader.Close();
+                    SqlCommand command1 = new SqlCommand($"select d.DepartmentName from [User] as u join[Department] as d on u.Department = d.DepartmentID where EmployeeID ={ID}", conn);
+                    SqlDataReader dataReader1 = command1.ExecuteReader();
+                    while (dataReader1.Read())
+                    {
+                        this.labDept.Text = (dataReader1[0].ToString());
+                    }
+
+                    //職位ID轉換成名字
+                    dataReader1.Close();
+                    SqlCommand command2 = new SqlCommand($"select j.JobTitle from [User] as u join [JobTitle] as j on u.JobTitle=j.JobTitleID where u.EmployeeID={ID}", conn);
+                    SqlDataReader dataReader2 = command2.ExecuteReader();
+                    while (dataReader2.Read())
+                    {
+                        this.labJobTitle.Text = (dataReader2[0].ToString());
+                    }
+
+
+                    //主管職位ID轉換成名字
+                    dataReader2.Close();
+                    SqlCommand command3 = new SqlCommand($"select j.EmployeeName from [User] as u join [User] as j on u.Supervisor=j.EmployeeID where u.EmployeeID={ID}", conn);
+                    SqlDataReader dataReader3 = command3.ExecuteReader();
+                    while (dataReader3.Read())
+                    {
+                        this.labSup.Text = (dataReader3[0].ToString());
+                    }
+
+                    //在職狀態ID轉換成名字
+                    dataReader3.Close();
+                    SqlCommand command4 = new SqlCommand($"select o.OnBoardStatus from [User] as u join [OnBoardStatus] as o on u.OnBoardState=o.OnBoardStatusID where u.EmployeeID={ID}", conn);
+                    SqlDataReader dataReader4 = command4.ExecuteReader();
+                    while (dataReader4.Read())
+                    {
+                        this.labOBS.Text = (dataReader4[0].ToString());
+                    }
+
+
+
                 }
 
             }
@@ -114,10 +154,10 @@ namespace HRMS
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 this.pictureBox1.Image = this.pictureBox1.ErrorImage;
-                MessageBox.Show(ex.Message);
+                // MessageBox.Show(ex.Message);
 
             }
         }

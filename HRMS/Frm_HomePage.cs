@@ -35,11 +35,31 @@ namespace HRMS
             //tabControl改側邊 > Alignment:Left > SizeMode:Fixed > 修改 ItemSize > 加下一行指令 
             this.tabControl1.DrawMode = TabDrawMode.OwnerDrawFixed;            
             this.Load += HomePage_Load;
-            LoadBulletin();//載入佈告欄            
+            LoadBulletin();//載入佈告欄 
+            this.tabPage3.Click += TabPage3_Click;
+            this.tabControl1.SelectedIndexChanged += TabControl1_SelectedIndexChanged;
         }
+
+        private void TabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedIndex == 2)
+            {
+                var q = hrEntities.Users.Where(o => o.EmployeeID == UserID).Select(o => o.EmployeeName);
+                TreeNode treeNode1 = treeView1.Nodes.Add(q.ToList().First().ToString());
+            }
+        }
+
+        private void TabPage3_Click(object sender, EventArgs e)
+        {
+            var q = hrEntities.Users.Where(o => o.EmployeeID == UserID).Select(o=>o.EmployeeID);
+            TreeNode treeNode1 = treeView1.Nodes.Add(q.ToList().First().ToString());
+        }
+
         Thread thWeather;//天氣輪播執行緒
+        Thread thTimer;
         private void HomePage_Load(object sender, EventArgs e)
         {
+            //天氣描述   
             this.lblWeather.BackColor = Color.Transparent;
             this.lblWeather.Parent = this.pcbWeather;
             this.lblWeather.Location = new Point(0, 90);
@@ -55,21 +75,29 @@ namespace HRMS
             this.lblUserDept.Text = userInfo.Dept.ToString();
             this.lblDeptName.Text = userInfo.DeptName;
             this.lblJobTitle.Text = userInfo.JobTitle.ToString();
-            this.lblDeptName.Text = userInfo.JobTitleName;
+            this.lblJobTitleName.Text = userInfo.JobTitleName;
             //tabControl1.TabPages.Remove(tabPage1);
             //判斷員工職等設定佈告欄編輯按鈕  Visible
             this.btnPublishInfo.Visible = (userInfo.JobTitle <= 1) ? true : false;
-             #region 天氣輪播執行緒
+            #region 天氣輪播執行緒
             //參考 https://www.itread01.com/content/1544577918.html
+            thTimer = new Thread(delegate ()
+            {
+                while (true)
+                    ChangeTime(1000);
+            }
+            );
             thWeather = new Thread(delegate ()
             {
                 while (true)
                 {
-                    ChangeImage(Image.FromFile($@"..\..\Photo\Weather\{weatherCode[0].ToString("00")}.png"), time[0], weathdescrible[0], $"{mintemperature[0]} °c",$" {maxtemperature[0]} °c", pop[0]);
-                    ChangeImage(Image.FromFile($@"..\..\Photo\Weather\{weatherCode[1]:00}.png"), time[1], weathdescrible[1], $"{mintemperature[1]} °c", $" {maxtemperature[1]} °c", pop[1]);
-                    ChangeImage(Image.FromFile($@"..\..\Photo\Weather\{weatherCode[2]:00}.png"), time[2], weathdescrible[2], $"{mintemperature[2]} °c", $" {maxtemperature[2]} °c", pop[2]);
+                    ChangeImage(Image.FromFile($@"..\..\Photo\Weather\{weatherCode[0].ToString("00")}.png"), time[0], weathdescrible[0], $"{mintemperature[0]} °c",$"{maxtemperature[0]} °c", pop[0]);
+                    ChangeImage(Image.FromFile($@"..\..\Photo\Weather\{weatherCode[1]:00}.png"), time[1], weathdescrible[1], $"{mintemperature[1]} °c", $"{maxtemperature[1]} °c", pop[1]);
+                    ChangeImage(Image.FromFile($@"..\..\Photo\Weather\{weatherCode[2]:00}.png"), time[2], weathdescrible[2], $"{mintemperature[2]} °c", $"{maxtemperature[2]} °c", pop[2]);
                 }
             });
+            thTimer.IsBackground = true;
+            thTimer.Start();
             thWeather.IsBackground = true;
             thWeather.Start();
             #endregion
@@ -166,6 +194,14 @@ namespace HRMS
             }
         }
         #endregion
+        private void ChangeTime(int millisecondTimeOut)
+        {
+            this.Invoke(new Action(() =>
+            {
+                label11.Text = DateTime.Now.ToString();
+            }));
+            Thread.Sleep(millisecondTimeOut);
+        }
         private void ChangeImage(Image img, string time, string describe, string tempMin, string tempMax, string pop, int millisecondTimeOut = 4000)
         {
             this.Invoke(new Action(() =>
@@ -252,6 +288,31 @@ namespace HRMS
             f.id = UserID;
             f.labID.Text = UserID.ToString();
             f.Show();
-        }        
+        }
+
+        private void btnClear_Repair_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSave_Repair_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRepairAllCheck_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgv_RepairSup_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgv_RepairSup_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+
+        }
     }
 }

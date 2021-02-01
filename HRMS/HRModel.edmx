@@ -101,8 +101,14 @@
           <Property Name="InterViewerEmployeeID" Type="int" />
           <Property Name="InterViewDate" Type="date" />
           <Property Name="InterViewStatus" Type="int" />
-          <Property Name="InterViewProcessID" Type="text" />
+          <Property Name="InterViewProcess" Type="text" />
         </EntityType>
+        <!--產生期間發現錯誤:
+警告 6013: 資料表/檢視 'MyHR.dbo.InterViewProcess' 未定義主索引鍵，也無法推斷有效的主索引鍵。此資料表/檢視已被排除。如果要使用此實體，您必須檢閱您的結構描述，加入正確的索引鍵，並將它取消註解。
+        <EntityType Name="InterViewProcess">
+          <Property Name="InterViewProcessID" Type="int" />
+          <Property Name="InterViewProcess" Type="text" />
+        </EntityType>-->
         <EntityType Name="InterViewStatus">
           <Key>
             <PropertyRef Name="InterViewStatusID" />
@@ -115,9 +121,9 @@
             <PropertyRef Name="ItemID" />
           </Key>
           <Property Name="ItemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="StoreID" Type="int" />
-          <Property Name="ItemName" Type="nvarchar" MaxLength="15" />
-          <Property Name="ItemPrice" Type="money" />
+          <Property Name="StoreID" Type="int" Nullable="false" />
+          <Property Name="ItemName" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="ItemPrice" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="JobTitle">
           <Key>
@@ -138,6 +144,7 @@
             <PropertyRef Name="ApplyNumber" />
           </Key>
           <Property Name="ApplyNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Department" Type="int" />
           <Property Name="EmployeeID" Type="int" Nullable="false" />
           <Property Name="ApplyDate" Type="date" Nullable="false" />
           <Property Name="LeaveCategory" Type="int" />
@@ -167,7 +174,7 @@
           <Key>
             <PropertyRef Name="LostCheckStatusID" />
           </Key>
-          <Property Name="LostCheckStatusID" Type="tinyint" Nullable="false" />
+          <Property Name="LostCheckStatusID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="LostCheckStatus" Type="nvarchar" MaxLength="15" />
         </EntityType>
         <EntityType Name="OnBoardStatus">
@@ -182,11 +189,14 @@
         <EntityType Name="OrderStoreDetail">
           <Key>
             <PropertyRef Name="WuChaOrderNumber" />
+            <PropertyRef Name="StoreID" />
+            <PropertyRef Name="ItemID" />
+            <PropertyRef Name="ItemQuantity" />
           </Key>
           <Property Name="WuChaOrderNumber" Type="int" Nullable="false" />
-          <Property Name="StoreID" Type="int" />
-          <Property Name="ItemID" Type="int" />
-          <Property Name="ItemQuantity" Type="int" />
+          <Property Name="StoreID" Type="int" Nullable="false" />
+          <Property Name="ItemID" Type="int" Nullable="false" />
+          <Property Name="ItemQuantity" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Repair">
           <Key>
@@ -206,7 +216,7 @@
             <PropertyRef Name="StoreID" />
           </Key>
           <Property Name="StoreID" Type="int" Nullable="false" />
-          <Property Name="StoreName" Type="nvarchar" MaxLength="10" />
+          <Property Name="StoreName" Type="nvarchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -223,6 +233,7 @@
             <PropertyRef Name="ApplyNumber" />
           </Key>
           <Property Name="ApplyNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Department" Type="int" />
           <Property Name="EmployeeID" Type="int" Nullable="false" />
           <Property Name="Reason" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="ApplyDate" Type="date" Nullable="false" />
@@ -260,11 +271,11 @@
             <PropertyRef Name="WuChaOrderNumber" />
           </Key>
           <Property Name="WuChaOrderNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="GroupID" Type="nchar" MaxLength="10" />
-          <Property Name="StoreID" Type="int" />
-          <Property Name="EmployeeID" Type="int" />
-          <Property Name="Date" Type="date" />
-          <Property Name="TotalPirce" Type="money" />
+          <Property Name="GroupID" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="StoreID" Type="int" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="TotalPirce" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Absence_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
@@ -398,8 +409,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <!--產生期間發現錯誤:
+錯誤 6004: 資料表 'MyHR.dbo.InterViewProcess' 被某個關聯性參考，但是找不到。
+        <Association Name="FK_InterViewProcess_InterViewee" />-->
         <Association Name="FK_Item_Store">
-          <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
+          <End Role="Store" Type="Self.Store" Multiplicity="1" />
           <End Role="Item" Type="Self.Item" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Store">
@@ -472,7 +486,7 @@
         </Association>
         <Association Name="FK_OrderStoreDetail_WuChaOrder1">
           <End Role="WuChaOrder" Type="Self.WuChaOrder" Multiplicity="1" />
-          <End Role="OrderStoreDetail" Type="Self.OrderStoreDetail" Multiplicity="0..1" />
+          <End Role="OrderStoreDetail" Type="Self.OrderStoreDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="WuChaOrder">
               <PropertyRef Name="WuChaOrderNumber" />
@@ -567,7 +581,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_WuChaOrder_Store">
-          <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
+          <End Role="Store" Type="Self.Store" Multiplicity="1" />
           <End Role="WuChaOrder" Type="Self.WuChaOrder" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Store">
@@ -579,7 +593,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_WuChaOrder_User">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="WuChaOrder" Type="Self.WuChaOrder" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
@@ -765,6 +779,7 @@
           <EntitySet Name="Users" EntityType="MyHRModel.User" />
           <EntitySet Name="WuChaOrders" EntityType="MyHRModel.WuChaOrder" />
           <EntitySet Name="ApplyDetails" EntityType="MyHRModel.ApplyDetail" />
+          <EntitySet Name="OrderStoreDetails" EntityType="MyHRModel.OrderStoreDetail" />
           <AssociationSet Name="FK_Absence_User" Association="MyHRModel.FK_Absence_User">
             <End Role="User" EntitySet="Users" />
             <End Role="Absence" EntitySet="Absences" />
@@ -869,7 +884,6 @@
             <End Role="User" EntitySet="Users" />
             <End Role="WuChaOrder" EntitySet="WuChaOrders" />
           </AssociationSet>
-          <EntitySet Name="OrderStoreDetails" EntityType="MyHRModel.OrderStoreDetail" />
           <AssociationSet Name="FK_OrderStoreDetail_WuChaOrder1" Association="MyHRModel.FK_OrderStoreDetail_WuChaOrder1">
             <End Role="WuChaOrder" EntitySet="WuChaOrders" />
             <End Role="OrderStoreDetail" EntitySet="OrderStoreDetails" />
@@ -974,7 +988,7 @@
           <Property Name="InterViewerEmployeeID" Type="Int32" />
           <Property Name="InterViewDate" Type="DateTime" Precision="0" />
           <Property Name="InterViewStatus" Type="Int32" />
-          <Property Name="InterViewProcessID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="InterViewProcess" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Department1" Relationship="MyHRModel.FK_InterViewee_Department" FromRole="InterViewee" ToRole="Department" />
           <NavigationProperty Name="InterViewStatu" Relationship="MyHRModel.FK_InterViewee_InterViewStatus" FromRole="InterViewee" ToRole="InterViewStatu" />
           <NavigationProperty Name="JobTitle1" Relationship="MyHRModel.FK_InterViewee_JobTitle" FromRole="InterViewee" ToRole="JobTitle" />
@@ -993,9 +1007,9 @@
             <PropertyRef Name="ItemID" />
           </Key>
           <Property Name="ItemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="StoreID" Type="Int32" />
-          <Property Name="ItemName" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="ItemPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="StoreID" Type="Int32" Nullable="false" />
+          <Property Name="ItemName" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="ItemPrice" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Store" Relationship="MyHRModel.FK_Item_Store" FromRole="Item" ToRole="Store" />
         </EntityType>
         <EntityType Name="JobTitle">
@@ -1020,6 +1034,7 @@
             <PropertyRef Name="ApplyNumber" />
           </Key>
           <Property Name="ApplyNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Department" Type="Int32" />
           <Property Name="EmployeeID" Type="Int32" Nullable="false" />
           <Property Name="ApplyDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="LeaveCategory" Type="Int32" />
@@ -1054,7 +1069,7 @@
           <Key>
             <PropertyRef Name="LostCheckStatusID" />
           </Key>
-          <Property Name="LostCheckStatusID" Type="Byte" Nullable="false" />
+          <Property Name="LostCheckStatusID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="LostCheckStatus" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Losts" Relationship="MyHRModel.FK_Lost_LostPropertyCheckStatus" FromRole="LostPropertyCheckStatu" ToRole="Lost" />
         </EntityType>
@@ -1085,7 +1100,7 @@
             <PropertyRef Name="StoreID" />
           </Key>
           <Property Name="StoreID" Type="Int32" Nullable="false" />
-          <Property Name="StoreName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="StoreName" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Items" Relationship="MyHRModel.FK_Item_Store" FromRole="Store" ToRole="Item" />
           <NavigationProperty Name="WuChaOrders" Relationship="MyHRModel.FK_WuChaOrder_Store" FromRole="Store" ToRole="WuChaOrder" />
         </EntityType>
@@ -1104,6 +1119,7 @@
             <PropertyRef Name="ApplyNumber" />
           </Key>
           <Property Name="ApplyNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Department" Type="Int32" />
           <Property Name="EmployeeID" Type="Int32" Nullable="false" />
           <Property Name="Reason" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="ApplyDate" Type="DateTime" Nullable="false" Precision="0" />
@@ -1157,14 +1173,14 @@
             <PropertyRef Name="WuChaOrderNumber" />
           </Key>
           <Property Name="WuChaOrderNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="GroupID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="StoreID" Type="Int32" />
-          <Property Name="EmployeeID" Type="Int32" />
-          <Property Name="Date" Type="DateTime" Precision="0" />
-          <Property Name="TotalPirce" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="GroupID" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="StoreID" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TotalPirce" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Store" Relationship="MyHRModel.FK_WuChaOrder_Store" FromRole="WuChaOrder" ToRole="Store" />
           <NavigationProperty Name="User" Relationship="MyHRModel.FK_WuChaOrder_User" FromRole="WuChaOrder" ToRole="User" />
-          <NavigationProperty Name="OrderStoreDetail" Relationship="MyHRModel.FK_OrderStoreDetail_WuChaOrder1" FromRole="WuChaOrder" ToRole="OrderStoreDetail" />
+          <NavigationProperty Name="OrderStoreDetails" Relationship="MyHRModel.FK_OrderStoreDetail_WuChaOrder1" FromRole="WuChaOrder" ToRole="OrderStoreDetail" />
         </EntityType>
         <EntityType Name="ApplyDetail">
           <Key>
@@ -1175,6 +1191,19 @@
           <Property Name="Amont" Type="Decimal" Precision="19" Scale="4" />
           <NavigationProperty Name="CostCategory" Relationship="MyHRModel.FK_ApplyDetail_Cost" FromRole="ApplyDetail" ToRole="CostCategory" />
           <NavigationProperty Name="Travel_Expense_Application" Relationship="MyHRModel.FK_ApplyDetail_Travel_Expense_Application1" FromRole="ApplyDetail" ToRole="Travel_Expense_Application" />
+        </EntityType>
+        <EntityType Name="OrderStoreDetail">
+          <Key>
+            <PropertyRef Name="WuChaOrderNumber" />
+            <PropertyRef Name="StoreID" />
+            <PropertyRef Name="ItemID" />
+            <PropertyRef Name="ItemQuantity" />
+          </Key>
+          <Property Name="WuChaOrderNumber" Type="Int32" Nullable="false" />
+          <Property Name="StoreID" Type="Int32" Nullable="false" />
+          <Property Name="ItemID" Type="Int32" Nullable="false" />
+          <Property Name="ItemQuantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="WuChaOrder" Relationship="MyHRModel.FK_OrderStoreDetail_WuChaOrder1" FromRole="OrderStoreDetail" ToRole="WuChaOrder" />
         </EntityType>
         <Association Name="FK_Absence_User">
           <End Type="MyHRModel.User" Role="User" Multiplicity="1" />
@@ -1333,7 +1362,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Item_Store">
-          <End Type="MyHRModel.Store" Role="Store" Multiplicity="0..1" />
+          <End Type="MyHRModel.Store" Role="Store" Multiplicity="1" />
           <End Type="MyHRModel.Item" Role="Item" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Store">
@@ -1429,7 +1458,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_WuChaOrder_Store">
-          <End Type="MyHRModel.Store" Role="Store" Multiplicity="0..1" />
+          <End Type="MyHRModel.Store" Role="Store" Multiplicity="1" />
           <End Type="MyHRModel.WuChaOrder" Role="WuChaOrder" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Store">
@@ -1477,7 +1506,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_WuChaOrder_User">
-          <End Type="MyHRModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="MyHRModel.User" Role="User" Multiplicity="1" />
           <End Type="MyHRModel.WuChaOrder" Role="WuChaOrder" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
@@ -1488,19 +1517,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="OrderStoreDetail">
-          <Key>
-            <PropertyRef Name="WuChaOrderNumber" />
-          </Key>
-          <Property Name="WuChaOrderNumber" Type="Int32" Nullable="false" />
-          <Property Name="StoreID" Type="Int32" />
-          <Property Name="ItemID" Type="Int32" />
-          <Property Name="ItemQuantity" Type="Int32" />
-          <NavigationProperty Name="WuChaOrder" Relationship="MyHRModel.FK_OrderStoreDetail_WuChaOrder1" FromRole="OrderStoreDetail" ToRole="WuChaOrder" />
-        </EntityType>
         <Association Name="FK_OrderStoreDetail_WuChaOrder1">
           <End Type="MyHRModel.WuChaOrder" Role="WuChaOrder" Multiplicity="1" />
-          <End Type="MyHRModel.OrderStoreDetail" Role="OrderStoreDetail" Multiplicity="0..1" />
+          <End Type="MyHRModel.OrderStoreDetail" Role="OrderStoreDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="WuChaOrder">
               <PropertyRef Name="WuChaOrderNumber" />
@@ -1591,7 +1610,7 @@
           <EntitySetMapping Name="InterViewees">
             <EntityTypeMapping TypeName="MyHRModel.InterViewee">
               <MappingFragment StoreEntitySet="InterViewee">
-                <ScalarProperty Name="InterViewProcessID" ColumnName="InterViewProcessID" />
+                <ScalarProperty Name="InterViewProcess" ColumnName="InterViewProcess" />
                 <ScalarProperty Name="InterViewStatus" ColumnName="InterViewStatus" />
                 <ScalarProperty Name="InterViewDate" ColumnName="InterViewDate" />
                 <ScalarProperty Name="InterViewerEmployeeID" ColumnName="InterViewerEmployeeID" />
@@ -1656,6 +1675,7 @@
                 <ScalarProperty Name="LeaveCategory" ColumnName="LeaveCategory" />
                 <ScalarProperty Name="ApplyDate" ColumnName="ApplyDate" />
                 <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
                 <ScalarProperty Name="ApplyNumber" ColumnName="ApplyNumber" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1737,6 +1757,7 @@
                 <ScalarProperty Name="ApplyDate" ColumnName="ApplyDate" />
                 <ScalarProperty Name="Reason" ColumnName="Reason" />
                 <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
                 <ScalarProperty Name="ApplyNumber" ColumnName="ApplyNumber" />
               </MappingFragment>
             </EntityTypeMapping>

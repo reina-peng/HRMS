@@ -15,9 +15,9 @@ namespace HRMS
     public partial class Item
     {
         public int ItemID { get; set; }
-        public Nullable<int> StoreID { get; set; }
+        public int StoreID { get; set; }
         public string ItemName { get; set; }
-        public Nullable<decimal> ItemPrice { get; set; }
+        public int ItemPrice { get; set; }
     
         public virtual Store Store { get; set; }
     }
