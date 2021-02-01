@@ -56,12 +56,29 @@
           <Property Name="DepartmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DepartmentName" Type="nvarchar" MaxLength="20" />
         </EntityType>
-        <EntityType Name="EmployeeOrderDetail">
+        <EntityType Name="Found">
           <Key>
-            <PropertyRef Name="QuantityNumber" />
+            <PropertyRef Name="FoundID" />
           </Key>
-          <Property Name="QuantityNumber" Type="int" Nullable="false" />
+          <Property Name="FoundID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="EmployeeID" Type="int" />
+          <Property Name="Deparment" Type="int" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="FoundSubject" Type="nvarchar" MaxLength="50" />
+          <Property Name="FoundCategory" Type="nvarchar" MaxLength="50" />
+          <Property Name="FoundPropertyPhoto" Type="varbinary(max)" />
+          <Property Name="FoundProperty" Type="nvarchar" MaxLength="50" />
+          <Property Name="FoundDate" Type="date" />
+          <Property Name="FoundSpace" Type="nvarchar" MaxLength="50" />
+          <Property Name="FoundPropertyDescription" Type="text" />
+          <Property Name="FoundCheckStatus" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="FoundPropertyCheckStatus">
+          <Key>
+            <PropertyRef Name="FoundCheckStatusID" />
+          </Key>
+          <Property Name="FoundCheckStatusID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FoundCheckStatus" Type="nvarchar" MaxLength="15" />
         </EntityType>
         <EntityType Name="InterViewee">
           <Key>
@@ -84,14 +101,8 @@
           <Property Name="InterViewerEmployeeID" Type="int" />
           <Property Name="InterViewDate" Type="date" />
           <Property Name="InterViewStatus" Type="int" />
-          <Property Name="InterViewProcess" Type="text" />
+          <Property Name="InterViewProcessID" Type="text" />
         </EntityType>
-        <!--產生期間發現錯誤:
-警告 6013: 資料表/檢視 'MyHR.dbo.InterViewProcess' 未定義主索引鍵，也無法推斷有效的主索引鍵。此資料表/檢視已被排除。如果要使用此實體，您必須檢閱您的結構描述，加入正確的索引鍵，並將它取消註解。
-        <EntityType Name="InterViewProcess">
-          <Property Name="InterViewProcessID" Type="int" />
-          <Property Name="InterViewProcess" Type="text" />
-        </EntityType>-->
         <EntityType Name="InterViewStatus">
           <Key>
             <PropertyRef Name="InterViewStatusID" />
@@ -103,9 +114,10 @@
           <Key>
             <PropertyRef Name="ItemID" />
           </Key>
-          <Property Name="ItemID" Type="int" Nullable="false" />
-          <Property Name="ItemName" Type="nvarchar" MaxLength="15" />
+          <Property Name="ItemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="StoreID" Type="int" />
+          <Property Name="ItemName" Type="nvarchar" MaxLength="15" />
+          <Property Name="ItemPrice" Type="money" />
         </EntityType>
         <EntityType Name="JobTitle">
           <Key>
@@ -134,6 +146,30 @@
           <Property Name="Reason" Type="nvarchar" MaxLength="50" />
           <Property Name="CheckStatus" Type="int" />
         </EntityType>
+        <EntityType Name="Lost">
+          <Key>
+            <PropertyRef Name="LostID" />
+          </Key>
+          <Property Name="LostID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" />
+          <Property Name="Deparment" Type="int" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="LostSubject" Type="nvarchar" MaxLength="50" />
+          <Property Name="LostCategory" Type="nvarchar" MaxLength="50" />
+          <Property Name="LostPropertyPhoto" Type="varbinary(max)" />
+          <Property Name="LostProperty" Type="nvarchar" MaxLength="50" />
+          <Property Name="LostDate" Type="date" />
+          <Property Name="LostSpace" Type="nvarchar" MaxLength="50" />
+          <Property Name="LostPropertyDescription" Type="text" />
+          <Property Name="LostCheckStatus" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="LostPropertyCheckStatus">
+          <Key>
+            <PropertyRef Name="LostCheckStatusID" />
+          </Key>
+          <Property Name="LostCheckStatusID" Type="tinyint" Nullable="false" />
+          <Property Name="LostCheckStatus" Type="nvarchar" MaxLength="15" />
+        </EntityType>
         <EntityType Name="OnBoardStatus">
           <Key>
             <PropertyRef Name="OnBoardStatusID" />
@@ -142,14 +178,29 @@
           <Property Name="OnBoardStatus" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <!--產生期間發現錯誤:
-警告 6013: 資料表/檢視 'MyHR.dbo.OrderStoreDetail' 未定義主索引鍵，也無法推斷有效的主索引鍵。此資料表/檢視已被排除。如果要使用此實體，您必須檢閱您的結構描述，加入正確的索引鍵，並將它取消註解。
+警告 6002: 資料表/檢視 'MyHR.dbo.OrderStoreDetail' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
         <EntityType Name="OrderStoreDetail">
-          <Property Name="WuChaOrderID" Type="int" />
+          <Key>
+            <PropertyRef Name="WuChaOrderNumber" />
+          </Key>
+          <Property Name="WuChaOrderNumber" Type="int" Nullable="false" />
           <Property Name="StoreID" Type="int" />
           <Property Name="ItemID" Type="int" />
           <Property Name="ItemQuantity" Type="int" />
-          <Property Name="QuantityNumber" Type="int" />
-        </EntityType>-->
+        </EntityType>
+        <EntityType Name="Repair">
+          <Key>
+            <PropertyRef Name="RepairNumber" />
+          </Key>
+          <Property Name="RepairNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" />
+          <Property Name="AppleDate" Type="date" />
+          <Property Name="RepairCategory" Type="nvarchar" MaxLength="50" />
+          <Property Name="Location" Type="nvarchar" MaxLength="50" />
+          <Property Name="ContentofRepair" Type="text" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="RepairStatus" Type="tinyint" />
+        </EntityType>
         <EntityType Name="Store">
           <Key>
             <PropertyRef Name="StoreID" />
@@ -208,9 +259,9 @@
           <Key>
             <PropertyRef Name="WuChaOrderNumber" />
           </Key>
-          <Property Name="WuChaOrderNumber" Type="int" Nullable="false" />
+          <Property Name="WuChaOrderNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupID" Type="nchar" MaxLength="10" />
           <Property Name="StoreID" Type="int" />
-          <Property Name="Item" Type="int" />
           <Property Name="EmployeeID" Type="int" />
           <Property Name="Date" Type="date" />
           <Property Name="TotalPirce" Type="money" />
@@ -263,14 +314,38 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_EmployeeOrderDetail_User">
+        <Association Name="FK_Found_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="Found" Type="Self.Found" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DepartmentID" />
+            </Principal>
+            <Dependent Role="Found">
+              <PropertyRef Name="Deparment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Found_FoundPropertyCheckStatus">
+          <End Role="FoundPropertyCheckStatus" Type="Self.FoundPropertyCheckStatus" Multiplicity="0..1" />
+          <End Role="Found" Type="Self.Found" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FoundPropertyCheckStatus">
+              <PropertyRef Name="FoundCheckStatusID" />
+            </Principal>
+            <Dependent Role="Found">
+              <PropertyRef Name="FoundCheckStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Found_User">
           <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <End Role="EmployeeOrderDetail" Type="Self.EmployeeOrderDetail" Multiplicity="*" />
+          <End Role="Found" Type="Self.Found" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="EmployeeID" />
             </Principal>
-            <Dependent Role="EmployeeOrderDetail">
+            <Dependent Role="Found">
               <PropertyRef Name="EmployeeID" />
             </Dependent>
           </ReferentialConstraint>
@@ -323,9 +398,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <!--產生期間發現錯誤:
-錯誤 6004: 資料表 'MyHR.dbo.InterViewProcess' 被某個關聯性參考，但是找不到。
-        <Association Name="FK_InterViewProcess_InterViewee" />-->
+        <Association Name="FK_Item_Store">
+          <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="StoreID" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="StoreID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_LeaveApplication_CheckStatus">
           <End Role="CheckStatus" Type="Self.CheckStatus" Multiplicity="0..1" />
           <End Role="LeaveApplication" Type="Self.LeaveApplication" Multiplicity="*" />
@@ -362,18 +446,54 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <!--產生期間發現錯誤:
-錯誤 6004: 資料表 'MyHR.dbo.OrderStoreDetail' 被某個關聯性參考，但是找不到。
-        <Association Name="FK_OrderStoreDetail_EmployeeOrderDetail" />-->
-        <!--產生期間發現錯誤:
-錯誤 6004: 資料表 'MyHR.dbo.OrderStoreDetail' 被某個關聯性參考，但是找不到。
-        <Association Name="FK_OrderStoreDetail_Item" />-->
-        <!--產生期間發現錯誤:
-錯誤 6004: 資料表 'MyHR.dbo.OrderStoreDetail' 被某個關聯性參考，但是找不到。
-        <Association Name="FK_OrderStoreDetail_Store" />-->
-        <!--產生期間發現錯誤:
-錯誤 6004: 資料表 'MyHR.dbo.OrderStoreDetail' 被某個關聯性參考，但是找不到。
-        <Association Name="FK_OrderStoreDetail_WuChaOrder" />-->
+        <Association Name="FK_Lost_LostPropertyCheckStatus">
+          <End Role="LostPropertyCheckStatus" Type="Self.LostPropertyCheckStatus" Multiplicity="0..1" />
+          <End Role="Lost" Type="Self.Lost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LostPropertyCheckStatus">
+              <PropertyRef Name="LostCheckStatusID" />
+            </Principal>
+            <Dependent Role="Lost">
+              <PropertyRef Name="LostCheckStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lost_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Lost" Type="Self.Lost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Lost">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderStoreDetail_WuChaOrder1">
+          <End Role="WuChaOrder" Type="Self.WuChaOrder" Multiplicity="1" />
+          <End Role="OrderStoreDetail" Type="Self.OrderStoreDetail" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="WuChaOrder">
+              <PropertyRef Name="WuChaOrderNumber" />
+            </Principal>
+            <Dependent Role="OrderStoreDetail">
+              <PropertyRef Name="WuChaOrderNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Repair_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Repair" Type="Self.Repair" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Repair">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Travel_Expense_Application_CheckStatus">
           <End Role="CheckStatus" Type="Self.CheckStatus" Multiplicity="1" />
           <End Role="Travel_Expense_Application" Type="Self.Travel_Expense_Application" Multiplicity="*" />
@@ -446,18 +566,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_WuChaOrder_Item">
-          <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
-          <End Role="WuChaOrder" Type="Self.WuChaOrder" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Item">
-              <PropertyRef Name="ItemID" />
-            </Principal>
-            <Dependent Role="WuChaOrder">
-              <PropertyRef Name="Item" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_WuChaOrder_Store">
           <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
           <End Role="WuChaOrder" Type="Self.WuChaOrder" Multiplicity="*" />
@@ -488,14 +596,18 @@
           <EntitySet Name="CheckStatus" EntityType="Self.CheckStatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CostCategory" EntityType="Self.CostCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="EmployeeOrderDetail" EntityType="Self.EmployeeOrderDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Found" EntityType="Self.Found" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FoundPropertyCheckStatus" EntityType="Self.FoundPropertyCheckStatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="InterViewee" EntityType="Self.InterViewee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="InterViewStatus" EntityType="Self.InterViewStatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JobTitle" EntityType="Self.JobTitle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Leave" EntityType="Self.Leave" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LeaveApplication" EntityType="Self.LeaveApplication" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lost" EntityType="Self.Lost" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LostPropertyCheckStatus" EntityType="Self.LostPropertyCheckStatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OnBoardStatus" EntityType="Self.OnBoardStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Repair" EntityType="Self.Repair" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Store" EntityType="Self.Store" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Travel_Expense_Application" EntityType="Self.Travel_Expense_Application" Schema="dbo" store:Type="Tables" />
@@ -507,6 +619,14 @@
     [ApplyDetail].[CostID] AS [CostID], 
     [ApplyDetail].[Amont] AS [Amont]
     FROM [dbo].[ApplyDetail] AS [ApplyDetail]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OrderStoreDetail" EntityType="Self.OrderStoreDetail" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [OrderStoreDetail].[WuChaOrderNumber] AS [WuChaOrderNumber], 
+    [OrderStoreDetail].[StoreID] AS [StoreID], 
+    [OrderStoreDetail].[ItemID] AS [ItemID], 
+    [OrderStoreDetail].[ItemQuantity] AS [ItemQuantity]
+    FROM [dbo].[OrderStoreDetail] AS [OrderStoreDetail]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_Absence_User" Association="Self.FK_Absence_User">
             <End Role="User" EntitySet="User" />
@@ -524,9 +644,17 @@
             <End Role="Department" EntitySet="Department" />
             <End Role="Bulletin" EntitySet="Bulletin" />
           </AssociationSet>
-          <AssociationSet Name="FK_EmployeeOrderDetail_User" Association="Self.FK_EmployeeOrderDetail_User">
+          <AssociationSet Name="FK_Found_Department" Association="Self.FK_Found_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Found" EntitySet="Found" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Found_FoundPropertyCheckStatus" Association="Self.FK_Found_FoundPropertyCheckStatus">
+            <End Role="FoundPropertyCheckStatus" EntitySet="FoundPropertyCheckStatus" />
+            <End Role="Found" EntitySet="Found" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Found_User" Association="Self.FK_Found_User">
             <End Role="User" EntitySet="User" />
-            <End Role="EmployeeOrderDetail" EntitySet="EmployeeOrderDetail" />
+            <End Role="Found" EntitySet="Found" />
           </AssociationSet>
           <AssociationSet Name="FK_InterViewee_Department" Association="Self.FK_InterViewee_Department">
             <End Role="Department" EntitySet="Department" />
@@ -544,6 +672,10 @@
             <End Role="User" EntitySet="User" />
             <End Role="InterViewee" EntitySet="InterViewee" />
           </AssociationSet>
+          <AssociationSet Name="FK_Item_Store" Association="Self.FK_Item_Store">
+            <End Role="Store" EntitySet="Store" />
+            <End Role="Item" EntitySet="Item" />
+          </AssociationSet>
           <AssociationSet Name="FK_LeaveApplication_CheckStatus" Association="Self.FK_LeaveApplication_CheckStatus">
             <End Role="CheckStatus" EntitySet="CheckStatus" />
             <End Role="LeaveApplication" EntitySet="LeaveApplication" />
@@ -555,6 +687,22 @@
           <AssociationSet Name="FK_LeaveApplication_User" Association="Self.FK_LeaveApplication_User">
             <End Role="User" EntitySet="User" />
             <End Role="LeaveApplication" EntitySet="LeaveApplication" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lost_LostPropertyCheckStatus" Association="Self.FK_Lost_LostPropertyCheckStatus">
+            <End Role="LostPropertyCheckStatus" EntitySet="LostPropertyCheckStatus" />
+            <End Role="Lost" EntitySet="Lost" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lost_User" Association="Self.FK_Lost_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Lost" EntitySet="Lost" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderStoreDetail_WuChaOrder1" Association="Self.FK_OrderStoreDetail_WuChaOrder1">
+            <End Role="WuChaOrder" EntitySet="WuChaOrder" />
+            <End Role="OrderStoreDetail" EntitySet="OrderStoreDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Repair_User" Association="Self.FK_Repair_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Repair" EntitySet="Repair" />
           </AssociationSet>
           <AssociationSet Name="FK_Travel_Expense_Application_CheckStatus" Association="Self.FK_Travel_Expense_Application_CheckStatus">
             <End Role="CheckStatus" EntitySet="CheckStatus" />
@@ -580,10 +728,6 @@
             <End Role="User" EntitySet="User" />
             <End Role="User1" EntitySet="User" />
           </AssociationSet>
-          <AssociationSet Name="FK_WuChaOrder_Item" Association="Self.FK_WuChaOrder_Item">
-            <End Role="Item" EntitySet="Item" />
-            <End Role="WuChaOrder" EntitySet="WuChaOrder" />
-          </AssociationSet>
           <AssociationSet Name="FK_WuChaOrder_Store" Association="Self.FK_WuChaOrder_Store">
             <End Role="Store" EntitySet="Store" />
             <End Role="WuChaOrder" EntitySet="WuChaOrder" />
@@ -603,14 +747,18 @@
           <EntitySet Name="CheckStatus" EntityType="MyHRModel.CheckStatu" />
           <EntitySet Name="CostCategories" EntityType="MyHRModel.CostCategory" />
           <EntitySet Name="Departments" EntityType="MyHRModel.Department" />
-          <EntitySet Name="EmployeeOrderDetails" EntityType="MyHRModel.EmployeeOrderDetail" />
+          <EntitySet Name="Founds" EntityType="MyHRModel.Found" />
+          <EntitySet Name="FoundPropertyCheckStatus" EntityType="MyHRModel.FoundPropertyCheckStatu" />
           <EntitySet Name="InterViewees" EntityType="MyHRModel.InterViewee" />
           <EntitySet Name="InterViewStatus" EntityType="MyHRModel.InterViewStatu" />
           <EntitySet Name="Items" EntityType="MyHRModel.Item" />
           <EntitySet Name="JobTitles" EntityType="MyHRModel.JobTitle" />
           <EntitySet Name="Leaves" EntityType="MyHRModel.Leave" />
           <EntitySet Name="LeaveApplications" EntityType="MyHRModel.LeaveApplication" />
+          <EntitySet Name="Losts" EntityType="MyHRModel.Lost" />
+          <EntitySet Name="LostPropertyCheckStatus" EntityType="MyHRModel.LostPropertyCheckStatu" />
           <EntitySet Name="OnBoardStatus" EntityType="MyHRModel.OnBoardStatu" />
+          <EntitySet Name="Repairs" EntityType="MyHRModel.Repair" />
           <EntitySet Name="Stores" EntityType="MyHRModel.Store" />
           <EntitySet Name="sysdiagrams" EntityType="MyHRModel.sysdiagram" />
           <EntitySet Name="Travel_Expense_Application" EntityType="MyHRModel.Travel_Expense_Application" />
@@ -637,6 +785,10 @@
             <End Role="CostCategory" EntitySet="CostCategories" />
             <End Role="ApplyDetail" EntitySet="ApplyDetails" />
           </AssociationSet>
+          <AssociationSet Name="FK_Found_Department" Association="MyHRModel.FK_Found_Department">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="Found" EntitySet="Founds" />
+          </AssociationSet>
           <AssociationSet Name="FK_InterViewee_Department" Association="MyHRModel.FK_InterViewee_Department">
             <End Role="Department" EntitySet="Departments" />
             <End Role="InterViewee" EntitySet="InterViewees" />
@@ -645,9 +797,13 @@
             <End Role="Department" EntitySet="Departments" />
             <End Role="User" EntitySet="Users" />
           </AssociationSet>
-          <AssociationSet Name="FK_EmployeeOrderDetail_User" Association="MyHRModel.FK_EmployeeOrderDetail_User">
+          <AssociationSet Name="FK_Found_FoundPropertyCheckStatus" Association="MyHRModel.FK_Found_FoundPropertyCheckStatus">
+            <End Role="FoundPropertyCheckStatu" EntitySet="FoundPropertyCheckStatus" />
+            <End Role="Found" EntitySet="Founds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Found_User" Association="MyHRModel.FK_Found_User">
             <End Role="User" EntitySet="Users" />
-            <End Role="EmployeeOrderDetail" EntitySet="EmployeeOrderDetails" />
+            <End Role="Found" EntitySet="Founds" />
           </AssociationSet>
           <AssociationSet Name="FK_InterViewee_InterViewStatus" Association="MyHRModel.FK_InterViewee_InterViewStatus">
             <End Role="InterViewStatu" EntitySet="InterViewStatus" />
@@ -661,9 +817,9 @@
             <End Role="User" EntitySet="Users" />
             <End Role="InterViewee" EntitySet="InterViewees" />
           </AssociationSet>
-          <AssociationSet Name="FK_WuChaOrder_Item" Association="MyHRModel.FK_WuChaOrder_Item">
+          <AssociationSet Name="FK_Item_Store" Association="MyHRModel.FK_Item_Store">
+            <End Role="Store" EntitySet="Stores" />
             <End Role="Item" EntitySet="Items" />
-            <End Role="WuChaOrder" EntitySet="WuChaOrders" />
           </AssociationSet>
           <AssociationSet Name="FK_User_JobTitle" Association="MyHRModel.FK_User_JobTitle">
             <End Role="JobTitle" EntitySet="JobTitles" />
@@ -677,9 +833,21 @@
             <End Role="User" EntitySet="Users" />
             <End Role="LeaveApplication" EntitySet="LeaveApplications" />
           </AssociationSet>
+          <AssociationSet Name="FK_Lost_LostPropertyCheckStatus" Association="MyHRModel.FK_Lost_LostPropertyCheckStatus">
+            <End Role="LostPropertyCheckStatu" EntitySet="LostPropertyCheckStatus" />
+            <End Role="Lost" EntitySet="Losts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lost_User" Association="MyHRModel.FK_Lost_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Lost" EntitySet="Losts" />
+          </AssociationSet>
           <AssociationSet Name="FK_User_OnBoardStatus" Association="MyHRModel.FK_User_OnBoardStatus">
             <End Role="OnBoardStatu" EntitySet="OnBoardStatus" />
             <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Repair_User" Association="MyHRModel.FK_Repair_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Repair" EntitySet="Repairs" />
           </AssociationSet>
           <AssociationSet Name="FK_WuChaOrder_Store" Association="MyHRModel.FK_WuChaOrder_Store">
             <End Role="Store" EntitySet="Stores" />
@@ -700,6 +868,11 @@
           <AssociationSet Name="FK_WuChaOrder_User" Association="MyHRModel.FK_WuChaOrder_User">
             <End Role="User" EntitySet="Users" />
             <End Role="WuChaOrder" EntitySet="WuChaOrders" />
+          </AssociationSet>
+          <EntitySet Name="OrderStoreDetails" EntityType="MyHRModel.OrderStoreDetail" />
+          <AssociationSet Name="FK_OrderStoreDetail_WuChaOrder1" Association="MyHRModel.FK_OrderStoreDetail_WuChaOrder1">
+            <End Role="WuChaOrder" EntitySet="WuChaOrders" />
+            <End Role="OrderStoreDetail" EntitySet="OrderStoreDetails" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Absence">
@@ -748,16 +921,37 @@
           <Property Name="DepartmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DepartmentName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Bulletins" Relationship="MyHRModel.FK_Bulletin_Department" FromRole="Department" ToRole="Bulletin" />
+          <NavigationProperty Name="Founds" Relationship="MyHRModel.FK_Found_Department" FromRole="Department" ToRole="Found" />
           <NavigationProperty Name="InterViewees" Relationship="MyHRModel.FK_InterViewee_Department" FromRole="Department" ToRole="InterViewee" />
           <NavigationProperty Name="Users" Relationship="MyHRModel.FK_User_Department" FromRole="Department" ToRole="User" />
         </EntityType>
-        <EntityType Name="EmployeeOrderDetail">
+        <EntityType Name="Found">
           <Key>
-            <PropertyRef Name="QuantityNumber" />
+            <PropertyRef Name="FoundID" />
           </Key>
-          <Property Name="QuantityNumber" Type="Int32" Nullable="false" />
+          <Property Name="FoundID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="EmployeeID" Type="Int32" />
-          <NavigationProperty Name="User" Relationship="MyHRModel.FK_EmployeeOrderDetail_User" FromRole="EmployeeOrderDetail" ToRole="User" />
+          <Property Name="Deparment" Type="Int32" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="FoundSubject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FoundCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FoundPropertyPhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="FoundProperty" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FoundDate" Type="DateTime" Precision="0" />
+          <Property Name="FoundSpace" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FoundPropertyDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FoundCheckStatus" Type="Byte" />
+          <NavigationProperty Name="Department" Relationship="MyHRModel.FK_Found_Department" FromRole="Found" ToRole="Department" />
+          <NavigationProperty Name="FoundPropertyCheckStatu" Relationship="MyHRModel.FK_Found_FoundPropertyCheckStatus" FromRole="Found" ToRole="FoundPropertyCheckStatu" />
+          <NavigationProperty Name="User" Relationship="MyHRModel.FK_Found_User" FromRole="Found" ToRole="User" />
+        </EntityType>
+        <EntityType Name="FoundPropertyCheckStatu">
+          <Key>
+            <PropertyRef Name="FoundCheckStatusID" />
+          </Key>
+          <Property Name="FoundCheckStatusID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FoundCheckStatus" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Founds" Relationship="MyHRModel.FK_Found_FoundPropertyCheckStatus" FromRole="FoundPropertyCheckStatu" ToRole="Found" />
         </EntityType>
         <EntityType Name="InterViewee">
           <Key>
@@ -780,7 +974,7 @@
           <Property Name="InterViewerEmployeeID" Type="Int32" />
           <Property Name="InterViewDate" Type="DateTime" Precision="0" />
           <Property Name="InterViewStatus" Type="Int32" />
-          <Property Name="InterViewProcess" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="InterViewProcessID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Department1" Relationship="MyHRModel.FK_InterViewee_Department" FromRole="InterViewee" ToRole="Department" />
           <NavigationProperty Name="InterViewStatu" Relationship="MyHRModel.FK_InterViewee_InterViewStatus" FromRole="InterViewee" ToRole="InterViewStatu" />
           <NavigationProperty Name="JobTitle1" Relationship="MyHRModel.FK_InterViewee_JobTitle" FromRole="InterViewee" ToRole="JobTitle" />
@@ -798,10 +992,11 @@
           <Key>
             <PropertyRef Name="ItemID" />
           </Key>
-          <Property Name="ItemID" Type="Int32" Nullable="false" />
-          <Property Name="ItemName" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="ItemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="StoreID" Type="Int32" />
-          <NavigationProperty Name="WuChaOrders" Relationship="MyHRModel.FK_WuChaOrder_Item" FromRole="Item" ToRole="WuChaOrder" />
+          <Property Name="ItemName" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="ItemPrice" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Store" Relationship="MyHRModel.FK_Item_Store" FromRole="Item" ToRole="Store" />
         </EntityType>
         <EntityType Name="JobTitle">
           <Key>
@@ -836,6 +1031,33 @@
           <NavigationProperty Name="Leave" Relationship="MyHRModel.FK_LeaveApplication_Leave" FromRole="LeaveApplication" ToRole="Leave" />
           <NavigationProperty Name="User" Relationship="MyHRModel.FK_LeaveApplication_User" FromRole="LeaveApplication" ToRole="User" />
         </EntityType>
+        <EntityType Name="Lost">
+          <Key>
+            <PropertyRef Name="LostID" />
+          </Key>
+          <Property Name="LostID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" />
+          <Property Name="Deparment" Type="Int32" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LostSubject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LostCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LostPropertyPhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="LostProperty" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LostDate" Type="DateTime" Precision="0" />
+          <Property Name="LostSpace" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LostPropertyDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LostCheckStatus" Type="Byte" />
+          <NavigationProperty Name="LostPropertyCheckStatu" Relationship="MyHRModel.FK_Lost_LostPropertyCheckStatus" FromRole="Lost" ToRole="LostPropertyCheckStatu" />
+          <NavigationProperty Name="User" Relationship="MyHRModel.FK_Lost_User" FromRole="Lost" ToRole="User" />
+        </EntityType>
+        <EntityType Name="LostPropertyCheckStatu">
+          <Key>
+            <PropertyRef Name="LostCheckStatusID" />
+          </Key>
+          <Property Name="LostCheckStatusID" Type="Byte" Nullable="false" />
+          <Property Name="LostCheckStatus" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Losts" Relationship="MyHRModel.FK_Lost_LostPropertyCheckStatus" FromRole="LostPropertyCheckStatu" ToRole="Lost" />
+        </EntityType>
         <EntityType Name="OnBoardStatu">
           <Key>
             <PropertyRef Name="OnBoardStatusID" />
@@ -844,12 +1066,27 @@
           <Property Name="OnBoardStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Users" Relationship="MyHRModel.FK_User_OnBoardStatus" FromRole="OnBoardStatu" ToRole="User" />
         </EntityType>
+        <EntityType Name="Repair">
+          <Key>
+            <PropertyRef Name="RepairNumber" />
+          </Key>
+          <Property Name="RepairNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" />
+          <Property Name="AppleDate" Type="DateTime" Precision="0" />
+          <Property Name="RepairCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ContentofRepair" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="RepairStatus" Type="Byte" />
+          <NavigationProperty Name="User" Relationship="MyHRModel.FK_Repair_User" FromRole="Repair" ToRole="User" />
+        </EntityType>
         <EntityType Name="Store">
           <Key>
             <PropertyRef Name="StoreID" />
           </Key>
           <Property Name="StoreID" Type="Int32" Nullable="false" />
           <Property Name="StoreName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Items" Relationship="MyHRModel.FK_Item_Store" FromRole="Store" ToRole="Item" />
           <NavigationProperty Name="WuChaOrders" Relationship="MyHRModel.FK_WuChaOrder_Store" FromRole="Store" ToRole="WuChaOrder" />
         </EntityType>
         <EntityType Name="sysdiagram">
@@ -903,11 +1140,13 @@
           <Property Name="AccountEnable" Type="Byte" Nullable="false" />
           <NavigationProperty Name="Absences" Relationship="MyHRModel.FK_Absence_User" FromRole="User" ToRole="Absence" />
           <NavigationProperty Name="Department1" Relationship="MyHRModel.FK_User_Department" FromRole="User" ToRole="Department" />
-          <NavigationProperty Name="EmployeeOrderDetails" Relationship="MyHRModel.FK_EmployeeOrderDetail_User" FromRole="User" ToRole="EmployeeOrderDetail" />
+          <NavigationProperty Name="Founds" Relationship="MyHRModel.FK_Found_User" FromRole="User" ToRole="Found" />
           <NavigationProperty Name="InterViewees" Relationship="MyHRModel.FK_InterViewee_User" FromRole="User" ToRole="InterViewee" />
           <NavigationProperty Name="JobTitle1" Relationship="MyHRModel.FK_User_JobTitle" FromRole="User" ToRole="JobTitle" />
           <NavigationProperty Name="LeaveApplications" Relationship="MyHRModel.FK_LeaveApplication_User" FromRole="User" ToRole="LeaveApplication" />
+          <NavigationProperty Name="Losts" Relationship="MyHRModel.FK_Lost_User" FromRole="User" ToRole="Lost" />
           <NavigationProperty Name="OnBoardStatu" Relationship="MyHRModel.FK_User_OnBoardStatus" FromRole="User" ToRole="OnBoardStatu" />
+          <NavigationProperty Name="Repairs" Relationship="MyHRModel.FK_Repair_User" FromRole="User" ToRole="Repair" />
           <NavigationProperty Name="Travel_Expense_Application" Relationship="MyHRModel.FK_Travel_Expense_Application_User" FromRole="User" ToRole="Travel_Expense_Application" />
           <NavigationProperty Name="User1" Relationship="MyHRModel.FK_User_User" FromRole="User" ToRole="User1" />
           <NavigationProperty Name="User2" Relationship="MyHRModel.FK_User_User" FromRole="User1" ToRole="User" />
@@ -917,15 +1156,15 @@
           <Key>
             <PropertyRef Name="WuChaOrderNumber" />
           </Key>
-          <Property Name="WuChaOrderNumber" Type="Int32" Nullable="false" />
+          <Property Name="WuChaOrderNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="StoreID" Type="Int32" />
-          <Property Name="Item" Type="Int32" />
           <Property Name="EmployeeID" Type="Int32" />
           <Property Name="Date" Type="DateTime" Precision="0" />
           <Property Name="TotalPirce" Type="Decimal" Precision="19" Scale="4" />
-          <NavigationProperty Name="Item1" Relationship="MyHRModel.FK_WuChaOrder_Item" FromRole="WuChaOrder" ToRole="Item" />
           <NavigationProperty Name="Store" Relationship="MyHRModel.FK_WuChaOrder_Store" FromRole="WuChaOrder" ToRole="Store" />
           <NavigationProperty Name="User" Relationship="MyHRModel.FK_WuChaOrder_User" FromRole="WuChaOrder" ToRole="User" />
+          <NavigationProperty Name="OrderStoreDetail" Relationship="MyHRModel.FK_OrderStoreDetail_WuChaOrder1" FromRole="WuChaOrder" ToRole="OrderStoreDetail" />
         </EntityType>
         <EntityType Name="ApplyDetail">
           <Key>
@@ -997,6 +1236,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Found_Department">
+          <End Type="MyHRModel.Department" Role="Department" Multiplicity="0..1" />
+          <End Type="MyHRModel.Found" Role="Found" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DepartmentID" />
+            </Principal>
+            <Dependent Role="Found">
+              <PropertyRef Name="Deparment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_InterViewee_Department">
           <End Type="MyHRModel.Department" Role="Department" Multiplicity="0..1" />
           <End Type="MyHRModel.InterViewee" Role="InterViewee" Multiplicity="*" />
@@ -1021,14 +1272,26 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_EmployeeOrderDetail_User">
+        <Association Name="FK_Found_FoundPropertyCheckStatus">
+          <End Type="MyHRModel.FoundPropertyCheckStatu" Role="FoundPropertyCheckStatu" Multiplicity="0..1" />
+          <End Type="MyHRModel.Found" Role="Found" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FoundPropertyCheckStatu">
+              <PropertyRef Name="FoundCheckStatusID" />
+            </Principal>
+            <Dependent Role="Found">
+              <PropertyRef Name="FoundCheckStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Found_User">
           <End Type="MyHRModel.User" Role="User" Multiplicity="0..1" />
-          <End Type="MyHRModel.EmployeeOrderDetail" Role="EmployeeOrderDetail" Multiplicity="*" />
+          <End Type="MyHRModel.Found" Role="Found" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="EmployeeID" />
             </Principal>
-            <Dependent Role="EmployeeOrderDetail">
+            <Dependent Role="Found">
               <PropertyRef Name="EmployeeID" />
             </Dependent>
           </ReferentialConstraint>
@@ -1069,15 +1332,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_WuChaOrder_Item">
-          <End Type="MyHRModel.Item" Role="Item" Multiplicity="0..1" />
-          <End Type="MyHRModel.WuChaOrder" Role="WuChaOrder" Multiplicity="*" />
+        <Association Name="FK_Item_Store">
+          <End Type="MyHRModel.Store" Role="Store" Multiplicity="0..1" />
+          <End Type="MyHRModel.Item" Role="Item" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Item">
-              <PropertyRef Name="ItemID" />
+            <Principal Role="Store">
+              <PropertyRef Name="StoreID" />
             </Principal>
-            <Dependent Role="WuChaOrder">
-              <PropertyRef Name="Item" />
+            <Dependent Role="Item">
+              <PropertyRef Name="StoreID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1117,6 +1380,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Lost_LostPropertyCheckStatus">
+          <End Type="MyHRModel.LostPropertyCheckStatu" Role="LostPropertyCheckStatu" Multiplicity="0..1" />
+          <End Type="MyHRModel.Lost" Role="Lost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LostPropertyCheckStatu">
+              <PropertyRef Name="LostCheckStatusID" />
+            </Principal>
+            <Dependent Role="Lost">
+              <PropertyRef Name="LostCheckStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lost_User">
+          <End Type="MyHRModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="MyHRModel.Lost" Role="Lost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Lost">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_User_OnBoardStatus">
           <End Type="MyHRModel.OnBoardStatu" Role="OnBoardStatu" Multiplicity="1" />
           <End Type="MyHRModel.User" Role="User" Multiplicity="*" />
@@ -1126,6 +1413,18 @@
             </Principal>
             <Dependent Role="User">
               <PropertyRef Name="OnBoardState" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Repair_User">
+          <End Type="MyHRModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="MyHRModel.Repair" Role="Repair" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Repair">
+              <PropertyRef Name="EmployeeID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1189,6 +1488,28 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="OrderStoreDetail">
+          <Key>
+            <PropertyRef Name="WuChaOrderNumber" />
+          </Key>
+          <Property Name="WuChaOrderNumber" Type="Int32" Nullable="false" />
+          <Property Name="StoreID" Type="Int32" />
+          <Property Name="ItemID" Type="Int32" />
+          <Property Name="ItemQuantity" Type="Int32" />
+          <NavigationProperty Name="WuChaOrder" Relationship="MyHRModel.FK_OrderStoreDetail_WuChaOrder1" FromRole="OrderStoreDetail" ToRole="WuChaOrder" />
+        </EntityType>
+        <Association Name="FK_OrderStoreDetail_WuChaOrder1">
+          <End Type="MyHRModel.WuChaOrder" Role="WuChaOrder" Multiplicity="1" />
+          <End Type="MyHRModel.OrderStoreDetail" Role="OrderStoreDetail" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="WuChaOrder">
+              <PropertyRef Name="WuChaOrderNumber" />
+            </Principal>
+            <Dependent Role="OrderStoreDetail">
+              <PropertyRef Name="WuChaOrderNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1241,18 +1562,36 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="EmployeeOrderDetails">
-            <EntityTypeMapping TypeName="MyHRModel.EmployeeOrderDetail">
-              <MappingFragment StoreEntitySet="EmployeeOrderDetail">
+          <EntitySetMapping Name="Founds">
+            <EntityTypeMapping TypeName="MyHRModel.Found">
+              <MappingFragment StoreEntitySet="Found">
+                <ScalarProperty Name="FoundCheckStatus" ColumnName="FoundCheckStatus" />
+                <ScalarProperty Name="FoundPropertyDescription" ColumnName="FoundPropertyDescription" />
+                <ScalarProperty Name="FoundSpace" ColumnName="FoundSpace" />
+                <ScalarProperty Name="FoundDate" ColumnName="FoundDate" />
+                <ScalarProperty Name="FoundProperty" ColumnName="FoundProperty" />
+                <ScalarProperty Name="FoundPropertyPhoto" ColumnName="FoundPropertyPhoto" />
+                <ScalarProperty Name="FoundCategory" ColumnName="FoundCategory" />
+                <ScalarProperty Name="FoundSubject" ColumnName="FoundSubject" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Deparment" ColumnName="Deparment" />
                 <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-                <ScalarProperty Name="QuantityNumber" ColumnName="QuantityNumber" />
+                <ScalarProperty Name="FoundID" ColumnName="FoundID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FoundPropertyCheckStatus">
+            <EntityTypeMapping TypeName="MyHRModel.FoundPropertyCheckStatu">
+              <MappingFragment StoreEntitySet="FoundPropertyCheckStatus">
+                <ScalarProperty Name="FoundCheckStatus" ColumnName="FoundCheckStatus" />
+                <ScalarProperty Name="FoundCheckStatusID" ColumnName="FoundCheckStatusID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="InterViewees">
             <EntityTypeMapping TypeName="MyHRModel.InterViewee">
               <MappingFragment StoreEntitySet="InterViewee">
-                <ScalarProperty Name="InterViewProcess" ColumnName="InterViewProcess" />
+                <ScalarProperty Name="InterViewProcessID" ColumnName="InterViewProcessID" />
                 <ScalarProperty Name="InterViewStatus" ColumnName="InterViewStatus" />
                 <ScalarProperty Name="InterViewDate" ColumnName="InterViewDate" />
                 <ScalarProperty Name="InterViewerEmployeeID" ColumnName="InterViewerEmployeeID" />
@@ -1284,8 +1623,9 @@
           <EntitySetMapping Name="Items">
             <EntityTypeMapping TypeName="MyHRModel.Item">
               <MappingFragment StoreEntitySet="Item">
-                <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+                <ScalarProperty Name="ItemPrice" ColumnName="ItemPrice" />
                 <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="StoreID" ColumnName="StoreID" />
                 <ScalarProperty Name="ItemID" ColumnName="ItemID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1320,11 +1660,51 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Losts">
+            <EntityTypeMapping TypeName="MyHRModel.Lost">
+              <MappingFragment StoreEntitySet="Lost">
+                <ScalarProperty Name="LostCheckStatus" ColumnName="LostCheckStatus" />
+                <ScalarProperty Name="LostPropertyDescription" ColumnName="LostPropertyDescription" />
+                <ScalarProperty Name="LostSpace" ColumnName="LostSpace" />
+                <ScalarProperty Name="LostDate" ColumnName="LostDate" />
+                <ScalarProperty Name="LostProperty" ColumnName="LostProperty" />
+                <ScalarProperty Name="LostPropertyPhoto" ColumnName="LostPropertyPhoto" />
+                <ScalarProperty Name="LostCategory" ColumnName="LostCategory" />
+                <ScalarProperty Name="LostSubject" ColumnName="LostSubject" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Deparment" ColumnName="Deparment" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="LostID" ColumnName="LostID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LostPropertyCheckStatus">
+            <EntityTypeMapping TypeName="MyHRModel.LostPropertyCheckStatu">
+              <MappingFragment StoreEntitySet="LostPropertyCheckStatus">
+                <ScalarProperty Name="LostCheckStatus" ColumnName="LostCheckStatus" />
+                <ScalarProperty Name="LostCheckStatusID" ColumnName="LostCheckStatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="OnBoardStatus">
             <EntityTypeMapping TypeName="MyHRModel.OnBoardStatu">
               <MappingFragment StoreEntitySet="OnBoardStatus">
                 <ScalarProperty Name="OnBoardStatus" ColumnName="OnBoardStatus" />
                 <ScalarProperty Name="OnBoardStatusID" ColumnName="OnBoardStatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Repairs">
+            <EntityTypeMapping TypeName="MyHRModel.Repair">
+              <MappingFragment StoreEntitySet="Repair">
+                <ScalarProperty Name="RepairStatus" ColumnName="RepairStatus" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="ContentofRepair" ColumnName="ContentofRepair" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="RepairCategory" ColumnName="RepairCategory" />
+                <ScalarProperty Name="AppleDate" ColumnName="AppleDate" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="RepairNumber" ColumnName="RepairNumber" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1392,8 +1772,8 @@
                 <ScalarProperty Name="TotalPirce" ColumnName="TotalPirce" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-                <ScalarProperty Name="Item" ColumnName="Item" />
                 <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
                 <ScalarProperty Name="WuChaOrderNumber" ColumnName="WuChaOrderNumber" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1404,6 +1784,16 @@
                 <ScalarProperty Name="Amont" ColumnName="Amont" />
                 <ScalarProperty Name="CostID" ColumnName="CostID" />
                 <ScalarProperty Name="ApplyNumber" ColumnName="ApplyNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderStoreDetails">
+            <EntityTypeMapping TypeName="MyHRModel.OrderStoreDetail">
+              <MappingFragment StoreEntitySet="OrderStoreDetail">
+                <ScalarProperty Name="ItemQuantity" ColumnName="ItemQuantity" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+                <ScalarProperty Name="WuChaOrderNumber" ColumnName="WuChaOrderNumber" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

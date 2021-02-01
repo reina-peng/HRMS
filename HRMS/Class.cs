@@ -14,15 +14,19 @@ namespace HRMS
         public int ID { get; }//員工ID
         public string Name { get; }//員工姓名
         public string EnglishName { get; }//員工英文名
-        public int Dept { get; }//員工部門
-        public int JobTitle { get; }//員工職稱
-        public void resetTab(TabPage a)
-        {
-            foreach (Control ctrl in a.Controls)
+        public int Dept { get; }//員工部門代號
+        public string DeptName { get; }//員工部門名稱
+        public int JobTitle { get; }//員工職稱代號
+        public string JobTitleName { get; }//員工職稱名稱
+        public void resetText(Control a)//清除頁面欄位
+        {            
             {
-                if (ctrl is TextBox || ctrl is ComboBox || ctrl is PictureBox || ctrl is RadioButton || ctrl is DateTimePicker)
+                foreach (Control ctrl in a.Controls)
                 {
-                    ctrl.Text = "";
+                    if (ctrl is TextBox || ctrl is ComboBox || ctrl is PictureBox || ctrl is RadioButton || ctrl is DateTimePicker)
+                        ctrl.Text = "";
+                    else if (ctrl is GroupBox)
+                        resetText(ctrl);
                 }
             }
         }
@@ -30,12 +34,21 @@ namespace HRMS
         public UserInfo(int userID)
         {
             MyHREntities hrEntities = new MyHREntities();
-            var q = (hrEntities.Users.Where(o => o.EmployeeID == userID).Select(o => new { o.EmployeeName, o.EmployeeEnglishName, o.Department, o.JobTitle })).ToList();//抓員工資料
+            //var q = (hrEntities.Users.Where(o => o.EmployeeID == userID).Select(o => new { o.EmployeeName, o.EmployeeEnglishName, o.Department, o.JobTitle })).ToList();//抓員工資料
+            var q = (hrEntities.Users
+                .Join(hrEntities.Departments, u => u.Department, d => d.DepartmentID, (u, d) => new { u.EmployeeID, u.EmployeeName, u.EmployeeEnglishName, u.Department, d.DepartmentName, u.JobTitle })
+                //.Join(hrEntities.Departments, u => u.Department, d => d.DepartmentID, (u, d) => new { U = u, D = d})
+                .Join(hrEntities.JobTitles, u => u.JobTitle, j => j.JobTitleID, (u, j) => new { u, j.JobTitle1})                
+                .Where( o => o.u.EmployeeID == userID))
+                .ToList();
+                
             ID = userID;
-            Name = q[0].EmployeeName;
-            EnglishName = q[0].EmployeeEnglishName;
-            Dept = (int)q[0].Department;
-            JobTitle = (int)q[0].JobTitle;
+            Name = q[0].u.EmployeeName;
+            EnglishName = q[0].u.EmployeeEnglishName;
+            Dept = (int)q[0].u.Department;
+            DeptName = q[0].u.DepartmentName;
+            JobTitle = (int)q[0].u.JobTitle;
+            JobTitleName = q[0].JobTitle1;
         }
     }
 

@@ -31,7 +31,7 @@ namespace HRMS
         public Nullable<int> InterViewerEmployeeID { get; set; }
         public Nullable<System.DateTime> InterViewDate { get; set; }
         public Nullable<int> InterViewStatus { get; set; }
-        public string InterViewProcess { get; set; }
+        public string InterViewProcessID { get; set; }
     
         public virtual Department Department1 { get; set; }
         public virtual InterViewStatu InterViewStatu { get; set; }

@@ -60,6 +60,7 @@ namespace HRMS
             this.btnPublishInfo = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.textBox6 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.btnLog = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -72,6 +73,9 @@ namespace HRMS
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.button4 = new System.Windows.Forms.Button();
+            this.lblDeptName = new System.Windows.Forms.Label();
+            this.lblJobTitleName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -110,6 +114,8 @@ namespace HRMS
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.lblJobTitleName);
+            this.splitContainer1.Panel1.Controls.Add(this.lblDeptName);
             this.splitContainer1.Panel1.Controls.Add(this.lblJobTitle);
             this.splitContainer1.Panel1.Controls.Add(this.lblUserDept);
             this.splitContainer1.Panel1.Controls.Add(this.label5);
@@ -263,6 +269,7 @@ namespace HRMS
             // 
             // splitContainer2.Panel1
             // 
+            this.splitContainer2.Panel1.Controls.Add(this.button4);
             this.splitContainer2.Panel1.Controls.Add(this.gpbWeather);
             this.splitContainer2.Panel1.Controls.Add(this.textBox1);
             this.splitContainer2.Panel1.Controls.Add(this.lsbBulletin);
@@ -408,6 +415,7 @@ namespace HRMS
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.textBox6);
             this.tabPage1.Controls.Add(this.button3);
             this.tabPage1.Controls.Add(this.btnLog);
             this.tabPage1.Location = new System.Drawing.Point(154, 4);
@@ -417,6 +425,13 @@ namespace HRMS
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "打卡";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(598, 78);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(91, 22);
+            this.textBox6.TabIndex = 2;
             // 
             // button3
             // 
@@ -441,7 +456,7 @@ namespace HRMS
             this.tabPage2.Location = new System.Drawing.Point(154, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1308, 467);
+            this.tabPage2.Size = new System.Drawing.Size(1208, 415);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "考勤";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -522,6 +537,33 @@ namespace HRMS
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(823, 109);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(82, 49);
+            this.button4.TabIndex = 8;
+            this.button4.Text = "發佈公告";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // lblDeptName
+            // 
+            this.lblDeptName.AutoSize = true;
+            this.lblDeptName.Location = new System.Drawing.Point(1293, 88);
+            this.lblDeptName.Name = "lblDeptName";
+            this.lblDeptName.Size = new System.Drawing.Size(54, 12);
+            this.lblDeptName.TabIndex = 15;
+            this.lblDeptName.Text = "DeptName";
+            // 
+            // lblJobTitleName
+            // 
+            this.lblJobTitleName.AutoSize = true;
+            this.lblJobTitleName.Location = new System.Drawing.Point(1293, 121);
+            this.lblJobTitleName.Name = "lblJobTitleName";
+            this.lblJobTitleName.Size = new System.Drawing.Size(69, 12);
+            this.lblJobTitleName.TabIndex = 16;
+            this.lblJobTitleName.Text = "JobTitleName";
+            // 
             // Frm_HomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -548,6 +590,7 @@ namespace HRMS
             ((System.ComponentModel.ISupportInitialize)(this.pcbWeather)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
@@ -597,5 +640,9 @@ namespace HRMS
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label lblPop;
         private System.Windows.Forms.Label lblTmax;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.Button button4;
+        internal System.Windows.Forms.Label lblDeptName;
+        internal System.Windows.Forms.Label lblJobTitleName;
     }
 }

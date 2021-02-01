@@ -12,10 +12,16 @@ namespace HRMS
     using System;
     using System.Collections.Generic;
     
-    public partial class EmployeeOrderDetail
+    public partial class Repair
     {
-        public int QuantityNumber { get; set; }
+        public int RepairNumber { get; set; }
         public Nullable<int> EmployeeID { get; set; }
+        public Nullable<System.DateTime> AppleDate { get; set; }
+        public string RepairCategory { get; set; }
+        public string Location { get; set; }
+        public string ContentofRepair { get; set; }
+        public string Phone { get; set; }
+        public Nullable<byte> RepairStatus { get; set; }
     
         public virtual User User { get; set; }
     }

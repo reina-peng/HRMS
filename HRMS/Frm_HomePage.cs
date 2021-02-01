@@ -25,7 +25,7 @@ namespace HRMS
         JArray jsondata = null;
         MyHREntities hrEntities = new MyHREntities();
         internal int UserID;//接 login 傳過來的值
-        internal static UserInfo userInfo = null;//建立 userInfo 物件
+        internal static UserInfo userInfo = null;//建立 userInfo 物件        
         
         public Frm_HomePage()
         {            
@@ -49,10 +49,13 @@ namespace HRMS
             userInfo = new UserInfo(UserID);// userInfo 賦值
             //顯示右上角員工資料
             ShowImage(UserID);//顯示右上角員工圖片
+            
             this.lblUserID.Text = userInfo.ID.ToString();
             this.lblUserName.Text = userInfo.Name;
             this.lblUserDept.Text = userInfo.Dept.ToString();
+            this.lblDeptName.Text = userInfo.DeptName;
             this.lblJobTitle.Text = userInfo.JobTitle.ToString();
+            this.lblDeptName.Text = userInfo.JobTitleName;
             //tabControl1.TabPages.Remove(tabPage1);
             //判斷員工職等設定佈告欄編輯按鈕  Visible
             this.btnPublishInfo.Visible = (userInfo.JobTitle <= 1) ? true : false;
@@ -169,12 +172,11 @@ namespace HRMS
             {
                 pcbWeather.Image = img;
                 lblTime.Text = time;
-                lblWeather.Text = describe;                
+                lblWeather.Text = describe;
                 lblTmin.Text = tempMin;
                 lblTmax.Text = tempMax;
                 lblPop.Text = pop + "%";
-            })
-                );
+            }));
             Thread.Sleep(millisecondTimeOut);
         }
 
@@ -205,7 +207,7 @@ namespace HRMS
             StringFormat _stringFlags = new StringFormat();
             _stringFlags.Alignment = StringAlignment.Center;
             _stringFlags.LineAlignment = StringAlignment.Center;
-            g.DrawString(_tabPage.Text, _tabFont, _textBrush, _tabBounds, new StringFormat(_stringFlags));
+            g.DrawString(_tabPage.Text, _tabFont, _textBrush, _tabBounds, new StringFormat(_stringFlags));            
         }
 
         private void btnLogout_Click(object sender, EventArgs e)//登出按鈕
@@ -216,6 +218,7 @@ namespace HRMS
             System.Windows.Forms.Application.Exit();
             //this.Dispose();
             //this.Close();
+            //
         }
 
         private void btnPublishInfo_Click(object sender, EventArgs e)//編輯公佈欄按鈕
@@ -235,12 +238,11 @@ namespace HRMS
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //string x = dateTimePicker1.Value.ToString("yyyy/MM/dd");
-            //var q = (from o in hrEntities.LeaveApplications.AsEnumerable()
-            //         where o.EmployeeID == int.Parse(this.textBox2.Text) && o.LeaveEndTime == DateTime.Parse(x)
-            //         select o).ToList();
-            userInfo.resetTab(this.tabControl1.SelectedTab);
-
+            string x = dateTimePicker1.Value.ToString("yyyy/MM/dd");
+            var q = (from o in hrEntities.LeaveApplications.AsEnumerable()
+                     where o.EmployeeID == int.Parse(this.textBox2.Text) && o.LeaveEndTime == DateTime.Parse(x)
+                     select o).ToList();
+            userInfo.resetText(this.tabControl1.SelectedTab);
         }
 
         
@@ -249,7 +251,7 @@ namespace HRMS
             Frm_User f = new Frm_User();
             f.id = UserID;
             f.labID.Text = UserID.ToString();
-            f.Show();            
-        }
+            f.Show();
+        }        
     }
 }

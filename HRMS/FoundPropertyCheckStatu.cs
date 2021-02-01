@@ -12,21 +12,18 @@ namespace HRMS
     using System;
     using System.Collections.Generic;
     
-    public partial class Store
+    public partial class FoundPropertyCheckStatu
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Store()
+        public FoundPropertyCheckStatu()
         {
-            this.Items = new HashSet<Item>();
-            this.WuChaOrders = new HashSet<WuChaOrder>();
+            this.Founds = new HashSet<Found>();
         }
     
-        public int StoreID { get; set; }
-        public string StoreName { get; set; }
+        public byte FoundCheckStatusID { get; set; }
+        public string FoundCheckStatus { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Item> Items { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<WuChaOrder> WuChaOrders { get; set; }
+        public virtual ICollection<Found> Founds { get; set; }
     }
 }

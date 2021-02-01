@@ -18,9 +18,11 @@ namespace HRMS
         public User()
         {
             this.Absences = new HashSet<Absence>();
-            this.EmployeeOrderDetails = new HashSet<EmployeeOrderDetail>();
+            this.Founds = new HashSet<Found>();
             this.InterViewees = new HashSet<InterViewee>();
             this.LeaveApplications = new HashSet<LeaveApplication>();
+            this.Losts = new HashSet<Lost>();
+            this.Repairs = new HashSet<Repair>();
             this.Travel_Expense_Application = new HashSet<Travel_Expense_Application>();
             this.User1 = new HashSet<User>();
             this.WuChaOrders = new HashSet<WuChaOrder>();
@@ -50,13 +52,17 @@ namespace HRMS
         public virtual ICollection<Absence> Absences { get; set; }
         public virtual Department Department1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EmployeeOrderDetail> EmployeeOrderDetails { get; set; }
+        public virtual ICollection<Found> Founds { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<InterViewee> InterViewees { get; set; }
         public virtual JobTitle JobTitle1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LeaveApplication> LeaveApplications { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Lost> Losts { get; set; }
         public virtual OnBoardStatu OnBoardStatu { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Repair> Repairs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Travel_Expense_Application> Travel_Expense_Application { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

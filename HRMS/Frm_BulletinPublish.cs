@@ -49,14 +49,14 @@ namespace HRMS
             }
             MessageBox.Show("公告發佈成功");
             hp.LoadBulletin();//主視窗重載佈告欄
-            
+
+            Frm_HomePage.userInfo.resetText(this);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {            
-            //Frm_HomePage.userInfo.
             this.Dispose();
-            this.Close();
+            this.Close();            
         }
     }
 }

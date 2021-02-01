@@ -41,7 +41,7 @@ namespace HRMS
 
                 SqlCommand command = new SqlCommand();
                 command.Connection = conn;
-                command.CommandText = $"select AccountEnable,EmployeeName from [User] where EmployeeID=@UserID and PassWord=@Password"; ;
+                command.CommandText = $"select AccountEnable,EmployeeName from [User] where EmployeeID=@UserID and PassWord=@Password";
 
                 command.Parameters.Add("@UserID", SqlDbType.NVarChar, 16).Value = UserID;
                 command.Parameters.Add("@Password", SqlDbType.NVarChar, 40).Value = password;

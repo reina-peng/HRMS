@@ -18,6 +18,7 @@ namespace HRMS
         public Department()
         {
             this.Bulletins = new HashSet<Bulletin>();
+            this.Founds = new HashSet<Found>();
             this.InterViewees = new HashSet<InterViewee>();
             this.Users = new HashSet<User>();
         }
@@ -27,6 +28,8 @@ namespace HRMS
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Bulletin> Bulletins { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Found> Founds { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<InterViewee> InterViewees { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

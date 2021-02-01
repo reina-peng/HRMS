@@ -14,17 +14,11 @@ namespace HRMS
     
     public partial class Item
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Item()
-        {
-            this.WuChaOrders = new HashSet<WuChaOrder>();
-        }
-    
         public int ItemID { get; set; }
-        public string ItemName { get; set; }
         public Nullable<int> StoreID { get; set; }
+        public string ItemName { get; set; }
+        public Nullable<decimal> ItemPrice { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<WuChaOrder> WuChaOrders { get; set; }
+        public virtual Store Store { get; set; }
     }
 }
