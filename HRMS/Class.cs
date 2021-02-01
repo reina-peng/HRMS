@@ -18,8 +18,8 @@ namespace HRMS
         public string DeptName { get; }//員工部門名稱
         public int JobTitle { get; }//員工職稱代號
         public string JobTitleName { get; }//員工職稱名稱
-        public string Phone; //todo 員工電話 --wz 1/28新增 
-        public int Supervisor; //todo 員工主管 --wz 1/29新增 
+        public string Phone { get; } //員工電話
+        public int Supervisor { get; } //員工主管
         public void resetText(Control a)//清除頁面欄位
         {            
             {
@@ -38,32 +38,56 @@ namespace HRMS
             try
             {
                 MyHREntities hrEntities = new MyHREntities();
-                //var q = (hrEntities.Users.Where(o => o.EmployeeID == userID).Select(o => new { o.EmployeeName, o.EmployeeEnglishName, o.Department, o.JobTitle })).ToList();//抓員工資料
-                var q = (hrEntities.Users
-                    .Join(hrEntities.Departments, u => u.Department, d => d.DepartmentID, (u, d) => new { u.EmployeeID, u.EmployeeName, u.EmployeeEnglishName, u.Department, d.DepartmentName, u.JobTitle, u.Phone, u.Supervisor })
-                    //.Join(hrEntities.Departments, u => u.Department, d => d.DepartmentID, (u, d) => new { U = u, D = d})
-                    .Join(hrEntities.JobTitles, u => u.JobTitle, j => j.JobTitleID, (u, j) => new { u, j.JobTitle1 })
-                    .Where(o => o.u.EmployeeID == userID))
+                //抓員工資料
+                var q = (hrEntities.Users.Where(o => o.EmployeeID == userID).Select(o => new { o.EmployeeName, o.EmployeeEnglishName, o.Department, o.JobTitle, o.Phone, Supervisor = o.Supervisor == null ? o.EmployeeID : o.Supervisor })).ToList();
+                //var q = (hrEntities.Users
+                //    .Join(hrEntities.Departments, u => u.Department, d => d.DepartmentID, (u, d) => new { u.EmployeeID, u.EmployeeName, u.EmployeeEnglishName, u.Department, d.DepartmentName, u.JobTitle, u.Phone, u.Supervisor })
+                //    //.Join(hrEntities.Departments, u => u.Department, d => d.DepartmentID, (u, d) => new { U = u, D = d})
+                //    .Join(hrEntities.JobTitles, u => u.JobTitle, j => j.JobTitleID, (u, j) => new { u, j.JobTitle1 })
+                //    .Where(o => o.u.EmployeeID == userID))
+                //    .ToList();
+                //抓員工部門名稱
+                var q2 = (hrEntities.Users
+                    .Join(hrEntities.Departments,
+                    u => u.Department,
+                    d => d.DepartmentID,
+                    (u, d) => new
+                    {
+                        u.EmployeeID,
+                        DepartmentName = d.DepartmentName
+                    })
+                    .Where(ud => ud.EmployeeID == userID))
+                    .ToList();
+                //抓員工職稱名稱
+                var q3 = (hrEntities.Users
+                    .Join(hrEntities.JobTitles,
+                    u => u.JobTitle,
+                    j => j.JobTitleID,
+                    (u, j) => new
+                    {
+                        u.EmployeeID,
+                        JobTitleName = j.JobTitle1,
+                    })
+                    .Where(uj => uj.EmployeeID == userID))
                     .ToList();
 
                 ID = userID;
-                Name = q[0].u.EmployeeName;
-                EnglishName = q[0].u.EmployeeEnglishName;
-                Dept = (int)q[0].u.Department;
-                DeptName = q[0].u.DepartmentName;
-                JobTitle = (int)q[0].u.JobTitle;
-                JobTitleName = q[0].JobTitle1;
-                Phone = q[0].u.Phone;
-                Supervisor = (int)q[0].u.Supervisor;
+                Name = q[0].EmployeeName;
+                EnglishName = q[0].EmployeeEnglishName;
+                Dept = (int)q[0].Department;
+                DeptName = q2[0].DepartmentName;
+                JobTitle = (int)q[0].JobTitle;
+                JobTitleName = q3[0].JobTitleName;
+                Phone = q[0].Phone;
+                Supervisor = (int)q[0].Supervisor;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            
         }
     }
-
+    #region DataGridViewDisableButton
     public class DataGridViewDisableButtonColumn : DataGridViewButtonColumn
     {
         public DataGridViewDisableButtonColumn()
@@ -164,4 +188,5 @@ namespace HRMS
             }
         }
     }
+    #endregion
 }
