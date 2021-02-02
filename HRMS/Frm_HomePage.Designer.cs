@@ -850,7 +850,7 @@ namespace HRMS
             this.dgvCO_Search.RowTemplate.Height = 27;
             this.dgvCO_Search.Size = new System.Drawing.Size(1674, 361);
             this.dgvCO_Search.TabIndex = 30;
-            this.dgvCO_Search.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvCS_Leave_CellFormatting);
+            this.dgvCO_Search.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvCO_Search_CellFormatting);
             // 
             // btnLog
             // 

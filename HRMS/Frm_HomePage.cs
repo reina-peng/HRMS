@@ -149,11 +149,19 @@ namespace HRMS
         #region 載入佈告欄
         private void LoadBulletin(int a)
         {
+            try
+            {
             this.Invoke(new Action(() =>
             {
                 LoadBulletin();
             }));
             Thread.Sleep(a);
+
+            }
+            catch (Exception ex)
+            {
+                userInfo.ErrorMsg(ex);
+            }
         }
         internal void LoadBulletin()//載入佈告欄
         {            
@@ -410,11 +418,11 @@ namespace HRMS
                 {
                     labClockTime_OFF.Text = "您已打卡成功 !\n" + DateTime.Now;
 
-                    var q2 = from c in hrEntities.Absences
+                    var q2 = from c in hrEntities.Absences.AsEnumerable()
                              let x = DateTime.Today.Date.ToString("yyyy/MM/dd")
                              where c.EmployeeID == userInfo.ID && c.On.Value.Date.ToString("yyyy/MM/dd") == x
                              select c;
-
+                    //var qq = q2.ToList();
                     //修改該EmployeeID的資料
                     foreach (var item in q2)
                     {
@@ -955,6 +963,32 @@ namespace HRMS
 
         private void dgvCS_Leave_CellContentClick(object sender, DataGridViewCellEventArgs e) //點擊dgvCS_Leave button
         {
+            int an = (int)dgvCS_Leave.Rows[e.RowIndex].Cells["假單編號"].Value;
+
+            if (dgvCS_Leave.Columns[e.ColumnIndex].Name == "通過")
+            {
+                var q = from l in hrEntities.LeaveApplications
+                        where l.ApplyNumber == an
+                        select l;
+                foreach (var item in q)
+                {
+                    item.CheckStatus = 2;
+                }
+                hrEntities.SaveChanges();
+            }
+            else if (dgvCS_Leave.Columns[e.ColumnIndex].Name == "退件")
+            {
+                var q = from l in hrEntities.LeaveApplications
+                        where l.ApplyNumber == an
+                        select l;
+                foreach (var item in q)
+                {
+                    item.CheckStatus = 3;
+                }
+                hrEntities.SaveChanges();
+            }
+            btnCS_SearchLeave_Click(sender, e);
+            GetComboboxValue();
 
         }
 
