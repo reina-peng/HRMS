@@ -11,7 +11,8 @@
           </Key>
           <Property Name="ApplyNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="EmployeeID" Type="int" Nullable="false" />
-          <Property Name="Clock_on" Type="datetime" />
+          <Property Name="On" Type="datetime" />
+          <Property Name="Off" Type="datetime" />
         </EntityType>
         <!--產生期間發現錯誤:
 警告 6002: 資料表/檢視 'MyHR.dbo.ApplyDetail' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
@@ -895,7 +896,8 @@
           </Key>
           <Property Name="ApplyNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="EmployeeID" Type="Int32" Nullable="false" />
-          <Property Name="Clock_on" Type="DateTime" Precision="3" />
+          <Property Name="On" Type="DateTime" Precision="3" />
+          <Property Name="Off" Type="DateTime" Precision="3" />
           <NavigationProperty Name="User" Relationship="MyHRModel.FK_Absence_User" FromRole="Absence" ToRole="User" />
         </EntityType>
         <EntityType Name="Bulletin">
@@ -1538,7 +1540,8 @@
           <EntitySetMapping Name="Absences">
             <EntityTypeMapping TypeName="MyHRModel.Absence">
               <MappingFragment StoreEntitySet="Absence">
-                <ScalarProperty Name="Clock_on" ColumnName="Clock_on" />
+                <ScalarProperty Name="Off" ColumnName="Off" />
+                <ScalarProperty Name="On" ColumnName="On" />
                 <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
                 <ScalarProperty Name="ApplyNumber" ColumnName="ApplyNumber" />
               </MappingFragment>

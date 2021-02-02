@@ -33,43 +33,51 @@ namespace HRMS
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_HomePage));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.LegendCellColumn legendCellColumn1 = new System.Windows.Forms.DataVisualization.Charting.LegendCellColumn();
             System.Windows.Forms.DataVisualization.Charting.LegendCellColumn legendCellColumn2 = new System.Windows.Forms.DataVisualization.Charting.LegendCellColumn();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnLogout = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.gpbUser = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblJobTitleName = new System.Windows.Forms.Label();
+            this.lblUserID = new System.Windows.Forms.Label();
             this.lblDeptName = new System.Windows.Forms.Label();
+            this.lblUserName = new System.Windows.Forms.Label();
             this.lblJobTitle = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.lblUserDept = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.lblSubtitle = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lblUserName = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.lblUserID = new System.Windows.Forms.Label();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.button4 = new System.Windows.Forms.Button();
+            this.gpbSecurity = new System.Windows.Forms.GroupBox();
+            this.txtSecuty = new System.Windows.Forms.TextBox();
             this.gpbWeather = new System.Windows.Forms.GroupBox();
             this.lblTmax = new System.Windows.Forms.Label();
             this.lblPop = new System.Windows.Forms.Label();
@@ -77,15 +85,15 @@ namespace HRMS
             this.lblTmin = new System.Windows.Forms.Label();
             this.lblWeather = new System.Windows.Forms.Label();
             this.pcbWeather = new System.Windows.Forms.PictureBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.lsbBulletin = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnPublishInfo = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabcCO = new System.Windows.Forms.TabControl();
             this.tabpCO = new System.Windows.Forms.TabPage();
+            this.labClockTime_OFF = new System.Windows.Forms.Label();
+            this.btnClockOn_OFF = new System.Windows.Forms.Button();
             this.labTip = new System.Windows.Forms.Label();
             this.labClockTime_ON = new System.Windows.Forms.Label();
             this.btnClockOn_ON = new System.Windows.Forms.Button();
@@ -93,17 +101,14 @@ namespace HRMS
             this.labCO_ShowNowTime = new System.Windows.Forms.Label();
             this.tabpCO_Search = new System.Windows.Forms.TabPage();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
+            this.dtpCO_ShearchEnd = new System.Windows.Forms.DateTimePicker();
             this.btnCO_Search = new System.Windows.Forms.Button();
             this.labCO_ShearchDate = new System.Windows.Forms.Label();
             this.dtpCO_ShearchStart = new System.Windows.Forms.DateTimePicker();
-            this.dtpCO_ShearchEnd = new System.Windows.Forms.DateTimePicker();
             this.labCO_ShearchStart = new System.Windows.Forms.Label();
             this.labCO_ShearchEnd = new System.Windows.Forms.Label();
             this.dgvCO_Search = new System.Windows.Forms.DataGridView();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.btnLog = new System.Windows.Forms.Button();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.button2 = new System.Windows.Forms.Button();
@@ -116,6 +121,7 @@ namespace HRMS
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.chartRepair = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.labRepairPhone = new System.Windows.Forms.Label();
             this.btnClear_Repair = new System.Windows.Forms.Button();
@@ -141,6 +147,7 @@ namespace HRMS
             this.splitContainer6 = new System.Windows.Forms.SplitContainer();
             this.btnCS_AllPassLeave = new System.Windows.Forms.Button();
             this.labCS_LeaveShearchDate = new System.Windows.Forms.Label();
+            this.chartLeave = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.btnCS_SearchLeave = new System.Windows.Forms.Button();
             this.labCS_LeaveSearchCon = new System.Windows.Forms.Label();
             this.labCS_LeaveSearchStart = new System.Windows.Forms.Label();
@@ -152,6 +159,7 @@ namespace HRMS
             this.tabpTravel = new System.Windows.Forms.TabPage();
             this.splitContainer7 = new System.Windows.Forms.SplitContainer();
             this.btnCS_AllPassTravel = new System.Windows.Forms.Button();
+            this.chartTravel = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.btnCS_SearchTravel = new System.Windows.Forms.Button();
             this.dtpCS_SearchTravelStart = new System.Windows.Forms.DateTimePicker();
             this.labCS_TravelShearchDate = new System.Windows.Forms.Label();
@@ -161,18 +169,21 @@ namespace HRMS
             this.labCS_TravelSearchCon = new System.Windows.Forms.Label();
             this.comboBoxTravel = new System.Windows.Forms.ComboBox();
             this.dgvCS_Travel = new System.Windows.Forms.DataGridView();
-            this.chartRepair = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.gpbUser.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            this.gpbSecurity.SuspendLayout();
             this.gpbWeather.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbWeather)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -192,6 +203,7 @@ namespace HRMS
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartRepair)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Repair)).BeginInit();
             this.tabPage5.SuspendLayout();
@@ -208,19 +220,20 @@ namespace HRMS
             this.splitContainer6.Panel1.SuspendLayout();
             this.splitContainer6.Panel2.SuspendLayout();
             this.splitContainer6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartLeave)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCS_Leave)).BeginInit();
             this.tabpTravel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer7)).BeginInit();
             this.splitContainer7.Panel1.SuspendLayout();
             this.splitContainer7.Panel2.SuspendLayout();
             this.splitContainer7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartTravel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCS_Travel)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartRepair)).BeginInit();
             this.SuspendLayout();
             // 
             // btnLogout
             // 
-            this.btnLogout.Location = new System.Drawing.Point(1374, 127);
+            this.btnLogout.Location = new System.Drawing.Point(1792, 162);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(82, 23);
             this.btnLogout.TabIndex = 0;
@@ -238,70 +251,127 @@ namespace HRMS
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.lblJobTitleName);
-            this.splitContainer1.Panel1.Controls.Add(this.lblDeptName);
-            this.splitContainer1.Panel1.Controls.Add(this.lblJobTitle);
-            this.splitContainer1.Panel1.Controls.Add(this.lblUserDept);
-            this.splitContainer1.Panel1.Controls.Add(this.label5);
-            this.splitContainer1.Panel1.Controls.Add(this.label4);
-            this.splitContainer1.Panel1.Controls.Add(this.label3);
-            this.splitContainer1.Panel1.Controls.Add(this.label2);
+            this.splitContainer1.Panel1.Controls.Add(this.gpbUser);
             this.splitContainer1.Panel1.Controls.Add(this.pictureBox3);
             this.splitContainer1.Panel1.Controls.Add(this.lblSubtitle);
             this.splitContainer1.Panel1.Controls.Add(this.pictureBox2);
-            this.splitContainer1.Panel1.Controls.Add(this.pictureBox1);
-            this.splitContainer1.Panel1.Controls.Add(this.lblUserName);
             this.splitContainer1.Panel1.Controls.Add(this.lblTitle);
-            this.splitContainer1.Panel1.Controls.Add(this.lblUserID);
             this.splitContainer1.Panel1.Controls.Add(this.btnLogout);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(1443, 841);
-            this.splitContainer1.SplitterDistance = 166;
+            this.splitContainer1.Size = new System.Drawing.Size(1904, 1041);
+            this.splitContainer1.SplitterDistance = 205;
             this.splitContainer1.TabIndex = 1;
+            // 
+            // gpbUser
+            // 
+            this.gpbUser.Controls.Add(this.pictureBox1);
+            this.gpbUser.Controls.Add(this.lblJobTitleName);
+            this.gpbUser.Controls.Add(this.lblUserID);
+            this.gpbUser.Controls.Add(this.lblDeptName);
+            this.gpbUser.Controls.Add(this.lblUserName);
+            this.gpbUser.Controls.Add(this.lblJobTitle);
+            this.gpbUser.Controls.Add(this.label2);
+            this.gpbUser.Controls.Add(this.lblUserDept);
+            this.gpbUser.Controls.Add(this.label3);
+            this.gpbUser.Controls.Add(this.label5);
+            this.gpbUser.Controls.Add(this.label4);
+            this.gpbUser.Location = new System.Drawing.Point(1652, 10);
+            this.gpbUser.Name = "gpbUser";
+            this.gpbUser.Size = new System.Drawing.Size(241, 129);
+            this.gpbUser.TabIndex = 17;
+            this.gpbUser.TabStop = false;
+            this.gpbUser.Text = "基本資料";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(140, 21);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(82, 93);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // lblJobTitleName
             // 
             this.lblJobTitleName.AutoSize = true;
-            this.lblJobTitleName.Location = new System.Drawing.Point(1293, 121);
+            this.lblJobTitleName.Location = new System.Drawing.Point(59, 111);
             this.lblJobTitleName.Name = "lblJobTitleName";
             this.lblJobTitleName.Size = new System.Drawing.Size(69, 12);
             this.lblJobTitleName.TabIndex = 16;
             this.lblJobTitleName.Text = "JobTitleName";
             // 
+            // lblUserID
+            // 
+            this.lblUserID.AutoSize = true;
+            this.lblUserID.Location = new System.Drawing.Point(59, 28);
+            this.lblUserID.Name = "lblUserID";
+            this.lblUserID.Size = new System.Drawing.Size(38, 12);
+            this.lblUserID.TabIndex = 1;
+            this.lblUserID.Text = "UserID";
+            // 
             // lblDeptName
             // 
             this.lblDeptName.AutoSize = true;
-            this.lblDeptName.Location = new System.Drawing.Point(1293, 88);
+            this.lblDeptName.Location = new System.Drawing.Point(59, 81);
             this.lblDeptName.Name = "lblDeptName";
             this.lblDeptName.Size = new System.Drawing.Size(54, 12);
             this.lblDeptName.TabIndex = 15;
             this.lblDeptName.Text = "DeptName";
             // 
+            // lblUserName
+            // 
+            this.lblUserName.AutoSize = true;
+            this.lblUserName.Location = new System.Drawing.Point(59, 51);
+            this.lblUserName.Name = "lblUserName";
+            this.lblUserName.Size = new System.Drawing.Size(53, 12);
+            this.lblUserName.TabIndex = 3;
+            this.lblUserName.Text = "UserName";
+            // 
             // lblJobTitle
             // 
             this.lblJobTitle.AutoSize = true;
-            this.lblJobTitle.Location = new System.Drawing.Point(1293, 100);
+            this.lblJobTitle.Location = new System.Drawing.Point(59, 93);
             this.lblJobTitle.Name = "lblJobTitle";
             this.lblJobTitle.Size = new System.Drawing.Size(42, 12);
             this.lblJobTitle.TabIndex = 14;
             this.lblJobTitle.Text = "JobTitle";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 28);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 12);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "員工編號";
+            // 
             // lblUserDept
             // 
             this.lblUserDept.AutoSize = true;
-            this.lblUserDept.Location = new System.Drawing.Point(1293, 72);
+            this.lblUserDept.Location = new System.Drawing.Point(59, 65);
             this.lblUserDept.Name = "lblUserDept";
             this.lblUserDept.Size = new System.Drawing.Size(48, 12);
             this.lblUserDept.TabIndex = 13;
             this.lblUserDept.Text = "UserDept";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(9, 51);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 12);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "員工姓名";
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(1243, 102);
+            this.label5.Location = new System.Drawing.Point(9, 111);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(29, 12);
             this.label5.TabIndex = 12;
@@ -310,34 +380,16 @@ namespace HRMS
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1243, 72);
+            this.label4.Location = new System.Drawing.Point(9, 81);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(29, 12);
             this.label4.TabIndex = 11;
             this.label4.Text = "部門";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1243, 42);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 12);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "員工姓名";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1243, 19);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 12);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "員工編號";
-            // 
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(1075, 56);
+            this.pictureBox3.Location = new System.Drawing.Point(1386, 91);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(152, 94);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -347,7 +399,7 @@ namespace HRMS
             // lblSubtitle
             // 
             this.lblSubtitle.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblSubtitle.Location = new System.Drawing.Point(450, 86);
+            this.lblSubtitle.Location = new System.Drawing.Point(761, 121);
             this.lblSubtitle.Name = "lblSubtitle";
             this.lblSubtitle.Size = new System.Drawing.Size(619, 64);
             this.lblSubtitle.TabIndex = 7;
@@ -358,49 +410,20 @@ namespace HRMS
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(12, 12);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(124, 102);
+            this.pictureBox2.Size = new System.Drawing.Size(193, 173);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 5;
             this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(1374, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(82, 93);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // lblUserName
-            // 
-            this.lblUserName.AutoSize = true;
-            this.lblUserName.Location = new System.Drawing.Point(1293, 42);
-            this.lblUserName.Name = "lblUserName";
-            this.lblUserName.Size = new System.Drawing.Size(53, 12);
-            this.lblUserName.TabIndex = 3;
-            this.lblUserName.Text = "UserName";
             // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("微軟正黑體", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblTitle.Location = new System.Drawing.Point(147, 12);
+            this.lblTitle.Location = new System.Drawing.Point(211, 12);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(772, 50);
             this.lblTitle.TabIndex = 2;
             this.lblTitle.Text = "Human Resource Management System";
-            // 
-            // lblUserID
-            // 
-            this.lblUserID.AutoSize = true;
-            this.lblUserID.Location = new System.Drawing.Point(1293, 19);
-            this.lblUserID.Name = "lblUserID";
-            this.lblUserID.Size = new System.Drawing.Size(38, 12);
-            this.lblUserID.TabIndex = 1;
-            this.lblUserID.Text = "UserID";
             // 
             // splitContainer2
             // 
@@ -411,9 +434,8 @@ namespace HRMS
             // 
             // splitContainer2.Panel1
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.button4);
+            this.splitContainer2.Panel1.Controls.Add(this.gpbSecurity);
             this.splitContainer2.Panel1.Controls.Add(this.gpbWeather);
-            this.splitContainer2.Panel1.Controls.Add(this.textBox1);
             this.splitContainer2.Panel1.Controls.Add(this.lsbBulletin);
             this.splitContainer2.Panel1.Controls.Add(this.label1);
             this.splitContainer2.Panel1.Controls.Add(this.btnPublishInfo);
@@ -421,18 +443,29 @@ namespace HRMS
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.tabControl1);
-            this.splitContainer2.Size = new System.Drawing.Size(1439, 667);
-            this.splitContainer2.SplitterDistance = 186;
+            this.splitContainer2.Size = new System.Drawing.Size(1900, 828);
+            this.splitContainer2.SplitterDistance = 230;
             this.splitContainer2.TabIndex = 2;
             // 
-            // button4
+            // gpbSecurity
             // 
-            this.button4.Location = new System.Drawing.Point(823, 109);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(82, 49);
-            this.button4.TabIndex = 8;
-            this.button4.Text = "發佈公告";
-            this.button4.UseVisualStyleBackColor = true;
+            this.gpbSecurity.Controls.Add(this.txtSecuty);
+            this.gpbSecurity.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.gpbSecurity.Location = new System.Drawing.Point(1194, 16);
+            this.gpbSecurity.Name = "gpbSecurity";
+            this.gpbSecurity.Size = new System.Drawing.Size(402, 189);
+            this.gpbSecurity.TabIndex = 8;
+            this.gpbSecurity.TabStop = false;
+            this.gpbSecurity.Text = "資安公告";
+            // 
+            // txtSecuty
+            // 
+            this.txtSecuty.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtSecuty.Location = new System.Drawing.Point(3, 35);
+            this.txtSecuty.Multiline = true;
+            this.txtSecuty.Name = "txtSecuty";
+            this.txtSecuty.Size = new System.Drawing.Size(396, 151);
+            this.txtSecuty.TabIndex = 0;
             // 
             // gpbWeather
             // 
@@ -444,12 +477,11 @@ namespace HRMS
             this.gpbWeather.Controls.Add(this.lblWeather);
             this.gpbWeather.Controls.Add(this.pcbWeather);
             this.gpbWeather.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.gpbWeather.Location = new System.Drawing.Point(1125, 8);
+            this.gpbWeather.Location = new System.Drawing.Point(1647, 16);
             this.gpbWeather.Name = "gpbWeather";
             this.gpbWeather.Size = new System.Drawing.Size(243, 160);
             this.gpbWeather.TabIndex = 7;
             this.gpbWeather.TabStop = false;
-            this.gpbWeather.Text = "台北市未來36小時天氣";
             // 
             // lblTmax
             // 
@@ -505,20 +537,12 @@ namespace HRMS
             // 
             // pcbWeather
             // 
-            this.pcbWeather.Location = new System.Drawing.Point(110, 25);
+            this.pcbWeather.Location = new System.Drawing.Point(101, 25);
             this.pcbWeather.Name = "pcbWeather";
-            this.pcbWeather.Size = new System.Drawing.Size(123, 129);
+            this.pcbWeather.Size = new System.Drawing.Size(132, 129);
             this.pcbWeather.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pcbWeather.TabIndex = 4;
             this.pcbWeather.TabStop = false;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(684, 13);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(435, 78);
-            this.textBox1.TabIndex = 3;
             // 
             // lsbBulletin
             // 
@@ -540,7 +564,7 @@ namespace HRMS
             // 
             // btnPublishInfo
             // 
-            this.btnPublishInfo.Location = new System.Drawing.Point(1009, 101);
+            this.btnPublishInfo.Location = new System.Drawing.Point(596, 156);
             this.btnPublishInfo.Name = "btnPublishInfo";
             this.btnPublishInfo.Size = new System.Drawing.Size(82, 49);
             this.btnPublishInfo.TabIndex = 0;
@@ -552,35 +576,30 @@ namespace HRMS
             // 
             this.tabControl1.Alignment = System.Windows.Forms.TabAlignment.Left;
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage6);
-            this.tabControl1.Controls.Add(this.tabPage5);
-            this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage5);
+            this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.ItemSize = new System.Drawing.Size(25, 150);
+            this.tabControl1.ItemSize = new System.Drawing.Size(50, 200);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1439, 477);
+            this.tabControl1.Size = new System.Drawing.Size(1900, 594);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 1;
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.tabcCO);
             this.tabPage1.Controls.Add(this.btnLog);
-            this.tabPage1.Location = new System.Drawing.Point(154, 4);
+            this.tabPage1.Location = new System.Drawing.Point(204, 4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1208, 415);
-            this.tabPage1.TabIndex = 1;
+            this.tabPage1.Size = new System.Drawing.Size(1692, 586);
+            this.tabPage1.TabIndex = 7;
             this.tabPage1.Text = "打卡";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
@@ -593,11 +612,13 @@ namespace HRMS
             this.tabcCO.Margin = new System.Windows.Forms.Padding(2);
             this.tabcCO.Name = "tabcCO";
             this.tabcCO.SelectedIndex = 0;
-            this.tabcCO.Size = new System.Drawing.Size(1202, 409);
+            this.tabcCO.Size = new System.Drawing.Size(1686, 580);
             this.tabcCO.TabIndex = 3;
             // 
             // tabpCO
             // 
+            this.tabpCO.Controls.Add(this.labClockTime_OFF);
+            this.tabpCO.Controls.Add(this.btnClockOn_OFF);
             this.tabpCO.Controls.Add(this.labTip);
             this.tabpCO.Controls.Add(this.labClockTime_ON);
             this.tabpCO.Controls.Add(this.btnClockOn_ON);
@@ -607,16 +628,41 @@ namespace HRMS
             this.tabpCO.Margin = new System.Windows.Forms.Padding(2);
             this.tabpCO.Name = "tabpCO";
             this.tabpCO.Padding = new System.Windows.Forms.Padding(2);
-            this.tabpCO.Size = new System.Drawing.Size(1194, 383);
+            this.tabpCO.Size = new System.Drawing.Size(1678, 554);
             this.tabpCO.TabIndex = 0;
             this.tabpCO.Text = "打卡";
             this.tabpCO.UseVisualStyleBackColor = true;
+            // 
+            // labClockTime_OFF
+            // 
+            this.labClockTime_OFF.AutoSize = true;
+            this.labClockTime_OFF.Font = new System.Drawing.Font("微軟正黑體", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.labClockTime_OFF.Location = new System.Drawing.Point(765, 133);
+            this.labClockTime_OFF.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labClockTime_OFF.Name = "labClockTime_OFF";
+            this.labClockTime_OFF.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.labClockTime_OFF.Size = new System.Drawing.Size(0, 34);
+            this.labClockTime_OFF.TabIndex = 30;
+            this.labClockTime_OFF.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // btnClockOn_OFF
+            // 
+            this.btnClockOn_OFF.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnClockOn_OFF.Font = new System.Drawing.Font("微軟正黑體", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnClockOn_OFF.Location = new System.Drawing.Point(721, 206);
+            this.btnClockOn_OFF.Margin = new System.Windows.Forms.Padding(2);
+            this.btnClockOn_OFF.Name = "btnClockOn_OFF";
+            this.btnClockOn_OFF.Size = new System.Drawing.Size(394, 170);
+            this.btnClockOn_OFF.TabIndex = 29;
+            this.btnClockOn_OFF.Text = "下班";
+            this.btnClockOn_OFF.UseVisualStyleBackColor = true;
+            this.btnClockOn_OFF.Click += new System.EventHandler(this.btnClockOn_OFF_Click);
             // 
             // labTip
             // 
             this.labTip.AutoSize = true;
             this.labTip.Font = new System.Drawing.Font("微軟正黑體", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.labTip.Location = new System.Drawing.Point(501, 357);
+            this.labTip.Location = new System.Drawing.Point(487, 378);
             this.labTip.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labTip.Name = "labTip";
             this.labTip.Size = new System.Drawing.Size(374, 34);
@@ -627,7 +673,7 @@ namespace HRMS
             // 
             this.labClockTime_ON.AutoSize = true;
             this.labClockTime_ON.Font = new System.Drawing.Font("微軟正黑體", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.labClockTime_ON.Location = new System.Drawing.Point(512, 98);
+            this.labClockTime_ON.Location = new System.Drawing.Point(294, 133);
             this.labClockTime_ON.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labClockTime_ON.Name = "labClockTime_ON";
             this.labClockTime_ON.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -639,13 +685,14 @@ namespace HRMS
             // 
             this.btnClockOn_ON.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnClockOn_ON.Font = new System.Drawing.Font("微軟正黑體", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnClockOn_ON.Location = new System.Drawing.Point(471, 175);
+            this.btnClockOn_ON.Location = new System.Drawing.Point(221, 206);
             this.btnClockOn_ON.Margin = new System.Windows.Forms.Padding(2);
             this.btnClockOn_ON.Name = "btnClockOn_ON";
             this.btnClockOn_ON.Size = new System.Drawing.Size(394, 170);
             this.btnClockOn_ON.TabIndex = 14;
-            this.btnClockOn_ON.Text = "打卡";
+            this.btnClockOn_ON.Text = "上班";
             this.btnClockOn_ON.UseVisualStyleBackColor = true;
+            this.btnClockOn_ON.Click += new System.EventHandler(this.btnClockOn_Click);
             // 
             // labCO_NowTime
             // 
@@ -672,13 +719,11 @@ namespace HRMS
             // tabpCO_Search
             // 
             this.tabpCO_Search.Controls.Add(this.splitContainer5);
-            this.tabpCO_Search.Controls.Add(this.label11);
-            this.tabpCO_Search.Controls.Add(this.label12);
             this.tabpCO_Search.Location = new System.Drawing.Point(4, 22);
             this.tabpCO_Search.Margin = new System.Windows.Forms.Padding(2);
             this.tabpCO_Search.Name = "tabpCO_Search";
             this.tabpCO_Search.Padding = new System.Windows.Forms.Padding(2);
-            this.tabpCO_Search.Size = new System.Drawing.Size(1194, 383);
+            this.tabpCO_Search.Size = new System.Drawing.Size(1678, 554);
             this.tabpCO_Search.TabIndex = 1;
             this.tabpCO_Search.Text = "打卡紀錄查詢";
             this.tabpCO_Search.UseVisualStyleBackColor = true;
@@ -693,20 +738,30 @@ namespace HRMS
             // 
             // splitContainer5.Panel1
             // 
+            this.splitContainer5.Panel1.Controls.Add(this.dtpCO_ShearchEnd);
             this.splitContainer5.Panel1.Controls.Add(this.btnCO_Search);
             this.splitContainer5.Panel1.Controls.Add(this.labCO_ShearchDate);
             this.splitContainer5.Panel1.Controls.Add(this.dtpCO_ShearchStart);
-            this.splitContainer5.Panel1.Controls.Add(this.dtpCO_ShearchEnd);
             this.splitContainer5.Panel1.Controls.Add(this.labCO_ShearchStart);
             this.splitContainer5.Panel1.Controls.Add(this.labCO_ShearchEnd);
             // 
             // splitContainer5.Panel2
             // 
             this.splitContainer5.Panel2.Controls.Add(this.dgvCO_Search);
-            this.splitContainer5.Size = new System.Drawing.Size(1190, 379);
-            this.splitContainer5.SplitterDistance = 130;
+            this.splitContainer5.Size = new System.Drawing.Size(1674, 550);
+            this.splitContainer5.SplitterDistance = 186;
             this.splitContainer5.SplitterWidth = 3;
             this.splitContainer5.TabIndex = 33;
+            // 
+            // dtpCO_ShearchEnd
+            // 
+            this.dtpCO_ShearchEnd.Font = new System.Drawing.Font("微軟正黑體", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.dtpCO_ShearchEnd.Location = new System.Drawing.Point(698, 70);
+            this.dtpCO_ShearchEnd.Margin = new System.Windows.Forms.Padding(2);
+            this.dtpCO_ShearchEnd.Name = "dtpCO_ShearchEnd";
+            this.dtpCO_ShearchEnd.Size = new System.Drawing.Size(151, 32);
+            this.dtpCO_ShearchEnd.TabIndex = 30;
+            this.dtpCO_ShearchEnd.Value = new System.DateTime(2021, 2, 2, 0, 0, 0, 0);
             // 
             // btnCO_Search
             // 
@@ -738,17 +793,7 @@ namespace HRMS
             this.dtpCO_ShearchStart.Name = "dtpCO_ShearchStart";
             this.dtpCO_ShearchStart.Size = new System.Drawing.Size(151, 32);
             this.dtpCO_ShearchStart.TabIndex = 25;
-            this.dtpCO_ShearchStart.Value = new System.DateTime(2021, 2, 1, 0, 0, 0, 0);
-            // 
-            // dtpCO_ShearchEnd
-            // 
-            this.dtpCO_ShearchEnd.Font = new System.Drawing.Font("微軟正黑體", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.dtpCO_ShearchEnd.Location = new System.Drawing.Point(698, 70);
-            this.dtpCO_ShearchEnd.Margin = new System.Windows.Forms.Padding(2);
-            this.dtpCO_ShearchEnd.Name = "dtpCO_ShearchEnd";
-            this.dtpCO_ShearchEnd.Size = new System.Drawing.Size(151, 32);
-            this.dtpCO_ShearchEnd.TabIndex = 26;
-            this.dtpCO_ShearchEnd.Value = new System.DateTime(2021, 2, 1, 0, 0, 0, 0);
+            this.dtpCO_ShearchStart.Value = new System.DateTime(2021, 2, 2, 0, 0, 0, 0);
             // 
             // labCO_ShearchStart
             // 
@@ -800,27 +845,8 @@ namespace HRMS
             this.dgvCO_Search.Name = "dgvCO_Search";
             this.dgvCO_Search.RowHeadersWidth = 51;
             this.dgvCO_Search.RowTemplate.Height = 27;
-            this.dgvCO_Search.Size = new System.Drawing.Size(1190, 246);
+            this.dgvCO_Search.Size = new System.Drawing.Size(1674, 361);
             this.dgvCO_Search.TabIndex = 30;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(20, 32);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(62, 12);
-            this.label11.TabIndex = 31;
-            this.label11.Text = "現在時間 : ";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(84, 32);
-            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(0, 12);
-            this.label12.TabIndex = 32;
             // 
             // btnLog
             // 
@@ -831,16 +857,12 @@ namespace HRMS
             this.btnLog.Text = "打卡";
             this.btnLog.UseVisualStyleBackColor = true;
             // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
             // tabPage2
             // 
-            this.tabPage2.Location = new System.Drawing.Point(154, 4);
+            this.tabPage2.Location = new System.Drawing.Point(204, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1281, 469);
+            this.tabPage2.Size = new System.Drawing.Size(1692, 586);
             this.tabPage2.TabIndex = 2;
             this.tabPage2.Text = "考勤";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -854,9 +876,9 @@ namespace HRMS
             this.tabPage3.Controls.Add(this.textBox3);
             this.tabPage3.Controls.Add(this.textBox2);
             this.tabPage3.Controls.Add(this.dateTimePicker1);
-            this.tabPage3.Location = new System.Drawing.Point(154, 4);
+            this.tabPage3.Location = new System.Drawing.Point(204, 4);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1281, 469);
+            this.tabPage3.Size = new System.Drawing.Size(1692, 586);
             this.tabPage3.TabIndex = 3;
             this.tabPage3.Text = "公告發佈";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -918,10 +940,10 @@ namespace HRMS
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.splitContainer3);
-            this.tabPage4.Location = new System.Drawing.Point(154, 4);
+            this.tabPage4.Location = new System.Drawing.Point(204, 4);
             this.tabPage4.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1281, 469);
+            this.tabPage4.Size = new System.Drawing.Size(1692, 586);
             this.tabPage4.TabIndex = 4;
             this.tabPage4.Text = "報修";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -942,8 +964,8 @@ namespace HRMS
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.dgv_Repair);
-            this.splitContainer3.Size = new System.Drawing.Size(1281, 469);
-            this.splitContainer3.SplitterDistance = 201;
+            this.splitContainer3.Size = new System.Drawing.Size(1692, 586);
+            this.splitContainer3.SplitterDistance = 266;
             this.splitContainer3.SplitterWidth = 3;
             this.splitContainer3.TabIndex = 1;
             // 
@@ -953,14 +975,36 @@ namespace HRMS
             this.groupBox2.Controls.Add(this.chartRepair);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Right;
             this.groupBox2.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.groupBox2.Location = new System.Drawing.Point(746, 0);
+            this.groupBox2.Location = new System.Drawing.Point(1157, 0);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Size = new System.Drawing.Size(535, 201);
+            this.groupBox2.Size = new System.Drawing.Size(535, 266);
             this.groupBox2.TabIndex = 17;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "申請統計";
+            // 
+            // chartRepair
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chartRepair.ChartAreas.Add(chartArea1);
+            legendCellColumn1.ColumnType = System.Windows.Forms.DataVisualization.Charting.LegendCellColumnType.SeriesSymbol;
+            legendCellColumn1.Name = "Column1";
+            legendCellColumn2.Name = "Column2";
+            legend1.CellColumns.Add(legendCellColumn1);
+            legend1.CellColumns.Add(legendCellColumn2);
+            legend1.Name = "Legend1";
+            this.chartRepair.Legends.Add(legend1);
+            this.chartRepair.Location = new System.Drawing.Point(10, 25);
+            this.chartRepair.Margin = new System.Windows.Forms.Padding(2);
+            this.chartRepair.Name = "chartRepair";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartRepair.Series.Add(series1);
+            this.chartRepair.Size = new System.Drawing.Size(508, 178);
+            this.chartRepair.TabIndex = 0;
+            this.chartRepair.Text = "chart1";
             // 
             // groupBox1
             // 
@@ -983,7 +1027,7 @@ namespace HRMS
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(975, 201);
+            this.groupBox1.Size = new System.Drawing.Size(975, 266);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "申請報修";
@@ -1012,6 +1056,7 @@ namespace HRMS
             this.btnClear_Repair.TabIndex = 15;
             this.btnClear_Repair.Text = "清空";
             this.btnClear_Repair.UseVisualStyleBackColor = false;
+            this.btnClear_Repair.Click += new System.EventHandler(this.btnClear_Repair_Click);
             // 
             // btnSave_Repair
             // 
@@ -1025,6 +1070,7 @@ namespace HRMS
             this.btnSave_Repair.TabIndex = 14;
             this.btnSave_Repair.Text = "送出";
             this.btnSave_Repair.UseVisualStyleBackColor = false;
+            this.btnSave_Repair.Click += new System.EventHandler(this.btnSave_Repair_Click);
             // 
             // comRepairCategory
             // 
@@ -1133,52 +1179,52 @@ namespace HRMS
             // dgv_Repair
             // 
             this.dgv_Repair.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.Teal;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.SkyBlue;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_Repair.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Teal;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.SkyBlue;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_Repair.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgv_Repair.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.SkyBlue;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv_Repair.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.SkyBlue;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_Repair.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgv_Repair.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_Repair.Location = new System.Drawing.Point(0, 0);
             this.dgv_Repair.Margin = new System.Windows.Forms.Padding(2);
             this.dgv_Repair.Name = "dgv_Repair";
             this.dgv_Repair.ReadOnly = true;
             this.dgv_Repair.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.SkyBlue;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_Repair.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.SkyBlue;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_Repair.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgv_Repair.RowHeadersWidth = 51;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.Black;
-            this.dgv_Repair.RowsDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            this.dgv_Repair.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgv_Repair.RowTemplate.Height = 27;
-            this.dgv_Repair.Size = new System.Drawing.Size(1281, 265);
+            this.dgv_Repair.Size = new System.Drawing.Size(1692, 317);
             this.dgv_Repair.TabIndex = 0;
             // 
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.splitContainer4);
-            this.tabPage5.Location = new System.Drawing.Point(154, 4);
+            this.tabPage5.Location = new System.Drawing.Point(204, 4);
             this.tabPage5.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(1208, 415);
+            this.tabPage5.Size = new System.Drawing.Size(1692, 586);
             this.tabPage5.TabIndex = 5;
             this.tabPage5.Text = "報修審核";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -1198,8 +1244,8 @@ namespace HRMS
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.dgv_RepairSup);
-            this.splitContainer4.Size = new System.Drawing.Size(1208, 415);
-            this.splitContainer4.SplitterDistance = 46;
+            this.splitContainer4.Size = new System.Drawing.Size(1692, 586);
+            this.splitContainer4.SplitterDistance = 62;
             this.splitContainer4.SplitterWidth = 3;
             this.splitContainer4.TabIndex = 16;
             // 
@@ -1213,7 +1259,7 @@ namespace HRMS
             this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox3.Size = new System.Drawing.Size(1208, 46);
+            this.groupBox3.Size = new System.Drawing.Size(1692, 62);
             this.groupBox3.TabIndex = 14;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "報修審核";
@@ -1221,63 +1267,64 @@ namespace HRMS
             // btnRepairAllCheck
             // 
             this.btnRepairAllCheck.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnRepairAllCheck.Location = new System.Drawing.Point(1041, 24);
+            this.btnRepairAllCheck.Location = new System.Drawing.Point(1525, 24);
             this.btnRepairAllCheck.Margin = new System.Windows.Forms.Padding(2);
             this.btnRepairAllCheck.Name = "btnRepairAllCheck";
-            this.btnRepairAllCheck.Size = new System.Drawing.Size(165, 20);
+            this.btnRepairAllCheck.Size = new System.Drawing.Size(165, 36);
             this.btnRepairAllCheck.TabIndex = 0;
             this.btnRepairAllCheck.Text = "一鍵審核結案";
             this.btnRepairAllCheck.UseVisualStyleBackColor = true;
+            this.btnRepairAllCheck.Click += new System.EventHandler(this.btnRepairAllCheck_Click);
             // 
             // dgv_RepairSup
             // 
             this.dgv_RepairSup.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Teal;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.SkyBlue;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_RepairSup.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.dgv_RepairSup.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Teal;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.SkyBlue;
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_RepairSup.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
-            this.dgv_RepairSup.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.SkyBlue;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv_RepairSup.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_RepairSup.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgv_RepairSup.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_RepairSup.Location = new System.Drawing.Point(0, 0);
             this.dgv_RepairSup.Margin = new System.Windows.Forms.Padding(2);
             this.dgv_RepairSup.Name = "dgv_RepairSup";
             this.dgv_RepairSup.ReadOnly = true;
             this.dgv_RepairSup.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.SkyBlue;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_RepairSup.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.SkyBlue;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_RepairSup.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgv_RepairSup.RowHeadersWidth = 51;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.DimGray;
-            this.dgv_RepairSup.RowsDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.DimGray;
+            this.dgv_RepairSup.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.dgv_RepairSup.RowTemplate.Height = 27;
-            this.dgv_RepairSup.Size = new System.Drawing.Size(1208, 366);
+            this.dgv_RepairSup.Size = new System.Drawing.Size(1692, 521);
             this.dgv_RepairSup.TabIndex = 15;
             // 
             // tabPage6
             // 
             this.tabPage6.Controls.Add(this.tabcCS);
-            this.tabPage6.Location = new System.Drawing.Point(154, 4);
+            this.tabPage6.Location = new System.Drawing.Point(204, 4);
             this.tabPage6.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(1281, 469);
+            this.tabPage6.Size = new System.Drawing.Size(1692, 586);
             this.tabPage6.TabIndex = 6;
             this.tabPage6.Text = "簽核關卡";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -1291,7 +1338,7 @@ namespace HRMS
             this.tabcCS.Margin = new System.Windows.Forms.Padding(2);
             this.tabcCS.Name = "tabcCS";
             this.tabcCS.SelectedIndex = 0;
-            this.tabcCS.Size = new System.Drawing.Size(1281, 469);
+            this.tabcCS.Size = new System.Drawing.Size(1692, 586);
             this.tabcCS.TabIndex = 3;
             // 
             // tabpLeave
@@ -1301,7 +1348,7 @@ namespace HRMS
             this.tabpLeave.Margin = new System.Windows.Forms.Padding(2);
             this.tabpLeave.Name = "tabpLeave";
             this.tabpLeave.Padding = new System.Windows.Forms.Padding(2);
-            this.tabpLeave.Size = new System.Drawing.Size(1273, 443);
+            this.tabpLeave.Size = new System.Drawing.Size(1684, 560);
             this.tabpLeave.TabIndex = 0;
             this.tabpLeave.Text = "請假申請單";
             this.tabpLeave.UseVisualStyleBackColor = true;
@@ -1318,6 +1365,7 @@ namespace HRMS
             // 
             this.splitContainer6.Panel1.Controls.Add(this.btnCS_AllPassLeave);
             this.splitContainer6.Panel1.Controls.Add(this.labCS_LeaveShearchDate);
+            this.splitContainer6.Panel1.Controls.Add(this.chartLeave);
             this.splitContainer6.Panel1.Controls.Add(this.btnCS_SearchLeave);
             this.splitContainer6.Panel1.Controls.Add(this.labCS_LeaveSearchCon);
             this.splitContainer6.Panel1.Controls.Add(this.labCS_LeaveSearchStart);
@@ -1329,8 +1377,8 @@ namespace HRMS
             // splitContainer6.Panel2
             // 
             this.splitContainer6.Panel2.Controls.Add(this.dgvCS_Leave);
-            this.splitContainer6.Size = new System.Drawing.Size(1269, 439);
-            this.splitContainer6.SplitterDistance = 166;
+            this.splitContainer6.Size = new System.Drawing.Size(1680, 556);
+            this.splitContainer6.SplitterDistance = 210;
             this.splitContainer6.SplitterWidth = 3;
             this.splitContainer6.TabIndex = 1;
             // 
@@ -1345,6 +1393,7 @@ namespace HRMS
             this.btnCS_AllPassLeave.TabIndex = 8;
             this.btnCS_AllPassLeave.Text = "一鍵通過";
             this.btnCS_AllPassLeave.UseVisualStyleBackColor = true;
+            this.btnCS_AllPassLeave.Click += new System.EventHandler(this.btnCS_AllPassLeave_Click);
             // 
             // labCS_LeaveShearchDate
             // 
@@ -1357,6 +1406,26 @@ namespace HRMS
             this.labCS_LeaveShearchDate.TabIndex = 4;
             this.labCS_LeaveShearchDate.Text = "查詢時間";
             // 
+            // chartLeave
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.chartLeave.ChartAreas.Add(chartArea2);
+            this.chartLeave.Dock = System.Windows.Forms.DockStyle.Right;
+            legend2.Name = "Legend1";
+            this.chartLeave.Legends.Add(legend2);
+            this.chartLeave.Location = new System.Drawing.Point(1202, 0);
+            this.chartLeave.Margin = new System.Windows.Forms.Padding(2);
+            this.chartLeave.Name = "chartLeave";
+            series2.ChartArea = "ChartArea1";
+            series2.Color = System.Drawing.Color.CornflowerBlue;
+            series2.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series2.Legend = "Legend1";
+            series2.Name = "每月請假申請人數";
+            this.chartLeave.Series.Add(series2);
+            this.chartLeave.Size = new System.Drawing.Size(478, 210);
+            this.chartLeave.TabIndex = 0;
+            this.chartLeave.Text = "chart2";
+            // 
             // btnCS_SearchLeave
             // 
             this.btnCS_SearchLeave.Font = new System.Drawing.Font("微軟正黑體", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
@@ -1367,6 +1436,7 @@ namespace HRMS
             this.btnCS_SearchLeave.TabIndex = 3;
             this.btnCS_SearchLeave.Text = "查詢";
             this.btnCS_SearchLeave.UseVisualStyleBackColor = true;
+            this.btnCS_SearchLeave.Click += new System.EventHandler(this.btnCS_SearchLeave_Click);
             // 
             // labCS_LeaveSearchCon
             // 
@@ -1435,38 +1505,38 @@ namespace HRMS
             this.dgvCS_Leave.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCS_Leave.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvCS_Leave.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCS_Leave.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCS_Leave.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.dgvCS_Leave.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCS_Leave.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCS_Leave.DefaultCellStyle = dataGridViewCellStyle12;
             this.dgvCS_Leave.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCS_Leave.Location = new System.Drawing.Point(0, 0);
             this.dgvCS_Leave.Margin = new System.Windows.Forms.Padding(2);
             this.dgvCS_Leave.Name = "dgvCS_Leave";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCS_Leave.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCS_Leave.RowHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dgvCS_Leave.RowHeadersWidth = 51;
             this.dgvCS_Leave.RowTemplate.Height = 27;
-            this.dgvCS_Leave.Size = new System.Drawing.Size(1269, 270);
+            this.dgvCS_Leave.Size = new System.Drawing.Size(1680, 343);
             this.dgvCS_Leave.TabIndex = 0;
             // 
             // tabpTravel
@@ -1476,7 +1546,7 @@ namespace HRMS
             this.tabpTravel.Margin = new System.Windows.Forms.Padding(2);
             this.tabpTravel.Name = "tabpTravel";
             this.tabpTravel.Padding = new System.Windows.Forms.Padding(2);
-            this.tabpTravel.Size = new System.Drawing.Size(1273, 472);
+            this.tabpTravel.Size = new System.Drawing.Size(1684, 560);
             this.tabpTravel.TabIndex = 1;
             this.tabpTravel.Text = "出差申請單";
             this.tabpTravel.UseVisualStyleBackColor = true;
@@ -1492,6 +1562,7 @@ namespace HRMS
             // splitContainer7.Panel1
             // 
             this.splitContainer7.Panel1.Controls.Add(this.btnCS_AllPassTravel);
+            this.splitContainer7.Panel1.Controls.Add(this.chartTravel);
             this.splitContainer7.Panel1.Controls.Add(this.btnCS_SearchTravel);
             this.splitContainer7.Panel1.Controls.Add(this.dtpCS_SearchTravelStart);
             this.splitContainer7.Panel1.Controls.Add(this.labCS_TravelShearchDate);
@@ -1504,8 +1575,8 @@ namespace HRMS
             // splitContainer7.Panel2
             // 
             this.splitContainer7.Panel2.Controls.Add(this.dgvCS_Travel);
-            this.splitContainer7.Size = new System.Drawing.Size(1269, 468);
-            this.splitContainer7.SplitterDistance = 170;
+            this.splitContainer7.Size = new System.Drawing.Size(1680, 556);
+            this.splitContainer7.SplitterDistance = 202;
             this.splitContainer7.SplitterWidth = 3;
             this.splitContainer7.TabIndex = 0;
             // 
@@ -1520,6 +1591,25 @@ namespace HRMS
             this.btnCS_AllPassTravel.TabIndex = 12;
             this.btnCS_AllPassTravel.Text = "一鍵通過";
             this.btnCS_AllPassTravel.UseVisualStyleBackColor = true;
+            // 
+            // chartTravel
+            // 
+            chartArea3.Name = "ChartArea1";
+            this.chartTravel.ChartAreas.Add(chartArea3);
+            this.chartTravel.Dock = System.Windows.Forms.DockStyle.Right;
+            legend3.Name = "Legend1";
+            this.chartTravel.Legends.Add(legend3);
+            this.chartTravel.Location = new System.Drawing.Point(1219, 0);
+            this.chartTravel.Margin = new System.Windows.Forms.Padding(2);
+            this.chartTravel.Name = "chartTravel";
+            series3.ChartArea = "ChartArea1";
+            series3.Color = System.Drawing.Color.CornflowerBlue;
+            series3.Legend = "Legend1";
+            series3.Name = "每月出差申請人數";
+            this.chartTravel.Series.Add(series3);
+            this.chartTravel.Size = new System.Drawing.Size(461, 202);
+            this.chartTravel.TabIndex = 0;
+            this.chartTravel.Text = "chart1";
             // 
             // btnCS_SearchTravel
             // 
@@ -1608,59 +1698,46 @@ namespace HRMS
             // dgvCS_Travel
             // 
             this.dgvCS_Travel.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCS_Travel.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCS_Travel.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.dgvCS_Travel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCS_Travel.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCS_Travel.DefaultCellStyle = dataGridViewCellStyle15;
             this.dgvCS_Travel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCS_Travel.Location = new System.Drawing.Point(0, 0);
             this.dgvCS_Travel.Margin = new System.Windows.Forms.Padding(2);
             this.dgvCS_Travel.Name = "dgvCS_Travel";
             this.dgvCS_Travel.RowHeadersWidth = 51;
             this.dgvCS_Travel.RowTemplate.Height = 27;
-            this.dgvCS_Travel.Size = new System.Drawing.Size(1269, 295);
+            this.dgvCS_Travel.Size = new System.Drawing.Size(1680, 351);
             this.dgvCS_Travel.TabIndex = 0;
             // 
-            // chartRepair
+            // contextMenuStrip1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chartRepair.ChartAreas.Add(chartArea1);
-            legendCellColumn1.ColumnType = System.Windows.Forms.DataVisualization.Charting.LegendCellColumnType.SeriesSymbol;
-            legendCellColumn1.Name = "Column1";
-            legendCellColumn2.Name = "Column2";
-            legend1.CellColumns.Add(legendCellColumn1);
-            legend1.CellColumns.Add(legendCellColumn2);
-            legend1.Name = "Legend1";
-            this.chartRepair.Legends.Add(legend1);
-            this.chartRepair.Location = new System.Drawing.Point(13, 11);
-            this.chartRepair.Margin = new System.Windows.Forms.Padding(2);
-            this.chartRepair.Name = "chartRepair";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chartRepair.Series.Add(series1);
-            this.chartRepair.Size = new System.Drawing.Size(508, 178);
-            this.chartRepair.TabIndex = 1;
-            this.chartRepair.Text = "chart1";
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Frm_HomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1443, 841);
+            this.ClientSize = new System.Drawing.Size(1904, 1041);
             this.Controls.Add(this.splitContainer1);
             this.Name = "Frm_HomePage";
             this.Text = "HRMS";
@@ -1670,14 +1747,18 @@ namespace HRMS
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.gpbUser.ResumeLayout(false);
+            this.gpbUser.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel1.PerformLayout();
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            this.gpbSecurity.ResumeLayout(false);
+            this.gpbSecurity.PerformLayout();
             this.gpbWeather.ResumeLayout(false);
             this.gpbWeather.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbWeather)).EndInit();
@@ -1687,7 +1768,6 @@ namespace HRMS
             this.tabpCO.ResumeLayout(false);
             this.tabpCO.PerformLayout();
             this.tabpCO_Search.ResumeLayout(false);
-            this.tabpCO_Search.PerformLayout();
             this.splitContainer5.Panel1.ResumeLayout(false);
             this.splitContainer5.Panel1.PerformLayout();
             this.splitContainer5.Panel2.ResumeLayout(false);
@@ -1702,6 +1782,7 @@ namespace HRMS
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chartRepair)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Repair)).EndInit();
@@ -1720,6 +1801,7 @@ namespace HRMS
             this.splitContainer6.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer6)).EndInit();
             this.splitContainer6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chartLeave)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCS_Leave)).EndInit();
             this.tabpTravel.ResumeLayout(false);
             this.splitContainer7.Panel1.ResumeLayout(false);
@@ -1727,8 +1809,8 @@ namespace HRMS
             this.splitContainer7.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer7)).EndInit();
             this.splitContainer7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chartTravel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCS_Travel)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartRepair)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1747,7 +1829,6 @@ namespace HRMS
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label lblSubtitle;
         private System.Windows.Forms.Button btnPublishInfo;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         internal System.Windows.Forms.ListBox lsbBulletin;
         internal System.Windows.Forms.Label label2;
@@ -1763,13 +1844,18 @@ namespace HRMS
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.Label lblPop;
         private System.Windows.Forms.Label lblTmax;
-        private System.Windows.Forms.Button button4;
         internal System.Windows.Forms.Label lblDeptName;
         internal System.Windows.Forms.Label lblJobTitleName;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.GroupBox gpbUser;
+        private System.Windows.Forms.GroupBox gpbSecurity;
+        private System.Windows.Forms.TextBox txtSecuty;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabControl tabcCO;
         private System.Windows.Forms.TabPage tabpCO;
+        private System.Windows.Forms.Label labClockTime_OFF;
+        private System.Windows.Forms.Button btnClockOn_OFF;
         private System.Windows.Forms.Label labTip;
         private System.Windows.Forms.Label labClockTime_ON;
         private System.Windows.Forms.Button btnClockOn_ON;
@@ -1777,17 +1863,15 @@ namespace HRMS
         private System.Windows.Forms.Label labCO_ShowNowTime;
         private System.Windows.Forms.TabPage tabpCO_Search;
         private System.Windows.Forms.SplitContainer splitContainer5;
+        private System.Windows.Forms.DateTimePicker dtpCO_ShearchEnd;
         private System.Windows.Forms.Button btnCO_Search;
         private System.Windows.Forms.Label labCO_ShearchDate;
         private System.Windows.Forms.DateTimePicker dtpCO_ShearchStart;
-        private System.Windows.Forms.DateTimePicker dtpCO_ShearchEnd;
         private System.Windows.Forms.Label labCO_ShearchStart;
         private System.Windows.Forms.Label labCO_ShearchEnd;
         private System.Windows.Forms.DataGridView dgvCO_Search;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button btnLog;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
@@ -1796,10 +1880,10 @@ namespace HRMS
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartRepair;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label labRepairPhone;
         private System.Windows.Forms.Button btnClear_Repair;
@@ -1814,12 +1898,18 @@ namespace HRMS
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView dgv_Repair;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.SplitContainer splitContainer4;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button btnRepairAllCheck;
+        private System.Windows.Forms.DataGridView dgv_RepairSup;
         private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.TabControl tabcCS;
         private System.Windows.Forms.TabPage tabpLeave;
         private System.Windows.Forms.SplitContainer splitContainer6;
         private System.Windows.Forms.Button btnCS_AllPassLeave;
         private System.Windows.Forms.Label labCS_LeaveShearchDate;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartLeave;
         private System.Windows.Forms.Button btnCS_SearchLeave;
         private System.Windows.Forms.Label labCS_LeaveSearchCon;
         private System.Windows.Forms.Label labCS_LeaveSearchStart;
@@ -1831,6 +1921,7 @@ namespace HRMS
         private System.Windows.Forms.TabPage tabpTravel;
         private System.Windows.Forms.SplitContainer splitContainer7;
         private System.Windows.Forms.Button btnCS_AllPassTravel;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartTravel;
         private System.Windows.Forms.Button btnCS_SearchTravel;
         private System.Windows.Forms.DateTimePicker dtpCS_SearchTravelStart;
         private System.Windows.Forms.Label labCS_TravelShearchDate;
@@ -1840,11 +1931,5 @@ namespace HRMS
         private System.Windows.Forms.Label labCS_TravelSearchCon;
         private System.Windows.Forms.ComboBox comboBoxTravel;
         private System.Windows.Forms.DataGridView dgvCS_Travel;
-        private System.Windows.Forms.TabPage tabPage5;
-        private System.Windows.Forms.SplitContainer splitContainer4;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button btnRepairAllCheck;
-        private System.Windows.Forms.DataGridView dgv_RepairSup;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartRepair;
     }
 }

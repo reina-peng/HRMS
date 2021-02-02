@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -27,17 +28,21 @@ namespace HRMS
         internal int UserID;//接 login 傳過來的值
         internal static UserInfo userInfo = null;//建立 userInfo 物件
         Thread thWeather;//天氣輪播執行緒
-
+        Thread thLoadBulletin;//載入佈告欄執行緒
         public Frm_HomePage()
         {            
             InitializeComponent();
             this.CenterToScreen();
             this.tabControl1.DrawItem += this.tabControl1_DrawItem;// 註冊 tabControl 事件
-            //tabControl改側邊 > Alignment:Left > SizeMode:Fixed > 修改 ItemSize > 加下一行指令 
-            this.tabControl1.DrawMode = TabDrawMode.OwnerDrawFixed;            
+            //tabControl改側邊 > Alignment:Left > SizeMode:Fixed > 修改 ItemSize > 加下一行指令            
+            this.tabControl1.DrawMode = TabDrawMode.OwnerDrawFixed;
+            //this.gpbWeather.Paint += this.groupBox1_Paint;
             this.Load += HomePage_Load;
             this.FormClosed += Homepage_FormClosed;
-            LoadBulletin();//載入佈告欄             
+            LoadBulletin();//載入佈告欄
+            this.txtSecuty.Text = "1.使用資訊設備請注意資訊安全，請勿點擊不明信件或網址。"+Environment.NewLine +
+                "2.公司資訊請忽任意攜出或傳輸儲存設備或雲端服務。" + Environment.NewLine +
+                "3.有任何資安疑慮或問題請洽 IT 人員。"; 
         }
         
         private void HomePage_Load(object sender, EventArgs e)
@@ -54,7 +59,16 @@ namespace HRMS
             #endregion
             //tabControl1.TabPages.Remove(tabPage1);
             //判斷員工職等設定佈告欄編輯按鈕  Visible
-            this.btnPublishInfo.Visible = (userInfo.JobTitle <= 1) ? true : false;
+            this.btnPublishInfo.Visible = (userInfo.JobTitle <= 2) ? true : false;
+            thLoadBulletin = new Thread(delegate ()
+            {
+                while (true)
+                {
+                    LoadBulletin(10000);
+                }                    
+            });
+            thLoadBulletin.IsBackground = true;
+            thLoadBulletin.Start();
             #region 天氣輪播
             //參考 https://www.itread01.com/content/1544577918.html
             jsondata = getJson(cwbAPI);//取得天氣 Json
@@ -78,15 +92,15 @@ namespace HRMS
             #region Janna
             CheckAuthority();//簽核關卡權限判斷
             GetComboboxValue();//篩選Status, Combobox取值
-            labCO_ShowNowTime.Text = DateTime.Now.ToString("HH時mm分ss秒");
-            label11.Text = DateTime.Now.ToString("HH時mm分ss秒");
+            labCO_ShowNowTime.Text = DateTime.Now.ToString("HH時mm分ss秒");            
             ShowChart();
             //timer使大逗!!
             timer1.Enabled = true;
             timer1.Interval = 1000;
             timer1.Start();
+            tabControl1_SelectedIndexChanged(sender ,e);
             #endregion
-
+            #region wz
             //todo wz 顯示Repair的申請人名字
             this.labRepairName.Text = userInfo.Name;
             //todo wz 顯示Repair的申請人電話
@@ -97,11 +111,12 @@ namespace HRMS
             RepairtoSupervisor();
             //todo wz 新增DataGridView的button
             AddButtonofRepair();
-
+            #endregion
         }
         private void Homepage_FormClosed(object sender, FormClosedEventArgs e)
         {
             thWeather.Abort(); // 關閉時結束天氣輪播執行緒
+            thLoadBulletin.Abort();//關閉時結束載入佈告欄執行緒
         }
         #region ShowImage(載入員工圖片)
         private void ShowImage(int imageID)
@@ -132,6 +147,14 @@ namespace HRMS
         }
         #endregion
         #region 載入佈告欄
+        private void LoadBulletin(int a)
+        {
+            this.Invoke(new Action(() =>
+            {
+                LoadBulletin();
+            }));
+            Thread.Sleep(a);
+        }
         internal void LoadBulletin()//載入佈告欄
         {            
             this.lsbBulletin.Items.Clear();
@@ -186,16 +209,17 @@ namespace HRMS
                     }
                 }
             }
-            for (int i = 0; i < 3; i++) //顯示 3 個時段天氣資料
-            {
-                this.textBox1.Text += time[i] + " 天氣:" + weathdescrible[i].PadRight(8, '　') + " 溫度:" + mintemperature[i] + "°c-" + maxtemperature[i] + "°c 降雨機率:" + pop[i] + "%" + Environment.NewLine;
-                this.textBox1.Text += weatherCode[i] + Environment.NewLine;
-            }
+            //for (int i = 0; i < 3; i++) //顯示 3 個時段天氣資料
+            //{
+            //    this.txtSecuty.Text += time[i] + " 天氣:" + weathdescrible[i].PadRight(8, '　') + " 溫度:" + mintemperature[i] + "°c-" + maxtemperature[i] + "°c 降雨機率:" + pop[i] + "%" + Environment.NewLine;
+            //    this.txtSecuty.Text += weatherCode[i] + Environment.NewLine;
+            //}
         }        
         private void ChangeImage(Image img, string time, string describe, string tempMin, string tempMax, string pop, int millisecondTimeOut = 4000)
         {
             this.Invoke(new Action(() =>
             {
+                gpbWeather.Text = "";
                 pcbWeather.Image = img;
                 lblTime.Text = time;
                 lblWeather.Text = describe;
@@ -229,7 +253,7 @@ namespace HRMS
                 e.DrawBackground();
             }
             // Use our own font.
-            Font _tabFont = new Font("Arial", (float)10.0, FontStyle.Bold, GraphicsUnit.Pixel);
+            Font _tabFont = new Font("Arial", (float)20.0, FontStyle.Bold, GraphicsUnit.Pixel);
             // Draw string. Center the text.
             StringFormat _stringFlags = new StringFormat();
             _stringFlags.Alignment = StringAlignment.Center;
@@ -237,6 +261,35 @@ namespace HRMS
             g.DrawString(_tabPage.Text, _tabFont, _textBrush, _tabBounds, new StringFormat(_stringFlags));            
         }
         #endregion
+        private void groupBox1_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.Clear(groupBox1.BackColor);
+
+            Rectangle Rtg_LT = new Rectangle();
+            Rectangle Rtg_RT = new Rectangle();
+            Rectangle Rtg_LB = new Rectangle();
+            Rectangle Rtg_RB = new Rectangle();
+            Rtg_LT.X = 0; Rtg_LT.Y = 7; Rtg_LT.Width = 10; Rtg_LT.Height = 10;
+            Rtg_RT.X = e.ClipRectangle.Width - 11; Rtg_RT.Y = 7; Rtg_RT.Width = 10; Rtg_RT.Height = 10;
+            Rtg_LB.X = 0; Rtg_LB.Y = e.ClipRectangle.Height - 11; Rtg_LB.Width = 10; Rtg_LB.Height = 10;
+            Rtg_RB.X = e.ClipRectangle.Width - 11; Rtg_RB.Y = e.ClipRectangle.Height - 11; Rtg_RB.Width = 10; Rtg_RB.Height = 10;
+
+            Color color = Color.FromArgb(51, 94, 168);
+            Pen Pen_AL = new Pen(color, 1);
+            Pen_AL.Color = color;
+            Brush brush = new HatchBrush(HatchStyle.Divot, color);
+
+            e.Graphics.DrawString(groupBox1.Text, groupBox1.Font, brush, 6, 0);
+            e.Graphics.DrawArc(Pen_AL, Rtg_LT, 180, 90);
+            e.Graphics.DrawArc(Pen_AL, Rtg_RT, 270, 90);
+            e.Graphics.DrawArc(Pen_AL, Rtg_LB, 90, 90);
+            e.Graphics.DrawArc(Pen_AL, Rtg_RB, 0, 90);
+            e.Graphics.DrawLine(Pen_AL, 5, 7, 6, 7);
+            e.Graphics.DrawLine(Pen_AL, e.Graphics.MeasureString(groupBox1.Text, groupBox1.Font).Width + 3, 7, e.ClipRectangle.Width - 7, 7);
+            e.Graphics.DrawLine(Pen_AL, 0, 13, 0, e.ClipRectangle.Height - 7);
+            e.Graphics.DrawLine(Pen_AL, 6, e.ClipRectangle.Height - 1, e.ClipRectangle.Width - 7, e.ClipRectangle.Height - 1);
+            e.Graphics.DrawLine(Pen_AL, e.ClipRectangle.Width - 1, e.ClipRectangle.Height - 7, e.ClipRectangle.Width - 1, 13);
+        }
         #region 測試碼
         //private void button1_Click(object sender, EventArgs e)
         //{
@@ -282,27 +335,114 @@ namespace HRMS
             f.id = UserID;
             f.labID.Text = UserID.ToString();
             f.Show();
+            f.button1.Click += Button1_Click;
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            ShowImage(userInfo.ID);
         }
         #endregion
 
         #region 打卡
-        private void timer1_Tick(object sender, EventArgs e)
+        private void timer1_Tick(object sender, EventArgs e)// 顯示現在時間
         {
-            labCO_ShowNowTime.Text = DateTime.Now.ToString();
+            labCO_ShowNowTime.Text = DateTime.Now.ToString("HH時mm分ss秒");
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e) //設定打卡紀錄查詢日期區間 // todo 
         {
+            using (SqlConnection conn = new SqlConnection(Settings.Default.MyHR))
+            {
+                SqlCommand command = new SqlCommand();
+                command.Connection = conn;
+                conn.Open();
+                command.CommandText = "select * from [User] where EmployeeID=" + userInfo.ID;
+                SqlDataReader dataReader = command.ExecuteReader();
+                dataReader.Read();
 
+                DateTime mindate = DateTime.Parse(dataReader["OnBoardDay"].ToString());
+                this.dtpCO_ShearchStart.MinDate = mindate;
+                this.dtpCO_ShearchEnd.MinDate = mindate;
+
+                this.dtpCO_ShearchStart.MaxDate = DateTime.Today;
+                this.dtpCO_ShearchEnd.MaxDate = DateTime.Today;
+            }
         }
 
-        private void btnClockOn_Click(object sender, EventArgs e) //打卡
+        //todo 修改開始------------------------------------------------------------------------------------------
+        private void btnClockOn_Click(object sender, EventArgs e) //打上班卡
         {
-            labClockTime_ON.Text = "您已打卡成功 !\n" + DateTime.Now;
-            Absence absence = new Absence { EmployeeID = userInfo.ID, Clock_on = DateTime.Now };
-            this.hrEntities.Absences.Add(absence);
-            this.hrEntities.SaveChanges();
+            var q = from c in hrEntities.Absences.AsEnumerable()
+                    let x = DateTime.Today.Date.ToString("yyyy/MM/dd")
+                    where c.EmployeeID == userInfo.ID && c.On.Value.Date.ToString("yyyy/MM/dd") == x
+                    select c;
+
+            if (q.ToList().Count == 0)//判斷資料庫無打卡紀錄
+            {
+                labClockTime_ON.Text = "您已打卡成功 !\n" + DateTime.Now;
+                Absence absence = new Absence { EmployeeID = userInfo.ID, On = DateTime.Now };
+                this.hrEntities.Absences.Add(absence);
+                this.hrEntities.SaveChanges();
+            }
+            else//有打卡紀錄
+            {
+                labClockTime_ON.Text = "您已打過上班卡! \n無須再打卡";
+            }
         }
+        private void btnClockOn_OFF_Click(object sender, EventArgs e)//todo 下班卡
+        {
+            DateTime now = DateTime.Now;
+            DateTime off = DateTime.Today.AddHours(18);
+
+            var q = from c in hrEntities.Absences.AsEnumerable()
+                    let x = DateTime.Today.Date.ToString("yyyy/MM/dd")
+                    where c.EmployeeID == userInfo.ID && c.On.Value.Date.ToString("yyyy/MM/dd") == x
+                    select c;
+
+            if (q.ToList().Count() == 0)//尚未打上班卡(新增資料庫)
+            {
+                MessageBox.Show("今日尚未打上班卡，請先打上班卡", "溫馨小提醒", MessageBoxButtons.OK);
+            }
+            else//已打過上班卡(修改資料庫)
+            {
+                if (now > off) //判斷超過六點且已打上班卡
+                {
+                    labClockTime_OFF.Text = "您已打卡成功 !\n" + DateTime.Now;
+
+                    var q2 = from c in hrEntities.Absences
+                             let x = DateTime.Today.Date.ToString("yyyy/MM/dd")
+                             where c.EmployeeID == userInfo.ID && c.On.Value.Date.ToString("yyyy/MM/dd") == x
+                             select c;
+
+                    //修改該EmployeeID的資料
+                    foreach (var item in q2)
+                    {
+                        item.Off = DateTime.Now;
+                    }
+                    this.hrEntities.SaveChanges();
+                }
+
+                else if (now < off)//非下班時間要打卡
+                {
+                    if (MessageBox.Show("現在非下班時間\n仍然要打下班卡嗎??", "溫馨小提醒", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                    {
+                        labClockTime_OFF.Text = "您已打卡成功 !\n" + DateTime.Now;
+                        var f = from a in hrEntities.Absences.AsEnumerable()
+                                let x = DateTime.Today.ToString("yyyy/MM/dd")
+                                where a.EmployeeID == userInfo.ID && a.On.Value.Date.ToString("yyyy/MM/dd") == x
+                                select a;
+
+                        foreach (var item in f)
+                        {
+                            item.Off = DateTime.Now;
+                        }
+                        this.hrEntities.SaveChanges();
+                    }
+                }
+            }
+        }
+        //todo 修改結束------------------------------------------------------------------------------------------
 
         private void btnSearch_Click_1(object sender, EventArgs e) //打卡記錄查詢
         {
@@ -318,13 +458,14 @@ namespace HRMS
             }
             else
             {
-                var q = from date in hrEntities.Absences
-                        where date.EmployeeID == userInfo.ID && date.Clock_on.Value >= StartDate && date.Clock_on.Value <= EndDate
+                var q = from date in hrEntities.Absences.AsEnumerable()
+                        where date.EmployeeID == userInfo.ID && date.On.Value.Date >= StartDate && date.On.Value.Date <= EndDate
                         select new
                         {
                             員工編號 = date.EmployeeID,
                             員工姓名 = date.User.EmployeeName,
-                            打卡紀錄 = date.Clock_on.Value
+                            上班打卡紀錄 = date.On.Value,
+                            下班打卡紀錄 = date.Off.Value
                         };
 
                 dgvCO_Search.DataSource = q.ToList();
@@ -332,6 +473,7 @@ namespace HRMS
         }
 
         #endregion
+
         #region  wz的Repair 報修申請
 
 
@@ -477,6 +619,7 @@ namespace HRMS
         }
 
         #endregion
+
         #region wz的Repair 報修查詢
 
         //Load Repair to Supervisor
@@ -546,24 +689,107 @@ namespace HRMS
         //點選結案按鈕進行狀態更改
         private void dgv_RepairSup_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            int row, column;
+
+            /*Read the button position which is pressed*/
+            row = e.RowIndex;
+            column = e.ColumnIndex;
+            int num = (int)dgv_RepairSup.Rows[row].Cells["申請單號"].Value;
+            //如果是"是否結案"列，按鈕被點擊
+            if (dgv_RepairSup.Columns[column].Name == "是否結案")//此處索引列可以使name、也可以使headertext...
+            {
+                var q = from r in hrEntities.Repairs
+                        where r.RepairNumber == num
+                        select r;
+
+                foreach (var i in q)
+                {
+                    i.RepairStatus = 1;
+                }
+                hrEntities.SaveChanges();
+            }
+
+            //點選完結案重新載入資料進來
+            RepairtoSupervisor();
+
+            //button Enabled
+            //DataGridViewDisableButtonCell btncell = (DataGridViewDisableButtonCell)dgv_RepairSup.Rows[e.RowIndex].Cells["是否結案"];
+            //string states = dgv_RepairSup.Rows[row].Cells["維修狀態"].Value.ToString();
+            //if (states == "完成")
+            //{
+            //    btncell.Enabled = false;
+            //}
+            //if (btncell.Enabled)
+            //{
+            //    btncell.Enabled = false;
+            //}
 
         }
 
         //datagridview顏色
         private void dgv_RepairSup_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+            //參考網址：https://www.366service.com/zh-tw/qa/4ae5bda2b10ce73fc97bd23e31e2e34e
+
+            for (int i = 0; i < dgv_RepairSup.Rows.Count; i++)
+            {
+                DataGridViewRow dgvr1 = dgv_RepairSup.Rows[i];
+                if (i % 2 == 0)
+                {
+                    dgv_RepairSup.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(255, 196, 120);
+                }
+                else
+                {
+                    dgv_RepairSup.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(240, 229, 216);
+                }
+            }
+
+            for (int i = 0; i < dgv_RepairSup.Rows.Count; i++)
+            {
+                DataGridViewRow dgvr = dgv_RepairSup.Rows[i];
+                if (dgvr.Cells[7].Value.ToString() == "維修中")
+                {
+                    dgvr.Cells[7].Style.BackColor = Color.FromArgb(170, 58, 58);
+                    dgvr.Cells[7].Style.ForeColor = Color.White;
+                    //dgvr.Cells[7].Style.Font= new Font(dgv_RepairSup.Font, FontStyle.Bold);
+                }
+                else if (dgvr.Cells[7].Value.ToString() == "完成")
+                {
+                    dgvr.Cells[7].Style.BackColor = Color.FromArgb(94, 168, 135);
+                    dgvr.Cells[7].Style.ForeColor = Color.White;
+                    //dgvr.Cells[7].Style.Font = new Font(dgv_RepairSup.Font, FontStyle.Bold);
+                }
+            }
+            //標題和內容文字置中
+            dgv_RepairSup.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgv_RepairSup.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
         }
 
         //一鍵審核通過
         private void btnRepairAllCheck_Click(object sender, EventArgs e)
         {
+            if (userInfo.Dept == 4 || userInfo.Dept == 5 && userInfo.Supervisor == userInfo.ID)
+            {
+                var q = from r in hrEntities.Repairs
+                        where (r.RepairCategory.Contains("資訊") && userInfo.Dept == 4) || (r.RepairCategory.Contains("總務") && userInfo.Dept == 5)
+                        select r;
 
+                foreach (var i in q)
+                {
+                    i.RepairStatus = 1;
+                }
+                hrEntities.SaveChanges();
+
+            }
+            //點選完結案重新載入資料進來
+            RepairtoSupervisor();
         }
 
 
 
         #endregion
+
         #region 簽核關卡
         private void ShowChart()
         {
@@ -1059,15 +1285,6 @@ namespace HRMS
         #endregion
 
         #endregion
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
+                
     }
 }

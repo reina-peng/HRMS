@@ -19,7 +19,11 @@ namespace HRMS
         public int JobTitle { get; }//員工職稱代號
         public string JobTitleName { get; }//員工職稱名稱
         public string Phone { get; } //員工電話
-        public int Supervisor { get; } //員工主管
+        public int Supervisor { get; } //員工主管        
+        public void ErrorMsg(Exception ex)
+        {
+            MessageBox.Show(ex.Message + "\n請檢查程式碼或輸入值");
+        }
         public void resetText(Control a)//清除頁面欄位
         {            
             {

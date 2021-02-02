@@ -16,7 +16,8 @@ namespace HRMS
     {
         public int ApplyNumber { get; set; }
         public int EmployeeID { get; set; }
-        public Nullable<System.DateTime> Clock_on { get; set; }
+        public Nullable<System.DateTime> On { get; set; }
+        public Nullable<System.DateTime> Off { get; set; }
     
         public virtual User User { get; set; }
     }

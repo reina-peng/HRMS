@@ -80,9 +80,10 @@ namespace HRMS
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(12, 24);
+            this.pictureBox1.Location = new System.Drawing.Point(9, 19);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(197, 189);
+            this.pictureBox1.Size = new System.Drawing.Size(148, 151);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -91,46 +92,52 @@ namespace HRMS
             // txtEmail
             // 
             this.txtEmail.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtEmail.Location = new System.Drawing.Point(342, 125);
+            this.txtEmail.Location = new System.Drawing.Point(256, 100);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(156, 30);
+            this.txtEmail.Size = new System.Drawing.Size(118, 26);
             this.txtEmail.TabIndex = 1;
             // 
             // txtAdd
             // 
-            this.txtAdd.Location = new System.Drawing.Point(150, 145);
+            this.txtAdd.Location = new System.Drawing.Point(112, 116);
+            this.txtAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtAdd.Name = "txtAdd";
-            this.txtAdd.Size = new System.Drawing.Size(492, 25);
+            this.txtAdd.Size = new System.Drawing.Size(370, 22);
             this.txtAdd.TabIndex = 4;
             // 
             // txtEmergencyP
             // 
-            this.txtEmergencyP.Location = new System.Drawing.Point(150, 186);
+            this.txtEmergencyP.Location = new System.Drawing.Point(112, 149);
+            this.txtEmergencyP.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtEmergencyP.Name = "txtEmergencyP";
-            this.txtEmergencyP.Size = new System.Drawing.Size(148, 25);
+            this.txtEmergencyP.Size = new System.Drawing.Size(112, 22);
             this.txtEmergencyP.TabIndex = 6;
             // 
             // txtPhone
             // 
-            this.txtPhone.Location = new System.Drawing.Point(150, 104);
+            this.txtPhone.Location = new System.Drawing.Point(112, 83);
+            this.txtPhone.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(148, 25);
+            this.txtPhone.Size = new System.Drawing.Size(112, 22);
             this.txtPhone.TabIndex = 5;
             // 
             // txtPassWord
             // 
             this.txtPassWord.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtPassWord.Location = new System.Drawing.Point(102, 55);
+            this.txtPassWord.Location = new System.Drawing.Point(76, 44);
+            this.txtPassWord.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtPassWord.Name = "txtPassWord";
-            this.txtPassWord.Size = new System.Drawing.Size(121, 30);
+            this.txtPassWord.Size = new System.Drawing.Size(92, 26);
             this.txtPassWord.TabIndex = 10;
             // 
             // txtEnName
             // 
             this.txtEnName.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtEnName.Location = new System.Drawing.Point(102, 125);
+            this.txtEnName.Location = new System.Drawing.Point(76, 100);
+            this.txtEnName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtEnName.Name = "txtEnName";
-            this.txtEnName.Size = new System.Drawing.Size(121, 30);
+            this.txtEnName.Size = new System.Drawing.Size(92, 26);
             this.txtEnName.TabIndex = 9;
             // 
             // comSex
@@ -139,41 +146,46 @@ namespace HRMS
             this.comSex.Items.AddRange(new object[] {
             "男",
             "女"});
-            this.comSex.Location = new System.Drawing.Point(150, 64);
+            this.comSex.Location = new System.Drawing.Point(112, 51);
+            this.comSex.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comSex.Name = "comSex";
-            this.comSex.Size = new System.Drawing.Size(148, 23);
+            this.comSex.Size = new System.Drawing.Size(112, 20);
             this.comSex.TabIndex = 15;
             // 
             // DTBir
             // 
-            this.DTBir.Location = new System.Drawing.Point(150, 22);
+            this.DTBir.Location = new System.Drawing.Point(112, 18);
+            this.DTBir.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.DTBir.Name = "DTBir";
-            this.DTBir.Size = new System.Drawing.Size(148, 25);
+            this.DTBir.Size = new System.Drawing.Size(112, 22);
             this.DTBir.TabIndex = 19;
             // 
             // DTOBD
             // 
             this.DTOBD.Enabled = false;
             this.DTOBD.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.DTOBD.Location = new System.Drawing.Point(601, 55);
+            this.DTOBD.Location = new System.Drawing.Point(451, 44);
+            this.DTOBD.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.DTOBD.Name = "DTOBD";
-            this.DTOBD.Size = new System.Drawing.Size(172, 30);
+            this.DTOBD.Size = new System.Drawing.Size(130, 26);
             this.DTOBD.TabIndex = 20;
             // 
             // DTBBD
             // 
             this.DTBBD.Enabled = false;
             this.DTBBD.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.DTBBD.Location = new System.Drawing.Point(601, 125);
+            this.DTBBD.Location = new System.Drawing.Point(451, 100);
+            this.DTBBD.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.DTBBD.Name = "DTBBD";
-            this.DTBBD.Size = new System.Drawing.Size(172, 30);
+            this.DTBBD.Size = new System.Drawing.Size(130, 26);
             this.DTBBD.TabIndex = 21;
             // 
             // txtEmergencyC
             // 
-            this.txtEmergencyC.Location = new System.Drawing.Point(150, 227);
+            this.txtEmergencyC.Location = new System.Drawing.Point(112, 182);
+            this.txtEmergencyC.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtEmergencyC.Name = "txtEmergencyC";
-            this.txtEmergencyC.Size = new System.Drawing.Size(148, 25);
+            this.txtEmergencyC.Size = new System.Drawing.Size(112, 22);
             this.txtEmergencyC.TabIndex = 22;
             // 
             // 基本資料１
@@ -203,9 +215,11 @@ namespace HRMS
             this.基本資料１.Controls.Add(this.txtEmail);
             this.基本資料１.Controls.Add(this.txtEnName);
             this.基本資料１.Controls.Add(this.txtPassWord);
-            this.基本資料１.Location = new System.Drawing.Point(215, 24);
+            this.基本資料１.Location = new System.Drawing.Point(161, 19);
+            this.基本資料１.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.基本資料１.Name = "基本資料１";
-            this.基本資料１.Size = new System.Drawing.Size(791, 189);
+            this.基本資料１.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.基本資料１.Size = new System.Drawing.Size(593, 151);
             this.基本資料１.TabIndex = 23;
             this.基本資料１.TabStop = false;
             this.基本資料１.Text = "員工資料";
@@ -214,9 +228,10 @@ namespace HRMS
             // 
             this.labAccS.AutoSize = true;
             this.labAccS.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.labAccS.Location = new System.Drawing.Point(608, 95);
+            this.labAccS.Location = new System.Drawing.Point(456, 76);
+            this.labAccS.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labAccS.Name = "labAccS";
-            this.labAccS.Size = new System.Drawing.Size(78, 22);
+            this.labAccS.Size = new System.Drawing.Size(64, 18);
             this.labAccS.TabIndex = 43;
             this.labAccS.Text = "帳號狀態";
             // 
@@ -224,9 +239,10 @@ namespace HRMS
             // 
             this.labOBS.AutoSize = true;
             this.labOBS.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.labOBS.Location = new System.Drawing.Point(608, 25);
+            this.labOBS.Location = new System.Drawing.Point(456, 20);
+            this.labOBS.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labOBS.Name = "labOBS";
-            this.labOBS.Size = new System.Drawing.Size(78, 22);
+            this.labOBS.Size = new System.Drawing.Size(64, 18);
             this.labOBS.TabIndex = 42;
             this.labOBS.Text = "在職狀態";
             // 
@@ -234,9 +250,10 @@ namespace HRMS
             // 
             this.labSup.AutoSize = true;
             this.labSup.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.labSup.Location = new System.Drawing.Point(344, 95);
+            this.labSup.Location = new System.Drawing.Point(258, 76);
+            this.labSup.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labSup.Name = "labSup";
-            this.labSup.Size = new System.Drawing.Size(44, 22);
+            this.labSup.Size = new System.Drawing.Size(36, 18);
             this.labSup.TabIndex = 41;
             this.labSup.Text = "主管";
             // 
@@ -244,9 +261,10 @@ namespace HRMS
             // 
             this.labJobTitle.AutoSize = true;
             this.labJobTitle.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.labJobTitle.Location = new System.Drawing.Point(344, 62);
+            this.labJobTitle.Location = new System.Drawing.Point(258, 50);
+            this.labJobTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labJobTitle.Name = "labJobTitle";
-            this.labJobTitle.Size = new System.Drawing.Size(44, 22);
+            this.labJobTitle.Size = new System.Drawing.Size(36, 18);
             this.labJobTitle.TabIndex = 40;
             this.labJobTitle.Text = "職位";
             // 
@@ -254,9 +272,10 @@ namespace HRMS
             // 
             this.labDept.AutoSize = true;
             this.labDept.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.labDept.Location = new System.Drawing.Point(344, 25);
+            this.labDept.Location = new System.Drawing.Point(258, 20);
+            this.labDept.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labDept.Name = "labDept";
-            this.labDept.Size = new System.Drawing.Size(44, 22);
+            this.labDept.Size = new System.Drawing.Size(36, 18);
             this.labDept.TabIndex = 39;
             this.labDept.Text = "部門";
             // 
@@ -264,9 +283,10 @@ namespace HRMS
             // 
             this.labName.AutoSize = true;
             this.labName.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.labName.Location = new System.Drawing.Point(99, 95);
+            this.labName.Location = new System.Drawing.Point(74, 76);
+            this.labName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labName.Name = "labName";
-            this.labName.Size = new System.Drawing.Size(44, 22);
+            this.labName.Size = new System.Drawing.Size(36, 18);
             this.labName.TabIndex = 38;
             this.labName.Text = "姓名";
             // 
@@ -274,9 +294,10 @@ namespace HRMS
             // 
             this.labID.AutoSize = true;
             this.labID.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.labID.Location = new System.Drawing.Point(99, 24);
+            this.labID.Location = new System.Drawing.Point(74, 19);
+            this.labID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labID.Name = "labID";
-            this.labID.Size = new System.Drawing.Size(78, 22);
+            this.labID.Size = new System.Drawing.Size(64, 18);
             this.labID.TabIndex = 37;
             this.labID.Text = "員工編號";
             // 
@@ -284,9 +305,10 @@ namespace HRMS
             // 
             this.帳號狀態.AutoSize = true;
             this.帳號狀態.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.帳號狀態.Location = new System.Drawing.Point(523, 95);
+            this.帳號狀態.Location = new System.Drawing.Point(392, 76);
+            this.帳號狀態.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.帳號狀態.Name = "帳號狀態";
-            this.帳號狀態.Size = new System.Drawing.Size(78, 22);
+            this.帳號狀態.Size = new System.Drawing.Size(64, 18);
             this.帳號狀態.TabIndex = 33;
             this.帳號狀態.Text = "帳號狀態";
             // 
@@ -294,9 +316,10 @@ namespace HRMS
             // 
             this.到職日.AutoSize = true;
             this.到職日.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.到職日.Location = new System.Drawing.Point(523, 60);
+            this.到職日.Location = new System.Drawing.Point(392, 48);
+            this.到職日.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.到職日.Name = "到職日";
-            this.到職日.Size = new System.Drawing.Size(61, 22);
+            this.到職日.Size = new System.Drawing.Size(50, 18);
             this.到職日.TabIndex = 32;
             this.到職日.Text = "到職日";
             // 
@@ -304,9 +327,10 @@ namespace HRMS
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label11.Location = new System.Drawing.Point(523, 25);
+            this.label11.Location = new System.Drawing.Point(392, 20);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(78, 22);
+            this.label11.Size = new System.Drawing.Size(64, 18);
             this.label11.TabIndex = 31;
             this.label11.Text = "在職狀態";
             // 
@@ -314,9 +338,10 @@ namespace HRMS
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label5.Location = new System.Drawing.Point(254, 130);
+            this.label5.Location = new System.Drawing.Point(190, 104);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(78, 22);
+            this.label5.Size = new System.Drawing.Size(64, 18);
             this.label5.TabIndex = 29;
             this.label5.Text = "公司信箱";
             // 
@@ -324,9 +349,10 @@ namespace HRMS
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label6.Location = new System.Drawing.Point(254, 95);
+            this.label6.Location = new System.Drawing.Point(190, 76);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(44, 22);
+            this.label6.Size = new System.Drawing.Size(36, 18);
             this.label6.TabIndex = 28;
             this.label6.Text = "主管";
             // 
@@ -334,9 +360,10 @@ namespace HRMS
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label14.Location = new System.Drawing.Point(523, 130);
+            this.label14.Location = new System.Drawing.Point(392, 104);
+            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(61, 22);
+            this.label14.Size = new System.Drawing.Size(50, 18);
             this.label14.TabIndex = 36;
             this.label14.Text = "離職日";
             // 
@@ -344,9 +371,10 @@ namespace HRMS
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label7.Location = new System.Drawing.Point(254, 60);
+            this.label7.Location = new System.Drawing.Point(190, 48);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(44, 22);
+            this.label7.Size = new System.Drawing.Size(36, 18);
             this.label7.TabIndex = 27;
             this.label7.Text = "職位";
             // 
@@ -354,9 +382,10 @@ namespace HRMS
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label8.Location = new System.Drawing.Point(254, 25);
+            this.label8.Location = new System.Drawing.Point(190, 20);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(44, 22);
+            this.label8.Size = new System.Drawing.Size(36, 18);
             this.label8.TabIndex = 26;
             this.label8.Text = "部門";
             // 
@@ -364,9 +393,10 @@ namespace HRMS
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label4.Location = new System.Drawing.Point(8, 60);
+            this.label4.Location = new System.Drawing.Point(6, 48);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(44, 22);
+            this.label4.Size = new System.Drawing.Size(36, 18);
             this.label4.TabIndex = 25;
             this.label4.Text = "密碼";
             // 
@@ -374,9 +404,10 @@ namespace HRMS
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label3.Location = new System.Drawing.Point(8, 126);
+            this.label3.Location = new System.Drawing.Point(6, 101);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 28);
+            this.label3.Size = new System.Drawing.Size(61, 23);
             this.label3.TabIndex = 24;
             this.label3.Text = "英文名稱";
             this.label3.UseCompatibleTextRendering = true;
@@ -385,9 +416,10 @@ namespace HRMS
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label2.Location = new System.Drawing.Point(8, 95);
+            this.label2.Location = new System.Drawing.Point(6, 76);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 22);
+            this.label2.Size = new System.Drawing.Size(36, 18);
             this.label2.TabIndex = 23;
             this.label2.Text = "姓名";
             // 
@@ -395,9 +427,10 @@ namespace HRMS
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label1.Location = new System.Drawing.Point(8, 25);
+            this.label1.Location = new System.Drawing.Point(6, 20);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 22);
+            this.label1.Size = new System.Drawing.Size(64, 18);
             this.label1.TabIndex = 22;
             this.label1.Text = "員工編號";
             // 
@@ -417,18 +450,21 @@ namespace HRMS
             this.groupBox2.Controls.Add(this.txtEmergencyP);
             this.groupBox2.Controls.Add(this.comSex);
             this.groupBox2.Controls.Add(this.DTBir);
-            this.groupBox2.Location = new System.Drawing.Point(12, 233);
+            this.groupBox2.Location = new System.Drawing.Point(9, 186);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(994, 277);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Size = new System.Drawing.Size(746, 222);
             this.groupBox2.TabIndex = 24;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "個人基本資料";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(901, 227);
+            this.button1.Location = new System.Drawing.Point(676, 182);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 42);
+            this.button1.Size = new System.Drawing.Size(56, 34);
             this.button1.TabIndex = 40;
             this.button1.Text = "修改";
             this.button1.UseVisualStyleBackColor = true;
@@ -437,54 +473,60 @@ namespace HRMS
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(38, 232);
+            this.label17.Location = new System.Drawing.Point(28, 186);
+            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(97, 15);
+            this.label17.Size = new System.Drawing.Size(77, 12);
             this.label17.TabIndex = 39;
             this.label17.Text = "緊急連絡電話";
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(38, 191);
+            this.label18.Location = new System.Drawing.Point(28, 153);
+            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(82, 15);
+            this.label18.Size = new System.Drawing.Size(65, 12);
             this.label18.TabIndex = 38;
             this.label18.Text = "緊急連絡人";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(38, 150);
+            this.label13.Location = new System.Drawing.Point(28, 120);
+            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(37, 15);
+            this.label13.Size = new System.Drawing.Size(29, 12);
             this.label13.TabIndex = 37;
             this.label13.Text = "住址";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(38, 109);
+            this.label12.Location = new System.Drawing.Point(28, 87);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(67, 15);
+            this.label12.Size = new System.Drawing.Size(53, 12);
             this.label12.TabIndex = 30;
             this.label12.Text = "連絡電話";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(38, 68);
+            this.label15.Location = new System.Drawing.Point(28, 54);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(37, 15);
+            this.label15.Size = new System.Drawing.Size(29, 12);
             this.label15.TabIndex = 35;
             this.label15.Text = "性別";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(38, 27);
+            this.label16.Location = new System.Drawing.Point(28, 22);
+            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(37, 15);
+            this.label16.Size = new System.Drawing.Size(29, 12);
             this.label16.TabIndex = 34;
             this.label16.Text = "生日";
             // 
@@ -494,13 +536,14 @@ namespace HRMS
             // 
             // Frm_User
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.NavajoWhite;
-            this.ClientSize = new System.Drawing.Size(1018, 529);
+            this.ClientSize = new System.Drawing.Size(764, 423);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.基本資料１);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Frm_User";
             this.Text = "Frm_User";
             this.Load += new System.EventHandler(this.Frm_User_Load);
@@ -547,7 +590,6 @@ namespace HRMS
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Label labName;
         private System.Windows.Forms.Label labAccS;
@@ -556,5 +598,6 @@ namespace HRMS
         private System.Windows.Forms.Label labJobTitle;
         private System.Windows.Forms.Label labDept;
         internal System.Windows.Forms.Label labID;
+        public System.Windows.Forms.Button button1;
     }
 }
