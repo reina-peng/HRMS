@@ -42,9 +42,19 @@ namespace HRMS
             LoadBulletin();//載入佈告欄
             this.txtSecuty.Text = "1.使用資訊設備請注意資訊安全，請勿點擊不明信件或網址。"+Environment.NewLine +
                 "2.公司資訊請勿任意攜出或傳輸儲存設備或雲端服務。" + Environment.NewLine +
-                "3.有任何資安疑慮或問題請洽 IT 人員。"; 
+                "3.有任何資安疑慮或問題請洽 IT 人員。";
+            #region 可愛教主
+            LoadLeaveCategory();
+            LoadDays();
+
+            LoadCostCaTEGORY();
+            LoadIntOnly();
+
+            LoadWuChaStore();
+            SetSomething();
+            #endregion
         }
-        
+
         private void HomePage_Load(object sender, EventArgs e)
         {
             userInfo = new UserInfo(UserID);// 建立 userInfo 實體
@@ -112,6 +122,14 @@ namespace HRMS
             //todo wz 新增DataGridView的button
             AddButtonofRepair();
             #endregion
+            #region Tina
+            this.btnWuCha_BossSearch.Visible = (userInfo.JobTitle == 1) ? true : false;   // Todo Tina
+            this.btnWuCha_BossSearchDetail.Visible = (userInfo.JobTitle == 1) ? true : false;  // Todo Tina
+
+
+            Information(userInfo.ID); // >  #region Tina匯入員工資料 (請假、差旅)  // Todo Tina
+            #endregion
+
         }
         private void Homepage_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -269,6 +287,19 @@ namespace HRMS
             g.DrawString(_tabPage.Text, _tabFont, _textBrush, _tabBounds, new StringFormat(_stringFlags));            
         }
         #endregion
+        private void SetSomething()  // Todo Tina
+        {
+            comWuCha_TempItem.Visible = false;
+            comWuCha_TempPrice.Visible = false;
+            WuCha_dataGridView.ColumnHeadersDefaultCellStyle.Font = new Font("微軟正黑體", 14);
+            WuCha_dataGridView.DefaultCellStyle.Font = new Font("微軟正黑體", 12);
+            WuCha_dataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+            WuCha_dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            WuCha_dataGridView.RowsDefaultCellStyle.ForeColor = Color.Black;
+            WuCha_dataGridView.RowsDefaultCellStyle.BackColor = Color.Wheat;
+
+        }
         private void groupBox1_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.Clear(groupBox1.BackColor);
@@ -1300,6 +1331,744 @@ namespace HRMS
             dgv_Repair.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgv_Repair.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
+        #endregion
+
+        #region  Tina 匯入員工資料
+        private void Information(int UserID)
+        {
+            try
+            {
+                string strr = Settings.Default.MyHR;
+
+                using (SqlConnection conn = new SqlConnection(strr))
+                {
+
+                    SqlCommand command = new SqlCommand();
+
+                    command.Connection = conn;
+                    command.CommandText = $"Select * from [User] where EmployeeID ={UserID}";
+                    conn.Open();
+
+
+                    SqlDataReader dataReader = command.ExecuteReader();
+                    dataReader.Read();
+
+                    this.labTra_EmployeeName.Text = dataReader["EmployeeName"].ToString();
+                    this.labLea_EmployeeName.Text = dataReader["EmployeeName"].ToString();
+                    this.labWucha_EmpName.Text = dataReader["EmployeeName"].ToString();
+
+
+
+
+                    this.labLea_EmployeeID.Text = dataReader["EmployeeID"].ToString();
+                    this.labTra_EmployeeID.Text = dataReader["EmployeeID"].ToString();
+                    this.labWucha_EmpID.Text = dataReader["EmployeeID"].ToString();
+
+
+
+
+                    byte[] bytes = (byte[])dataReader["Photo"];
+                    System.IO.MemoryStream ms = new System.IO.MemoryStream(bytes);
+                    this.pbLea_Picture.Image = Image.FromStream(ms);
+                    this.pbTra_Picture.Image = Image.FromStream(ms);
+                    this.pbWucha.Image = Image.FromStream(ms);
+
+                    var q = from i in this.hrEntities.Users
+                            where i.EmployeeID == UserID
+                            select i.Department1.DepartmentName;
+
+                    this.labTra_EmpDep.Text = q.First();
+                    this.labLea_EmpDep.Text = q.First();
+                    this.labWucha_EmpDep.Text = q.First();
+
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        #endregion
+
+        #region 請假申請
+
+
+        private void LoadDays() //請假天數
+        {
+            this.comLea_Days.Items.Add("半天");
+            for (int i = 1; i <= 30; i++)
+            {
+                this.comLea_Days.Items.Add($"{i}天");
+            }
+        }
+
+        private void LoadLeaveCategory()  //匯入假別類別
+        {
+            string strr = Settings.Default.MyHR;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(strr))
+                {
+                    SqlCommand comm = new SqlCommand();
+                    comm.CommandText = "select * from Leave";
+                    comm.Connection = conn;
+
+                    conn.Open();
+                    SqlDataReader reader = comm.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        this.comLea_Cate.Items.Add(reader["LeaveCategory"]);
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void btnLeave_Submit_Click(object sender, EventArgs e)
+        {
+
+        }//申請假別
+
+        public int ChangeToLeaveID(string s)  //對應假別名稱為數值回資料庫~~~ (病假=>1 事假=>2 生理假=>3 喪假=>4 特休=>5)
+        {
+            var q = from L in this.hrEntities.Leaves
+                    where L.LeaveCategory == s
+                    select L.LeaveID;
+
+            return q.First();
+
+        }
+
+
+
+        #endregion
+
+        #region 差旅費申請
+
+        private void LoadCostCaTEGORY()
+        {
+            var q = from i in this.hrEntities.CostCategories
+                    select i.CostCategory1;
+            foreach (var a in q)
+            {
+                this.comTra_Catogory1.Items.Add(a);
+                this.comTra_Catogory2.Items.Add(a);
+                this.comTra_Catogory3.Items.Add(a);
+            }
+        }
+
+        private void LoadIntOnly() //指向方法，讓欄位只能輸入int 和 差旅費計算總金額
+        {
+            this.txtTra_Cost2.KeyPress += txtTra_Cost1_KeyPress;
+            this.txtTra_Cost3.KeyPress += txtTra_Cost1_KeyPress;
+
+            this.txtTra_Cost1.TextChanged += SumCost;
+            this.txtTra_Cost2.TextChanged += SumCost;
+            this.txtTra_Cost3.TextChanged += SumCost;
+
+        }
+
+        private void txtTra_Cost1_KeyPress(object sender, KeyPressEventArgs e) //差旅費3個金額欄只能輸入int
+        {
+            if (((int)e.KeyChar < 48 | (int)e.KeyChar > 57) & (int)e.KeyChar != 8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        int COSTSUM;
+
+        private void btnTra_Submit_Click(object sender, EventArgs e)//申請差旅費
+        {
+            try
+            {
+                string strr = Settings.Default.MyHR;
+
+                using (SqlConnection conn = new SqlConnection(strr))
+                {
+
+                    //宣告一些有的沒的
+                    int EmployeeID = 2;
+
+
+                    int Amont1, Amont2, Amont3;
+                    string TravelstartDay = dtpTra_Start.Value.ToString("yyyy/MM/dd");
+                    string TravelendDay = dtpTra_End.Value.ToString("yyyy/MM/dd");
+                    string Travelreason = txtTra_Reason.Text;
+
+                    //確認資料視窗設定
+                    string message = $"姓名:{this.labTra_EmployeeName.Text}{Environment.NewLine} 員工編號:{this.labTra_EmployeeID.Text}{Environment.NewLine} 所屬部門:{this.labTra_EmpDep.Text}{Environment.NewLine}{Environment.NewLine}申請出差總金額為:{this.label26.Text}{Environment.NewLine}";
+                    string caption = "Confirm";
+                    var result = MessageBox.Show(message, caption, MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+
+                    if (result == DialogResult.OK) // 如果按了確認執行的事情
+                    {
+                        SqlCommand command2 = new SqlCommand();
+                        conn.Open();
+                        command2.Connection = conn;
+
+
+                        command2.CommandText = $"Insert into Travel_Expense_Application(EmployeeID,Reason,ApplyDate,TravelStartTime,TravelEndTime,Amont) values('{EmployeeID}','{Travelreason}','{DateTime.Now.ToShortDateString()}','{TravelstartDay}','{TravelendDay}',{COSTSUM})";
+                        command2.ExecuteNonQuery();
+
+                        //插入申請差旅費主表
+                        command2.CommandText = "SELECT top 1 [ApplyNumber]  FROM [dbo].[Travel_Expense_Application] ORDER BY [ApplyNumber] DESC";
+                        int i = (int)command2.ExecuteScalar();
+
+
+                        if (txtTra_Cost1.Text != "") //如果類別欄位不是空字串 1.轉型 2.插入差旅費詳細資料
+                        {
+
+                            Amont1 = int.Parse(txtTra_Cost1.Text);
+                            int Finallyresult = ChangToCostCategoryID(comTra_Catogory1.Text);
+                            command2.CommandText = $"Insert into ApplyDetail(ApplyNumber,CostID,Amont) values({i},{Finallyresult},{Amont1})";
+                            command2.ExecuteNonQuery();
+                        }
+                        if (txtTra_Cost2.Text != "")
+                        {
+
+                            Amont2 = int.Parse(txtTra_Cost2.Text);
+                            int Finallyresult = ChangToCostCategoryID(comTra_Catogory2.Text);
+                            command2.CommandText = $"Insert into ApplyDetail(ApplyNumber,CostID,Amont) values({i},{Finallyresult},{Amont2})";
+                            command2.ExecuteNonQuery();
+                        }
+
+                        if (txtTra_Cost3.Text != "")
+                        {
+
+                            Amont3 = int.Parse(txtTra_Cost3.Text);
+                            int Finallyresult = ChangToCostCategoryID(comTra_Catogory3.Text);
+                            command2.CommandText = $"Insert into ApplyDetail(ApplyNumber,CostID,Amont) values({i},{Finallyresult},{Amont3})";
+                            command2.ExecuteNonQuery();
+                        }
+                        MessageBox.Show("差旅費用申請成功");
+                        this.tabControl1.SelectedIndex = 0;
+                    }
+                    else
+                    {
+                        //能幹嘛我也不知道
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void SumCost(object sender, EventArgs e)  //申請差旅費呈現總金額
+        {
+            try
+            {
+                int cost1, cost2, cost3;
+                if (Int32.TryParse(txtTra_Cost1.Text, out int number1))
+                {
+                    cost1 = number1;
+                }
+                else
+                {
+                    cost1 = 0;
+                }
+
+                if (Int32.TryParse(txtTra_Cost2.Text, out int number2))
+                {
+                    cost2 = number2;
+                }
+                else
+                {
+                    cost2 = 0;
+                }
+
+                if (Int32.TryParse(txtTra_Cost3.Text, out int number3))
+                {
+                    cost3 = number3;
+                }
+                else
+                {
+                    cost3 = 0;
+                }
+
+                label26.Text = (($"{cost1 + cost2 + cost3:c}").ToString());
+                COSTSUM = cost1 + cost2 + cost3;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
+
+        }
+
+        public int ChangToCostCategoryID(string s) //對應差旅費名稱為數值回資料庫~~~ (交通 =>1 食宿 =>2 其他 =>3)
+        {
+            var q = from C in this.hrEntities.CostCategories
+                    where C.CostCategory1 == s
+                    select C.CostID;
+
+            return q.First();
+
+        }
+
+
+
+        #endregion
+
+        #region WUCHAAAA
+
+
+        private void LoadWuChaStore() //匯入店家名稱
+        {
+            var q = from i in this.hrEntities.Stores
+                    select i.StoreName;
+
+            foreach (var Store in q)
+            {
+                this.comWuCha_Store.Items.Add(Store);
+            }
+
+        }
+        private void comWuCha_Store_SelectedIndexChanged(object sender, EventArgs e) //增加店家的品項
+        {
+            btnWuCha_Submit.Enabled = true;
+            this.WuCha_dataGridView.Columns.Clear();
+            this.WuCha_dataGridView.DataSource = null;
+
+            this.WuCha_dataGridView.Columns.Add("店家", "店家");
+            this.WuCha_dataGridView.Columns.Add("品項", "品項");
+            this.WuCha_dataGridView.Columns.Add("單價", "單價");
+            this.WuCha_dataGridView.Columns.Add("數量", "數量");
+            this.WuCha_dataGridView.Columns.Add("小計", "小計");
+
+            this.labWuCha_Text.Text = "本筆訂單金額:";
+
+            //this.WuCha_dataGridView.Columns[0].HeaderCell.Value = "店家";
+            //this.WuCha_dataGridView.Columns[1].HeaderCell.Value = "品項";
+            //this.WuCha_dataGridView.Columns[2].HeaderCell.Value = "單價";
+            //this.WuCha_dataGridView.Columns[3].HeaderCell.Value = "數量";
+            //this.WuCha_dataGridView.Columns[4].HeaderCell.Value = "小計";
+
+            this.WuCha_dataGridView.Columns[0].ReadOnly = true;
+            this.WuCha_dataGridView.Columns[1].ReadOnly = true;
+            this.WuCha_dataGridView.Columns[2].ReadOnly = true;
+            this.WuCha_dataGridView.Columns[3].ReadOnly = true;
+            this.WuCha_dataGridView.Columns[4].ReadOnly = true;
+
+
+            var q = from item in this.hrEntities.Items
+                    join store in this.hrEntities.Stores
+                    on item.StoreID equals store.StoreID
+                    where this.comWuCha_Store.Text == store.StoreName
+                    select item.ItemName;
+
+
+            this.comWuCha_TempItem.Items.Clear();
+            foreach (var i in q)
+            {
+                this.comWuCha_TempItem.Items.Add(i);
+            }
+
+            var q1 = from i in this.hrEntities.Items
+                     join s in this.hrEntities.Stores
+                     on i.StoreID equals s.StoreID
+                     where this.comWuCha_Store.Text == s.StoreName
+                     select (int)i.ItemPrice;
+
+            this.comWuCha_TempPrice.Items.Clear();
+            foreach (var price in q1)
+            {
+                this.comWuCha_TempPrice.Items.Add(price);
+            }
+
+
+
+            this.panel1.Controls.Clear();   //建立WuCha品項按鈕
+            Button[] buttons = new Button[this.comWuCha_TempItem.Items.Count];
+
+            for (int i = 0; i <= this.comWuCha_TempItem.Items.Count - 1; i++)
+            {
+                buttons[i] = new Button();
+                buttons[i].Size = new Size(120, 120);
+                buttons[i].Location = new Point(50 + 130 * i, 10);
+                buttons[i].BackColor = Color.Olive;
+                buttons[i].Font = new Font("微軟正黑體", 14, FontStyle.Bold);
+                panel1.Controls.Add(buttons[i]);
+                buttons[i].Name = this.comWuCha_TempItem.Items[i].ToString();  //放品項
+                buttons[i].Tag = this.comWuCha_TempPrice.Items[i];  //放價錢
+                buttons[i].Text = $"{this.comWuCha_TempItem.Items[i]}{Environment.NewLine}" + $"{this.comWuCha_TempPrice.Items[i]:c2}";
+                buttons[i].Click += AddWuChaItem;
+
+            }
+
+            this.WuCha_dataGridView.DataSource = null;
+            Total = 0;
+            labWuCha_money.Text = Total.ToString();
+
+        }
+        int Total;
+        private void AddWuChaItem(object sender, EventArgs e) // 新增所選品項欄位
+        {
+            this.WuCha_dataGridView.DataSource = null;
+
+            this.WuCha_dataGridView.Rows.Add(this.comWuCha_Store.SelectedItem, ((Button)sender).Name, $"{((Button)sender).Tag/*:c2*/}", 1, $"{((Button)sender).Tag.ToString().Replace(".0000", "")}");
+            CountWuChaTotal();
+            ((Button)sender).Click -= AddWuChaItem;
+            ((Button)sender).Click += AddWuChaItemQuantity;
+        }
+        private void AddWuChaItemQuantity(object sender, EventArgs e) //計算數量 和 小計
+        {
+            if (this.WuCha_dataGridView.Rows.Count > 0)
+            {
+                for (int i = 0; i < this.WuCha_dataGridView.Rows.Count; i++)
+                {
+
+                    if (((Button)sender).Name == this.WuCha_dataGridView.Rows[i].Cells[1].Value.ToString())
+                    {
+                        this.WuCha_dataGridView.Rows[i].Cells[3].Value = (int)this.WuCha_dataGridView.Rows[i].Cells[3].Value + 1;
+                        int price = int.Parse(this.WuCha_dataGridView.Rows[i].Cells[2].Value.ToString().Replace(".0000", ""));
+                        int Quantity = int.Parse(this.WuCha_dataGridView.Rows[i].Cells[3].Value.ToString());
+                        this.WuCha_dataGridView.Rows[i].Cells[4].Value = $"{price * Quantity/*:c2*/}";    //一定會要改
+                        CountWuChaTotal();
+                    }
+                }
+            }
+
+        }
+        private void CountWuChaTotal() //計算WuCha合計值
+        {
+            Total = 0;
+            labWuCha_money.Text = "";
+            for (int i = 0; i < this.WuCha_dataGridView.Rows.Count; i++)
+            {
+                Total += int.Parse(this.WuCha_dataGridView.Rows[i].Cells["小計"].Value.ToString());
+                labWuCha_money.Text = Total.ToString();
+            }
+        }
+        private void btnWuCha_Submit_Click(object sender, EventArgs e) //提交WuCha訂單
+        {
+
+            string strr = Settings.Default.MyHR;
+            string WuchaGroupday = DateTime.Now.ToString("MMdd");
+            string Wuchaday = DateTime.Now.ToString("yyyy/MM/dd");
+            //int ItemID;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(strr))
+                {
+
+                    SqlCommand command = new SqlCommand();
+
+
+                    if (this.WuCha_dataGridView.Rows.Count == 0)
+                    {
+                        MessageBox.Show("白癡嗎? 並未下訂任何WuCha品項");
+                    }
+                    else
+                    {
+                        int storeId = ChangToWuChaStoreID(this.WuCha_dataGridView.Rows[0].Cells[0].Value.ToString());
+                        int WuChaTotal = int.Parse(this.labWuCha_money.Text);
+
+                        command.Connection = conn;
+                        conn.Open();
+                        command.CommandText = $"Insert into WuchaOrder(GroupID,StoreID,EmployeeID,Date,TotalPirce) values('{WuchaGroupday}-{storeId.ToString()}',{storeId},{userInfo.ID},'{Wuchaday}',{WuChaTotal})";
+                        command.ExecuteNonQuery();//插入WuCha主表
+
+                        command.CommandText = "select top 1 WuChaOrderNumber from WuChaOrder order by WuChaOrderNumber desc";
+                        int lastWuChaOrderNum = (int)command.ExecuteScalar(); //撈出最後一筆訂單編號
+
+                        //command.Parameters.Add("ItemID", SqlDbType.Int, 16).Value = ItemID;
+
+                        for (int i = 0; i < this.WuCha_dataGridView.Rows.Count; i++)
+                        {
+
+                            int ItemID = ChangToWuChaItemID(this.WuCha_dataGridView.Rows[i].Cells[1].Value.ToString());
+                            int ItemQuantity = (int)this.WuCha_dataGridView.Rows[i].Cells[3].Value;
+                            command.Parameters.Clear();
+                            command.CommandText = $"Insert into OrderStoreDetail(WuChaOrderNumber,StoreID,ItemID,ItemQuantity) values({lastWuChaOrderNum},{storeId},{@ItemID},{@ItemQuantity})";
+                            command.ExecuteNonQuery();//訂單插入Order Detail
+
+
+                        }
+
+                        MessageBox.Show("WuCha待會就來");
+
+
+                        this.WuCha_dataGridView.Columns.Clear();   //清空資料再加上欄位
+                        this.WuCha_dataGridView.DataSource = null;
+                        this.WuCha_dataGridView.Columns.Add("店家", "店家");
+                        this.WuCha_dataGridView.Columns.Add("品項", "品項");
+                        this.WuCha_dataGridView.Columns.Add("單價", "單價");
+                        this.WuCha_dataGridView.Columns.Add("數量", "數量");
+                        this.WuCha_dataGridView.Columns.Add("小計", "小計");
+
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void btnWuCha_Search_Click(object sender, EventArgs e) //查詢當月總金額
+        {
+            btnWuCha_Submit.Enabled = false;
+            this.panel1.Controls.Clear();
+            //this.comWuCha_Store.Items.Clear();
+            this.WuCha_dataGridView.Columns.Clear();
+            this.WuCha_dataGridView.DataSource = null;
+
+
+
+            var q = from x in hrEntities.WuChaOrders
+                    where x.EmployeeID == userInfo.ID && x.Date.Month == DateTime.Now.Month
+                    select new
+                    {
+                        日期 = x.Date,
+                        店家 = x.Store.StoreName,
+                        小計 = (int)x.TotalPirce
+                    };
+            this.WuCha_dataGridView.DataSource = q.ToList();
+            this.labWuCha_Text.Text = $"{DateTime.Now.Month}月總訂購金額:";
+            CountWuChaTotal();
+
+
+        }
+
+        private void btnWuCha_SearchRange_Click(object sender, EventArgs e) //查詢區間總金額
+        {
+
+            btnWuCha_Submit.Enabled = false;
+            string WuChaStart = this.dtpWuCha_Start.Value.ToString("yyyy/MM/dd");
+            string WuChaEnd = this.dtpWuCha_End.Value.ToString("yyyy/MM/dd");
+            this.panel1.Controls.Clear();
+            //this.comWuCha_Store.Items.Clear();
+            this.WuCha_dataGridView.Columns.Clear();
+            this.WuCha_dataGridView.DataSource = null;
+
+
+            var q = from i in this.hrEntities.WuChaOrders.AsEnumerable()
+                    where i.EmployeeID == userInfo.ID && DateTime.Parse(WuChaStart) <= i.Date && i.Date <= DateTime.Parse(WuChaEnd)
+                    orderby i.Date ascending
+                    select new
+                    {
+                        日期 = i.Date,
+                        店家 = i.Store.StoreName,
+                        小計 = (int)i.TotalPirce
+                    };
+
+            this.WuCha_dataGridView.DataSource = q.ToList();
+            this.labWuCha_Text.Text = $"查詢總金額:";
+            CountWuChaTotal();
+
+        }
+
+        private void btnWuCha_BossSearch_Click(object sender, EventArgs e) //檢視"當日"訂單總額
+        {
+            this.btnWuCha_Submit.Enabled = false;
+
+            this.WuCha_dataGridView.Columns.Clear();
+            this.WuCha_dataGridView.DataSource = null;
+            this.panel1.Controls.Clear();
+
+            string Wuchaday = DateTime.Now.ToString("yyyy/MM/dd");
+
+            var q = from i in this.hrEntities.WuChaOrders.AsEnumerable()
+                    where i.Date == DateTime.Parse(Wuchaday) //當日判斷
+                    orderby i.GroupID
+                    group i by i.GroupID into g
+                    select new
+                    {
+                        店家 = ChangeGroupIDtoStore(g.Key.Substring(5)), //擷取部分GroupID轉換成店家名稱
+                        總訂單數量 = g.Count(),
+                        小計 = g.Sum(x => x.TotalPirce),
+
+                    };
+
+            this.WuCha_dataGridView.DataSource = q.ToList();
+            CountWuChaTotal();
+            this.labWuCha_Text.Text = Wuchaday + "共:";
+
+
+        }
+
+        private void btnWuCha_BossSearchDetail_Click(object sender, EventArgs e) //限定職權查詢訂單Detail
+        {
+            this.btnWuCha_Submit.Enabled = false;
+            this.WuCha_dataGridView.Columns.Clear();
+            this.WuCha_dataGridView.DataSource = null;
+            this.panel1.Controls.Clear();
+
+            string Wuchaday = DateTime.Now.ToString("yyyy/MM/dd");
+
+            var q = from i in this.hrEntities.WuChaOrders.AsEnumerable()
+                    join y in this.hrEntities.OrderStoreDetails
+                    on i.WuChaOrderNumber equals y.WuChaOrderNumber
+                    where i.Date == DateTime.Parse(Wuchaday) //當天訂單
+                    group new { i, y } by new { i.StoreID, i.EmployeeID, y.ItemID } into g
+                    orderby g.Key.EmployeeID
+                    select new
+                    {
+                        員工 = ChangeToEmployeeName(g.Key.EmployeeID),
+                        店家 = ChangeGroupIDtoStore(g.Key.StoreID.ToString()),
+                        項目 = ChangeToWuChaItemName(g.Key.ItemID),
+                        數量 = g.Sum(c => c.y.ItemQuantity)
+                    };
+
+            this.WuCha_dataGridView.DataSource = q.ToList();
+            //CountWuChaTotal();
+            this.labWuCha_Text.Text = "-----------";
+            this.labWuCha_money.Text = "-----";
+
+        }
+
+        public int ChangToWuChaStoreID(string s) //午茶店家轉換
+        {
+            var q = from Store in this.hrEntities.Stores
+                    where Store.StoreName == s
+                    select Store.StoreID;
+
+            return q.First();
+
+        }
+
+        public int ChangToWuChaItemID(string s)//品項Name => 品項ID
+        {
+            var q = from item in this.hrEntities.Items
+                    where item.ItemName == s
+                    select item.ItemID;
+
+            return q.First();
+
+        }
+
+        public string ChangeToWuChaItemName(int i) //品項ID => 品項Name
+        {
+            var q = from a in this.hrEntities.Items
+                    where a.ItemID == i
+                    select a.ItemName;
+
+            return q.First();
+        }
+
+        public string ChangeGroupIDtoStore(string s) //GroupID 轉換店家名稱
+        {
+
+            var q = from i in this.hrEntities.Stores
+                    where i.StoreID.ToString() == s
+                    select i.StoreName;
+
+            return q.First();
+        }
+
+        public string ChangeToEmployeeName(int i) //EmployeeID => EmployeeName
+        {
+            var q = from n in this.hrEntities.Users
+                    where n.EmployeeID == i
+                    select n.EmployeeName;
+
+            return q.First();
+
+        }
+
+        private void btnWuCha_TodayOrder_Click(object sender, EventArgs e) //查詢今日訂單 且可以修改
+        {
+
+
+
+            this.btnWuCha_Submit.Enabled = false;
+            this.WuCha_dataGridView.Columns.Clear();
+            this.WuCha_dataGridView.DataSource = null;
+            this.panel1.Controls.Clear();
+
+
+            string Wuchaday = DateTime.Now.ToString("yyyy/MM/dd");
+
+            var q = from o in this.hrEntities.WuChaOrders.AsEnumerable()
+                    join od in this.hrEntities.OrderStoreDetails
+                    on o.WuChaOrderNumber equals od.WuChaOrderNumber
+                    join it in this.hrEntities.Items
+                    on od.ItemID equals it.ItemID
+                    orderby od.ItemID
+                    where o.EmployeeID == userInfo.ID && o.Date == DateTime.Parse(Wuchaday)
+                    select new
+                    {
+
+                        //增加的button - index[0]
+                        店家 = o.Store.StoreName,
+                        品項 = ChangeToWuChaItemName(od.ItemID),
+                        數量 = od.ItemQuantity,
+                        小計 = od.ItemQuantity * it.ItemPrice,
+                        單號 = o.WuChaOrderNumber
+
+                    };
+
+            AddBtnToReviseItem();
+
+            this.WuCha_dataGridView.DataSource = q.ToList();
+            this.WuCha_dataGridView.Columns[5].Visible = false;
+            CountWuChaTotal();
+            this.labWuCha_Text.Text = "今日訂單金額:";
+
+            //var q = (this.hrEntities.OrderStoreDetails.AsEnumerable().Where(o => o.WuChaOrderNumber == int.Parse(WuCha_ReceiveID) && o.ItemID == ChangToWuChaItemID(WuCha_ReceiveItem))).FirstOrDefault();
+
+            //if(q != null)
+            //{
+            //    q.ItemQuantity = 1;
+            //    this.hrEntities.SaveChanges();
+            //}
+
+        }
+
+        private void AddBtnToReviseItem() //增加修改訂單按鈕
+        {
+            DataGridViewButtonColumn column = new DataGridViewButtonColumn();
+            column.Name = "修改";
+            column.UseColumnTextForButtonValue = true;
+            column.Text = "修改";
+            this.WuCha_dataGridView.Columns.Add(column);
+
+        }
+
+        private void WuCha_dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e) //修改訂單
+        {
+            //MessageBox.Show(sender.ToString());
+
+            string WuCha_ShouldReviseID, WuCha_ShouldReviseItem;
+            if (e.ColumnIndex == 0)
+            {
+                //this.WuCha_dataGridView.Rows[e.RowIndex].Cells[3].ReadOnly = false;
+                this.btnWuCha_Submit.Enabled = true;
+
+                WuCha_ShouldReviseID = this.WuCha_dataGridView.Rows[e.RowIndex].Cells[5].Value.ToString();
+                WuCha_ShouldReviseItem = this.WuCha_dataGridView.Rows[e.RowIndex].Cells[2].Value.ToString();
+                WuChaRivse wcr = new WuChaRivse(WuCha_ShouldReviseID, WuCha_ShouldReviseItem);
+                wcr.Owner = this;
+                wcr.ShowDialog();
+            }
+            else
+            {
+                //沒事
+            }
+
+        }
+
+        public void RefreshWuCha()
+        {
+            this.btnWuCha_TodayOrder.PerformClick();
+        }
+
         #endregion
     }
 }
