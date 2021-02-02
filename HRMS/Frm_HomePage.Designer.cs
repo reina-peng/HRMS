@@ -31,32 +31,32 @@ namespace HRMS
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_HomePage));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.LegendCellColumn legendCellColumn3 = new System.Windows.Forms.DataVisualization.Charting.LegendCellColumn();
-            System.Windows.Forms.DataVisualization.Charting.LegendCellColumn legendCellColumn4 = new System.Windows.Forms.DataVisualization.Charting.LegendCellColumn();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.LegendCellColumn legendCellColumn1 = new System.Windows.Forms.DataVisualization.Charting.LegendCellColumn();
+            System.Windows.Forms.DataVisualization.Charting.LegendCellColumn legendCellColumn2 = new System.Windows.Forms.DataVisualization.Charting.LegendCellColumn();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnLogout = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.gpbUser = new System.Windows.Forms.GroupBox();
@@ -89,7 +89,7 @@ namespace HRMS
             this.label1 = new System.Windows.Forms.Label();
             this.btnPublishInfo = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.打卡 = new System.Windows.Forms.TabPage();
             this.tabcCO = new System.Windows.Forms.TabControl();
             this.tabpCO = new System.Windows.Forms.TabPage();
             this.labClockTime_OFF = new System.Windows.Forms.Label();
@@ -109,8 +109,8 @@ namespace HRMS
             this.labCO_ShearchEnd = new System.Windows.Forms.Label();
             this.dgvCO_Search = new System.Windows.Forms.DataGridView();
             this.btnLog = new System.Windows.Forms.Button();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.test = new System.Windows.Forms.TabPage();
+            this.test2 = new System.Windows.Forms.TabPage();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox5 = new System.Windows.Forms.TextBox();
@@ -118,7 +118,7 @@ namespace HRMS
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.報修 = new System.Windows.Forms.TabPage();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.chartRepair = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -136,12 +136,12 @@ namespace HRMS
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.dgv_Repair = new System.Windows.Forms.DataGridView();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.報修審核 = new System.Windows.Forms.TabPage();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnRepairAllCheck = new System.Windows.Forms.Button();
             this.dgv_RepairSup = new System.Windows.Forms.DataGridView();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.簽核關卡 = new System.Windows.Forms.TabPage();
             this.tabcCS = new System.Windows.Forms.TabControl();
             this.tabpLeave = new System.Windows.Forms.TabPage();
             this.splitContainer6 = new System.Windows.Forms.SplitContainer();
@@ -187,7 +187,7 @@ namespace HRMS
             this.gpbWeather.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbWeather)).BeginInit();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.打卡.SuspendLayout();
             this.tabcCO.SuspendLayout();
             this.tabpCO.SuspendLayout();
             this.tabpCO_Search.SuspendLayout();
@@ -196,8 +196,8 @@ namespace HRMS
             this.splitContainer5.Panel2.SuspendLayout();
             this.splitContainer5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCO_Search)).BeginInit();
-            this.tabPage3.SuspendLayout();
-            this.tabPage4.SuspendLayout();
+            this.test2.SuspendLayout();
+            this.報修.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
@@ -206,14 +206,14 @@ namespace HRMS
             ((System.ComponentModel.ISupportInitialize)(this.chartRepair)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Repair)).BeginInit();
-            this.tabPage5.SuspendLayout();
+            this.報修審核.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
             this.splitContainer4.Panel1.SuspendLayout();
             this.splitContainer4.Panel2.SuspendLayout();
             this.splitContainer4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_RepairSup)).BeginInit();
-            this.tabPage6.SuspendLayout();
+            this.簽核關卡.SuspendLayout();
             this.tabcCS.SuspendLayout();
             this.tabpLeave.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer6)).BeginInit();
@@ -577,12 +577,12 @@ namespace HRMS
             // tabControl1
             // 
             this.tabControl1.Alignment = System.Windows.Forms.TabAlignment.Left;
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Controls.Add(this.tabPage5);
-            this.tabControl1.Controls.Add(this.tabPage6);
+            this.tabControl1.Controls.Add(this.打卡);
+            this.tabControl1.Controls.Add(this.test);
+            this.tabControl1.Controls.Add(this.test2);
+            this.tabControl1.Controls.Add(this.報修);
+            this.tabControl1.Controls.Add(this.報修審核);
+            this.tabControl1.Controls.Add(this.簽核關卡);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.ItemSize = new System.Drawing.Size(50, 200);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
@@ -593,17 +593,17 @@ namespace HRMS
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 1;
             // 
-            // tabPage1
+            // 打卡
             // 
-            this.tabPage1.Controls.Add(this.tabcCO);
-            this.tabPage1.Controls.Add(this.btnLog);
-            this.tabPage1.Location = new System.Drawing.Point(204, 4);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1692, 586);
-            this.tabPage1.TabIndex = 7;
-            this.tabPage1.Text = "打卡";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.打卡.Controls.Add(this.tabcCO);
+            this.打卡.Controls.Add(this.btnLog);
+            this.打卡.Location = new System.Drawing.Point(204, 4);
+            this.打卡.Name = "打卡";
+            this.打卡.Padding = new System.Windows.Forms.Padding(3);
+            this.打卡.Size = new System.Drawing.Size(1692, 586);
+            this.打卡.TabIndex = 7;
+            this.打卡.Text = "打卡";
+            this.打卡.UseVisualStyleBackColor = true;
             // 
             // tabcCO
             // 
@@ -825,23 +825,23 @@ namespace HRMS
             this.dgvCO_Search.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCO_Search.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvCO_Search.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCO_Search.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCO_Search.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvCO_Search.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCO_Search.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCO_Search.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvCO_Search.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCO_Search.Location = new System.Drawing.Point(0, 0);
             this.dgvCO_Search.Margin = new System.Windows.Forms.Padding(2);
@@ -850,6 +850,7 @@ namespace HRMS
             this.dgvCO_Search.RowTemplate.Height = 27;
             this.dgvCO_Search.Size = new System.Drawing.Size(1674, 361);
             this.dgvCO_Search.TabIndex = 30;
+            this.dgvCO_Search.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvCS_Leave_CellFormatting);
             // 
             // btnLog
             // 
@@ -860,31 +861,31 @@ namespace HRMS
             this.btnLog.Text = "打卡";
             this.btnLog.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // test
             // 
-            this.tabPage2.Location = new System.Drawing.Point(204, 4);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1692, 586);
-            this.tabPage2.TabIndex = 2;
-            this.tabPage2.Text = "考勤";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.test.Location = new System.Drawing.Point(204, 4);
+            this.test.Name = "test";
+            this.test.Padding = new System.Windows.Forms.Padding(3);
+            this.test.Size = new System.Drawing.Size(1692, 586);
+            this.test.TabIndex = 2;
+            this.test.Text = "考勤";
+            this.test.UseVisualStyleBackColor = true;
             // 
-            // tabPage3
+            // test2
             // 
-            this.tabPage3.Controls.Add(this.button2);
-            this.tabPage3.Controls.Add(this.button1);
-            this.tabPage3.Controls.Add(this.textBox5);
-            this.tabPage3.Controls.Add(this.textBox4);
-            this.tabPage3.Controls.Add(this.textBox3);
-            this.tabPage3.Controls.Add(this.textBox2);
-            this.tabPage3.Controls.Add(this.dateTimePicker1);
-            this.tabPage3.Location = new System.Drawing.Point(204, 4);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1692, 586);
-            this.tabPage3.TabIndex = 3;
-            this.tabPage3.Text = "公告發佈";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.test2.Controls.Add(this.button2);
+            this.test2.Controls.Add(this.button1);
+            this.test2.Controls.Add(this.textBox5);
+            this.test2.Controls.Add(this.textBox4);
+            this.test2.Controls.Add(this.textBox3);
+            this.test2.Controls.Add(this.textBox2);
+            this.test2.Controls.Add(this.dateTimePicker1);
+            this.test2.Location = new System.Drawing.Point(204, 4);
+            this.test2.Name = "test2";
+            this.test2.Size = new System.Drawing.Size(1692, 586);
+            this.test2.TabIndex = 3;
+            this.test2.Text = "公告發佈";
+            this.test2.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
@@ -940,16 +941,16 @@ namespace HRMS
             this.dateTimePicker1.Size = new System.Drawing.Size(132, 22);
             this.dateTimePicker1.TabIndex = 1;
             // 
-            // tabPage4
+            // 報修
             // 
-            this.tabPage4.Controls.Add(this.splitContainer3);
-            this.tabPage4.Location = new System.Drawing.Point(204, 4);
-            this.tabPage4.Margin = new System.Windows.Forms.Padding(2);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1692, 586);
-            this.tabPage4.TabIndex = 4;
-            this.tabPage4.Text = "報修";
-            this.tabPage4.UseVisualStyleBackColor = true;
+            this.報修.Controls.Add(this.splitContainer3);
+            this.報修.Location = new System.Drawing.Point(204, 4);
+            this.報修.Margin = new System.Windows.Forms.Padding(2);
+            this.報修.Name = "報修";
+            this.報修.Size = new System.Drawing.Size(1692, 586);
+            this.報修.TabIndex = 4;
+            this.報修.Text = "報修";
+            this.報修.UseVisualStyleBackColor = true;
             // 
             // splitContainer3
             // 
@@ -989,22 +990,22 @@ namespace HRMS
             // 
             // chartRepair
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chartRepair.ChartAreas.Add(chartArea4);
-            legendCellColumn3.ColumnType = System.Windows.Forms.DataVisualization.Charting.LegendCellColumnType.SeriesSymbol;
-            legendCellColumn3.Name = "Column1";
-            legendCellColumn4.Name = "Column2";
-            legend4.CellColumns.Add(legendCellColumn3);
-            legend4.CellColumns.Add(legendCellColumn4);
-            legend4.Name = "Legend1";
-            this.chartRepair.Legends.Add(legend4);
+            chartArea1.Name = "ChartArea1";
+            this.chartRepair.ChartAreas.Add(chartArea1);
+            legendCellColumn1.ColumnType = System.Windows.Forms.DataVisualization.Charting.LegendCellColumnType.SeriesSymbol;
+            legendCellColumn1.Name = "Column1";
+            legendCellColumn2.Name = "Column2";
+            legend1.CellColumns.Add(legendCellColumn1);
+            legend1.CellColumns.Add(legendCellColumn2);
+            legend1.Name = "Legend1";
+            this.chartRepair.Legends.Add(legend1);
             this.chartRepair.Location = new System.Drawing.Point(10, 25);
             this.chartRepair.Margin = new System.Windows.Forms.Padding(2);
             this.chartRepair.Name = "chartRepair";
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.chartRepair.Series.Add(series4);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartRepair.Series.Add(series1);
             this.chartRepair.Size = new System.Drawing.Size(508, 178);
             this.chartRepair.TabIndex = 0;
             this.chartRepair.Text = "chart1";
@@ -1182,55 +1183,56 @@ namespace HRMS
             // dgv_Repair
             // 
             this.dgv_Repair.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.Teal;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.SkyBlue;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_Repair.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Teal;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.SkyBlue;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_Repair.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgv_Repair.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.SkyBlue;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv_Repair.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.SkyBlue;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_Repair.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgv_Repair.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_Repair.Location = new System.Drawing.Point(0, 0);
             this.dgv_Repair.Margin = new System.Windows.Forms.Padding(2);
             this.dgv_Repair.Name = "dgv_Repair";
             this.dgv_Repair.ReadOnly = true;
             this.dgv_Repair.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.SkyBlue;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_Repair.RowHeadersDefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.SkyBlue;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_Repair.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgv_Repair.RowHeadersWidth = 51;
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.Black;
-            this.dgv_Repair.RowsDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            this.dgv_Repair.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgv_Repair.RowTemplate.Height = 27;
             this.dgv_Repair.Size = new System.Drawing.Size(1692, 317);
             this.dgv_Repair.TabIndex = 0;
+            this.dgv_Repair.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_Repair_CellFormatting);
             // 
-            // tabPage5
+            // 報修審核
             // 
-            this.tabPage5.Controls.Add(this.splitContainer4);
-            this.tabPage5.Location = new System.Drawing.Point(204, 4);
-            this.tabPage5.Margin = new System.Windows.Forms.Padding(2);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(1692, 586);
-            this.tabPage5.TabIndex = 5;
-            this.tabPage5.Text = "報修審核";
-            this.tabPage5.UseVisualStyleBackColor = true;
+            this.報修審核.Controls.Add(this.splitContainer4);
+            this.報修審核.Location = new System.Drawing.Point(204, 4);
+            this.報修審核.Margin = new System.Windows.Forms.Padding(2);
+            this.報修審核.Name = "報修審核";
+            this.報修審核.Size = new System.Drawing.Size(1692, 586);
+            this.報修審核.TabIndex = 5;
+            this.報修審核.Text = "報修審核";
+            this.報修審核.UseVisualStyleBackColor = true;
             // 
             // splitContainer4
             // 
@@ -1282,55 +1284,57 @@ namespace HRMS
             // dgv_RepairSup
             // 
             this.dgv_RepairSup.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle22.BackColor = System.Drawing.Color.Teal;
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.SkyBlue;
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_RepairSup.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Teal;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.SkyBlue;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_RepairSup.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgv_RepairSup.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.SkyBlue;
-            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv_RepairSup.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.SkyBlue;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_RepairSup.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgv_RepairSup.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_RepairSup.Location = new System.Drawing.Point(0, 0);
             this.dgv_RepairSup.Margin = new System.Windows.Forms.Padding(2);
             this.dgv_RepairSup.Name = "dgv_RepairSup";
             this.dgv_RepairSup.ReadOnly = true;
             this.dgv_RepairSup.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle24.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.SkyBlue;
-            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_RepairSup.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.SkyBlue;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_RepairSup.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgv_RepairSup.RowHeadersWidth = 51;
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle25.ForeColor = System.Drawing.Color.DimGray;
-            this.dgv_RepairSup.RowsDefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.DimGray;
+            this.dgv_RepairSup.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.dgv_RepairSup.RowTemplate.Height = 27;
             this.dgv_RepairSup.Size = new System.Drawing.Size(1692, 521);
             this.dgv_RepairSup.TabIndex = 15;
+            this.dgv_RepairSup.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_RepairSup_CellContentClick);
+            this.dgv_RepairSup.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_RepairSup_CellFormatting);
             // 
-            // tabPage6
+            // 簽核關卡
             // 
-            this.tabPage6.Controls.Add(this.tabcCS);
-            this.tabPage6.Location = new System.Drawing.Point(204, 4);
-            this.tabPage6.Margin = new System.Windows.Forms.Padding(2);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(1692, 586);
-            this.tabPage6.TabIndex = 6;
-            this.tabPage6.Text = "簽核關卡";
-            this.tabPage6.UseVisualStyleBackColor = true;
+            this.簽核關卡.Controls.Add(this.tabcCS);
+            this.簽核關卡.Location = new System.Drawing.Point(204, 4);
+            this.簽核關卡.Margin = new System.Windows.Forms.Padding(2);
+            this.簽核關卡.Name = "簽核關卡";
+            this.簽核關卡.Size = new System.Drawing.Size(1692, 586);
+            this.簽核關卡.TabIndex = 6;
+            this.簽核關卡.Text = "簽核關卡";
+            this.簽核關卡.UseVisualStyleBackColor = true;
             // 
             // tabcCS
             // 
@@ -1411,20 +1415,20 @@ namespace HRMS
             // 
             // chartLeave
             // 
-            chartArea5.Name = "ChartArea1";
-            this.chartLeave.ChartAreas.Add(chartArea5);
+            chartArea2.Name = "ChartArea1";
+            this.chartLeave.ChartAreas.Add(chartArea2);
             this.chartLeave.Dock = System.Windows.Forms.DockStyle.Right;
-            legend5.Name = "Legend1";
-            this.chartLeave.Legends.Add(legend5);
+            legend2.Name = "Legend1";
+            this.chartLeave.Legends.Add(legend2);
             this.chartLeave.Location = new System.Drawing.Point(1202, 0);
             this.chartLeave.Margin = new System.Windows.Forms.Padding(2);
             this.chartLeave.Name = "chartLeave";
-            series5.ChartArea = "ChartArea1";
-            series5.Color = System.Drawing.Color.CornflowerBlue;
-            series5.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series5.Legend = "Legend1";
-            series5.Name = "每月請假申請人數";
-            this.chartLeave.Series.Add(series5);
+            series2.ChartArea = "ChartArea1";
+            series2.Color = System.Drawing.Color.CornflowerBlue;
+            series2.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series2.Legend = "Legend1";
+            series2.Name = "每月請假申請人數";
+            this.chartLeave.Series.Add(series2);
             this.chartLeave.Size = new System.Drawing.Size(478, 210);
             this.chartLeave.TabIndex = 0;
             this.chartLeave.Text = "chart2";
@@ -1508,39 +1512,41 @@ namespace HRMS
             this.dgvCS_Leave.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCS_Leave.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvCS_Leave.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle26.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCS_Leave.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCS_Leave.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.dgvCS_Leave.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle27.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle27.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCS_Leave.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCS_Leave.DefaultCellStyle = dataGridViewCellStyle12;
             this.dgvCS_Leave.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCS_Leave.Location = new System.Drawing.Point(0, 0);
             this.dgvCS_Leave.Margin = new System.Windows.Forms.Padding(2);
             this.dgvCS_Leave.Name = "dgvCS_Leave";
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle28.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCS_Leave.RowHeadersDefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCS_Leave.RowHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dgvCS_Leave.RowHeadersWidth = 51;
             this.dgvCS_Leave.RowTemplate.Height = 27;
             this.dgvCS_Leave.Size = new System.Drawing.Size(1680, 343);
             this.dgvCS_Leave.TabIndex = 0;
+            this.dgvCS_Leave.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCS_Leave_CellContentClick);
+            this.dgvCS_Leave.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvCS_Leave_CellFormatting);
             // 
             // tabpTravel
             // 
@@ -1594,22 +1600,23 @@ namespace HRMS
             this.btnCS_AllPassTravel.TabIndex = 12;
             this.btnCS_AllPassTravel.Text = "一鍵通過";
             this.btnCS_AllPassTravel.UseVisualStyleBackColor = true;
+            this.btnCS_AllPassTravel.Click += new System.EventHandler(this.btnCS_AllPassTravel_Click);
             // 
             // chartTravel
             // 
-            chartArea6.Name = "ChartArea1";
-            this.chartTravel.ChartAreas.Add(chartArea6);
+            chartArea3.Name = "ChartArea1";
+            this.chartTravel.ChartAreas.Add(chartArea3);
             this.chartTravel.Dock = System.Windows.Forms.DockStyle.Right;
-            legend6.Name = "Legend1";
-            this.chartTravel.Legends.Add(legend6);
+            legend3.Name = "Legend1";
+            this.chartTravel.Legends.Add(legend3);
             this.chartTravel.Location = new System.Drawing.Point(1219, 0);
             this.chartTravel.Margin = new System.Windows.Forms.Padding(2);
             this.chartTravel.Name = "chartTravel";
-            series6.ChartArea = "ChartArea1";
-            series6.Color = System.Drawing.Color.CornflowerBlue;
-            series6.Legend = "Legend1";
-            series6.Name = "每月出差申請人數";
-            this.chartTravel.Series.Add(series6);
+            series3.ChartArea = "ChartArea1";
+            series3.Color = System.Drawing.Color.CornflowerBlue;
+            series3.Legend = "Legend1";
+            series3.Name = "每月出差申請人數";
+            this.chartTravel.Series.Add(series3);
             this.chartTravel.Size = new System.Drawing.Size(461, 202);
             this.chartTravel.TabIndex = 0;
             this.chartTravel.Text = "chart1";
@@ -1624,6 +1631,7 @@ namespace HRMS
             this.btnCS_SearchTravel.TabIndex = 5;
             this.btnCS_SearchTravel.Text = "查詢";
             this.btnCS_SearchTravel.UseVisualStyleBackColor = true;
+            this.btnCS_SearchTravel.Click += new System.EventHandler(this.btnCS_SearchTravel_Click);
             // 
             // dtpCS_SearchTravelStart
             // 
@@ -1701,23 +1709,23 @@ namespace HRMS
             // dgvCS_Travel
             // 
             this.dgvCS_Travel.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle29.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCS_Travel.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCS_Travel.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.dgvCS_Travel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle30.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCS_Travel.DefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCS_Travel.DefaultCellStyle = dataGridViewCellStyle15;
             this.dgvCS_Travel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCS_Travel.Location = new System.Drawing.Point(0, 0);
             this.dgvCS_Travel.Margin = new System.Windows.Forms.Padding(2);
@@ -1726,6 +1734,8 @@ namespace HRMS
             this.dgvCS_Travel.RowTemplate.Height = 27;
             this.dgvCS_Travel.Size = new System.Drawing.Size(1680, 351);
             this.dgvCS_Travel.TabIndex = 0;
+            this.dgvCS_Travel.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCS_Travel_CellContentClick);
+            this.dgvCS_Travel.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvCS_Travel_CellFormatting);
             // 
             // contextMenuStrip1
             // 
@@ -1766,7 +1776,7 @@ namespace HRMS
             this.gpbWeather.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbWeather)).EndInit();
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
+            this.打卡.ResumeLayout(false);
             this.tabcCO.ResumeLayout(false);
             this.tabpCO.ResumeLayout(false);
             this.tabpCO.PerformLayout();
@@ -1777,9 +1787,9 @@ namespace HRMS
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).EndInit();
             this.splitContainer5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCO_Search)).EndInit();
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
-            this.tabPage4.ResumeLayout(false);
+            this.test2.ResumeLayout(false);
+            this.test2.PerformLayout();
+            this.報修.ResumeLayout(false);
             this.splitContainer3.Panel1.ResumeLayout(false);
             this.splitContainer3.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
@@ -1789,14 +1799,14 @@ namespace HRMS
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Repair)).EndInit();
-            this.tabPage5.ResumeLayout(false);
+            this.報修審核.ResumeLayout(false);
             this.splitContainer4.Panel1.ResumeLayout(false);
             this.splitContainer4.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
             this.splitContainer4.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_RepairSup)).EndInit();
-            this.tabPage6.ResumeLayout(false);
+            this.簽核關卡.ResumeLayout(false);
             this.tabcCS.ResumeLayout(false);
             this.tabpLeave.ResumeLayout(false);
             this.splitContainer6.Panel1.ResumeLayout(false);
@@ -1854,7 +1864,7 @@ namespace HRMS
         private System.Windows.Forms.GroupBox gpbSecurity;
         private System.Windows.Forms.TextBox txtSecuty;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage 打卡;
         private System.Windows.Forms.TabControl tabcCO;
         private System.Windows.Forms.TabPage tabpCO;
         private System.Windows.Forms.Label labClockTime_OFF;
@@ -1874,8 +1884,8 @@ namespace HRMS
         private System.Windows.Forms.Label labCO_ShearchEnd;
         private System.Windows.Forms.DataGridView dgvCO_Search;
         private System.Windows.Forms.Button btnLog;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage test;
+        private System.Windows.Forms.TabPage test2;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox5;
@@ -1883,7 +1893,7 @@ namespace HRMS
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.TabPage 報修;
         private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartRepair;
@@ -1901,12 +1911,12 @@ namespace HRMS
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView dgv_Repair;
-        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.TabPage 報修審核;
         private System.Windows.Forms.SplitContainer splitContainer4;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnRepairAllCheck;
         private System.Windows.Forms.DataGridView dgv_RepairSup;
-        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.TabPage 簽核關卡;
         private System.Windows.Forms.TabControl tabcCS;
         private System.Windows.Forms.TabPage tabpLeave;
         private System.Windows.Forms.SplitContainer splitContainer6;

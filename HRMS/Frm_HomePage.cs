@@ -41,7 +41,7 @@ namespace HRMS
             this.FormClosed += Homepage_FormClosed;
             LoadBulletin();//載入佈告欄
             this.txtSecuty.Text = "1.使用資訊設備請注意資訊安全，請勿點擊不明信件或網址。"+Environment.NewLine +
-                "2.公司資訊請忽任意攜出或傳輸儲存設備或雲端服務。" + Environment.NewLine +
+                "2.公司資訊請勿任意攜出或傳輸儲存設備或雲端服務。" + Environment.NewLine +
                 "3.有任何資安疑慮或問題請洽 IT 人員。"; 
         }
         
@@ -580,41 +580,7 @@ namespace HRMS
 
 
             //DataGridView的屬性、顏色設定
-            dgv_Repair.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-            for (int i = 0; i < dgv_Repair.Rows.Count; i++)
-            {
-                DataGridViewRow dgvr1 = dgv_Repair.Rows[i];
-                if (dgvr1.Cells[3].Value.ToString() == "總務修繕")
-                {
-                    dgv_Repair.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(255, 196, 120);
-                }
-                else if (dgvr1.Cells[3].Value.ToString() == "資訊修繕")
-                {
-                    dgv_Repair.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(240, 229, 216);
-                }
-            }
-
-            for (int i = 0; i < dgv_Repair.Rows.Count; i++)
-            {
-                DataGridViewRow dgvr = dgv_Repair.Rows[i];
-                if (dgvr.Cells[6].Value.ToString() == "維修中")
-                {
-                    dgvr.Cells[6].Style.BackColor = Color.FromArgb(170, 58, 58);
-                    dgvr.Cells[6].Style.ForeColor = Color.White;
-                    //dgvr.Cells[6].Style.Font= new Font(dgv_RepairSup.Font, FontStyle.Bold);
-                }
-                else if (dgvr.Cells[6].Value.ToString() == "完成")
-                {
-                    dgvr.Cells[6].Style.BackColor = Color.FromArgb(94, 168, 135);
-                    dgvr.Cells[6].Style.ForeColor = Color.White;
-                    //dgvr.Cells[6].Style.Font = new Font(dgv_RepairSup.Font, FontStyle.Bold);
-                }
-            }
-            //標題和內容文字置中
-            dgv_Repair.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgv_Repair.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
+          
 
         }
 
@@ -645,7 +611,7 @@ namespace HRMS
             //todo wz 若整合請將下方的tabpage5該功能放置的數
             else //除了部門4、5可看到此tabpage(維修通知)
             {
-                tabControl1.TabPages.Remove(tabPage5);
+                tabControl1.TabPages.Remove(報修審核);
             }
         }
 
@@ -826,7 +792,7 @@ namespace HRMS
         {
             if (userInfo.JobTitle > 2)
             {
-                tabControl1.TabPages.Remove(tabPage4);
+                tabControl1.TabPages.Remove(簽核關卡);
             }
         }
 
@@ -838,6 +804,7 @@ namespace HRMS
             //leave
             var qL = (from l in hrEntities.LeaveApplications
                       join c in hrEntities.CheckStatus on l.CheckStatus equals c.CheckStatusID
+                      where l.Department == userInfo.Dept
                       orderby l.CheckStatus ascending
                       select c.CheckStatus).Distinct();
 
@@ -849,6 +816,7 @@ namespace HRMS
             //traval
             var qT = (from t in hrEntities.Travel_Expense_Application
                       join c in hrEntities.CheckStatus on t.CheckStatus equals c.CheckStatusID
+                      where t.Department == userInfo.Dept
                       orderby t.CheckStatus ascending
                       select c.CheckStatus).Distinct();
 
@@ -987,32 +955,7 @@ namespace HRMS
 
         private void dgvCS_Leave_CellContentClick(object sender, DataGridViewCellEventArgs e) //點擊dgvCS_Leave button
         {
-            int an = (int)dgvCS_Leave.Rows[e.RowIndex].Cells["假單編號"].Value;
 
-            if (dgvCS_Leave.Columns[e.ColumnIndex].Name == "通過")
-            {
-                var q = from l in hrEntities.LeaveApplications
-                        where l.ApplyNumber == an
-                        select l;
-                foreach (var item in q)
-                {
-                    item.CheckStatus = 2;
-                }
-                hrEntities.SaveChanges();
-            }
-            else if (dgvCS_Leave.Columns[e.ColumnIndex].Name == "退件")
-            {
-                var q = from l in hrEntities.LeaveApplications
-                        where l.ApplyNumber == an
-                        select l;
-                foreach (var item in q)
-                {
-                    item.CheckStatus = 3;
-                }
-                hrEntities.SaveChanges();
-            }
-            btnCS_SearchLeave_Click(sender, e);
-            GetComboboxValue();
         }
 
         private void btnCS_AllPassLeave_Click(object sender, EventArgs e) // 請假申請一鍵通過
@@ -1284,7 +1227,45 @@ namespace HRMS
 
         #endregion
 
+        
+
+        private void dgv_Repair_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dgv_Repair.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            for (int i = 0; i < dgv_Repair.Rows.Count; i++)
+            {
+                DataGridViewRow dgvr1 = dgv_Repair.Rows[i];
+                if (dgvr1.Cells[3].Value.ToString() == "總務修繕")
+                {
+                    dgv_Repair.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(255, 196, 120);
+                }
+                else if (dgvr1.Cells[3].Value.ToString() == "資訊修繕")
+                {
+                    dgv_Repair.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(240, 229, 216);
+                }
+            }
+
+            for (int i = 0; i < dgv_Repair.Rows.Count; i++)
+            {
+                DataGridViewRow dgvr = dgv_Repair.Rows[i];
+                if (dgvr.Cells[6].Value.ToString() == "維修中")
+                {
+                    dgvr.Cells[6].Style.BackColor = Color.FromArgb(170, 58, 58);
+                    dgvr.Cells[6].Style.ForeColor = Color.White;
+                    //dgvr.Cells[6].Style.Font= new Font(dgv_RepairSup.Font, FontStyle.Bold);
+                }
+                else if (dgvr.Cells[6].Value.ToString() == "完成")
+                {
+                    dgvr.Cells[6].Style.BackColor = Color.FromArgb(94, 168, 135);
+                    dgvr.Cells[6].Style.ForeColor = Color.White;
+                    //dgvr.Cells[6].Style.Font = new Font(dgv_RepairSup.Font, FontStyle.Bold);
+                }
+            }
+            //標題和內容文字置中
+            dgv_Repair.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgv_Repair.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        }
         #endregion
-                
     }
 }
