@@ -22,6 +22,7 @@ namespace HRMS
             this.CenterToScreen();
             string[] categoryItems = new string[] { "[重要公告]", "[活動通知]", "[系統維護]" };
             this.cbbCategory.Items.AddRange(categoryItems);
+            this.cbbCategory1.Items.AddRange(categoryItems);
             LoadDgv();
             this.dataGridView1.SelectionChanged += DataGridView1_SelectionChanged;
         }

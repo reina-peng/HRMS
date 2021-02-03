@@ -81,14 +81,14 @@
             // 
             // txtContent
             // 
-            this.txtContent.Location = new System.Drawing.Point(43, 103);
+            this.txtContent.Location = new System.Drawing.Point(50, 103);
             this.txtContent.Name = "txtContent";
             this.txtContent.Size = new System.Drawing.Size(119, 22);
             this.txtContent.TabIndex = 13;
             // 
             // txtTitle
             // 
-            this.txtTitle.Location = new System.Drawing.Point(43, 59);
+            this.txtTitle.Location = new System.Drawing.Point(50, 59);
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(119, 22);
             this.txtTitle.TabIndex = 12;
@@ -115,14 +115,14 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(43, 158);
+            this.dateTimePicker1.Location = new System.Drawing.Point(50, 158);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(105, 22);
             this.dateTimePicker1.TabIndex = 18;
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(43, 212);
+            this.dateTimePicker2.Location = new System.Drawing.Point(50, 212);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(105, 22);
             this.dateTimePicker2.TabIndex = 19;
@@ -148,7 +148,7 @@
             // cbbCategory
             // 
             this.cbbCategory.FormattingEnabled = true;
-            this.cbbCategory.Location = new System.Drawing.Point(43, 21);
+            this.cbbCategory.Location = new System.Drawing.Point(50, 21);
             this.cbbCategory.Name = "cbbCategory";
             this.cbbCategory.Size = new System.Drawing.Size(119, 20);
             this.cbbCategory.TabIndex = 22;
@@ -243,7 +243,7 @@
             // 
             // txtTitle1
             // 
-            this.txtTitle1.Location = new System.Drawing.Point(43, 59);
+            this.txtTitle1.Location = new System.Drawing.Point(50, 59);
             this.txtTitle1.Name = "txtTitle1";
             this.txtTitle1.Size = new System.Drawing.Size(119, 22);
             this.txtTitle1.TabIndex = 12;
@@ -251,14 +251,14 @@
             // cbbCategory1
             // 
             this.cbbCategory1.FormattingEnabled = true;
-            this.cbbCategory1.Location = new System.Drawing.Point(43, 21);
+            this.cbbCategory1.Location = new System.Drawing.Point(50, 21);
             this.cbbCategory1.Name = "cbbCategory1";
             this.cbbCategory1.Size = new System.Drawing.Size(119, 20);
             this.cbbCategory1.TabIndex = 22;
             // 
             // txtContent1
             // 
-            this.txtContent1.Location = new System.Drawing.Point(43, 103);
+            this.txtContent1.Location = new System.Drawing.Point(50, 103);
             this.txtContent1.Name = "txtContent1";
             this.txtContent1.Size = new System.Drawing.Size(119, 22);
             this.txtContent1.TabIndex = 13;
@@ -301,7 +301,7 @@
             // 
             // dateTimePicker22
             // 
-            this.dateTimePicker22.Location = new System.Drawing.Point(43, 212);
+            this.dateTimePicker22.Location = new System.Drawing.Point(50, 212);
             this.dateTimePicker22.Name = "dateTimePicker22";
             this.dateTimePicker22.Size = new System.Drawing.Size(105, 22);
             this.dateTimePicker22.TabIndex = 19;
@@ -318,7 +318,7 @@
             // 
             // dateTimePicker11
             // 
-            this.dateTimePicker11.Location = new System.Drawing.Point(43, 158);
+            this.dateTimePicker11.Location = new System.Drawing.Point(50, 158);
             this.dateTimePicker11.Name = "dateTimePicker11";
             this.dateTimePicker11.Size = new System.Drawing.Size(105, 22);
             this.dateTimePicker11.TabIndex = 18;

@@ -38,6 +38,7 @@ namespace HRMS
             this.tabControl1.DrawMode = TabDrawMode.OwnerDrawFixed;
             this.gpbWeather.Paint += this.groupBox_Paint;
             this.gpbSecurity.Paint += this.groupBox_Paint;
+            this.gpbBulletin.Paint += this.groupBox_Paint;
             this.Load += HomePage_Load;
             this.FormClosed += Homepage_FormClosed;
             this.tabControl1.SelectedIndexChanged += tabControl2_SelectedIndexChanged;
@@ -82,7 +83,7 @@ namespace HRMS
             #endregion
             //tabControl1.TabPages.Remove(tabPage1);
             //判斷員工職等設定佈告欄編輯按鈕  Visible
-            this.btnPublishInfo.Visible = (userInfo.JobTitle <= 2) ? true : false;
+            this.btnPublishInfo.Visible = (userInfo.JobTitle <= 1) ? true : false;
             thLoadBulletin = new Thread(delegate ()
             {
                 while (true)
@@ -171,6 +172,12 @@ namespace HRMS
                     System.IO.MemoryStream ms = new System.IO.MemoryStream(bytes);
                     this.pictureBox1.Image = Image.FromStream(ms);
                     //=====================
+                    this.pbLea_Picture.Image = Image.FromStream(ms);
+                    this.pbTra_Picture.Image = Image.FromStream(ms);
+                    this.pbWucha.Image = Image.FromStream(ms);
+
+
+
                 }
             }
             catch (Exception ex)
@@ -196,11 +203,13 @@ namespace HRMS
                              where n.Starttime < dtnow && n.Endtime > dtnow
                              select new
                              {
+                                 ID = n.Number,
+                                 類別 = n.Category,
                                  主旨 = n.Title,
                                  內容 = n.ContentofBulletin,
                              }).ToList();
             foreach (var x in qBulletin)
-                this.lsbBulletin.Items.Add("主旨：" + x.主旨 + "內容：" + x.內容);
+                this.lsbBulletin.Items.Add(x.ID + x.類別 + x.主旨);
         }
         #endregion
         #region 天氣
@@ -506,11 +515,12 @@ namespace HRMS
             else
             {
                 var q = from date in hrEntities.Absences.AsEnumerable()
+                        join u in hrEntities.Users on date.EmployeeID equals u.EmployeeID
                         where date.EmployeeID == userInfo.ID && date.On.Value.Date >= StartDate && date.On.Value.Date <= EndDate
                         select new
                         {
                             員工編號 = date.EmployeeID,
-                            員工姓名 = date.User.EmployeeName,
+                            員工姓名 = u.EmployeeName,
                             上班打卡紀錄 = date.On.Value,
                             下班打卡紀錄 = date.Off.Value
                         };
@@ -1378,11 +1388,9 @@ namespace HRMS
 
 
 
-                    byte[] bytes = (byte[])dataReader["Photo"];
-                    System.IO.MemoryStream ms = new System.IO.MemoryStream(bytes);
-                    this.pbLea_Picture.Image = Image.FromStream(ms);
-                    this.pbTra_Picture.Image = Image.FromStream(ms);
-                    this.pbWucha.Image = Image.FromStream(ms);
+                    //byte[] bytes = (byte[])dataReader["Photo"];
+                    //System.IO.MemoryStream ms = new System.IO.MemoryStream(bytes);
+                    ShowImage(userInfo.ID);
 
                     var q = from i in this.hrEntities.Users
                             where i.EmployeeID == UserID
@@ -1473,7 +1481,6 @@ namespace HRMS
                         command.ExecuteNonQuery();
                         MessageBox.Show("請假申請成功");
 
-                        this.tabControl1.SelectedIndex = 0;
                     }
                     else
                     {
@@ -1601,7 +1608,7 @@ namespace HRMS
                             command2.ExecuteNonQuery();
                         }
                         MessageBox.Show("差旅費用申請成功");
-                        this.tabControl1.SelectedIndex = 0;
+                     
                     }
                     else
                     {
@@ -2133,8 +2140,11 @@ namespace HRMS
                     var q = from l in this.hrEntities.Losts
                             where l.EmployeeID == userInfo.ID
                             select l.LostCategory;
-
-                    TreeNode treeNode1 = this.losttreeView.Nodes.Add(q.ToList().First().ToString());
+                    if(q.ToList().Count() > 0)
+                    {
+                        TreeNode treeNode1 = this.losttreeView.Nodes.Add(q.ToList().First().ToString());
+                    }
+                    
                 }
                 var a = from l in hrEntities.Losts.AsEnumerable()
                         select new
@@ -2559,5 +2569,18 @@ namespace HRMS
         }
 
         #endregion
+
+        private void lsbBulletin_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string str = lsbBulletin.SelectedItem.ToString();
+            int ID = int.Parse(str.Replace(str.Substring(str.IndexOf('[')),""));
+            var q = (from n in hrEntities.Bulletins
+                             where n.Number == ID
+                             select new
+                             {                                 
+                                 內容 = n.ContentofBulletin,
+                             }).FirstOrDefault();
+            MessageBox.Show(q.內容);
+        }
     }
 }

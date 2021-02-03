@@ -22,12 +22,6 @@ namespace HRMS
             PasswordTextBox.Text = "789";
         }
         int count = 1;//計算登入次數
-        
-        private void btnOnboard_Click(object sender, EventArgs e)
-        {
-            //TODO
-            //HR 提供帳號及預設密碼，彈出新人報到表單視窗，填完表單並修改密碼完成報到作業，帳號才會正式 Enable。
-        }
 
         private void OK_Click(object sender, EventArgs e)
         {
@@ -103,7 +97,6 @@ namespace HRMS
             {
                 MessageBox.Show(ex.Message);
             }
-            
         }
 
         private void btnExit_Click(object sender, EventArgs e)

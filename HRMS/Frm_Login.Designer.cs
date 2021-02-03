@@ -30,12 +30,6 @@ namespace HRMS
         private void InitializeComponent()
         {
             this.btnExit = new System.Windows.Forms.Button();
-            this.gpbOnboard = new System.Windows.Forms.GroupBox();
-            this.btnOnboard = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtOnboardAccount = new System.Windows.Forms.TextBox();
-            this.txtOnboardPassword = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.UsernameLabel = new System.Windows.Forms.Label();
@@ -43,75 +37,18 @@ namespace HRMS
             this.UsernameTextBox = new System.Windows.Forms.TextBox();
             this.OK = new System.Windows.Forms.Button();
             this.PasswordTextBox = new System.Windows.Forms.TextBox();
-            this.gpbOnboard.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(694, 403);
+            this.btnExit.Location = new System.Drawing.Point(224, 370);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 23);
             this.btnExit.TabIndex = 2;
             this.btnExit.Text = "離開";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
-            // gpbOnboard
-            // 
-            this.gpbOnboard.Controls.Add(this.btnOnboard);
-            this.gpbOnboard.Controls.Add(this.label1);
-            this.gpbOnboard.Controls.Add(this.txtOnboardAccount);
-            this.gpbOnboard.Controls.Add(this.txtOnboardPassword);
-            this.gpbOnboard.Controls.Add(this.label2);
-            this.gpbOnboard.Location = new System.Drawing.Point(462, 72);
-            this.gpbOnboard.Name = "gpbOnboard";
-            this.gpbOnboard.Size = new System.Drawing.Size(203, 279);
-            this.gpbOnboard.TabIndex = 7;
-            this.gpbOnboard.TabStop = false;
-            this.gpbOnboard.Text = "新人報到";
-            // 
-            // btnOnboard
-            // 
-            this.btnOnboard.Location = new System.Drawing.Point(65, 172);
-            this.btnOnboard.Name = "btnOnboard";
-            this.btnOnboard.Size = new System.Drawing.Size(75, 23);
-            this.btnOnboard.TabIndex = 6;
-            this.btnOnboard.Text = "報到";
-            this.btnOnboard.UseVisualStyleBackColor = true;
-            this.btnOnboard.Click += new System.EventHandler(this.btnOnboard_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(30, 52);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 12);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "帳號";
-            // 
-            // txtOnboardAccount
-            // 
-            this.txtOnboardAccount.Location = new System.Drawing.Point(86, 49);
-            this.txtOnboardAccount.Name = "txtOnboardAccount";
-            this.txtOnboardAccount.Size = new System.Drawing.Size(69, 22);
-            this.txtOnboardAccount.TabIndex = 7;
-            // 
-            // txtOnboardPassword
-            // 
-            this.txtOnboardPassword.Location = new System.Drawing.Point(86, 93);
-            this.txtOnboardPassword.Name = "txtOnboardPassword";
-            this.txtOnboardPassword.Size = new System.Drawing.Size(69, 22);
-            this.txtOnboardPassword.TabIndex = 6;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(30, 96);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 12);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "密碼";
             // 
             // groupBox1
             // 
@@ -200,14 +137,11 @@ namespace HRMS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(530, 450);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.gpbOnboard);
             this.Controls.Add(this.btnExit);
             this.Name = "Frm_Login";
             this.Text = "歡迎使用本系統";
-            this.gpbOnboard.ResumeLayout(false);
-            this.gpbOnboard.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -216,12 +150,6 @@ namespace HRMS
 
         #endregion
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.GroupBox gpbOnboard;
-        private System.Windows.Forms.Button btnOnboard;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtOnboardAccount;
-        private System.Windows.Forms.TextBox txtOnboardPassword;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label3;
         internal System.Windows.Forms.Label UsernameLabel;
