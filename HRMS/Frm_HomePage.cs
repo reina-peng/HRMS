@@ -36,7 +36,8 @@ namespace HRMS
             this.tabControl1.DrawItem += this.tabControl1_DrawItem;// 註冊 tabControl 事件
             //tabControl改側邊 > Alignment:Left > SizeMode:Fixed > 修改 ItemSize > 加下一行指令            
             this.tabControl1.DrawMode = TabDrawMode.OwnerDrawFixed;
-            //this.gpbWeather.Paint += this.groupBox1_Paint;
+            this.gpbWeather.Paint += this.groupBox_Paint;
+            this.gpbSecurity.Paint += this.groupBox_Paint;
             this.Load += HomePage_Load;
             this.FormClosed += Homepage_FormClosed;
             LoadBulletin();//載入佈告欄
@@ -52,6 +53,17 @@ namespace HRMS
 
             LoadWuChaStore();
             SetSomething();
+            #endregion
+            #region reina
+            LoadToTreeView();//載入遺失物
+            Loadcbbcombobx(); //載入請假類別
+
+            this.cbbleave.SelectedIndex = 1;
+            this.cbblost.SelectedIndex = 1;
+            this.cbbfound.SelectedIndex = 1;
+            this.cbbget.SelectedIndex = 1;
+            this.Read_RefreshDataGridView(); //載入遺失及拾獲名單
+            this.getview.SelectionChanged += Getview_SelectionChanged;
             #endregion
         }
 
@@ -129,6 +141,9 @@ namespace HRMS
 
             Information(userInfo.ID); // >  #region Tina匯入員工資料 (請假、差旅)  // Todo Tina
             #endregion
+            #region reina
+            LoadTolost();//審核領取物權限
+            #endregion
 
         }
         private void Homepage_FormClosed(object sender, FormClosedEventArgs e)
@@ -167,19 +182,11 @@ namespace HRMS
         #region 載入佈告欄
         private void LoadBulletin(int a)
         {
-            try
-            {
             this.Invoke(new Action(() =>
             {
                 LoadBulletin();
             }));
             Thread.Sleep(a);
-
-            }
-            catch (Exception ex)
-            {
-                userInfo.ErrorMsg(ex);
-            }
         }
         internal void LoadBulletin()//載入佈告欄
         {            
@@ -300,9 +307,9 @@ namespace HRMS
             WuCha_dataGridView.RowsDefaultCellStyle.BackColor = Color.Wheat;
 
         }
-        private void groupBox1_Paint(object sender, PaintEventArgs e)
+        private void groupBox_Paint(object sender, PaintEventArgs e)
         {
-            e.Graphics.Clear(groupBox1.BackColor);
+            e.Graphics.Clear(((GroupBox)sender).BackColor);
 
             Rectangle Rtg_LT = new Rectangle();
             Rectangle Rtg_RT = new Rectangle();
@@ -318,13 +325,13 @@ namespace HRMS
             Pen_AL.Color = color;
             Brush brush = new HatchBrush(HatchStyle.Divot, color);
 
-            e.Graphics.DrawString(groupBox1.Text, groupBox1.Font, brush, 6, 0);
+            e.Graphics.DrawString(((GroupBox)sender).Text, ((GroupBox)sender).Font, brush, 6, 0);
             e.Graphics.DrawArc(Pen_AL, Rtg_LT, 180, 90);
             e.Graphics.DrawArc(Pen_AL, Rtg_RT, 270, 90);
             e.Graphics.DrawArc(Pen_AL, Rtg_LB, 90, 90);
             e.Graphics.DrawArc(Pen_AL, Rtg_RB, 0, 90);
             e.Graphics.DrawLine(Pen_AL, 5, 7, 6, 7);
-            e.Graphics.DrawLine(Pen_AL, e.Graphics.MeasureString(groupBox1.Text, groupBox1.Font).Width + 3, 7, e.ClipRectangle.Width - 7, 7);
+            e.Graphics.DrawLine(Pen_AL, e.Graphics.MeasureString(((GroupBox)sender).Text, ((GroupBox)sender).Font).Width + 3, 7, e.ClipRectangle.Width - 7, 7);
             e.Graphics.DrawLine(Pen_AL, 0, 13, 0, e.ClipRectangle.Height - 7);
             e.Graphics.DrawLine(Pen_AL, 6, e.ClipRectangle.Height - 1, e.ClipRectangle.Width - 7, e.ClipRectangle.Height - 1);
             e.Graphics.DrawLine(Pen_AL, e.ClipRectangle.Width - 1, e.ClipRectangle.Height - 7, e.ClipRectangle.Width - 1, 13);
@@ -1434,7 +1441,47 @@ namespace HRMS
 
         private void btnLeave_Submit_Click(object sender, EventArgs e)
         {
+            try
+            {
+                string strr = Settings.Default.MyHR;
 
+                using (SqlConnection conn = new SqlConnection(strr))
+                {
+
+                    int EmployeeID = 2;
+
+
+                    string startDay = dtpLea_Start.Value.ToString("yyyy/MM/dd"); //將時間轉換成字串，SQL讀懂
+                    string endDay = dtp_Lea_End.Value.ToString("yyyy/MM/dd");
+                    string reason = txtLea_Reason.Text;
+
+                    //確認視窗設定
+                    string message = $" 姓名:{this.labLea_EmployeeName.Text}{Environment.NewLine} 員工編號:{this.labLea_EmployeeID.Text}{Environment.NewLine} 所屬部門:{this.labLea_EmpDep.Text}{Environment.NewLine}請假類別:{this.comLea_Cate.Text}{Environment.NewLine}請假天數:{this.comLea_Days.Text}{Environment.NewLine}請假起始日:{this.dtpLea_Start.Text}{Environment.NewLine}請假結束日:{this.dtp_Lea_End.Text}{Environment.NewLine}請假原因:{this.txtLea_Reason.Text}{Environment.NewLine}";
+                    string caption = "Confirm";
+                    var result = MessageBox.Show(message, caption, MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+
+                    if (result == DialogResult.OK)
+                    {
+
+                        int FinallyLeaveResult = ChangeToLeaveID(comLea_Cate.Text);
+                        SqlCommand command = new SqlCommand($"Insert into LeaveApplication (EmployeeID,ApplyDate,LeaveCategory,LeaveStartTime,LeaveEndTime,Reason) values('{EmployeeID}','{DateTime.Now.ToShortDateString()}','{FinallyLeaveResult}','{startDay}','{endDay}','{reason}')", conn);
+                        conn.Open();
+                        command.ExecuteNonQuery();
+                        MessageBox.Show("請假申請成功");
+
+                        this.tabControl1.SelectedIndex = 0;
+                    }
+                    else
+                    {
+                        //能幹嘛我也不知道
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }//申請假別
 
         public int ChangeToLeaveID(string s)  //對應假別名稱為數值回資料庫~~~ (病假=>1 事假=>2 生理假=>3 喪假=>4 特休=>5)
@@ -2067,6 +2114,444 @@ namespace HRMS
         public void RefreshWuCha()
         {
             this.btnWuCha_TodayOrder.PerformClick();
+        }
+
+        #endregion
+
+        #region 查詢功能
+        private void tabControl2_SelectedIndexChanged(object sender, EventArgs e) //更新頁面
+        {
+            //todo update
+            try
+            {
+                if (tabControl1.SelectedIndex == 2)
+                {
+                    var q = from l in this.hrEntities.Losts
+                            where l.EmployeeID == userInfo.ID
+                            select l.LostCategory;
+
+                    TreeNode treeNode1 = this.losttreeView.Nodes.Add(q.ToList().First().ToString());
+                }
+                var a = from l in hrEntities.Losts.AsEnumerable()
+                        select new
+                        {
+                            LostID = l.LostID,
+                            類別 = l.LostCategory,
+                            遺失物品 = l.LostProperty,
+                            遺失物照片 = l.LostPropertyPhoto,
+                            遺失時間 = l.LostDate,
+                            遺失地點 = l.LostSpace,
+                            遺失物描述 = l.LostPropertyDescription,
+                            狀態 = l.LostCheckStatus
+                        };
+                this.lostview.DataSource = a.ToList();
+
+                var b = from f in hrEntities.Founds.AsEnumerable()
+                        select new
+                        {
+                            FoundID = f.FoundID,
+                            類別 = f.FoundSubject,
+                            遺失物品 = f.FoundCategory,
+                            遺失物照片 = f.FoundPropertyPhoto,
+                            遺失時間 = f.FoundDate,
+                            遺失地點 = f.FoundSpace,
+                            遺失物描述 = f.FoundPropertyDescription,
+                            狀態 = f.FoundCheckStatus
+                        };
+                this.foundview.DataSource = b.ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
+        }
+        private void LoadToTreeView()
+        {
+            //todo lsottreeview
+            try
+            {
+                var q = from tree in this.hrEntities.Losts
+                        orderby tree.LostCategory descending
+                        group tree by tree.LostCategory into g
+                        select new
+                        {
+                            遺失類別 = g.Key,
+                            MyCount = g.Count(),
+                            MyGroup = g
+                        };
+
+                //treeview
+                foreach (var group in q)
+                {
+                    string s = $"{group.遺失類別} ({group.MyCount})";
+                    TreeNode x = this.losttreeView.Nodes.Add(s);
+
+                    foreach (var item in group.MyGroup)
+                    {
+                        x.Nodes.Add($"{item.LostProperty}".ToString());
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+        private void Loadcbbcombobx() //載入請假類別
+        {
+            try
+            {
+                var q = (from cbb in this.hrEntities.Leaves
+                         select cbb.LeaveCategory).Distinct();
+
+                foreach (var n in q)
+                {
+                    this.cbbleave.Items.Add(n);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        int g;
+        private void btncheckleave_Click(object sender, EventArgs e) //查詢請假
+        {
+            this.dataGridView1.Columns.Clear();
+            try
+            {
+                switch (this.cbbleave.SelectedItem.ToString())
+                {
+                    case "病假":
+                        g = 1;
+                        break;
+                    case "事假":
+                        g = 2;
+                        break;
+                    case "生理假":
+                        g = 3;
+                        break;
+                    case "喪假":
+                        g = 4;
+                        break;
+                    case "特休":
+                        g = 5;
+                        break;
+                }
+
+                var x = leavetimepicker.Value.ToString("yyyy/MM/dd");
+
+                var q = from l in this.hrEntities.LeaveApplications.AsEnumerable()
+                        where l.LeaveStartTime == DateTime.Parse(x) && g == l.LeaveCategory
+                        select new
+                        {
+                            員工編號 = userInfo.ID,
+                            員工姓名 = userInfo.Name,
+                            請假類別 = l.LeaveCategory,
+                            請假開始時間 = l.LeaveStartTime,
+                            請假結束時間 = l.LeaveEndTime,
+                            審核狀態 = l.CheckStatus
+                        };
+                this.dataGridView1.DataSource = q.ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void btnleavclear_Click(object sender, EventArgs e)
+        {
+            this.dataGridView1.Columns.Clear();
+            this.cbbleave.SelectedIndex = 1;
+
+        }
+
+        private void btncheckcost_Click(object sender, EventArgs e) //查詢差旅費
+        {
+            this.dataGridView2.Columns.Clear();
+
+            try
+            {
+                var y = costtimepicker.Value.ToString("yyyy/MM/dd");
+
+                var q2 = from t in hrEntities.Travel_Expense_Application.AsEnumerable()
+                         where t.TravelStartTime == DateTime.Parse(y)
+                         select new
+                         {
+                             員工編號 = userInfo.ID,
+                             員工姓名 = userInfo.Name,
+                             出差開始時間 = t.TravelStartTime,
+                             出差結束時間 = t.TravelEndTime,
+                             差旅費 = t.Amont,
+                             審核狀態 = t.CheckStatus
+                         };
+
+                this.dataGridView2.DataSource = q2.ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void btncostclear_Click(object sender, EventArgs e)
+        {
+            this.dataGridView2.Columns.Clear();
+        }
+        #endregion
+
+        #region 失物招領
+        private void Getview_SelectionChanged(object sender, EventArgs e)
+        {
+            int id = (int)this.getview.Rows[getview.CurrentRow.Index].Cells[0].Value;
+            var g = (from n in this.hrEntities.Losts
+                     where n.LostID == id
+                     select n).FirstOrDefault();
+            if (g == null)
+            {
+                MessageBox.Show("請重新查詢");
+                return;
+            }
+
+            g.LostCheckStatus = 2;
+            this.hrEntities.SaveChanges();
+        }
+        private void LoadTolost() //領取物權限
+        {
+            if (userInfo.Dept < 5)
+            {
+                tabControl1.TabPages.Remove(取回登記);
+            }
+        }
+
+        private void btnfilechose_Click(object sender, EventArgs e) //選擇遺失物圖片檔案
+        {
+            if (this.openFilelost.ShowDialog() == DialogResult.OK)
+            {
+                this.lostpicture.Image = Image.FromFile(this.openFilelost.FileName);
+            }
+        }
+
+
+        private void btnlostclear_Click(object sender, EventArgs e) //清除填寫資料
+        {
+            this.txtlostproperty.Text = null;
+            this.txtdec1.Text = null;
+            this.txtlostspace.Text = null;
+            this.lostpicture.Image = null;
+        }
+
+        public byte[] ImageToByteArray(System.Drawing.Image image) //轉換圖片型別
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                image.Save(ms, image.RawFormat);
+                return ms.ToArray();
+            }
+        }
+
+        private void btnchecklost_Click(object sender, EventArgs e) //遺失物登記
+        {
+            try
+            {
+                string lostsubject = "遺失物";
+                var photo = this.lostpicture.Image;
+                byte[] imagebinary = ImageToByteArray(photo);
+                string lostspace = this.txtlostspace.Text;
+                var lostdate = lostTimePicker4.Value.ToString("yyyy/MM/dd");
+                string des = this.txtdec1.Text;
+                byte loststatus = 1;
+
+                Lost lost = new Lost
+                {
+                    EmployeeID = int.Parse(this.lblUserID.Text),
+                    Deparment = int.Parse(this.lblUserDept.Text),
+                    LostSubject = lostsubject,
+                    LostCategory = this.cbblost.Text,
+                    LostPropertyPhoto = imagebinary,
+                    LostProperty = this.txtlostproperty.Text,
+                    LostDate = DateTime.Parse(lostdate),
+                    LostSpace = lostspace,
+                    LostPropertyDescription = des,
+                    LostCheckStatus = loststatus
+                };
+                this.hrEntities.Losts.Add(lost);
+
+                this.hrEntities.SaveChanges();
+
+                MessageBox.Show("新增成功!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        void Read_RefreshDataGridView() //匯入遺失及拾獲資料
+        {
+            //todo lost and found datagridview
+            try
+            {
+                var a = from l in hrEntities.Losts.AsEnumerable()
+                        select new
+                        {
+                            LostID = l.LostID,
+                            類別 = l.LostCategory,
+                            遺失物品 = l.LostProperty,
+                            遺失物照片 = l.LostPropertyPhoto,
+                            遺失時間 = l.LostDate,
+                            遺失地點 = l.LostSpace,
+                            遺失物描述 = l.LostPropertyDescription,
+                            狀態 = l.LostCheckStatus
+                        };
+                this.lostview.DataSource = a.ToList();
+
+                var b = from f in hrEntities.Founds.AsEnumerable()
+                        select new
+                        {
+                            FoundID = f.FoundID,
+                            類別 = f.FoundSubject,
+                            遺失物品 = f.FoundCategory,
+                            遺失物照片 = f.FoundPropertyPhoto,
+                            遺失時間 = f.FoundDate,
+                            遺失地點 = f.FoundSpace,
+                            遺失物描述 = f.FoundPropertyDescription,
+                            狀態 = f.FoundCheckStatus
+                        };
+                this.foundview.DataSource = b.ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnfilefound_Click_1(object sender, EventArgs e) //加入拾獲照片
+        {
+            if (this.openFilefound.ShowDialog() == DialogResult.OK)
+            {
+                this.foundpicture.Image = Image.FromFile(this.openFilefound.FileName);
+            }
+        }
+
+        private void btnfoundclear_Click(object sender, EventArgs e) //清除
+        {
+            this.cbbfound.SelectedIndex = 1;
+            this.txtfounddec.Text = null;
+            this.txtfoundp.Text = null;
+            this.txtfoundsp.Text = null;
+            this.foundpicture.Image = null;
+        }
+
+        private void btnfoundcheck_Click(object sender, EventArgs e) //加入拾獲物
+        {
+            try
+            {
+                string foundsubject = "拾獲物";
+                var photo = this.foundpicture.Image;
+                byte[] imagebinary2 = ImageToByteArray(photo);
+                string foundspace = this.txtfoundsp.Text;
+                var founddate = foundTimePicker5.Value.ToString("yyyy/MM/dd");
+                string founddes = this.txtfounddec.Text;
+                byte foundstatus = 1;
+
+                Found found = new Found
+                {
+                    EmployeeID = int.Parse(this.lblUserID.Text),
+                    Deparment = int.Parse(this.lblUserDept.Text),
+
+                    FoundSubject = foundsubject,
+                    FoundCategory = this.cbbfound.Text,
+                    FoundPropertyPhoto = imagebinary2,
+                    FoundProperty = this.txtfoundp.Text,
+                    FoundDate = DateTime.Parse(founddate),
+                    FoundSpace = foundspace,
+                    FoundPropertyDescription = founddes,
+                    FoundCheckStatus = foundstatus
+                };
+                this.hrEntities.Founds.Add(found);
+
+                this.hrEntities.SaveChanges();
+
+                MessageBox.Show("新增成功!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void btngetclear_Click(object sender, EventArgs e) //清除
+        {
+            this.txtgetp.Text = null;
+            this.txtgetsp.Text = null;
+            this.getview.Columns.Clear();
+            this.cbbget.SelectedIndex = 1;
+
+        }
+
+        private void btngetcheck_Click(object sender, EventArgs e) //查詢遺失物
+        {
+            this.getview.Columns.Clear();
+            try
+            {
+                var q3 = from l in hrEntities.Losts.AsEnumerable()
+                         where l.LostCategory == this.cbbget.Text && l.LostProperty == this.txtgetp.Text
+                         select new
+                         {
+                             LostID = l.LostID,
+                             類別 = l.LostCategory,
+                             遺失物品 = l.LostProperty,
+                             遺失物照片 = l.LostPropertyPhoto,
+                             遺失時間 = l.LostDate,
+                             遺失地點 = l.LostSpace,
+                             遺失物描述 = l.LostPropertyDescription,
+                             狀態 = l.LostCheckStatus
+                         };
+                this.getview.DataSource = q3.ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+
+        private void btngetchose_Click(object sender, EventArgs e) //領取遺失物
+        {
+            this.getview.Columns.Clear();
+
+            try
+            {
+                var q5 = from o in hrEntities.Losts.AsEnumerable()
+                         where o.LostCategory == this.cbbget.Text && o.LostProperty == this.txtgetp.Text
+                         select new
+                         {
+                             LostID = o.LostID,
+                             類別 = o.LostCategory,
+                             遺失物品 = o.LostProperty,
+                             遺失物照片 = o.LostPropertyPhoto,
+                             遺失時間 = o.LostDate,
+                             遺失地點 = o.LostSpace,
+                             遺失物描述 = o.LostPropertyDescription,
+                             狀態 = o.LostCheckStatus
+                         };
+
+                this.hrEntities.SaveChanges();
+                MessageBox.Show("變更成功");
+                this.getview.DataSource = q5.ToList();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         #endregion
