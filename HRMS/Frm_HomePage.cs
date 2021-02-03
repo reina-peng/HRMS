@@ -40,6 +40,7 @@ namespace HRMS
             this.gpbSecurity.Paint += this.groupBox_Paint;
             this.Load += HomePage_Load;
             this.FormClosed += Homepage_FormClosed;
+            this.tabControl1.SelectedIndexChanged += tabControl2_SelectedIndexChanged;
             LoadBulletin();//載入佈告欄
             this.txtSecuty.Text = "1.使用資訊設備請注意資訊安全，請勿點擊不明信件或網址。"+Environment.NewLine +
                 "2.公司資訊請勿任意攜出或傳輸儲存設備或雲端服務。" + Environment.NewLine +
@@ -175,7 +176,6 @@ namespace HRMS
             catch (Exception ex)
             {
                 this.pictureBox1.Image = this.pictureBox1.ErrorImage;
-                MessageBox.Show(ex.Message);
             }
         }
         #endregion
@@ -387,6 +387,7 @@ namespace HRMS
         private void Button1_Click(object sender, EventArgs e)
         {
             ShowImage(userInfo.ID);
+            Information(userInfo.ID);
         }
         #endregion
 
@@ -956,7 +957,7 @@ namespace HRMS
                                      審核狀態 = ch.CheckStatus
                                  };
 
-                        dgvCS_Leave.DataSource = qL.ToList();
+                        dgvCS_Leave.DataSource = qL.ToList();                        
                     }
                 }
                 catch (Exception ex)
@@ -965,6 +966,7 @@ namespace HRMS
                 }
             }
             this.btnCS_AllPassLeave.Enabled = true;
+            GetComboboxValue();
         }
 
         private void dgvButton()// build datagridview buttons
@@ -1027,7 +1029,6 @@ namespace HRMS
             }
             btnCS_SearchLeave_Click(sender, e);
             GetComboboxValue();
-
         }
 
         private void btnCS_AllPassLeave_Click(object sender, EventArgs e) // 請假申請一鍵通過
@@ -1042,6 +1043,7 @@ namespace HRMS
             hrEntities.SaveChanges();
 
             btnCS_SearchLeave_Click(sender, e);
+            GetComboboxValue();
         }
 
         private void btnCS_SearchTravel_Click(object sender, EventArgs e)//查詢出差申請
@@ -1126,7 +1128,7 @@ namespace HRMS
                                      審核狀態 = ch.CheckStatus
                                  };
 
-                        dgvCS_Travel.DataSource = qT.ToList();
+                        dgvCS_Travel.DataSource = qT.ToList();                        
                     }
                 }
                 catch (Exception ex)
@@ -1135,6 +1137,7 @@ namespace HRMS
                 }
             }
             this.btnCS_AllPassTravel.Enabled = true;
+            GetComboboxValue();
         }
 
         private void dgvCS_Travel_CellContentClick(object sender, DataGridViewCellEventArgs e)//點擊dgvCS_Travel button
@@ -1179,6 +1182,7 @@ namespace HRMS
             hrEntities.SaveChanges();
 
             btnCS_SearchTravel_Click(sender, e);
+            GetComboboxValue();
         }
 
         #region datagridview 顏色
@@ -2124,7 +2128,7 @@ namespace HRMS
             //todo update
             try
             {
-                if (tabControl1.SelectedIndex == 2)
+                if (tabControl1.SelectedTab == 請假查詢 )
                 {
                     var q = from l in this.hrEntities.Losts
                             where l.EmployeeID == userInfo.ID
