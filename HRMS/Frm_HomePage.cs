@@ -96,7 +96,7 @@ namespace HRMS
             #region 天氣輪播
             //參考 https://www.itread01.com/content/1544577918.html
             jsondata = getJson(cwbAPI);//取得天氣 Json
-            LoadWeather(jsondata, "臺北市");
+            LoadWeather(jsondata, "宜蘭縣");
             thWeather = new Thread(delegate () //執行緒委派方法
             {
                 while (true)
