@@ -1,5 +1,8 @@
-﻿using System;
+﻿using HRMS.Properties;
+using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -193,4 +196,22 @@ namespace HRMS
         }
     }
     #endregion
+
+    public class DBConnect
+    {
+        public SqlDataReader DBDataReader(String commStr)
+        {            
+            string connstring = Settings.Default.MyHR;
+            using (SqlConnection conn = new SqlConnection())
+            {
+                conn.ConnectionString = connstring;
+                conn.Open();
+                SqlCommand comm = new SqlCommand(commStr, conn);
+                SqlDataReader dataReader = comm.ExecuteReader();                
+                
+                
+                return dataReader;
+            }            
+        }        
+    }
 }

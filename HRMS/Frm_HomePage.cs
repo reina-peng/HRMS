@@ -27,6 +27,7 @@ namespace HRMS
         MyHREntities hrEntities = new MyHREntities();
         internal int UserID;//接 login 傳過來的值
         internal static UserInfo userInfo = null;//建立 userInfo 物件
+        internal static DBConnect dbConnect = new DBConnect();
         Thread thWeather;//天氣輪播執行緒
         Thread thLoadBulletin;//載入佈告欄執行緒
         public Frm_HomePage()
@@ -158,27 +159,31 @@ namespace HRMS
         {
             try
             {
-                string connstring = Settings.Default.MyHR;
-                using (SqlConnection conn = new SqlConnection())
-                {
-                    conn.ConnectionString = connstring;
-                    conn.Open();
+                //string connstring = Settings.Default.MyHR;
+                //using (SqlConnection conn = new SqlConnection())
+                //{
+                //    conn.ConnectionString = connstring;
+                //    conn.Open();
 
-                    SqlCommand command = new SqlCommand("select* from  [User] where EmployeeID=" + imageID, conn);
-                    SqlDataReader dataReader = command.ExecuteReader();
-                    //=====================
-                    dataReader.Read();
-                    byte[] bytes = (byte[])dataReader["Photo"];
-                    System.IO.MemoryStream ms = new System.IO.MemoryStream(bytes);
-                    this.pictureBox1.Image = Image.FromStream(ms);
-                    //=====================
-                    this.pbLea_Picture.Image = Image.FromStream(ms);
-                    this.pbTra_Picture.Image = Image.FromStream(ms);
-                    this.pbWucha.Image = Image.FromStream(ms);
-
-
-
-                }
+                //    SqlCommand command = new SqlCommand("select* from  [User] where EmployeeID=" + imageID, conn);
+                //    SqlDataReader dataReader = command.ExecuteReader();
+                //    //=====================
+                //    dataReader.Read();
+                //    byte[] bytes = (byte[])dataReader["Photo"];
+                //    System.IO.MemoryStream ms = new System.IO.MemoryStream(bytes);
+                //    this.pictureBox1.Image = Image.FromStream(ms);
+                //    //=====================
+                //    this.pbLea_Picture.Image = Image.FromStream(ms);
+                //    this.pbTra_Picture.Image = Image.FromStream(ms);
+                //    this.pbWucha.Image = Image.FromStream(ms);
+                //}
+                string commStr = "select* from  [User] where EmployeeID=" + imageID;
+                SqlDataReader dataReader = dbConnect.DBDataReader(commStr);
+                dataReader.Read();
+                //byte[] bytes = (byte[])dataReader["Photo"];
+                byte[] bytes = (byte[])(dbConnect.DBDataReader(commStr))["Photo"];
+                System.IO.MemoryStream ms = new System.IO.MemoryStream(bytes);
+                this.pictureBox1.Image = Image.FromStream(ms);
             }
             catch (Exception ex)
             {
@@ -406,7 +411,7 @@ namespace HRMS
             labCO_ShowNowTime.Text = DateTime.Now.ToString("HH時mm分ss秒");
         }
 
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e) //設定打卡紀錄查詢日期區間 // todo 
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e) //設定打卡紀錄查詢日期區間 // todo
         {
             using (SqlConnection conn = new SqlConnection(Settings.Default.MyHR))
             {
@@ -423,6 +428,9 @@ namespace HRMS
 
                 this.dtpCO_ShearchStart.MaxDate = DateTime.Today;
                 this.dtpCO_ShearchEnd.MaxDate = DateTime.Today;
+
+                this.dtpCO_ShearchStart.Value = DateTime.Today;
+                this.dtpCO_ShearchEnd.Value = DateTime.Today;
             }
         }
 
@@ -526,6 +534,7 @@ namespace HRMS
                         };
 
                 dgvCO_Search.DataSource = q.ToList();
+
             }
         }
 
