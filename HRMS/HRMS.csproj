@@ -154,6 +154,7 @@
     <Compile Include="LostPropertyCheckStatu.cs">
       <DependentUpon>HRModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Method.cs" />
     <Compile Include="OnBoardStatu.cs">
       <DependentUpon>HRModel.tt</DependentUpon>
     </Compile>

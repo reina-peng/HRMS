@@ -37,6 +37,7 @@ namespace HRMS
             this.tabControl1.DrawItem += this.tabControl1_DrawItem;// 註冊 tabControl 事件
             //tabControl改側邊 > Alignment:Left > SizeMode:Fixed > 修改 ItemSize > 加下一行指令            
             this.tabControl1.DrawMode = TabDrawMode.OwnerDrawFixed;
+            #region HomePage
             this.gpbWeather.Paint += this.groupBox_Paint;
             this.gpbSecurity.Paint += this.groupBox_Paint;
             this.gpbBulletin.Paint += this.groupBox_Paint;
@@ -47,6 +48,7 @@ namespace HRMS
             this.txtSecuty.Text = "1.使用資訊設備請注意資訊安全，請勿點擊不明信件或網址。"+Environment.NewLine +
                 "2.公司資訊請勿任意攜出或傳輸儲存設備或雲端服務。" + Environment.NewLine +
                 "3.有任何資安疑慮或問題請洽 IT 人員。";
+            #endregion
             #region 可愛教主
             LoadLeaveCategory();
             LoadDays();
@@ -81,10 +83,8 @@ namespace HRMS
             this.lblDeptName.Text = userInfo.DeptName;
             this.lblJobTitle.Text = userInfo.JobTitle.ToString();
             this.lblJobTitleName.Text = userInfo.JobTitleName;
-            #endregion
-            //tabControl1.TabPages.Remove(tabPage1);
-            //判斷員工職等設定佈告欄編輯按鈕  Visible
-            this.btnPublishInfo.Visible = (userInfo.JobTitle <= 1) ? true : false;
+            #endregion                        
+            this.btnPublishInfo.Visible = (userInfo.JobTitle <= 1) ? true : false; //判斷員工職等設定佈告欄編輯按鈕  Visible
             thLoadBulletin = new Thread(delegate ()
             {
                 while (true)
@@ -93,7 +93,7 @@ namespace HRMS
                 }                    
             });
             thLoadBulletin.IsBackground = true;
-            thLoadBulletin.Start();
+            thLoadBulletin.Start();            
             #region 天氣輪播
             //參考 https://www.itread01.com/content/1544577918.html
             jsondata = getJson(cwbAPI);//取得天氣 Json
@@ -147,7 +147,6 @@ namespace HRMS
             #region reina
             LoadTolost();//審核領取物權限
             #endregion
-
         }
         private void Homepage_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -177,17 +176,18 @@ namespace HRMS
                 //    this.pbTra_Picture.Image = Image.FromStream(ms);
                 //    this.pbWucha.Image = Image.FromStream(ms);
                 //}
-                string commStr = "select* from  [User] where EmployeeID=" + imageID;
-                SqlDataReader dataReader = dbConnect.DBDataReader(commStr);
-                dataReader.Read();
-                //byte[] bytes = (byte[])dataReader["Photo"];
-                byte[] bytes = (byte[])(dbConnect.DBDataReader(commStr))["Photo"];
-                System.IO.MemoryStream ms = new System.IO.MemoryStream(bytes);
+                System.IO.MemoryStream ms = new System.IO.MemoryStream(userInfo.Photo);
                 this.pictureBox1.Image = Image.FromStream(ms);
+                this.pbLea_Picture.Image = Image.FromStream(ms);
+                this.pbTra_Picture.Image = Image.FromStream(ms);
+                this.pbWucha.Image = Image.FromStream(ms);
             }
             catch (Exception ex)
             {
                 this.pictureBox1.Image = this.pictureBox1.ErrorImage;
+                this.pbLea_Picture.Image = this.pbLea_Picture.ErrorImage;
+                this.pbTra_Picture.Image = this.pbTra_Picture.ErrorImage;
+                this.pbWucha.Image = this.pbTra_Picture.ErrorImage;
             }
         }
         #endregion
@@ -284,7 +284,7 @@ namespace HRMS
             Brush _textBrush;
             // Get the item from the collection.
             TabPage _tabPage = tabControl1.TabPages[e.Index];
-
+            
             // Get the real bounds for the tab rectangle.
             Rectangle _tabBounds = tabControl1.GetTabRect(e.Index);
 
@@ -447,7 +447,7 @@ namespace HRMS
                 labClockTime_ON.Text = "您已打卡成功 !\n" + DateTime.Now;
                 Absence absence = new Absence { EmployeeID = userInfo.ID, On = DateTime.Now };
                 this.hrEntities.Absences.Add(absence);
-                this.hrEntities.SaveChanges();
+                this.hrEntities.SaveChanges();                
             }
             else//有打卡紀錄
             {

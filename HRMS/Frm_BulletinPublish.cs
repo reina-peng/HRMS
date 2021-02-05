@@ -26,6 +26,7 @@ namespace HRMS
             LoadDgv();
             this.dataGridView1.SelectionChanged += DataGridView1_SelectionChanged;
         }
+        
         int number;//放文章Number
         private void DataGridView1_SelectionChanged(object sender, EventArgs e)
         {            
@@ -136,7 +137,7 @@ namespace HRMS
         {
             DialogResult result = MessageBox.Show($"確認刪除公告?", "刪除公告", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.No) return;
-
+            
             var q = (from n in this.HREntities.Bulletins
                      where n.Number == number
                      select n).FirstOrDefault();
@@ -146,7 +147,7 @@ namespace HRMS
             this.HREntities.SaveChanges();
             MessageBox.Show("公告已刪除");
             LoadDgv();
-            hp.LoadBulletin();//主視窗重載佈告欄
+            hp.LoadBulletin();//主視窗重載佈告欄            
         }
     }
 }

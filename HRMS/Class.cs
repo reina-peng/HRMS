@@ -15,6 +15,7 @@ namespace HRMS
     public class UserInfo
     {        
         public int ID { get; }//員工ID
+        public byte[] Photo { get; }//員工圖片
         public string Name { get; }//員工姓名
         public string EnglishName { get; }//員工英文名
         public int Dept { get; }//員工部門代號
@@ -46,7 +47,7 @@ namespace HRMS
             {
                 MyHREntities hrEntities = new MyHREntities();
                 //抓員工資料
-                var q = (hrEntities.Users.Where(o => o.EmployeeID == userID).Select(o => new { o.EmployeeName, o.EmployeeEnglishName, o.Department, o.JobTitle, o.Phone, Supervisor = o.Supervisor == null ? o.EmployeeID : o.Supervisor })).ToList();
+                var q = (hrEntities.Users.Where(o => o.EmployeeID == userID).Select(o => new { o.Photo, o.EmployeeName, o.EmployeeEnglishName, o.Department, o.JobTitle, o.Phone, Supervisor = o.Supervisor == null ? o.EmployeeID : o.Supervisor })).ToList();
                 //var q = (hrEntities.Users
                 //    .Join(hrEntities.Departments, u => u.Department, d => d.DepartmentID, (u, d) => new { u.EmployeeID, u.EmployeeName, u.EmployeeEnglishName, u.Department, d.DepartmentName, u.JobTitle, u.Phone, u.Supervisor })
                 //    //.Join(hrEntities.Departments, u => u.Department, d => d.DepartmentID, (u, d) => new { U = u, D = d})
@@ -79,6 +80,7 @@ namespace HRMS
                     .ToList();
 
                 ID = userID;
+                Photo = q[0].Photo;
                 Name = q[0].EmployeeName;
                 EnglishName = q[0].EmployeeEnglishName;
                 Dept = (int)q[0].Department;
@@ -90,7 +92,7 @@ namespace HRMS
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);                
             }
         }
     }
@@ -199,7 +201,7 @@ namespace HRMS
 
     public class DBConnect
     {
-        public SqlDataReader DBDataReader(String commStr)
+        public DataTable DBDataReader(String commStr)
         {            
             string connstring = Settings.Default.MyHR;
             using (SqlConnection conn = new SqlConnection())
@@ -207,10 +209,11 @@ namespace HRMS
                 conn.ConnectionString = connstring;
                 conn.Open();
                 SqlCommand comm = new SqlCommand(commStr, conn);
-                SqlDataReader dataReader = comm.ExecuteReader();                
-                
-                
-                return dataReader;
+                SqlDataReader dataReader = comm.ExecuteReader();
+                dataReader.Read();
+                DataTable dt = new DataTable();
+                                
+                return dt;
             }            
         }        
     }

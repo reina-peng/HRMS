@@ -215,7 +215,6 @@ namespace HRMS
                     conn.Open();
                     command.ExecuteNonQuery();
                 }
-
             }
             catch (Exception ex)
             {
@@ -248,12 +247,9 @@ namespace HRMS
                     command.ExecuteNonQuery();
                     MessageBox.Show("修改成功");
                 }
-
-
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.Message);
             }
         }
@@ -285,11 +281,7 @@ namespace HRMS
         {
             string[] filename = (string[])e.Data.GetData(DataFormats.FileDrop);
             this.pictureBox1.Image = Image.FromFile(filename[0]);
-
         }
         #endregion
-
-
-
     }
 }
