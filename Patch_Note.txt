@@ -1,0 +1,10 @@
+1.7
+異動項目
+-新增 /Class 資料夾，class 檔移至此資料夾
+-新增 /Class/MyControls.cs，控制項外觀修改代碼移至此檔案。
+-修改 /Class/MyUserInfo.cs，
+-userInfo 新增照片屬性。
+
+Bug 修正
+Janna-修正 打卡 DateTimePicker.Value
+Tina -修正 Wucha_dataGridView 點擊判斷是否為修改按鈕

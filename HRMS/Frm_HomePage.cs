@@ -1,4 +1,5 @@
-﻿using HRMS.Properties;
+﻿using HRMS.Class;
+using HRMS.Properties;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -26,7 +27,7 @@ namespace HRMS
         JArray jsondata = null;
         MyHREntities hrEntities = new MyHREntities();
         internal int UserID;//接 login 傳過來的值
-        internal static UserInfo userInfo = null;//建立 userInfo 物件
+        internal static MyUserInfo userInfo = null;//建立 userInfo 物件
         internal static DBConnect dbConnect = new DBConnect();
         Thread thWeather;//天氣輪播執行緒
         Thread thLoadBulletin;//載入佈告欄執行緒
@@ -34,13 +35,13 @@ namespace HRMS
         {            
             InitializeComponent();
             this.CenterToScreen();
-            this.tabControl1.DrawItem += this.tabControl1_DrawItem;// 註冊 tabControl 事件
+            this.tabControl1.DrawItem += (new MyControls()).tabControl_DrawItem;
             //tabControl改側邊 > Alignment:Left > SizeMode:Fixed > 修改 ItemSize > 加下一行指令            
             this.tabControl1.DrawMode = TabDrawMode.OwnerDrawFixed;
             #region HomePage
-            this.gpbWeather.Paint += this.groupBox_Paint;
-            this.gpbSecurity.Paint += this.groupBox_Paint;
-            this.gpbBulletin.Paint += this.groupBox_Paint;
+            this.gpbWeather.Paint += (new MyControls()).groupBox_Paint;
+            this.gpbSecurity.Paint += (new MyControls()).groupBox_Paint;
+            this.gpbBulletin.Paint += (new MyControls()).groupBox_Paint;
             this.Load += HomePage_Load;
             this.FormClosed += Homepage_FormClosed;
             this.tabControl1.SelectedIndexChanged += tabControl2_SelectedIndexChanged;
@@ -74,9 +75,9 @@ namespace HRMS
 
         private void HomePage_Load(object sender, EventArgs e)
         {
-            userInfo = new UserInfo(UserID);// 建立 userInfo 實體
+            userInfo = new MyUserInfo(UserID);// 建立 userInfo 實體
             #region 顯示右上角員工資料
-            ShowImage(UserID);//顯示右上角員工圖片            
+            ShowImage();//顯示右上角員工圖片            
             this.lblUserID.Text = userInfo.ID.ToString();
             this.lblUserName.Text = userInfo.Name;
             this.lblUserDept.Text = userInfo.Dept.ToString();
@@ -97,7 +98,7 @@ namespace HRMS
             #region 天氣輪播
             //參考 https://www.itread01.com/content/1544577918.html
             jsondata = getJson(cwbAPI);//取得天氣 Json
-            LoadWeather(jsondata, "宜蘭縣");
+            LoadWeather(jsondata, "臺北市");
             thWeather = new Thread(delegate () //執行緒委派方法
             {
                 while (true)
@@ -154,7 +155,7 @@ namespace HRMS
             thLoadBulletin.Abort();//關閉時結束載入佈告欄執行緒
         }
         #region ShowImage(載入員工圖片)
-        private void ShowImage(int imageID)
+        private void ShowImage()
         {
             try
             {
@@ -176,18 +177,25 @@ namespace HRMS
                 //    this.pbTra_Picture.Image = Image.FromStream(ms);
                 //    this.pbWucha.Image = Image.FromStream(ms);
                 //}
-                System.IO.MemoryStream ms = new System.IO.MemoryStream(userInfo.Photo);
-                this.pictureBox1.Image = Image.FromStream(ms);
-                this.pbLea_Picture.Image = Image.FromStream(ms);
-                this.pbTra_Picture.Image = Image.FromStream(ms);
-                this.pbWucha.Image = Image.FromStream(ms);
+                if (userInfo.Photo != null)
+                {
+                    System.IO.MemoryStream ms = new System.IO.MemoryStream(userInfo.Photo);
+                    this.pictureBox1.Image = Image.FromStream(ms);
+                    this.pbLea_Picture.Image = Image.FromStream(ms);
+                    this.pbTra_Picture.Image = Image.FromStream(ms);
+                    this.pbWucha.Image = Image.FromStream(ms);
+                }
+                else
+                {
+                    this.pictureBox1.Image = this.pictureBox1.ErrorImage;
+                    this.pbLea_Picture.Image = this.pbLea_Picture.ErrorImage;
+                    this.pbTra_Picture.Image = this.pbTra_Picture.ErrorImage;
+                    this.pbWucha.Image = this.pbTra_Picture.ErrorImage;
+                }
             }
             catch (Exception ex)
             {
-                this.pictureBox1.Image = this.pictureBox1.ErrorImage;
-                this.pbLea_Picture.Image = this.pbLea_Picture.ErrorImage;
-                this.pbTra_Picture.Image = this.pbTra_Picture.ErrorImage;
-                this.pbWucha.Image = this.pbTra_Picture.ErrorImage;
+                userInfo.ErrorMsg(ex);
             }
         }
         #endregion
@@ -277,37 +285,7 @@ namespace HRMS
             Thread.Sleep(millisecondTimeOut);
         }
         #endregion
-        #region TabControl 顯示設定
-        private void tabControl1_DrawItem(object sender, DrawItemEventArgs e) // tabControl 設定
-        {
-            Graphics g = e.Graphics;
-            Brush _textBrush;
-            // Get the item from the collection.
-            TabPage _tabPage = tabControl1.TabPages[e.Index];
-            
-            // Get the real bounds for the tab rectangle.
-            Rectangle _tabBounds = tabControl1.GetTabRect(e.Index);
-
-            if (e.State == DrawItemState.Selected)
-            {
-                // Draw a different background color, and don't paint a focus rectangle.
-                _textBrush = new SolidBrush(Color.Red);
-                g.FillRectangle(Brushes.Gray, e.Bounds);
-            }
-            else
-            {
-                _textBrush = new System.Drawing.SolidBrush(e.ForeColor);
-                e.DrawBackground();
-            }
-            // Use our own font.
-            Font _tabFont = new Font("Arial", (float)20.0, FontStyle.Bold, GraphicsUnit.Pixel);
-            // Draw string. Center the text.
-            StringFormat _stringFlags = new StringFormat();
-            _stringFlags.Alignment = StringAlignment.Center;
-            _stringFlags.LineAlignment = StringAlignment.Center;
-            g.DrawString(_tabPage.Text, _tabFont, _textBrush, _tabBounds, new StringFormat(_stringFlags));            
-        }
-        #endregion
+        
         private void SetSomething()  // Todo Tina
         {
             comWuCha_TempItem.Visible = false;
@@ -321,35 +299,7 @@ namespace HRMS
             WuCha_dataGridView.RowsDefaultCellStyle.BackColor = Color.Wheat;
 
         }
-        private void groupBox_Paint(object sender, PaintEventArgs e)
-        {
-            e.Graphics.Clear(((GroupBox)sender).BackColor);
-
-            Rectangle Rtg_LT = new Rectangle();
-            Rectangle Rtg_RT = new Rectangle();
-            Rectangle Rtg_LB = new Rectangle();
-            Rectangle Rtg_RB = new Rectangle();
-            Rtg_LT.X = 0; Rtg_LT.Y = 7; Rtg_LT.Width = 10; Rtg_LT.Height = 10;
-            Rtg_RT.X = e.ClipRectangle.Width - 11; Rtg_RT.Y = 7; Rtg_RT.Width = 10; Rtg_RT.Height = 10;
-            Rtg_LB.X = 0; Rtg_LB.Y = e.ClipRectangle.Height - 11; Rtg_LB.Width = 10; Rtg_LB.Height = 10;
-            Rtg_RB.X = e.ClipRectangle.Width - 11; Rtg_RB.Y = e.ClipRectangle.Height - 11; Rtg_RB.Width = 10; Rtg_RB.Height = 10;
-
-            Color color = Color.FromArgb(51, 94, 168);
-            Pen Pen_AL = new Pen(color, 1);
-            Pen_AL.Color = color;
-            Brush brush = new HatchBrush(HatchStyle.Divot, color);
-
-            e.Graphics.DrawString(((GroupBox)sender).Text, ((GroupBox)sender).Font, brush, 6, 0);
-            e.Graphics.DrawArc(Pen_AL, Rtg_LT, 180, 90);
-            e.Graphics.DrawArc(Pen_AL, Rtg_RT, 270, 90);
-            e.Graphics.DrawArc(Pen_AL, Rtg_LB, 90, 90);
-            e.Graphics.DrawArc(Pen_AL, Rtg_RB, 0, 90);
-            e.Graphics.DrawLine(Pen_AL, 5, 7, 6, 7);
-            e.Graphics.DrawLine(Pen_AL, e.Graphics.MeasureString(((GroupBox)sender).Text, ((GroupBox)sender).Font).Width + 3, 7, e.ClipRectangle.Width - 7, 7);
-            e.Graphics.DrawLine(Pen_AL, 0, 13, 0, e.ClipRectangle.Height - 7);
-            e.Graphics.DrawLine(Pen_AL, 6, e.ClipRectangle.Height - 1, e.ClipRectangle.Width - 7, e.ClipRectangle.Height - 1);
-            e.Graphics.DrawLine(Pen_AL, e.ClipRectangle.Width - 1, e.ClipRectangle.Height - 7, e.ClipRectangle.Width - 1, 13);
-        }
+        
         #region 測試碼
         //private void button1_Click(object sender, EventArgs e)
         //{
@@ -378,8 +328,7 @@ namespace HRMS
             lg.ShowDialog();
             System.Windows.Forms.Application.Exit();
             //this.Dispose();
-            //this.Close();
-            //
+            //this.Close();            
         }
 
         private void btnPublishInfo_Click(object sender, EventArgs e)//編輯公佈欄按鈕
@@ -387,7 +336,19 @@ namespace HRMS
             bp = new Frm_BulletinPublish(this);//因新視窗有功能需要 call 目前視窗的function，傳入 this
             bp.ShowDialog();
         }
-        
+
+        private void lsbBulletin_SelectedIndexChanged(object sender, EventArgs e)//佈告欄項目點選跳出內容
+        {
+            string str = lsbBulletin.SelectedItem.ToString();
+            int ID = int.Parse(str.Replace(str.Substring(str.IndexOf('[')),""));
+            var q = (from n in hrEntities.Bulletins
+                             where n.Number == ID
+                             select new
+                             {                                 
+                                 內容 = n.ContentofBulletin,
+                             }).FirstOrDefault();
+            MessageBox.Show(q.內容);
+        }
 
         private void pictureBox1_Click(object sender, EventArgs e)//按照片跳出編輯個人資料頁
         {
@@ -400,7 +361,8 @@ namespace HRMS
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            ShowImage(userInfo.ID);
+            userInfo = new MyUserInfo(UserID);
+            ShowImage();
             Information(userInfo.ID);
         }
         #endregion
@@ -1399,7 +1361,7 @@ namespace HRMS
 
                     //byte[] bytes = (byte[])dataReader["Photo"];
                     //System.IO.MemoryStream ms = new System.IO.MemoryStream(bytes);
-                    ShowImage(userInfo.ID);
+                    ShowImage();
 
                     var q = from i in this.hrEntities.Users
                             where i.EmployeeID == UserID
@@ -2113,7 +2075,7 @@ namespace HRMS
             //MessageBox.Show(sender.ToString());
 
             string WuCha_ShouldReviseID, WuCha_ShouldReviseItem;
-            if (e.ColumnIndex == 0)
+            if (WuCha_dataGridView.CurrentCell.Value.ToString() == "修改")
             {
                 //this.WuCha_dataGridView.Rows[e.RowIndex].Cells[3].ReadOnly = false;
                 this.btnWuCha_Submit.Enabled = true;
@@ -2578,18 +2540,6 @@ namespace HRMS
         }
 
         #endregion
-
-        private void lsbBulletin_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string str = lsbBulletin.SelectedItem.ToString();
-            int ID = int.Parse(str.Replace(str.Substring(str.IndexOf('[')),""));
-            var q = (from n in hrEntities.Bulletins
-                             where n.Number == ID
-                             select new
-                             {                                 
-                                 內容 = n.ContentofBulletin,
-                             }).FirstOrDefault();
-            MessageBox.Show(q.內容);
-        }
+        
     }
 }

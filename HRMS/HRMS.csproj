@@ -71,7 +71,8 @@
     <Compile Include="CheckStatu.cs">
       <DependentUpon>HRModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Class.cs" />
+    <Compile Include="Class\MyControls.cs" />
+    <Compile Include="Class\MyUserInfo.cs" />
     <Compile Include="CostCategory.cs">
       <DependentUpon>HRModel.tt</DependentUpon>
     </Compile>
@@ -108,7 +109,6 @@
     <Compile Include="Frm_HomePage.Designer.cs">
       <DependentUpon>Frm_HomePage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Function.cs" />
     <Compile Include="HRModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -154,7 +154,6 @@
     <Compile Include="LostPropertyCheckStatu.cs">
       <DependentUpon>HRModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Method.cs" />
     <Compile Include="OnBoardStatu.cs">
       <DependentUpon>HRModel.tt</DependentUpon>
     </Compile>
@@ -295,5 +294,6 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

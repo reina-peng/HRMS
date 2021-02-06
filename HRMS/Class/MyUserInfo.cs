@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ using System.Windows.Forms.VisualStyles;
 
 namespace HRMS
 {
-    public class UserInfo
+    public class MyUserInfo
     {        
         public int ID { get; }//員工ID
         public byte[] Photo { get; }//員工圖片
@@ -41,7 +42,7 @@ namespace HRMS
             }
         }
 
-        public UserInfo(int userID)
+        public MyUserInfo(int userID)
         {
             try
             {
@@ -216,5 +217,5 @@ namespace HRMS
                 return dt;
             }            
         }        
-    }
+    }    
 }
