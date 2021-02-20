@@ -4,31 +4,30 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0422be15d26643909813160b21299ce3" Name="Diagram1">
-        <EntityTypeShape EntityType="MyHRModel.Absence" Width="1.5" PointX="8.25" PointY="32.875" />
-        <EntityTypeShape EntityType="MyHRModel.Bulletin" Width="1.5" PointX="3" PointY="36.625" />
-        <EntityTypeShape EntityType="MyHRModel.CheckStatu" Width="1.5" PointX="9" PointY="6.75" />
-        <EntityTypeShape EntityType="MyHRModel.CostCategory" Width="1.5" PointX="8.25" PointY="12" />
-        <EntityTypeShape EntityType="MyHRModel.Department" Width="1.5" PointX="0.75" PointY="18.75" />
-        <EntityTypeShape EntityType="MyHRModel.Found" Width="1.5" PointX="8.25" PointY="18" />
-        <EntityTypeShape EntityType="MyHRModel.FoundPropertyCheckStatu" Width="1.5" PointX="6" PointY="13.625" />
-        <EntityTypeShape EntityType="MyHRModel.InterViewee" Width="1.5" PointX="3" PointY="17.25" />
-        <EntityTypeShape EntityType="MyHRModel.InterViewStatu" Width="1.5" PointX="0.75" PointY="16" />
-        <EntityTypeShape EntityType="MyHRModel.Item" Width="1.5" PointX="8.25" PointY="0.875" />
-        <EntityTypeShape EntityType="MyHRModel.JobTitle" Width="1.5" PointX="3.75" PointY="14.75" />
-        <EntityTypeShape EntityType="MyHRModel.Leave" Width="1.5" PointX="9" PointY="4.25" />
-        <EntityTypeShape EntityType="MyHRModel.LeaveApplication" Width="1.5" PointX="11.25" PointY="13.25" />
-        <EntityTypeShape EntityType="MyHRModel.Lost" Width="1.5" PointX="11.25" PointY="18" />
-        <EntityTypeShape EntityType="MyHRModel.LostPropertyCheckStatu" Width="1.5" PointX="9" PointY="28" />
-        <EntityTypeShape EntityType="MyHRModel.OnBoardStatu" Width="1.5" PointX="3.75" PointY="23.25" />
-        <EntityTypeShape EntityType="MyHRModel.Repair" Width="1.5" PointX="8.25" PointY="35.5" />
-        <EntityTypeShape EntityType="MyHRModel.Store" Width="1.5" PointX="6" PointY="11" />
-        <EntityTypeShape EntityType="MyHRModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="MyHRModel.Travel_Expense_Application" Width="1.5" PointX="8.25" PointY="23.25" />
-        <EntityTypeShape EntityType="MyHRModel.User" Width="1.5" PointX="6" PointY="16.375" />
-        <EntityTypeShape EntityType="MyHRModel.WuChaOrder" Width="1.5" PointX="8.25" PointY="14.5" />
-        <EntityTypeShape EntityType="MyHRModel.ApplyDetail" Width="1.5" PointX="10.5" PointY="23.875" />
-        <EntityTypeShape EntityType="MyHRModel.OrderStoreDetail" Width="1.5" PointX="10.5" PointY="9.875" />
+      <Diagram DiagramId="0422be15d26643909813160b21299ce3" Name="Diagram1" ZoomLevel="77">
+        <EntityTypeShape EntityType="MyHRModel.Absence" Width="1.5" PointX="5.25" PointY="19.25" />
+        <EntityTypeShape EntityType="MyHRModel.Bulletin" Width="1.5" PointX="2.375" PointY="18.75" />
+        <EntityTypeShape EntityType="MyHRModel.CheckStatu" Width="1.5" PointX="8.875" PointY="0.5" />
+        <EntityTypeShape EntityType="MyHRModel.CostCategory" Width="1.5" PointX="11.125" PointY="0.5" />
+        <EntityTypeShape EntityType="MyHRModel.Department" Width="1.5" PointX="0.625" PointY="11.25" />
+        <EntityTypeShape EntityType="MyHRModel.Found" Width="1.5" PointX="8.125" PointY="10.5" />
+        <EntityTypeShape EntityType="MyHRModel.FoundPropertyCheckStatu" Width="1.5" PointX="5.875" PointY="6.125" />
+        <EntityTypeShape EntityType="MyHRModel.InterViewee" Width="1.5" PointX="2.875" PointY="9.75" />
+        <EntityTypeShape EntityType="MyHRModel.InterViewStatu" Width="1.5" PointX="0.625" PointY="8.5" />
+        <EntityTypeShape EntityType="MyHRModel.Item" Width="1.5" PointX="8.125" PointY="3.375" />
+        <EntityTypeShape EntityType="MyHRModel.JobTitle" Width="1.5" PointX="3.625" PointY="15.625" />
+        <EntityTypeShape EntityType="MyHRModel.Leave" Width="1.5" PointX="8.875" PointY="20.5" />
+        <EntityTypeShape EntityType="MyHRModel.LeaveApplication" Width="1.5" PointX="11.125" PointY="10.75" />
+        <EntityTypeShape EntityType="MyHRModel.Lost" Width="1.5" PointX="8.125" PointY="15.5" />
+        <EntityTypeShape EntityType="MyHRModel.LostPropertyCheckStatu" Width="1.5" PointX="5.875" PointY="16.5" />
+        <EntityTypeShape EntityType="MyHRModel.OnBoardStatu" Width="1.5" PointX="3.625" PointY="7.25" />
+        <EntityTypeShape EntityType="MyHRModel.Repair" Width="1.5" PointX="6.375" PointY="21.75" />
+        <EntityTypeShape EntityType="MyHRModel.Store" Width="1.5" PointX="5.875" PointY="3.5" />
+        <EntityTypeShape EntityType="MyHRModel.Travel_Expense_Application" Width="1.5" PointX="11.125" PointY="6.75" />
+        <EntityTypeShape EntityType="MyHRModel.User" Width="1.5" PointX="5.875" PointY="8.875" />
+        <EntityTypeShape EntityType="MyHRModel.WuChaOrder" Width="1.5" PointX="8.125" PointY="7" />
+        <EntityTypeShape EntityType="MyHRModel.ApplyDetail" Width="1.5" PointX="13.375" PointY="7.375" />
+        <EntityTypeShape EntityType="MyHRModel.OrderStoreDetail" Width="1.5" PointX="10.375" PointY="3.375" />
         <AssociationConnector Association="MyHRModel.FK_Absence_User" />
         <AssociationConnector Association="MyHRModel.FK_Bulletin_Department" />
         <AssociationConnector Association="MyHRModel.FK_LeaveApplication_CheckStatus" />

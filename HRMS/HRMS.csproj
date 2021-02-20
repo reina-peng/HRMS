@@ -162,9 +162,6 @@
     <Compile Include="Store.cs">
       <DependentUpon>HRModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>HRModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Travel_Expense_Application.cs">
       <DependentUpon>HRModel.tt</DependentUpon>
     </Compile>

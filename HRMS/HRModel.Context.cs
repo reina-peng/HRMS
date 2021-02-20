@@ -43,7 +43,6 @@ namespace HRMS
         public virtual DbSet<OnBoardStatu> OnBoardStatus { get; set; }
         public virtual DbSet<Repair> Repairs { get; set; }
         public virtual DbSet<Store> Stores { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Travel_Expense_Application> Travel_Expense_Application { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<WuChaOrder> WuChaOrders { get; set; }

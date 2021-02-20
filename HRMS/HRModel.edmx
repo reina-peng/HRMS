@@ -219,16 +219,6 @@
           <Property Name="StoreID" Type="int" Nullable="false" />
           <Property Name="StoreName" Type="nvarchar" MaxLength="10" Nullable="false" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="Travel_Expense_Application">
           <Key>
             <PropertyRef Name="ApplyNumber" />
@@ -624,7 +614,6 @@
           <EntitySet Name="OnBoardStatus" EntityType="Self.OnBoardStatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Repair" EntityType="Self.Repair" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Store" EntityType="Self.Store" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Travel_Expense_Application" EntityType="Self.Travel_Expense_Application" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WuChaOrder" EntityType="Self.WuChaOrder" Schema="dbo" store:Type="Tables" />
@@ -775,7 +764,6 @@
           <EntitySet Name="OnBoardStatus" EntityType="MyHRModel.OnBoardStatu" />
           <EntitySet Name="Repairs" EntityType="MyHRModel.Repair" />
           <EntitySet Name="Stores" EntityType="MyHRModel.Store" />
-          <EntitySet Name="sysdiagrams" EntityType="MyHRModel.sysdiagram" />
           <EntitySet Name="Travel_Expense_Application" EntityType="MyHRModel.Travel_Expense_Application" />
           <EntitySet Name="Users" EntityType="MyHRModel.User" />
           <EntitySet Name="WuChaOrders" EntityType="MyHRModel.WuChaOrder" />
@@ -1105,16 +1093,6 @@
           <Property Name="StoreName" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Items" Relationship="MyHRModel.FK_Item_Store" FromRole="Store" ToRole="Item" />
           <NavigationProperty Name="WuChaOrders" Relationship="MyHRModel.FK_WuChaOrder_Store" FromRole="Store" ToRole="WuChaOrder" />
-        </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="Travel_Expense_Application">
           <Key>
@@ -1736,17 +1714,6 @@
               <MappingFragment StoreEntitySet="Store">
                 <ScalarProperty Name="StoreName" ColumnName="StoreName" />
                 <ScalarProperty Name="StoreID" ColumnName="StoreID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="MyHRModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="definition" ColumnName="definition" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
