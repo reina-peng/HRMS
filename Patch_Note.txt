@@ -6,5 +6,9 @@
 -userInfo 新增照片屬性。
 
 Bug 修正
-Janna-修正 打卡 DateTimePicker.Value
-Tina -修正 Wucha_dataGridView 點擊判斷是否為修改按鈕
+-Achie
+-修正 個人資料修改後重建 userInfo 物件
+-Janna
+-修正 打卡 DateTimePicker.Value
+-Tina
+-修正 Wucha_dataGridView 點擊判斷是否為修改按鈕
